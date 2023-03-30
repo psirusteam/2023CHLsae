@@ -1,0 +1,89 @@
+---
+title: "Pasos para instalar rstan"
+subtitle: "CEPAL - Unidad de Estadísticas Sociales"
+author: "Andrés Gutiérrez - Stalyn Guerrero"
+format: pdf
+---
+
+```{r setup, include=FALSE, message=FALSE, error=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE,
+                      warning = FALSE,
+                      cache = TRUE)
+
+```
+
+## Paso 1: Instalando software
+
+A continuación listamos los software necesario para el desarrollo adecuado del entrenamiento, se recomienda realizar la instalación de estos paquetes antes de iniciar con el desarrollo práctico.
+
+1.  Descargar e instalar **Rbase** (<https://cran.r-project.org/bin/windows/base/>)
+2.  Descargar e instalar **Rtools** (<https://cran.r-project.org/bin/windows/Rtools/>)
+3.  Descargar e instalar **Rstudio** (<https://posit.co/download/rstudio-desktop/>)
+4.  Descargar e instalar **Quarto** (<https://quarto.org/docs/get-started/>)
+5.  Descargar e instalar **Anaconda** (<https://www.anaconda.com/products/individual>)
+
+## Paso 2: Instalar las siguientes librerías en *R.*
+
+```{r, eval=FALSE}
+install.packages("patchwork")
+install.packages("lme4")
+install.packages("tidyverse")
+install.packages("rstan")
+install.packages("rstanarm")
+install.packages("magrittr")
+install.packages("reticulate") 
+install.packages("rgee") 
+install.packages("sf")
+install.packages("tmap")
+install.packages("trafo")
+install.packages("scales")
+install.packages("srvyr")
+install.packages("survey")
+install.packages("haven")
+install.packages("sampling")
+install.packages("sp")
+install.packages("RColorBrewer")
+install.packages("maptools")
+install.packages("data.table")
+install.packages("forcats")
+install.packages("tidyr")
+install.packages("reshape2")
+install.packages("bayesplot")
+install.packages("posterior")
+install.packages("gridExtra")
+install.packages("ggalt")
+install.packages("usmap")
+install.packages("kableExtra")
+install.packages("formatR")
+install.packages("printr")
+install.packages("remotes")
+install.packages("latex2exp")
+install.packages("gtsummary")
+install.packages("rstan")
+```
+
+## Paso 3: Validar instalación, si `rstan` quedo instalado de forma correcta.
+
+```{r,eval=TRUE}
+library(rstan)
+library(posterior)
+library(bayesplot)
+
+# ?stan()
+scode <- "
+parameters {
+  real y[2]; 
+} 
+model {
+  y[1] ~ normal(0, 1);
+  y[2] ~ double_exponential(0, 2);
+} 
+"
+fit1 <- stan(model_code = scode, iter = 10, verbose = FALSE) 
+print(fit1)
+fit2 <- stan(fit = fit1, iter = 10000, verbose = FALSE) 
+summary(fit2)$summary 
+
+```
+
