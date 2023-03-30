@@ -44,3 +44,9 @@ resultados-del-modelo-para-los-dominios-observados.
 proceso-de-benchmark
 validación-de-los-resultados.
 mapa-de-pobreza
+día-2---sesión-3--modelos-de-área---estimación-de-la-pobreza-y-la-transformación-arcoseno.
+procedimiento-de-estimación-1
+preparando-los-insumos-para-stan-1
+resultados-del-modelo-para-los-dominios-observados.-1
+mapa-de-pobreza-1
+mapa-del-coeficiente-de-variación.
