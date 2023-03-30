@@ -1,4 +1,6 @@
 tab:unnamed-chunk-13
+fig:unnamed-chunk-5
+fig:unnamed-chunk-14
 día-1---sesión-1--no-dejar-a-nadie-atrás---ods-y-la-agenda-2030
 día-1---sesión-2--censo-e-información-satelital
 uso-de-imágenes-satelitales-y-sae
@@ -14,3 +16,20 @@ tiempo-promedio-al-hospital
 tiempo-promedio-al-hospital-en-vehiculo-no-motorizado
 censos-de-población-y-vivienda
 mapas-de-las-variables-con-información-censal.
+día-1---sesión-3--fundamentos-de-la-inferencia-bayesiana-en-r-y-stan
+día-1---sesión-4--modelos-sintéticos-simples
+regla-de-bayes
+inferencia-bayesiana.
+modelos-uniparamétricos
+modelo-de-unidad-bernoulli
+práctica-en-r
+práctica-en-stan
+modelo-de-área-binomial
+práctica-en-stan-1
+modelo-de-unidad-normal-con-media-desconocida
+práctica-en-stan-2
+modelos-multiparamétricos
+modelo-de-unidad-normal-con-media-y-varianza-desconocida
+práctica-en-stan-3
+modelo-de-área-multinomial
+práctica-en-stan-4

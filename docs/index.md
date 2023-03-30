@@ -39,13 +39,13 @@ output:
 ## Material del curso {-}
 
 
-- En el siguiente enlace encontrará material bibliográfico complementario (Libros, presentaciones, casos de estudio y manuales de instalación) [Descargar](https://github.com/psirusteam/2023COLsae/tree/main/Recursos/Docs)
+- En el siguiente enlace encontrará material bibliográfico complementario (Libros, presentaciones, casos de estudio y manuales de instalación) [Descargar](https://github.com/psirusteam/2023CHLsae/tree/main/Recursos/Docs)
 
 -   En el siguiente enlace encontrará las rutinas de R desarrolladas para el taller.
-[Descargar](https://github.com/psirusteam/2023COLsae/tree/main/Recursos)
+[Descargar](https://github.com/psirusteam/2023CHLsae/tree/main/Recursos)
 
 # Día 1 - Sesión 1- No dejar a nadie atrás - ODS y la Agenda 2030 
 
-[Ver presentación](https://github.com/psirusteam/2023COLsae/blob/main/Recursos/D%C3%ADa1/Sesion1/SAE-0%2C-SDGs-and-Surveys.pdf)
+[Ver presentación](https://github.com/psirusteam/2023CHLsae/blob/main/Recursos/D%C3%ADa1/Sesion1/SAE-0%2C-SDGs-and-Surveys.pdf)
 
 
