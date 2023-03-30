@@ -1,0 +1,16 @@
+tab:unnamed-chunk-13
+día-1---sesión-1--no-dejar-a-nadie-atrás---ods-y-la-agenda-2030
+día-1---sesión-2--censo-e-información-satelital
+uso-de-imágenes-satelitales-y-sae
+fuentes-de-datos-de-imágenes-satelitales
+google-earth-eninge
+instalación-de-rgee
+descargar-información-satelital
+luces-nocturnas
+cubrimiento-cultivos
+cubrimiento-urbanos
+modificación-humana
+tiempo-promedio-al-hospital
+tiempo-promedio-al-hospital-en-vehiculo-no-motorizado
+censos-de-población-y-vivienda
+mapas-de-las-variables-con-información-censal.
