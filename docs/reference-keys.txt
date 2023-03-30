@@ -37,3 +37,10 @@ día-2---sesión-1--estimaciones-casen-y-función-generalizada-de-varianza
 datos-de-la-encuesta
 análisis-gráfico
 modelo-para-la-varianza
+día-2---sesión-2--modelo-de-fay-herriot---estimación-de-la-pobreza
+procedimiento-de-estimación
+preparando-los-insumos-para-stan
+resultados-del-modelo-para-los-dominios-observados.
+proceso-de-benchmark
+validación-de-los-resultados.
+mapa-de-pobreza
