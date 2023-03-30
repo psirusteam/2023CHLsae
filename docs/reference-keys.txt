@@ -33,3 +33,7 @@ modelo-de-unidad-normal-con-media-y-varianza-desconocida
 práctica-en-stan-3
 modelo-de-área-multinomial
 práctica-en-stan-4
+día-2---sesión-1--estimaciones-casen-y-función-generalizada-de-varianza
+datos-de-la-encuesta
+análisis-gráfico
+modelo-para-la-varianza
