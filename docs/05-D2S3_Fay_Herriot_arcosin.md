@@ -207,7 +207,12 @@ names_cov <- c(
   "tasa_desocupacion" ,
   "luces_nocturnas" ,
   "cubrimiento_cultivo" ,
-  "alfabeta"
+  "alfabeta",
+   "pollution_CO",
+  "vegetation_NDVI",
+  "Elevation",
+  "precipitation",
+  "population_density"
 )
 ```
 
@@ -512,15 +517,7 @@ Mapa_cv <-
     colorNA = "white"
   ) + tm_layout(asp = 2.5)
 
-
-
-tmap_save(
-  Mapa_cv,
-  "Recursos/Día2/Sesion3/0Recursos/Mapa_arcoseno_cv.PNG",
-  width = 6920,
-  height = 4080,
-  asp = 0
-)
+Mapa_cv
 ```
 
 **NOTA:** Dado que la estimación del modelo y  el error de estimación son pequeño, entonces, el coeficiente de variación no es una buena medida de la calidad de la estimación.  

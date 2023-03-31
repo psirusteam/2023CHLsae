@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="mapa-de-pobreza-1.html"/>
-
+<link rel="next" href="día-2---sesión-4--modelos-de-área---estimación-de-la-pobreza-en-familia-beta-y-binomial.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -210,6 +210,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3" data-path="mapa-de-pobreza-1.html"><a href="mapa-de-pobreza-1.html"><i class="fa fa-check"></i><b>7.3</b> Mapa de pobreza</a></li>
 <li class="chapter" data-level="7.4" data-path="mapa-del-coeficiente-de-variación..html"><a href="mapa-del-coeficiente-de-variación..html"><i class="fa fa-check"></i><b>7.4</b> Mapa del coeficiente de variación.</a></li>
 </ul></li>
+<li class="chapter" data-level="8" data-path="día-2---sesión-4--modelos-de-área---estimación-de-la-pobreza-en-familia-beta-y-binomial.html"><a href="día-2---sesión-4--modelos-de-área---estimación-de-la-pobreza-en-familia-beta-y-binomial.html"><i class="fa fa-check"></i><b>8</b> Día 2 - Sesión 4- Modelos de área - Estimación de la pobreza en familia beta y binomial</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="modelos-de-área-con-variable-respuesta-binomial..html"><a href="modelos-de-área-con-variable-respuesta-binomial..html"><i class="fa fa-check"></i><b>8.1</b> Modelos de área con variable respuesta Binomial.</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="modelos-de-área-con-variable-respuesta-binomial..html"><a href="modelos-de-área-con-variable-respuesta-binomial..html#procedimiento-de-estimación-2"><i class="fa fa-check"></i><b>8.1.1</b> Procedimiento de estimación</a></li>
+<li class="chapter" data-level="8.1.2" data-path="modelos-de-área-con-variable-respuesta-binomial..html"><a href="modelos-de-área-con-variable-respuesta-binomial..html#preparando-los-insumos-para-stan-2"><i class="fa fa-check"></i><b>8.1.2</b> Preparando los insumos para <code>STAN</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="modelos-de-área-con-variable-respuesta-beta..html"><a href="modelos-de-área-con-variable-respuesta-beta..html"><i class="fa fa-check"></i><b>8.2</b> Modelos de área con variable respuesta Beta.</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="modelos-de-área-con-variable-respuesta-beta..html"><a href="modelos-de-área-con-variable-respuesta-beta..html#procedimiento-de-estimación-3"><i class="fa fa-check"></i><b>8.2.1</b> Procedimiento de estimación</a></li>
+<li class="chapter" data-level="8.2.2" data-path="modelos-de-área-con-variable-respuesta-beta..html"><a href="modelos-de-área-con-variable-respuesta-beta..html#preparando-los-insumos-para-stan-3"><i class="fa fa-check"></i><b>8.2.2</b> Preparando los insumos para <code>STAN</code></a></li>
+</ul></li>
+</ul></li>
 <li class="divider"></li>
 <li><a Taller de instalación de capacidades en SAE </a></li>
 
@@ -241,34 +254,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb120-6"><a href="mapa-del-coeficiente-de-variación..html#cb120-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">colorNA =</span> <span class="st">&quot;white&quot;</span></span>
 <span id="cb120-7"><a href="mapa-del-coeficiente-de-variación..html#cb120-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> <span class="fu">tm_layout</span>(<span class="at">asp =</span> <span class="fl">2.5</span>)</span>
 <span id="cb120-8"><a href="mapa-del-coeficiente-de-variación..html#cb120-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-9"><a href="mapa-del-coeficiente-de-variación..html#cb120-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-10"><a href="mapa-del-coeficiente-de-variación..html#cb120-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-11"><a href="mapa-del-coeficiente-de-variación..html#cb120-11" aria-hidden="true" tabindex="-1"></a><span class="fu">tmap_save</span>(</span>
-<span id="cb120-12"><a href="mapa-del-coeficiente-de-variación..html#cb120-12" aria-hidden="true" tabindex="-1"></a>  Mapa_cv,</span>
-<span id="cb120-13"><a href="mapa-del-coeficiente-de-variación..html#cb120-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Recursos/Día2/Sesion3/0Recursos/Mapa_arcoseno_cv.PNG&quot;</span>,</span>
-<span id="cb120-14"><a href="mapa-del-coeficiente-de-variación..html#cb120-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">6920</span>,</span>
-<span id="cb120-15"><a href="mapa-del-coeficiente-de-variación..html#cb120-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="dv">4080</span>,</span>
-<span id="cb120-16"><a href="mapa-del-coeficiente-de-variación..html#cb120-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">asp =</span> <span class="dv">0</span></span>
-<span id="cb120-17"><a href="mapa-del-coeficiente-de-variación..html#cb120-17" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<span id="cb120-9"><a href="mapa-del-coeficiente-de-variación..html#cb120-9" aria-hidden="true" tabindex="-1"></a>Mapa_cv</span></code></pre></div>
 <p><strong>NOTA:</strong> Dado que la estimación del modelo y el error de estimación son pequeño, entonces, el coeficiente de variación no es una buena medida de la calidad de la estimación.</p>
 <p><img src="Recursos/D%C3%ADa2/Sesion3/0Recursos/Mapa_arcoseno_cv.PNG" width="400%" style="display: block; margin: auto;" /></p>
 
 </div>
 <!-- </div> -->
-
-
-
-
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="mapa-de-pobreza-1.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="mapa-de-pobreza-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="día-2---sesión-4--modelos-de-área---estimación-de-la-pobreza-en-familia-beta-y-binomial.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
