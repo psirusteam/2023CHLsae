@@ -416,7 +416,12 @@ formula_mod  <- formula(~ sexo2 +
                          etnia2 +
                          tasa_desocupacion +
                          luces_nocturnas +
-                          cubrimiento_urbano+
+                         cubrimiento_urbano +
+                         pollution_CO + 
+                         vegetation_NDVI +
+                         Elevation +
+                         precipitation +
+                         population_density +
                          cubrimiento_cultivo +
                          alfabeta)
 ## Dominios observados
@@ -670,11 +675,11 @@ tba(data_syn %>% slice(1:10) %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> 0.0633 </td>
-   <td style="text-align:right;"> 0.0633 </td>
-   <td style="text-align:right;"> 0.0633 </td>
-   <td style="text-align:right;"> 0.0362 </td>
-   <td style="text-align:right;"> 0.5711 </td>
+   <td style="text-align:right;"> 0.0462 </td>
+   <td style="text-align:right;"> 0.0462 </td>
+   <td style="text-align:right;"> 0.0462 </td>
+   <td style="text-align:right;"> 0.0414 </td>
+   <td style="text-align:right;"> 0.8959 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 01402 </td>
@@ -682,11 +687,11 @@ tba(data_syn %>% slice(1:10) %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> 0.0761 </td>
-   <td style="text-align:right;"> 0.0761 </td>
-   <td style="text-align:right;"> 0.0761 </td>
-   <td style="text-align:right;"> 0.0545 </td>
-   <td style="text-align:right;"> 0.7162 </td>
+   <td style="text-align:right;"> 0.0096 </td>
+   <td style="text-align:right;"> 0.0096 </td>
+   <td style="text-align:right;"> 0.0096 </td>
+   <td style="text-align:right;"> 0.0660 </td>
+   <td style="text-align:right;"> 6.9003 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 01403 </td>
@@ -694,11 +699,11 @@ tba(data_syn %>% slice(1:10) %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> 0.0936 </td>
-   <td style="text-align:right;"> 0.0936 </td>
-   <td style="text-align:right;"> 0.0936 </td>
-   <td style="text-align:right;"> 0.0527 </td>
-   <td style="text-align:right;"> 0.5635 </td>
+   <td style="text-align:right;"> 0.0218 </td>
+   <td style="text-align:right;"> 0.0218 </td>
+   <td style="text-align:right;"> 0.0218 </td>
+   <td style="text-align:right;"> 0.0667 </td>
+   <td style="text-align:right;"> 3.0592 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 01404 </td>
@@ -706,11 +711,11 @@ tba(data_syn %>% slice(1:10) %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> 0.0962 </td>
-   <td style="text-align:right;"> 0.0962 </td>
-   <td style="text-align:right;"> 0.0962 </td>
-   <td style="text-align:right;"> 0.0340 </td>
-   <td style="text-align:right;"> 0.3537 </td>
+   <td style="text-align:right;"> 0.0543 </td>
+   <td style="text-align:right;"> 0.0543 </td>
+   <td style="text-align:right;"> 0.0543 </td>
+   <td style="text-align:right;"> 0.0404 </td>
+   <td style="text-align:right;"> 0.7446 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 01405 </td>
@@ -718,11 +723,11 @@ tba(data_syn %>% slice(1:10) %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> -0.2396 </td>
-   <td style="text-align:right;"> -0.2396 </td>
-   <td style="text-align:right;"> -0.2396 </td>
-   <td style="text-align:right;"> 0.0857 </td>
-   <td style="text-align:right;"> -0.3576 </td>
+   <td style="text-align:right;"> -0.2797 </td>
+   <td style="text-align:right;"> -0.2797 </td>
+   <td style="text-align:right;"> -0.2797 </td>
+   <td style="text-align:right;"> 0.0975 </td>
+   <td style="text-align:right;"> -0.3487 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 02102 </td>
@@ -730,11 +735,11 @@ tba(data_syn %>% slice(1:10) %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> -0.0467 </td>
-   <td style="text-align:right;"> -0.0467 </td>
-   <td style="text-align:right;"> -0.0467 </td>
-   <td style="text-align:right;"> 0.0405 </td>
-   <td style="text-align:right;"> -0.8671 </td>
+   <td style="text-align:right;"> -0.0539 </td>
+   <td style="text-align:right;"> -0.0539 </td>
+   <td style="text-align:right;"> -0.0539 </td>
+   <td style="text-align:right;"> 0.0463 </td>
+   <td style="text-align:right;"> -0.8590 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 02103 </td>
@@ -742,11 +747,11 @@ tba(data_syn %>% slice(1:10) %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> -0.5109 </td>
-   <td style="text-align:right;"> -0.5109 </td>
-   <td style="text-align:right;"> -0.5109 </td>
-   <td style="text-align:right;"> 0.1458 </td>
-   <td style="text-align:right;"> -0.2853 </td>
+   <td style="text-align:right;"> -0.5446 </td>
+   <td style="text-align:right;"> -0.5446 </td>
+   <td style="text-align:right;"> -0.5446 </td>
+   <td style="text-align:right;"> 0.1605 </td>
+   <td style="text-align:right;"> -0.2948 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 02104 </td>
@@ -754,11 +759,11 @@ tba(data_syn %>% slice(1:10) %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> 0.0010 </td>
-   <td style="text-align:right;"> 0.0010 </td>
-   <td style="text-align:right;"> 0.0010 </td>
-   <td style="text-align:right;"> 0.0328 </td>
-   <td style="text-align:right;"> 33.3167 </td>
+   <td style="text-align:right;"> -0.0140 </td>
+   <td style="text-align:right;"> -0.0140 </td>
+   <td style="text-align:right;"> -0.0140 </td>
+   <td style="text-align:right;"> 0.0347 </td>
+   <td style="text-align:right;"> -2.4718 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 02202 </td>
@@ -766,11 +771,11 @@ tba(data_syn %>% slice(1:10) %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> -0.0943 </td>
-   <td style="text-align:right;"> -0.0943 </td>
-   <td style="text-align:right;"> -0.0943 </td>
-   <td style="text-align:right;"> 0.0581 </td>
-   <td style="text-align:right;"> -0.6158 </td>
+   <td style="text-align:right;"> -0.1508 </td>
+   <td style="text-align:right;"> -0.1508 </td>
+   <td style="text-align:right;"> -0.1508 </td>
+   <td style="text-align:right;"> 0.0703 </td>
+   <td style="text-align:right;"> -0.4663 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 02203 </td>
@@ -778,11 +783,11 @@ tba(data_syn %>% slice(1:10) %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> -0.0217 </td>
-   <td style="text-align:right;"> -0.0217 </td>
-   <td style="text-align:right;"> -0.0217 </td>
-   <td style="text-align:right;"> 0.0331 </td>
-   <td style="text-align:right;"> -1.5261 </td>
+   <td style="text-align:right;"> -0.0718 </td>
+   <td style="text-align:right;"> -0.0718 </td>
+   <td style="text-align:right;"> -0.0718 </td>
+   <td style="text-align:right;"> 0.0463 </td>
+   <td style="text-align:right;"> -0.6455 </td>
   </tr>
 </tbody>
 </table>
@@ -1133,7 +1138,7 @@ tba(temp %>% slice(1:10))
 <tbody>
   <tr>
    <td style="text-align:left;"> 01101 </td>
-   <td style="text-align:right;"> 0.0771 </td>
+   <td style="text-align:right;"> 0.0742 </td>
    <td style="text-align:left;"> 01 </td>
    <td style="text-align:right;"> 191468 </td>
    <td style="text-align:right;"> 330558 </td>
@@ -1143,7 +1148,7 @@ tba(temp %>% slice(1:10))
   </tr>
   <tr>
    <td style="text-align:left;"> 01107 </td>
-   <td style="text-align:right;"> 0.1603 </td>
+   <td style="text-align:right;"> 0.1513 </td>
    <td style="text-align:left;"> 01 </td>
    <td style="text-align:right;"> 108375 </td>
    <td style="text-align:right;"> 330558 </td>
@@ -1153,7 +1158,7 @@ tba(temp %>% slice(1:10))
   </tr>
   <tr>
    <td style="text-align:left;"> 02101 </td>
-   <td style="text-align:right;"> 0.0941 </td>
+   <td style="text-align:right;"> 0.0924 </td>
    <td style="text-align:left;"> 02 </td>
    <td style="text-align:right;"> 361873 </td>
    <td style="text-align:right;"> 607534 </td>
@@ -1163,7 +1168,7 @@ tba(temp %>% slice(1:10))
   </tr>
   <tr>
    <td style="text-align:left;"> 02201 </td>
-   <td style="text-align:right;"> 0.0833 </td>
+   <td style="text-align:right;"> 0.0744 </td>
    <td style="text-align:left;"> 02 </td>
    <td style="text-align:right;"> 165731 </td>
    <td style="text-align:right;"> 607534 </td>
@@ -1173,7 +1178,7 @@ tba(temp %>% slice(1:10))
   </tr>
   <tr>
    <td style="text-align:left;"> 03101 </td>
-   <td style="text-align:right;"> 0.1122 </td>
+   <td style="text-align:right;"> 0.1103 </td>
    <td style="text-align:left;"> 03 </td>
    <td style="text-align:right;"> 153937 </td>
    <td style="text-align:right;"> 286168 </td>
@@ -1183,7 +1188,7 @@ tba(temp %>% slice(1:10))
   </tr>
   <tr>
    <td style="text-align:left;"> 03301 </td>
-   <td style="text-align:right;"> 0.1380 </td>
+   <td style="text-align:right;"> 0.1365 </td>
    <td style="text-align:left;"> 03 </td>
    <td style="text-align:right;"> 51917 </td>
    <td style="text-align:right;"> 286168 </td>
@@ -1193,7 +1198,7 @@ tba(temp %>% slice(1:10))
   </tr>
   <tr>
    <td style="text-align:left;"> 04101 </td>
-   <td style="text-align:right;"> 0.1493 </td>
+   <td style="text-align:right;"> 0.1555 </td>
    <td style="text-align:left;"> 04 </td>
    <td style="text-align:right;"> 221054 </td>
    <td style="text-align:right;"> 757586 </td>
@@ -1203,7 +1208,7 @@ tba(temp %>% slice(1:10))
   </tr>
   <tr>
    <td style="text-align:left;"> 04102 </td>
-   <td style="text-align:right;"> 0.1428 </td>
+   <td style="text-align:right;"> 0.1484 </td>
    <td style="text-align:left;"> 04 </td>
    <td style="text-align:right;"> 227730 </td>
    <td style="text-align:right;"> 757586 </td>
@@ -1213,7 +1218,7 @@ tba(temp %>% slice(1:10))
   </tr>
   <tr>
    <td style="text-align:left;"> 04203 </td>
-   <td style="text-align:right;"> 0.0869 </td>
+   <td style="text-align:right;"> 0.0878 </td>
    <td style="text-align:left;"> 04 </td>
    <td style="text-align:right;"> 21382 </td>
    <td style="text-align:right;"> 757586 </td>
@@ -1223,7 +1228,7 @@ tba(temp %>% slice(1:10))
   </tr>
   <tr>
    <td style="text-align:left;"> 04301 </td>
-   <td style="text-align:right;"> 0.1214 </td>
+   <td style="text-align:right;"> 0.1191 </td>
    <td style="text-align:left;"> 04 </td>
    <td style="text-align:right;"> 111272 </td>
    <td style="text-align:right;"> 757586 </td>
@@ -1260,115 +1265,115 @@ tba(R_dam2 %>% arrange(desc(R_dam_RB)))
 <tbody>
   <tr>
    <td style="text-align:left;"> 11 </td>
-   <td style="text-align:right;"> 1.6451 </td>
+   <td style="text-align:right;"> 1.5703 </td>
    <td style="text-align:right;"> 0.0550 </td>
    <td style="text-align:right;"> 0.0393 </td>
    <td style="text-align:right;"> 0.0706 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 12 </td>
-   <td style="text-align:right;"> 1.6055 </td>
+   <td style="text-align:right;"> 1.5322 </td>
    <td style="text-align:right;"> 0.0357 </td>
    <td style="text-align:right;"> 0.0256 </td>
    <td style="text-align:right;"> 0.0458 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 02 </td>
-   <td style="text-align:right;"> 1.1547 </td>
+   <td style="text-align:right;"> 1.2448 </td>
    <td style="text-align:right;"> 0.0856 </td>
    <td style="text-align:right;"> 0.0665 </td>
    <td style="text-align:right;"> 0.1047 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 04 </td>
-   <td style="text-align:right;"> 1.1484 </td>
-   <td style="text-align:right;"> 0.1598 </td>
-   <td style="text-align:right;"> 0.1404 </td>
-   <td style="text-align:right;"> 0.1792 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 09 </td>
-   <td style="text-align:right;"> 1.1360 </td>
-   <td style="text-align:right;"> 0.1714 </td>
-   <td style="text-align:right;"> 0.1565 </td>
-   <td style="text-align:right;"> 0.1863 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 05 </td>
-   <td style="text-align:right;"> 1.0965 </td>
-   <td style="text-align:right;"> 0.0975 </td>
-   <td style="text-align:right;"> 0.0852 </td>
-   <td style="text-align:right;"> 0.1097 </td>
-  </tr>
-  <tr>
    <td style="text-align:left;"> 01 </td>
-   <td style="text-align:right;"> 1.0904 </td>
+   <td style="text-align:right;"> 1.1845 </td>
    <td style="text-align:right;"> 0.1036 </td>
    <td style="text-align:right;"> 0.0858 </td>
    <td style="text-align:right;"> 0.1215 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 13 </td>
-   <td style="text-align:right;"> 1.0881 </td>
-   <td style="text-align:right;"> 0.0820 </td>
-   <td style="text-align:right;"> 0.0733 </td>
-   <td style="text-align:right;"> 0.0907 </td>
+   <td style="text-align:left;"> 09 </td>
+   <td style="text-align:right;"> 1.1424 </td>
+   <td style="text-align:right;"> 0.1714 </td>
+   <td style="text-align:right;"> 0.1565 </td>
+   <td style="text-align:right;"> 0.1863 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 04 </td>
+   <td style="text-align:right;"> 1.1367 </td>
+   <td style="text-align:right;"> 0.1598 </td>
+   <td style="text-align:right;"> 0.1404 </td>
+   <td style="text-align:right;"> 0.1792 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 06 </td>
-   <td style="text-align:right;"> 1.0793 </td>
+   <td style="text-align:right;"> 1.1332 </td>
    <td style="text-align:right;"> 0.1124 </td>
    <td style="text-align:right;"> 0.0957 </td>
    <td style="text-align:right;"> 0.1291 </td>
   </tr>
   <tr>
+   <td style="text-align:left;"> 05 </td>
+   <td style="text-align:right;"> 1.1328 </td>
+   <td style="text-align:right;"> 0.0975 </td>
+   <td style="text-align:right;"> 0.0852 </td>
+   <td style="text-align:right;"> 0.1097 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 13 </td>
+   <td style="text-align:right;"> 1.0874 </td>
+   <td style="text-align:right;"> 0.0820 </td>
+   <td style="text-align:right;"> 0.0733 </td>
+   <td style="text-align:right;"> 0.0907 </td>
+  </tr>
+  <tr>
    <td style="text-align:left;"> 07 </td>
-   <td style="text-align:right;"> 1.0728 </td>
+   <td style="text-align:right;"> 1.0856 </td>
    <td style="text-align:right;"> 0.1297 </td>
    <td style="text-align:right;"> 0.1164 </td>
    <td style="text-align:right;"> 0.1431 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 15 </td>
-   <td style="text-align:right;"> 1.0429 </td>
+   <td style="text-align:right;"> 1.0546 </td>
    <td style="text-align:right;"> 0.1035 </td>
    <td style="text-align:right;"> 0.0865 </td>
    <td style="text-align:right;"> 0.1204 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 08 </td>
-   <td style="text-align:right;"> 1.0292 </td>
-   <td style="text-align:right;"> 0.1397 </td>
-   <td style="text-align:right;"> 0.1242 </td>
-   <td style="text-align:right;"> 0.1552 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 10 </td>
-   <td style="text-align:right;"> 1.0206 </td>
-   <td style="text-align:right;"> 0.1262 </td>
-   <td style="text-align:right;"> 0.1074 </td>
-   <td style="text-align:right;"> 0.1450 </td>
+   <td style="text-align:left;"> 03 </td>
+   <td style="text-align:right;"> 1.0169 </td>
+   <td style="text-align:right;"> 0.1111 </td>
+   <td style="text-align:right;"> 0.0902 </td>
+   <td style="text-align:right;"> 0.1320 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 16 </td>
-   <td style="text-align:right;"> 1.0185 </td>
+   <td style="text-align:right;"> 1.0110 </td>
    <td style="text-align:right;"> 0.1507 </td>
    <td style="text-align:right;"> 0.1289 </td>
    <td style="text-align:right;"> 0.1725 </td>
   </tr>
   <tr>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:right;"> 1.0022 </td>
+   <td style="text-align:right;"> 0.1262 </td>
+   <td style="text-align:right;"> 0.1074 </td>
+   <td style="text-align:right;"> 0.1450 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 08 </td>
+   <td style="text-align:right;"> 0.9891 </td>
+   <td style="text-align:right;"> 0.1397 </td>
+   <td style="text-align:right;"> 0.1242 </td>
+   <td style="text-align:right;"> 0.1552 </td>
+  </tr>
+  <tr>
    <td style="text-align:left;"> 14 </td>
-   <td style="text-align:right;"> 0.9961 </td>
+   <td style="text-align:right;"> 0.9814 </td>
    <td style="text-align:right;"> 0.1213 </td>
    <td style="text-align:right;"> 0.1034 </td>
    <td style="text-align:right;"> 0.1392 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 03 </td>
-   <td style="text-align:right;"> 0.9957 </td>
-   <td style="text-align:right;"> 0.1111 </td>
-   <td style="text-align:right;"> 0.0902 </td>
-   <td style="text-align:right;"> 0.1320 </td>
   </tr>
 </tbody>
 </table>
@@ -1464,71 +1469,71 @@ estimacionesBench <- estimacionesPre %>%
    <td style="text-align:left;"> 01 </td>
    <td style="text-align:left;"> 01101 </td>
    <td style="text-align:right;"> 0.5792 </td>
-   <td style="text-align:right;"> 0.0771 </td>
-   <td style="text-align:right;"> 0.0841 </td>
+   <td style="text-align:right;"> 0.0742 </td>
+   <td style="text-align:right;"> 0.0879 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 01 </td>
    <td style="text-align:left;"> 01107 </td>
    <td style="text-align:right;"> 0.3279 </td>
-   <td style="text-align:right;"> 0.1603 </td>
-   <td style="text-align:right;"> 0.1748 </td>
+   <td style="text-align:right;"> 0.1513 </td>
+   <td style="text-align:right;"> 0.1792 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 02 </td>
    <td style="text-align:left;"> 02101 </td>
    <td style="text-align:right;"> 0.5956 </td>
-   <td style="text-align:right;"> 0.0941 </td>
-   <td style="text-align:right;"> 0.1086 </td>
+   <td style="text-align:right;"> 0.0924 </td>
+   <td style="text-align:right;"> 0.1151 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 02 </td>
    <td style="text-align:left;"> 02201 </td>
    <td style="text-align:right;"> 0.2728 </td>
-   <td style="text-align:right;"> 0.0833 </td>
-   <td style="text-align:right;"> 0.0962 </td>
+   <td style="text-align:right;"> 0.0744 </td>
+   <td style="text-align:right;"> 0.0926 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 03 </td>
    <td style="text-align:left;"> 03101 </td>
    <td style="text-align:right;"> 0.5379 </td>
-   <td style="text-align:right;"> 0.1122 </td>
-   <td style="text-align:right;"> 0.1117 </td>
+   <td style="text-align:right;"> 0.1103 </td>
+   <td style="text-align:right;"> 0.1121 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 03 </td>
    <td style="text-align:left;"> 03301 </td>
    <td style="text-align:right;"> 0.1814 </td>
-   <td style="text-align:right;"> 0.1380 </td>
-   <td style="text-align:right;"> 0.1374 </td>
+   <td style="text-align:right;"> 0.1365 </td>
+   <td style="text-align:right;"> 0.1388 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 04 </td>
    <td style="text-align:left;"> 04101 </td>
    <td style="text-align:right;"> 0.2918 </td>
-   <td style="text-align:right;"> 0.1493 </td>
-   <td style="text-align:right;"> 0.1715 </td>
+   <td style="text-align:right;"> 0.1555 </td>
+   <td style="text-align:right;"> 0.1767 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 04 </td>
    <td style="text-align:left;"> 04102 </td>
    <td style="text-align:right;"> 0.3006 </td>
-   <td style="text-align:right;"> 0.1428 </td>
-   <td style="text-align:right;"> 0.1640 </td>
+   <td style="text-align:right;"> 0.1484 </td>
+   <td style="text-align:right;"> 0.1687 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 04 </td>
    <td style="text-align:left;"> 04203 </td>
    <td style="text-align:right;"> 0.0282 </td>
-   <td style="text-align:right;"> 0.0869 </td>
-   <td style="text-align:right;"> 0.0998 </td>
+   <td style="text-align:right;"> 0.0878 </td>
+   <td style="text-align:right;"> 0.0999 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 04 </td>
    <td style="text-align:left;"> 04301 </td>
    <td style="text-align:right;"> 0.1469 </td>
-   <td style="text-align:right;"> 0.1214 </td>
-   <td style="text-align:right;"> 0.1394 </td>
+   <td style="text-align:right;"> 0.1191 </td>
+   <td style="text-align:right;"> 0.1353 </td>
   </tr>
 </tbody>
 </table>
