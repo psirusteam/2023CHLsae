@@ -33,7 +33,7 @@ output:
 
 
 # Agenda {-}
-<img src="www/Imagenes/Agenda_CHL.png" width="427" />
+<img src="www/Imagenes/Agenda_CHL.png" width="427" height="800%" />
 
 
 ## Material del curso {-}

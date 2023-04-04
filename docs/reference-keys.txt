@@ -103,3 +103,15 @@ distribución-posterior.-2
 estimación-de-la-tasa-de-pobreza
 estimación-para-el-dam-05.-2
 estimación-para-la-dam2-05201-2
+día-4---sesión-1--modelo-de-área-para-estadísticas-del-mercado-de-trabajo
+definición-del-modelo-multinomial
+lectura-de-librerías.
+lectura-de-la-encuesta-y-estimaciones-directas
+selección-de-dominios
+modelo-programando-en-stan
+preparando-insumos-para-stan
+validación-del-modelo
+estimación-de-los-parámetros.
+estimación-de-la-desviación-estárdar-y-el-coeficiente-de-valiación
+metodología-de-benchmarking
+mapas-del-mercado-de-trabajo.
