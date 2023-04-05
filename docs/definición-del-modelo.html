@@ -1,0 +1,3125 @@
+<!DOCTYPE html>
+<html lang="es" xml:lang="es">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>13.2 Definición del modelo | Desagregación de datos en encuestas de hogares: metodologías bayesianas para modelos de estimación en áreas pequeñas</title>
+  <meta name="description" content="Taller de instalación de capacidades en SAE." />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="13.2 Definición del modelo | Desagregación de datos en encuestas de hogares: metodologías bayesianas para modelos de estimación en áreas pequeñas" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Taller de instalación de capacidades en SAE." />
+  <meta name="github-repo" content="psirusteam/HHS-Handbook" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="13.2 Definición del modelo | Desagregación de datos en encuestas de hogares: metodologías bayesianas para modelos de estimación en áreas pequeñas" />
+  
+  <meta name="twitter:description" content="Taller de instalación de capacidades en SAE." />
+  
+
+<meta name="author" content="Andrés Gutiérrez, Stalyn Guerrero" />
+
+
+<meta name="date" content="2023-04-05" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="índice-de-privación-multidimensional-ipm.html"/>
+<link rel="next" href="día-4---sesión-1--modelo-de-área-para-estadísticas-del-mercado-de-trabajo.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Taller de instalación de capacidades en SAE</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Agenda</a>
+<ul>
+<li class="chapter" data-level="" data-path="material-del-curso.html"><a href="material-del-curso.html"><i class="fa fa-check"></i>Material del curso</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="día-1---sesión-1--no-dejar-a-nadie-atrás---ods-y-la-agenda-2030.html"><a href="día-1---sesión-1--no-dejar-a-nadie-atrás---ods-y-la-agenda-2030.html"><i class="fa fa-check"></i><b>1</b> Día 1 - Sesión 1- No dejar a nadie atrás - ODS y la Agenda 2030</a></li>
+<li class="chapter" data-level="2" data-path="día-1---sesión-2--censo-e-información-satelital.html"><a href="día-1---sesión-2--censo-e-información-satelital.html"><i class="fa fa-check"></i><b>2</b> Día 1 - Sesión 2- Censo e información satelital</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="uso-de-imágenes-satelitales-y-sae.html"><a href="uso-de-imágenes-satelitales-y-sae.html"><i class="fa fa-check"></i><b>2.1</b> Uso de imágenes satelitales y SAE</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="uso-de-imágenes-satelitales-y-sae.html"><a href="uso-de-imágenes-satelitales-y-sae.html#fuentes-de-datos-de-imágenes-satelitales"><i class="fa fa-check"></i><b>2.1.1</b> Fuentes de datos de imágenes satelitales</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="google-earth-eninge.html"><a href="google-earth-eninge.html"><i class="fa fa-check"></i><b>2.2</b> Google Earth Eninge</a></li>
+<li class="chapter" data-level="2.3" data-path="instalación-de-rgee.html"><a href="instalación-de-rgee.html"><i class="fa fa-check"></i><b>2.3</b> Instalación de rgee</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="instalación-de-rgee.html"><a href="instalación-de-rgee.html#descargar-información-satelital"><i class="fa fa-check"></i><b>2.3.1</b> Descargar información satelital</a></li>
+<li class="chapter" data-level="2.3.2" data-path="instalación-de-rgee.html"><a href="instalación-de-rgee.html#luces-nocturnas"><i class="fa fa-check"></i><b>2.3.2</b> Luces nocturnas</a></li>
+<li class="chapter" data-level="2.3.3" data-path="instalación-de-rgee.html"><a href="instalación-de-rgee.html#cubrimiento-cultivos"><i class="fa fa-check"></i><b>2.3.3</b> Cubrimiento cultivos</a></li>
+<li class="chapter" data-level="2.3.4" data-path="instalación-de-rgee.html"><a href="instalación-de-rgee.html#cubrimiento-urbanos"><i class="fa fa-check"></i><b>2.3.4</b> Cubrimiento urbanos</a></li>
+<li class="chapter" data-level="2.3.5" data-path="instalación-de-rgee.html"><a href="instalación-de-rgee.html#modificación-humana"><i class="fa fa-check"></i><b>2.3.5</b> Modificación humana</a></li>
+<li class="chapter" data-level="2.3.6" data-path="instalación-de-rgee.html"><a href="instalación-de-rgee.html#tiempo-promedio-al-hospital"><i class="fa fa-check"></i><b>2.3.6</b> Tiempo promedio al hospital</a></li>
+<li class="chapter" data-level="2.3.7" data-path="instalación-de-rgee.html"><a href="instalación-de-rgee.html#tiempo-promedio-al-hospital-en-vehiculo-no-motorizado"><i class="fa fa-check"></i><b>2.3.7</b> Tiempo promedio al hospital en vehiculo no motorizado</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="censos-de-población-y-vivienda.html"><a href="censos-de-población-y-vivienda.html"><i class="fa fa-check"></i><b>2.4</b> Censos de población y vivienda</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="censos-de-población-y-vivienda.html"><a href="censos-de-población-y-vivienda.html#mapas-de-las-variables-con-información-censal."><i class="fa fa-check"></i><b>2.4.1</b> Mapas de las variables con información censal.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="día-1---sesión-3--fundamentos-de-la-inferencia-bayesiana-en-r-y-stan.html"><a href="día-1---sesión-3--fundamentos-de-la-inferencia-bayesiana-en-r-y-stan.html"><i class="fa fa-check"></i><b>3</b> Día 1 - Sesión 3- Fundamentos de la inferencia Bayesiana en R y STAN</a></li>
+<li class="chapter" data-level="4" data-path="día-1---sesión-4--modelos-sintéticos-simples.html"><a href="día-1---sesión-4--modelos-sintéticos-simples.html"><i class="fa fa-check"></i><b>4</b> Día 1 - Sesión 4- Modelos sintéticos simples</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="regla-de-bayes.html"><a href="regla-de-bayes.html"><i class="fa fa-check"></i><b>4.1</b> Regla de Bayes</a></li>
+<li class="chapter" data-level="4.2" data-path="inferencia-bayesiana..html"><a href="inferencia-bayesiana..html"><i class="fa fa-check"></i><b>4.2</b> Inferencia Bayesiana.</a></li>
+<li class="chapter" data-level="4.3" data-path="modelos-uniparamétricos.html"><a href="modelos-uniparamétricos.html"><i class="fa fa-check"></i><b>4.3</b> Modelos uniparamétricos</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="modelos-uniparamétricos.html"><a href="modelos-uniparamétricos.html#modelo-de-unidad-bernoulli"><i class="fa fa-check"></i><b>4.3.1</b> Modelo de unidad: Bernoulli</a></li>
+<li class="chapter" data-level="4.3.2" data-path="modelos-uniparamétricos.html"><a href="modelos-uniparamétricos.html#modelo-de-área-binomial"><i class="fa fa-check"></i><b>4.3.2</b> Modelo de área: Binomial</a></li>
+<li class="chapter" data-level="4.3.3" data-path="modelos-uniparamétricos.html"><a href="modelos-uniparamétricos.html#modelo-de-unidad-normal-con-media-desconocida"><i class="fa fa-check"></i><b>4.3.3</b> Modelo de unidad: Normal con media desconocida</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="modelos-multiparamétricos.html"><a href="modelos-multiparamétricos.html"><i class="fa fa-check"></i><b>4.4</b> Modelos multiparamétricos</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="modelos-multiparamétricos.html"><a href="modelos-multiparamétricos.html#modelo-de-unidad-normal-con-media-y-varianza-desconocida"><i class="fa fa-check"></i><b>4.4.1</b> Modelo de unidad: Normal con media y varianza desconocida</a></li>
+<li class="chapter" data-level="4.4.2" data-path="modelos-multiparamétricos.html"><a href="modelos-multiparamétricos.html#modelo-de-área-multinomial"><i class="fa fa-check"></i><b>4.4.2</b> Modelo de área: Multinomial</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="día-2---sesión-1--estimaciones-casen-y-función-generalizada-de-varianza.html"><a href="día-2---sesión-1--estimaciones-casen-y-función-generalizada-de-varianza.html"><i class="fa fa-check"></i><b>5</b> Día 2 - Sesión 1- Estimaciones CASEN y Función Generalizada de Varianza</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="datos-de-la-encuesta.html"><a href="datos-de-la-encuesta.html"><i class="fa fa-check"></i><b>5.1</b> Datos de la encuesta</a></li>
+<li class="chapter" data-level="5.2" data-path="análisis-gráfico.html"><a href="análisis-gráfico.html"><i class="fa fa-check"></i><b>5.2</b> Análisis gráfico</a></li>
+<li class="chapter" data-level="5.3" data-path="modelo-para-la-varianza.html"><a href="modelo-para-la-varianza.html"><i class="fa fa-check"></i><b>5.3</b> Modelo para la varianza</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="día-2---sesión-2--modelo-de-fay-herriot---estimación-de-la-pobreza.html"><a href="día-2---sesión-2--modelo-de-fay-herriot---estimación-de-la-pobreza.html"><i class="fa fa-check"></i><b>6</b> Día 2 - Sesión 2- Modelo de Fay Herriot - Estimación de la pobreza</a>
+<ul>
+<li class="chapter" data-level="" data-path="día-2---sesión-2--modelo-de-fay-herriot---estimación-de-la-pobreza.html"><a href="día-2---sesión-2--modelo-de-fay-herriot---estimación-de-la-pobreza.html#modelo-de-área-para-la-estimación-de-la-pobreza"><i class="fa fa-check"></i>Modelo de área para la estimación de la pobreza</a></li>
+<li class="chapter" data-level="6.1" data-path="procedimiento-de-estimación.html"><a href="procedimiento-de-estimación.html"><i class="fa fa-check"></i><b>6.1</b> Procedimiento de estimación</a></li>
+<li class="chapter" data-level="6.2" data-path="preparando-los-insumos-para-stan.html"><a href="preparando-los-insumos-para-stan.html"><i class="fa fa-check"></i><b>6.2</b> Preparando los insumos para <code>STAN</code></a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="preparando-los-insumos-para-stan.html"><a href="preparando-los-insumos-para-stan.html#resultados-del-modelo-para-los-dominios-observados."><i class="fa fa-check"></i><b>6.2.1</b> Resultados del modelo para los dominios observados.</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="proceso-de-benchmark.html"><a href="proceso-de-benchmark.html"><i class="fa fa-check"></i><b>6.3</b> Proceso de Benchmark</a></li>
+<li class="chapter" data-level="6.4" data-path="validación-de-los-resultados..html"><a href="validación-de-los-resultados..html"><i class="fa fa-check"></i><b>6.4</b> Validación de los resultados.</a></li>
+<li class="chapter" data-level="6.5" data-path="mapa-de-pobreza.html"><a href="mapa-de-pobreza.html"><i class="fa fa-check"></i><b>6.5</b> Mapa de pobreza</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="día-2---sesión-2--modelo-de-fay-herriot---estimación-de-la-pobreza-usando-todas-la-covariables-censo-y-satelitales.html"><a href="día-2---sesión-2--modelo-de-fay-herriot---estimación-de-la-pobreza-usando-todas-la-covariables-censo-y-satelitales.html"><i class="fa fa-check"></i><b>7</b> Día 2 - Sesión 2- Modelo de Fay Herriot - Estimación de la pobreza (<em>usando todas la covariables censo y satelitales</em>)</a>
+<ul>
+<li class="chapter" data-level="" data-path="día-2---sesión-2--modelo-de-fay-herriot---estimación-de-la-pobreza-usando-todas-la-covariables-censo-y-satelitales.html"><a href="día-2---sesión-2--modelo-de-fay-herriot---estimación-de-la-pobreza-usando-todas-la-covariables-censo-y-satelitales.html#modelo-de-área-para-la-estimación-de-la-pobreza-1"><i class="fa fa-check"></i>Modelo de área para la estimación de la pobreza</a></li>
+<li class="chapter" data-level="7.1" data-path="procedimiento-de-estimación-1.html"><a href="procedimiento-de-estimación-1.html"><i class="fa fa-check"></i><b>7.1</b> Procedimiento de estimación</a></li>
+<li class="chapter" data-level="7.2" data-path="preparando-los-insumos-para-stan-1.html"><a href="preparando-los-insumos-para-stan-1.html"><i class="fa fa-check"></i><b>7.2</b> Preparando los insumos para <code>STAN</code></a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="preparando-los-insumos-para-stan-1.html"><a href="preparando-los-insumos-para-stan-1.html#resultados-del-modelo-para-los-dominios-observados.-1"><i class="fa fa-check"></i><b>7.2.1</b> Resultados del modelo para los dominios observados.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="proceso-de-benchmark-1.html"><a href="proceso-de-benchmark-1.html"><i class="fa fa-check"></i><b>7.3</b> Proceso de Benchmark</a></li>
+<li class="chapter" data-level="7.4" data-path="validación-de-los-resultados.-1.html"><a href="validación-de-los-resultados.-1.html"><i class="fa fa-check"></i><b>7.4</b> Validación de los resultados.</a></li>
+<li class="chapter" data-level="7.5" data-path="mapa-de-pobreza-1.html"><a href="mapa-de-pobreza-1.html"><i class="fa fa-check"></i><b>7.5</b> Mapa de pobreza</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="día-2---sesión-3--modelos-de-área---estimación-de-la-pobreza-y-la-transformación-arcoseno..html"><a href="día-2---sesión-3--modelos-de-área---estimación-de-la-pobreza-y-la-transformación-arcoseno..html"><i class="fa fa-check"></i><b>8</b> Día 2 - Sesión 3- Modelos de área - Estimación de la pobreza y la transformación ArcoSeno.</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="procedimiento-de-estimación-2.html"><a href="procedimiento-de-estimación-2.html"><i class="fa fa-check"></i><b>8.1</b> Procedimiento de estimación</a></li>
+<li class="chapter" data-level="8.2" data-path="preparando-los-insumos-para-stan-2.html"><a href="preparando-los-insumos-para-stan-2.html"><i class="fa fa-check"></i><b>8.2</b> Preparando los insumos para <code>STAN</code></a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="preparando-los-insumos-para-stan-2.html"><a href="preparando-los-insumos-para-stan-2.html#resultados-del-modelo-para-los-dominios-observados.-2"><i class="fa fa-check"></i><b>8.2.1</b> Resultados del modelo para los dominios observados.</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="mapa-de-pobreza-2.html"><a href="mapa-de-pobreza-2.html"><i class="fa fa-check"></i><b>8.3</b> Mapa de pobreza</a></li>
+<li class="chapter" data-level="8.4" data-path="mapa-del-coeficiente-de-variación..html"><a href="mapa-del-coeficiente-de-variación..html"><i class="fa fa-check"></i><b>8.4</b> Mapa del coeficiente de variación.</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="día-2---sesión-4--modelos-de-área---estimación-de-la-pobreza-en-familia-beta-y-binomial.html"><a href="día-2---sesión-4--modelos-de-área---estimación-de-la-pobreza-en-familia-beta-y-binomial.html"><i class="fa fa-check"></i><b>9</b> Día 2 - Sesión 4- Modelos de área - Estimación de la pobreza en familia beta y binomial</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="modelos-de-área-con-variable-respuesta-binomial..html"><a href="modelos-de-área-con-variable-respuesta-binomial..html"><i class="fa fa-check"></i><b>9.1</b> Modelos de área con variable respuesta Binomial.</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="modelos-de-área-con-variable-respuesta-binomial..html"><a href="modelos-de-área-con-variable-respuesta-binomial..html#procedimiento-de-estimación-3"><i class="fa fa-check"></i><b>9.1.1</b> Procedimiento de estimación</a></li>
+<li class="chapter" data-level="9.1.2" data-path="modelos-de-área-con-variable-respuesta-binomial..html"><a href="modelos-de-área-con-variable-respuesta-binomial..html#preparando-los-insumos-para-stan-3"><i class="fa fa-check"></i><b>9.1.2</b> Preparando los insumos para <code>STAN</code></a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="modelos-de-área-con-variable-respuesta-beta..html"><a href="modelos-de-área-con-variable-respuesta-beta..html"><i class="fa fa-check"></i><b>9.2</b> Modelos de área con variable respuesta Beta.</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="modelos-de-área-con-variable-respuesta-beta..html"><a href="modelos-de-área-con-variable-respuesta-beta..html#procedimiento-de-estimación-4"><i class="fa fa-check"></i><b>9.2.1</b> Procedimiento de estimación</a></li>
+<li class="chapter" data-level="9.2.2" data-path="modelos-de-área-con-variable-respuesta-beta..html"><a href="modelos-de-área-con-variable-respuesta-beta..html#preparando-los-insumos-para-stan-4"><i class="fa fa-check"></i><b>9.2.2</b> Preparando los insumos para <code>STAN</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="día-3---sesión-1--modelo-de-unidad-para-la-estimación-del-ingreso-medio.html"><a href="día-3---sesión-1--modelo-de-unidad-para-la-estimación-del-ingreso-medio.html"><i class="fa fa-check"></i><b>10</b> Día 3 - Sesión 1- Modelo de unidad para la estimación del ingreso medio</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="modelo-bayesiano..html"><a href="modelo-bayesiano..html"><i class="fa fa-check"></i><b>10.1</b> Modelo bayesiano.</a></li>
+<li class="chapter" data-level="10.2" data-path="proceso-de-estimación-en-r.html"><a href="proceso-de-estimación-en-r.html"><i class="fa fa-check"></i><b>10.2</b> Proceso de estimación en <code>R</code></a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="proceso-de-estimación-en-r.html"><a href="proceso-de-estimación-en-r.html#encuesta-de-hogares"><i class="fa fa-check"></i><b>10.2.1</b> Encuesta de hogares</a></li>
+<li class="chapter" data-level="10.2.2" data-path="proceso-de-estimación-en-r.html"><a href="proceso-de-estimación-en-r.html#niveles-de-agregación-para-colapsar-la-encuesta"><i class="fa fa-check"></i><b>10.2.2</b> Niveles de agregación para colapsar la encuesta</a></li>
+<li class="chapter" data-level="10.2.3" data-path="proceso-de-estimación-en-r.html"><a href="proceso-de-estimación-en-r.html#creando-base-con-la-encuesta-agregada"><i class="fa fa-check"></i><b>10.2.3</b> Creando base con la encuesta agregada</a></li>
+<li class="chapter" data-level="10.2.4" data-path="proceso-de-estimación-en-r.html"><a href="proceso-de-estimación-en-r.html#definiendo-el-modelo-multinivel."><i class="fa fa-check"></i><b>10.2.4</b> Definiendo el modelo multinivel.</a></li>
+<li class="chapter" data-level="10.2.5" data-path="proceso-de-estimación-en-r.html"><a href="proceso-de-estimación-en-r.html#distribución-posterior."><i class="fa fa-check"></i><b>10.2.5</b> Distribución posterior.</a></li>
+<li class="chapter" data-level="10.2.6" data-path="proceso-de-estimación-en-r.html"><a href="proceso-de-estimación-en-r.html#estimación-del-ingreso-medio-nacional"><i class="fa fa-check"></i><b>10.2.6</b> Estimación del ingreso medio nacional</a></li>
+<li class="chapter" data-level="10.2.7" data-path="proceso-de-estimación-en-r.html"><a href="proceso-de-estimación-en-r.html#estimación-para-el-dam-05."><i class="fa fa-check"></i><b>10.2.7</b> Estimación para el dam == “05”.</a></li>
+<li class="chapter" data-level="10.2.8" data-path="proceso-de-estimación-en-r.html"><a href="proceso-de-estimación-en-r.html#estimación-para-la-dam2-05201"><i class="fa fa-check"></i><b>10.2.8</b> Estimación para la dam2 == “05201”</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="día-3---sesión-2--estimación-de-la-pobreza-a-partir-del-ingreso.html"><a href="día-3---sesión-2--estimación-de-la-pobreza-a-partir-del-ingreso.html"><i class="fa fa-check"></i><b>11</b> Día 3 - Sesión 2- Estimación de la pobreza a partir del ingreso</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="proceso-de-estimación-y-predicción.html"><a href="proceso-de-estimación-y-predicción.html"><i class="fa fa-check"></i><b>11.1</b> Proceso de estimación y predicción</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="proceso-de-estimación-y-predicción.html"><a href="proceso-de-estimación-y-predicción.html#distribución-posterior.-1"><i class="fa fa-check"></i><b>11.1.1</b> Distribución posterior.</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="estimación-de-la-pobreza.html"><a href="estimación-de-la-pobreza.html"><i class="fa fa-check"></i><b>11.2</b> Estimación de la pobreza</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="estimación-de-la-pobreza.html"><a href="estimación-de-la-pobreza.html#estimación-para-el-dam-05.-1"><i class="fa fa-check"></i><b>11.2.1</b> Estimación para el dam == “05”.</a></li>
+<li class="chapter" data-level="11.2.2" data-path="estimación-de-la-pobreza.html"><a href="estimación-de-la-pobreza.html#estimación-para-la-dam2-05201-1"><i class="fa fa-check"></i><b>11.2.2</b> Estimación para la dam2 == “05201”</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="día-3---sesión-3--modelo-de-unidad-para-la-estimación-de-la-pobreza.html"><a href="día-3---sesión-3--modelo-de-unidad-para-la-estimación-de-la-pobreza.html"><i class="fa fa-check"></i><b>12</b> Día 3 - Sesión 3- Modelo de unidad para la estimación de la pobreza</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="modelo-de-regresión-logistica..html"><a href="modelo-de-regresión-logistica..html"><i class="fa fa-check"></i><b>12.1</b> Modelo de regresión logistica.</a></li>
+<li class="chapter" data-level="12.2" data-path="proceso-de-estimación-en-r-1.html"><a href="proceso-de-estimación-en-r-1.html"><i class="fa fa-check"></i><b>12.2</b> Proceso de estimación en <code>R</code></a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="proceso-de-estimación-en-r-1.html"><a href="proceso-de-estimación-en-r-1.html#encuesta-de-hogares-1"><i class="fa fa-check"></i><b>12.2.1</b> Encuesta de hogares</a></li>
+<li class="chapter" data-level="12.2.2" data-path="proceso-de-estimación-en-r-1.html"><a href="proceso-de-estimación-en-r-1.html#niveles-de-agregación-para-colapsar-la-encuesta-1"><i class="fa fa-check"></i><b>12.2.2</b> Niveles de agregación para colapsar la encuesta</a></li>
+<li class="chapter" data-level="12.2.3" data-path="proceso-de-estimación-en-r-1.html"><a href="proceso-de-estimación-en-r-1.html#creando-base-con-la-encuesta-agregada-1"><i class="fa fa-check"></i><b>12.2.3</b> Creando base con la encuesta agregada</a></li>
+<li class="chapter" data-level="12.2.4" data-path="proceso-de-estimación-en-r-1.html"><a href="proceso-de-estimación-en-r-1.html#definiendo-el-modelo-multinivel.-1"><i class="fa fa-check"></i><b>12.2.4</b> Definiendo el modelo multinivel.</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="proceso-de-estimación-y-predicción-1.html"><a href="proceso-de-estimación-y-predicción-1.html"><i class="fa fa-check"></i><b>12.3</b> Proceso de estimación y predicción</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="proceso-de-estimación-y-predicción-1.html"><a href="proceso-de-estimación-y-predicción-1.html#distribución-posterior.-2"><i class="fa fa-check"></i><b>12.3.1</b> Distribución posterior.</a></li>
+<li class="chapter" data-level="12.3.2" data-path="proceso-de-estimación-y-predicción-1.html"><a href="proceso-de-estimación-y-predicción-1.html#estimación-de-la-tasa-de-pobreza"><i class="fa fa-check"></i><b>12.3.2</b> Estimación de la tasa de pobreza</a></li>
+<li class="chapter" data-level="12.3.3" data-path="proceso-de-estimación-y-predicción-1.html"><a href="proceso-de-estimación-y-predicción-1.html#estimación-para-el-dam-05.-2"><i class="fa fa-check"></i><b>12.3.3</b> Estimación para el dam == “05”.</a></li>
+<li class="chapter" data-level="12.3.4" data-path="proceso-de-estimación-y-predicción-1.html"><a href="proceso-de-estimación-y-predicción-1.html#estimación-para-la-dam2-05201-2"><i class="fa fa-check"></i><b>12.3.4</b> Estimación para la dam2 == “05201”</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="día-3---sesión-4--estimación-del-índice-de-privación-multidimensional-ipm.html"><a href="día-3---sesión-4--estimación-del-índice-de-privación-multidimensional-ipm.html"><i class="fa fa-check"></i><b>13</b> Día 3 - Sesión 4- Estimación del Índice de Privación Multidimensional (IPM)</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="índice-de-privación-multidimensional-ipm.html"><a href="índice-de-privación-multidimensional-ipm.html"><i class="fa fa-check"></i><b>13.1</b> Índice de Privación Multidimensional (IPM)</a></li>
+<li class="chapter" data-level="13.2" data-path="definición-del-modelo.html"><a href="definición-del-modelo.html"><i class="fa fa-check"></i><b>13.2</b> Definición del modelo</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="definición-del-modelo.html"><a href="definición-del-modelo.html#procesamiento-del-modelo-en-r."><i class="fa fa-check"></i><b>13.2.1</b> Procesamiento del modelo en <code>R</code>.</a></li>
+<li class="chapter" data-level="13.2.2" data-path="definición-del-modelo.html"><a href="definición-del-modelo.html#definiendo-el-modelo-multinivel.-2"><i class="fa fa-check"></i><b>13.2.2</b> Definiendo el modelo multinivel.</a></li>
+<li class="chapter" data-level="13.2.3" data-path="definición-del-modelo.html"><a href="definición-del-modelo.html#proceso-de-estimación-y-predicción-2"><i class="fa fa-check"></i><b>13.2.3</b> Proceso de estimación y predicción</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="día-4---sesión-1--modelo-de-área-para-estadísticas-del-mercado-de-trabajo.html"><a href="día-4---sesión-1--modelo-de-área-para-estadísticas-del-mercado-de-trabajo.html"><i class="fa fa-check"></i><b>14</b> Día 4 - Sesión 1- Modelo de área para estadísticas del mercado de trabajo</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="definición-del-modelo-multinomial.html"><a href="definición-del-modelo-multinomial.html"><i class="fa fa-check"></i><b>14.1</b> Definición del modelo multinomial</a></li>
+<li class="chapter" data-level="14.2" data-path="lectura-de-librerías..html"><a href="lectura-de-librerías..html"><i class="fa fa-check"></i><b>14.2</b> Lectura de librerías.</a></li>
+<li class="chapter" data-level="14.3" data-path="lectura-de-la-encuesta-y-estimaciones-directas.html"><a href="lectura-de-la-encuesta-y-estimaciones-directas.html"><i class="fa fa-check"></i><b>14.3</b> Lectura de la encuesta y estimaciones directas</a></li>
+<li class="chapter" data-level="14.4" data-path="selección-de-dominios.html"><a href="selección-de-dominios.html"><i class="fa fa-check"></i><b>14.4</b> Selección de dominios</a></li>
+<li class="chapter" data-level="14.5" data-path="modelo-programando-en-stan.html"><a href="modelo-programando-en-stan.html"><i class="fa fa-check"></i><b>14.5</b> Modelo programando en <code>STAN</code></a></li>
+<li class="chapter" data-level="14.6" data-path="preparando-insumos-para-stan.html"><a href="preparando-insumos-para-stan.html"><i class="fa fa-check"></i><b>14.6</b> Preparando insumos para <code>STAN</code></a></li>
+<li class="chapter" data-level="14.7" data-path="validación-del-modelo.html"><a href="validación-del-modelo.html"><i class="fa fa-check"></i><b>14.7</b> Validación del modelo</a></li>
+<li class="chapter" data-level="14.8" data-path="estimación-de-los-parámetros..html"><a href="estimación-de-los-parámetros..html"><i class="fa fa-check"></i><b>14.8</b> Estimación de los parámetros.</a></li>
+<li class="chapter" data-level="14.9" data-path="estimación-de-la-desviación-estárdar-y-el-coeficiente-de-valiación.html"><a href="estimación-de-la-desviación-estárdar-y-el-coeficiente-de-valiación.html"><i class="fa fa-check"></i><b>14.9</b> Estimación de la desviación estárdar y el coeficiente de valiación</a></li>
+<li class="chapter" data-level="14.10" data-path="metodología-de-benchmarking.html"><a href="metodología-de-benchmarking.html"><i class="fa fa-check"></i><b>14.10</b> Metodología de Benchmarking</a></li>
+<li class="chapter" data-level="14.11" data-path="mapas-del-mercado-de-trabajo..html"><a href="mapas-del-mercado-de-trabajo..html"><i class="fa fa-check"></i><b>14.11</b> Mapas del mercado de trabajo.</a>
+<ul>
+<li class="chapter" data-level="" data-path="mapas-del-mercado-de-trabajo..html"><a href="mapas-del-mercado-de-trabajo..html#ocupado-1"><i class="fa fa-check"></i>Ocupado</a></li>
+<li class="chapter" data-level="" data-path="mapas-del-mercado-de-trabajo..html"><a href="mapas-del-mercado-de-trabajo..html#desocupado-1"><i class="fa fa-check"></i>Desocupado</a></li>
+<li class="chapter" data-level="" data-path="mapas-del-mercado-de-trabajo..html"><a href="mapas-del-mercado-de-trabajo..html#inactivo-1"><i class="fa fa-check"></i>Inactivo</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a Taller de instalación de capacidades en SAE </a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Desagregación de datos en encuestas de hogares: metodologías bayesianas para modelos de estimación en áreas pequeñas</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="definición-del-modelo" class="section level2 hasAnchor" number="13.2">
+<h2><span class="header-section-number">13.2</span> Definición del modelo<a href="definición-del-modelo.html#definición-del-modelo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En muchas aplicaciones, la variable de interés en áreas pequeñas puede ser binaria, esto es <span class="math inline">\(y_{dj} = 0\)</span> o <span class="math inline">\(1\)</span> que representa la ausencia (o no) de una característica específica. Para este caso, la estimación objetivo en cada dominio <span class="math inline">\(d = 1,\cdots , D\)</span> es la proporción <span class="math inline">\(\theta_d =\frac{1}{N_d}\sum_{i=1}^{N_d}y_{di}\)</span> de la población que tiene esta característica, siendo <span class="math inline">\(\theta_{di}\)</span> la probabilidad de que una determinada unidad <span class="math inline">\(i\)</span> en el dominio <span class="math inline">\(d\)</span> obtenga el valor <span class="math inline">\(1\)</span>. Bajo este escenario, el <span class="math inline">\(\theta_{di}\)</span> con una función de enlace logit se define como:</p>
+<p><span class="math display">\[
+logit(\theta_{di}) = \log \left(\frac{\theta_{di}}{1-\theta_{di}}\right) = \boldsymbol{x}_{di}^{T}\boldsymbol{\beta} + u_{d}
+\]</span>
+con <span class="math inline">\(i=1,\cdots,N_d\)</span>, <span class="math inline">\(d=1,\cdots,D\)</span>, <span class="math inline">\(\boldsymbol{\beta}\)</span> un vector de parámetros de efecto fijo, y <span class="math inline">\(u_d\)</span> el efecto aleatorio especifico del área para el dominio <span class="math inline">\(d\)</span> con <span class="math inline">\(u_d \sim N\left(0,\sigma^2_u \right)\)</span>. <span class="math inline">\(u_d\)</span> son independiente y <span class="math inline">\(y_{di}\mid u_d \sim Bernoulli(\theta_{di})\)</span> con <span class="math inline">\(E(y_{di}\mid u_d)=\theta_{di}\)</span> y <span class="math inline">\(Var(y_{di}\mid u_d)=\sigma_{di}^2=\theta_{di}(1-\theta_{di})\)</span>. Además, <span class="math inline">\(\boldsymbol{x}_{di}^T\)</span> representa el vector <span class="math inline">\(p\times 1\)</span> de valores de <span class="math inline">\(p\)</span> variables auxiliares. Entonces, <span class="math inline">\(\theta_{di}\)</span> se puede escribir como</p>
+<p><span class="math display">\[
+\theta_{di} = \frac{\exp(\boldsymbol{x}_{di}^T\boldsymbol{\beta} + u_{d})}{1+ \exp(\boldsymbol{x}_{di}^T\boldsymbol{\beta} + u_{d})}
+\]</span>
+De está forma podemos definir distribuciones previas</p>
+<p><span class="math display">\[
+\begin{eqnarray*}
+\beta_k &amp; \sim   &amp; N(0, 10000)\\
+\sigma^2_u &amp;\sim &amp; IG(0.0001,0.0001)
+\end{eqnarray*}
+\]</span>
+El modelo se debe estimar para cada una de las dimensiones.</p>
+<div id="obejtivo-7" class="section level4 unnumbered hasAnchor">
+<h4>Obejtivo<a href="definición-del-modelo.html#obejtivo-7" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Estimar la proporción de personas que presentan la <span class="math inline">\(k-\)</span>ésima carencia, es decir,</p>
+<p><span class="math display">\[
+P_d = \frac{\sum_{U_d}q_{di}}{N_d}
+\]</span></p>
+<p>donde <span class="math inline">\(q_{di}\)</span> toma el valor de 1 cuando la <span class="math inline">\(i-\)</span>ésima persona presenta Privación Multidimensional y el valor de 0 en caso contrario.</p>
+<p>Note que,</p>
+<p><span class="math display">\[
+\begin{equation*}
+\bar{Y}_d = P_d =  \frac{\sum_{s_d}q_{di} + \sum_{s^c_d}q_{di}}{N_d}
+\end{equation*}
+\]</span></p>
+<p>Ahora, el estimador de <span class="math inline">\(P\)</span> esta dado por:</p>
+<p><span class="math display">\[
+\hat{P}_d = \frac{\sum_{s_d}q_{di} + \sum_{s^c_d}\hat{q}_{di}}{N_d}
+\]</span></p>
+<p>donde</p>
+<p><span class="math display">\[
+\hat{q}_{di} = \frac{1}{8}\sum_{k=1}^{8}\hat{y}_{di}^{k}
+\]</span></p>
+<p><span class="math display">\[\hat{y}_{di}^{k}=E_{\mathscr{M}}\left(y_{di}^{k}\mid\boldsymbol{x}_{d},\boldsymbol{\beta}\right)\]</span>,</p>
+<p>con <span class="math inline">\(\mathscr{M}\)</span> la medida de probabilidad inducida por el modelamiento.
+De esta forma se tiene que,</p>
+<p><span class="math display">\[
+\hat{P}_d = \frac{\sum_{U_{d}}\hat{q}_{di}}{N_d}
+\]</span></p>
+</div>
+<div id="procesamiento-del-modelo-en-r." class="section level3 hasAnchor" number="13.2.1">
+<h3><span class="header-section-number">13.2.1</span> Procesamiento del modelo en <code>R</code>.<a href="definición-del-modelo.html#procesamiento-del-modelo-en-r." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El proceso inicia con el cargue de las librerías.</p>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="definición-del-modelo.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb238-2"><a href="definición-del-modelo.html#cb238-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lme4)</span>
+<span id="cb238-3"><a href="definición-del-modelo.html#cb238-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb238-4"><a href="definición-del-modelo.html#cb238-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstan)</span>
+<span id="cb238-5"><a href="definición-del-modelo.html#cb238-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstanarm)</span>
+<span id="cb238-6"><a href="definición-del-modelo.html#cb238-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span></code></pre></div>
+<p>Los datos de la encuesta y el censo han sido preparados previamente, la información sobre la cual realizaremos la predicción corresponde a Colombia en el 2019</p>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="definición-del-modelo.html#cb239-1" aria-hidden="true" tabindex="-1"></a>encuesta_ipm <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;Recursos/Día3/Sesion4/Data/encuesta2017_nbi.Rds&quot;</span>) </span>
+<span id="cb239-2"><a href="definición-del-modelo.html#cb239-2" aria-hidden="true" tabindex="-1"></a>statelevel_predictors_df <span class="ot">&lt;-</span></span>
+<span id="cb239-3"><a href="definición-del-modelo.html#cb239-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">readRDS</span>(<span class="st">&quot;Recursos/Día3/Sesion4/Data/statelevel_predictors_df_dam2.rds&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb239-4"><a href="definición-del-modelo.html#cb239-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate_at</span>(<span class="at">.vars =</span> <span class="fu">c</span>(<span class="st">&quot;luces_nocturnas&quot;</span>,</span>
+<span id="cb239-5"><a href="definición-del-modelo.html#cb239-5" aria-hidden="true" tabindex="-1"></a>                      <span class="st">&quot;cubrimiento_cultivo&quot;</span>,</span>
+<span id="cb239-6"><a href="definición-del-modelo.html#cb239-6" aria-hidden="true" tabindex="-1"></a>                      <span class="st">&quot;cubrimiento_urbano&quot;</span>,</span>
+<span id="cb239-7"><a href="definición-del-modelo.html#cb239-7" aria-hidden="true" tabindex="-1"></a>                      <span class="st">&quot;modificacion_humana&quot;</span>,</span>
+<span id="cb239-8"><a href="definición-del-modelo.html#cb239-8" aria-hidden="true" tabindex="-1"></a>                      <span class="st">&quot;accesibilidad_hospitales&quot;</span>,</span>
+<span id="cb239-9"><a href="definición-del-modelo.html#cb239-9" aria-hidden="true" tabindex="-1"></a>                      <span class="st">&quot;accesibilidad_hosp_caminado&quot;</span>),</span>
+<span id="cb239-10"><a href="definición-del-modelo.html#cb239-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">function</span>(x) <span class="fu">as.numeric</span>(<span class="fu">scale</span>(x)))</span>
+<span id="cb239-11"><a href="definición-del-modelo.html#cb239-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb239-12"><a href="definición-del-modelo.html#cb239-12" aria-hidden="true" tabindex="-1"></a>byAgrega <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;dam&quot;</span>, <span class="st">&quot;dam2&quot;</span>, <span class="st">&quot;area&quot;</span>, <span class="st">&quot;sexo&quot;</span>, <span class="st">&quot;etnia&quot;</span>, </span>
+<span id="cb239-13"><a href="definición-del-modelo.html#cb239-13" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;anoest&quot;</span>, <span class="st">&quot;edad&quot;</span> )</span></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="definición-del-modelo.html#cb240-1" aria-hidden="true" tabindex="-1"></a>names_ipm <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="at">pattern =</span> <span class="st">&quot;nbi&quot;</span>, <span class="fu">names</span>(encuesta_ipm),<span class="at">value =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb240-2"><a href="definición-del-modelo.html#cb240-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb240-3"><a href="definición-del-modelo.html#cb240-3" aria-hidden="true" tabindex="-1"></a>encuesta_df <span class="ot">&lt;-</span> <span class="fu">map</span>(<span class="fu">setNames</span>(names_ipm,names_ipm),</span>
+<span id="cb240-4"><a href="definición-del-modelo.html#cb240-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">function</span>(y){</span>
+<span id="cb240-5"><a href="definición-del-modelo.html#cb240-5" aria-hidden="true" tabindex="-1"></a>  encuesta_ipm<span class="sc">$</span>temp <span class="ot">&lt;-</span> encuesta_ipm[[y]]</span>
+<span id="cb240-6"><a href="definición-del-modelo.html#cb240-6" aria-hidden="true" tabindex="-1"></a>  encuesta_ipm <span class="sc">%&gt;%</span> </span>
+<span id="cb240-7"><a href="definición-del-modelo.html#cb240-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by_at</span>(<span class="fu">all_of</span>(byAgrega)) <span class="sc">%&gt;%</span></span>
+<span id="cb240-8"><a href="definición-del-modelo.html#cb240-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb240-9"><a href="definición-del-modelo.html#cb240-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">yno =</span> <span class="fu">sum</span>(temp),</span>
+<span id="cb240-10"><a href="definición-del-modelo.html#cb240-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">ysi =</span> n <span class="sc">-</span> yno, <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb240-11"><a href="definición-del-modelo.html#cb240-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">inner_join</span>(statelevel_predictors_df)</span>
+<span id="cb240-12"><a href="definición-del-modelo.html#cb240-12" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<div id="privación-en-material-de-construcción-de-la-vivienda" class="section level4 unnumbered hasAnchor">
+<h4>Privación en material de construcción de la vivienda<a href="definición-del-modelo.html#privación-en-material-de-construcción-de-la-vivienda" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<table class="table table-striped lightable-classic" style="width: auto !important; margin-left: auto; margin-right: auto; font-family: Arial Narrow; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-4">Tabla 13.1: </span>nbi_matviv
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+dam
+</th>
+<th style="text-align:left;">
+dam2
+</th>
+<th style="text-align:left;">
+area
+</th>
+<th style="text-align:left;">
+sexo
+</th>
+<th style="text-align:left;">
+etnia
+</th>
+<th style="text-align:left;">
+anoest
+</th>
+<th style="text-align:left;">
+edad
+</th>
+<th style="text-align:right;">
+n
+</th>
+<th style="text-align:right;">
+yno
+</th>
+<th style="text-align:right;">
+ysi
+</th>
+<th style="text-align:right;">
+area0
+</th>
+<th style="text-align:right;">
+area1
+</th>
+<th style="text-align:right;">
+etnia2
+</th>
+<th style="text-align:right;">
+sexo2
+</th>
+<th style="text-align:right;">
+edad2
+</th>
+<th style="text-align:right;">
+edad3
+</th>
+<th style="text-align:right;">
+edad4
+</th>
+<th style="text-align:right;">
+edad5
+</th>
+<th style="text-align:right;">
+anoest2
+</th>
+<th style="text-align:right;">
+anoest3
+</th>
+<th style="text-align:right;">
+anoest4
+</th>
+<th style="text-align:right;">
+anoest99
+</th>
+<th style="text-align:right;">
+etnia1
+</th>
+<th style="text-align:right;">
+piso_tierra
+</th>
+<th style="text-align:right;">
+material_paredes
+</th>
+<th style="text-align:right;">
+material_techo
+</th>
+<th style="text-align:right;">
+rezago_escolar
+</th>
+<th style="text-align:right;">
+alfabeta
+</th>
+<th style="text-align:right;">
+tasa_desocupacion
+</th>
+<th style="text-align:right;">
+pollution_CO
+</th>
+<th style="text-align:right;">
+vegetation_NDVI
+</th>
+<th style="text-align:right;">
+Elevation
+</th>
+<th style="text-align:right;">
+temperature_ECMWF
+</th>
+<th style="text-align:right;">
+temperature_2metros
+</th>
+<th style="text-align:right;">
+total_precipitation
+</th>
+<th style="text-align:right;">
+precipitation
+</th>
+<th style="text-align:right;">
+population_density
+</th>
+<th style="text-align:right;">
+luces_nocturnas
+</th>
+<th style="text-align:right;">
+cubrimiento_cultivo
+</th>
+<th style="text-align:right;">
+cubrimiento_urbano
+</th>
+<th style="text-align:right;">
+modificacion_humana
+</th>
+<th style="text-align:right;">
+accesibilidad_hospitales
+</th>
+<th style="text-align:right;">
+accesibilidad_hosp_caminado
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:left;">
+15101
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+466
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+447
+</td>
+<td style="text-align:right;">
+0.0736
+</td>
+<td style="text-align:right;">
+0.9264
+</td>
+<td style="text-align:right;">
+0.0209
+</td>
+<td style="text-align:right;">
+0.5058
+</td>
+<td style="text-align:right;">
+0.2412
+</td>
+<td style="text-align:right;">
+0.2091
+</td>
+<td style="text-align:right;">
+0.2212
+</td>
+<td style="text-align:right;">
+0.1086
+</td>
+<td style="text-align:right;">
+0.1548
+</td>
+<td style="text-align:right;">
+0.4840
+</td>
+<td style="text-align:right;">
+0.2089
+</td>
+<td style="text-align:right;">
+0.0325
+</td>
+<td style="text-align:right;">
+0.3219
+</td>
+<td style="text-align:right;">
+0.0183
+</td>
+<td style="text-align:right;">
+0.2102
+</td>
+<td style="text-align:right;">
+0.4930
+</td>
+<td style="text-align:right;">
+0.3199
+</td>
+<td style="text-align:right;">
+0.0469
+</td>
+<td style="text-align:right;">
+0.0754
+</td>
+<td style="text-align:right;">
+0.0218
+</td>
+<td style="text-align:right;">
+-1.7204
+</td>
+<td style="text-align:right;">
+1.1194
+</td>
+<td style="text-align:right;">
+1.5333
+</td>
+<td style="text-align:right;">
+1.1730
+</td>
+<td style="text-align:right;">
+0e+00
+</td>
+<td style="text-align:right;">
+0.0145
+</td>
+<td style="text-align:right;">
+-0.3416
+</td>
+<td style="text-align:right;">
+-0.4784
+</td>
+<td style="text-align:right;">
+-0.9467
+</td>
+<td style="text-align:right;">
+-0.3646
+</td>
+<td style="text-align:right;">
+-0.7558
+</td>
+<td style="text-align:right;">
+0.2438
+</td>
+<td style="text-align:right;">
+0.0471
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+02
+</td>
+<td style="text-align:left;">
+02101
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:right;">
+431
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+426
+</td>
+<td style="text-align:right;">
+0.0215
+</td>
+<td style="text-align:right;">
+0.9785
+</td>
+<td style="text-align:right;">
+0.0010
+</td>
+<td style="text-align:right;">
+0.4975
+</td>
+<td style="text-align:right;">
+0.2610
+</td>
+<td style="text-align:right;">
+0.2324
+</td>
+<td style="text-align:right;">
+0.2170
+</td>
+<td style="text-align:right;">
+0.0789
+</td>
+<td style="text-align:right;">
+0.1356
+</td>
+<td style="text-align:right;">
+0.4654
+</td>
+<td style="text-align:right;">
+0.2543
+</td>
+<td style="text-align:right;">
+0.0326
+</td>
+<td style="text-align:right;">
+0.0768
+</td>
+<td style="text-align:right;">
+0.0085
+</td>
+<td style="text-align:right;">
+0.1644
+</td>
+<td style="text-align:right;">
+0.4710
+</td>
+<td style="text-align:right;">
+0.3795
+</td>
+<td style="text-align:right;">
+0.0312
+</td>
+<td style="text-align:right;">
+0.0809
+</td>
+<td style="text-align:right;">
+0.0174
+</td>
+<td style="text-align:right;">
+-1.7986
+</td>
+<td style="text-align:right;">
+2.0859
+</td>
+<td style="text-align:right;">
+0.8208
+</td>
+<td style="text-align:right;">
+0.1203
+</td>
+<td style="text-align:right;">
+0e+00
+</td>
+<td style="text-align:right;">
+0.0081
+</td>
+<td style="text-align:right;">
+-0.3511
+</td>
+<td style="text-align:right;">
+-0.5137
+</td>
+<td style="text-align:right;">
+-0.9632
+</td>
+<td style="text-align:right;">
+-0.3875
+</td>
+<td style="text-align:right;">
+-1.0542
+</td>
+<td style="text-align:right;">
+1.1580
+</td>
+<td style="text-align:right;">
+0.2452
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+02
+</td>
+<td style="text-align:left;">
+02101
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+429
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+426
+</td>
+<td style="text-align:right;">
+0.0215
+</td>
+<td style="text-align:right;">
+0.9785
+</td>
+<td style="text-align:right;">
+0.0010
+</td>
+<td style="text-align:right;">
+0.4975
+</td>
+<td style="text-align:right;">
+0.2610
+</td>
+<td style="text-align:right;">
+0.2324
+</td>
+<td style="text-align:right;">
+0.2170
+</td>
+<td style="text-align:right;">
+0.0789
+</td>
+<td style="text-align:right;">
+0.1356
+</td>
+<td style="text-align:right;">
+0.4654
+</td>
+<td style="text-align:right;">
+0.2543
+</td>
+<td style="text-align:right;">
+0.0326
+</td>
+<td style="text-align:right;">
+0.0768
+</td>
+<td style="text-align:right;">
+0.0085
+</td>
+<td style="text-align:right;">
+0.1644
+</td>
+<td style="text-align:right;">
+0.4710
+</td>
+<td style="text-align:right;">
+0.3795
+</td>
+<td style="text-align:right;">
+0.0312
+</td>
+<td style="text-align:right;">
+0.0809
+</td>
+<td style="text-align:right;">
+0.0174
+</td>
+<td style="text-align:right;">
+-1.7986
+</td>
+<td style="text-align:right;">
+2.0859
+</td>
+<td style="text-align:right;">
+0.8208
+</td>
+<td style="text-align:right;">
+0.1203
+</td>
+<td style="text-align:right;">
+0e+00
+</td>
+<td style="text-align:right;">
+0.0081
+</td>
+<td style="text-align:right;">
+-0.3511
+</td>
+<td style="text-align:right;">
+-0.5137
+</td>
+<td style="text-align:right;">
+-0.9632
+</td>
+<td style="text-align:right;">
+-0.3875
+</td>
+<td style="text-align:right;">
+-1.0542
+</td>
+<td style="text-align:right;">
+1.1580
+</td>
+<td style="text-align:right;">
+0.2452
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+01
+</td>
+<td style="text-align:left;">
+01101
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+413
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+407
+</td>
+<td style="text-align:right;">
+0.0126
+</td>
+<td style="text-align:right;">
+0.9874
+</td>
+<td style="text-align:right;">
+0.0016
+</td>
+<td style="text-align:right;">
+0.5044
+</td>
+<td style="text-align:right;">
+0.2374
+</td>
+<td style="text-align:right;">
+0.2338
+</td>
+<td style="text-align:right;">
+0.2242
+</td>
+<td style="text-align:right;">
+0.0926
+</td>
+<td style="text-align:right;">
+0.1360
+</td>
+<td style="text-align:right;">
+0.4547
+</td>
+<td style="text-align:right;">
+0.2711
+</td>
+<td style="text-align:right;">
+0.0245
+</td>
+<td style="text-align:right;">
+0.1709
+</td>
+<td style="text-align:right;">
+0.0051
+</td>
+<td style="text-align:right;">
+0.2133
+</td>
+<td style="text-align:right;">
+0.5059
+</td>
+<td style="text-align:right;">
+0.3940
+</td>
+<td style="text-align:right;">
+0.0285
+</td>
+<td style="text-align:right;">
+0.0703
+</td>
+<td style="text-align:right;">
+0.0229
+</td>
+<td style="text-align:right;">
+-1.7713
+</td>
+<td style="text-align:right;">
+-0.0492
+</td>
+<td style="text-align:right;">
+2.0871
+</td>
+<td style="text-align:right;">
+1.3892
+</td>
+<td style="text-align:right;">
+0e+00
+</td>
+<td style="text-align:right;">
+0.0057
+</td>
+<td style="text-align:right;">
+-0.3101
+</td>
+<td style="text-align:right;">
+-0.4713
+</td>
+<td style="text-align:right;">
+-0.9633
+</td>
+<td style="text-align:right;">
+-0.3591
+</td>
+<td style="text-align:right;">
+-0.6911
+</td>
+<td style="text-align:right;">
+0.0238
+</td>
+<td style="text-align:right;">
+0.0469
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:left;">
+12101
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+396
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+394
+</td>
+<td style="text-align:right;">
+0.0430
+</td>
+<td style="text-align:right;">
+0.9570
+</td>
+<td style="text-align:right;">
+0.0001
+</td>
+<td style="text-align:right;">
+0.5020
+</td>
+<td style="text-align:right;">
+0.2211
+</td>
+<td style="text-align:right;">
+0.2227
+</td>
+<td style="text-align:right;">
+0.2491
+</td>
+<td style="text-align:right;">
+0.1188
+</td>
+<td style="text-align:right;">
+0.1519
+</td>
+<td style="text-align:right;">
+0.4775
+</td>
+<td style="text-align:right;">
+0.2539
+</td>
+<td style="text-align:right;">
+0.0193
+</td>
+<td style="text-align:right;">
+0.2152
+</td>
+<td style="text-align:right;">
+0.0005
+</td>
+<td style="text-align:right;">
+0.2322
+</td>
+<td style="text-align:right;">
+0.8677
+</td>
+<td style="text-align:right;">
+0.3553
+</td>
+<td style="text-align:right;">
+0.0396
+</td>
+<td style="text-align:right;">
+0.0430
+</td>
+<td style="text-align:right;">
+0.0174
+</td>
+<td style="text-align:right;">
+-0.4444
+</td>
+<td style="text-align:right;">
+-0.5563
+</td>
+<td style="text-align:right;">
+-2.1443
+</td>
+<td style="text-align:right;">
+-2.1356
+</td>
+<td style="text-align:right;">
+3e-04
+</td>
+<td style="text-align:right;">
+0.1720
+</td>
+<td style="text-align:right;">
+-0.3549
+</td>
+<td style="text-align:right;">
+-0.5483
+</td>
+<td style="text-align:right;">
+-0.9632
+</td>
+<td style="text-align:right;">
+-0.3873
+</td>
+<td style="text-align:right;">
+-1.1261
+</td>
+<td style="text-align:right;">
+2.0673
+</td>
+<td style="text-align:right;">
+0.7773
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+02
+</td>
+<td style="text-align:left;">
+02101
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:right;">
+387
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+383
+</td>
+<td style="text-align:right;">
+0.0215
+</td>
+<td style="text-align:right;">
+0.9785
+</td>
+<td style="text-align:right;">
+0.0010
+</td>
+<td style="text-align:right;">
+0.4975
+</td>
+<td style="text-align:right;">
+0.2610
+</td>
+<td style="text-align:right;">
+0.2324
+</td>
+<td style="text-align:right;">
+0.2170
+</td>
+<td style="text-align:right;">
+0.0789
+</td>
+<td style="text-align:right;">
+0.1356
+</td>
+<td style="text-align:right;">
+0.4654
+</td>
+<td style="text-align:right;">
+0.2543
+</td>
+<td style="text-align:right;">
+0.0326
+</td>
+<td style="text-align:right;">
+0.0768
+</td>
+<td style="text-align:right;">
+0.0085
+</td>
+<td style="text-align:right;">
+0.1644
+</td>
+<td style="text-align:right;">
+0.4710
+</td>
+<td style="text-align:right;">
+0.3795
+</td>
+<td style="text-align:right;">
+0.0312
+</td>
+<td style="text-align:right;">
+0.0809
+</td>
+<td style="text-align:right;">
+0.0174
+</td>
+<td style="text-align:right;">
+-1.7986
+</td>
+<td style="text-align:right;">
+2.0859
+</td>
+<td style="text-align:right;">
+0.8208
+</td>
+<td style="text-align:right;">
+0.1203
+</td>
+<td style="text-align:right;">
+0e+00
+</td>
+<td style="text-align:right;">
+0.0081
+</td>
+<td style="text-align:right;">
+-0.3511
+</td>
+<td style="text-align:right;">
+-0.5137
+</td>
+<td style="text-align:right;">
+-0.9632
+</td>
+<td style="text-align:right;">
+-0.3875
+</td>
+<td style="text-align:right;">
+-1.0542
+</td>
+<td style="text-align:right;">
+1.1580
+</td>
+<td style="text-align:right;">
+0.2452
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="hacinamiento" class="section level4 unnumbered hasAnchor">
+<h4>Hacinamiento<a href="definición-del-modelo.html#hacinamiento" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<table class="table table-striped lightable-classic" style="width: auto !important; margin-left: auto; margin-right: auto; font-family: Arial Narrow; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+dam
+</th>
+<th style="text-align:left;">
+dam2
+</th>
+<th style="text-align:left;">
+area
+</th>
+<th style="text-align:left;">
+sexo
+</th>
+<th style="text-align:left;">
+etnia
+</th>
+<th style="text-align:left;">
+anoest
+</th>
+<th style="text-align:left;">
+edad
+</th>
+<th style="text-align:right;">
+n
+</th>
+<th style="text-align:right;">
+yno
+</th>
+<th style="text-align:right;">
+ysi
+</th>
+<th style="text-align:right;">
+area0
+</th>
+<th style="text-align:right;">
+area1
+</th>
+<th style="text-align:right;">
+etnia2
+</th>
+<th style="text-align:right;">
+sexo2
+</th>
+<th style="text-align:right;">
+edad2
+</th>
+<th style="text-align:right;">
+edad3
+</th>
+<th style="text-align:right;">
+edad4
+</th>
+<th style="text-align:right;">
+edad5
+</th>
+<th style="text-align:right;">
+anoest2
+</th>
+<th style="text-align:right;">
+anoest3
+</th>
+<th style="text-align:right;">
+anoest4
+</th>
+<th style="text-align:right;">
+anoest99
+</th>
+<th style="text-align:right;">
+etnia1
+</th>
+<th style="text-align:right;">
+piso_tierra
+</th>
+<th style="text-align:right;">
+material_paredes
+</th>
+<th style="text-align:right;">
+material_techo
+</th>
+<th style="text-align:right;">
+rezago_escolar
+</th>
+<th style="text-align:right;">
+alfabeta
+</th>
+<th style="text-align:right;">
+tasa_desocupacion
+</th>
+<th style="text-align:right;">
+pollution_CO
+</th>
+<th style="text-align:right;">
+vegetation_NDVI
+</th>
+<th style="text-align:right;">
+Elevation
+</th>
+<th style="text-align:right;">
+temperature_ECMWF
+</th>
+<th style="text-align:right;">
+temperature_2metros
+</th>
+<th style="text-align:right;">
+total_precipitation
+</th>
+<th style="text-align:right;">
+precipitation
+</th>
+<th style="text-align:right;">
+population_density
+</th>
+<th style="text-align:right;">
+luces_nocturnas
+</th>
+<th style="text-align:right;">
+cubrimiento_cultivo
+</th>
+<th style="text-align:right;">
+cubrimiento_urbano
+</th>
+<th style="text-align:right;">
+modificacion_humana
+</th>
+<th style="text-align:right;">
+accesibilidad_hospitales
+</th>
+<th style="text-align:right;">
+accesibilidad_hosp_caminado
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:left;">
+15101
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+466
+</td>
+<td style="text-align:right;">
+47
+</td>
+<td style="text-align:right;">
+419
+</td>
+<td style="text-align:right;">
+0.0736
+</td>
+<td style="text-align:right;">
+0.9264
+</td>
+<td style="text-align:right;">
+0.0209
+</td>
+<td style="text-align:right;">
+0.5058
+</td>
+<td style="text-align:right;">
+0.2412
+</td>
+<td style="text-align:right;">
+0.2091
+</td>
+<td style="text-align:right;">
+0.2212
+</td>
+<td style="text-align:right;">
+0.1086
+</td>
+<td style="text-align:right;">
+0.1548
+</td>
+<td style="text-align:right;">
+0.4840
+</td>
+<td style="text-align:right;">
+0.2089
+</td>
+<td style="text-align:right;">
+0.0325
+</td>
+<td style="text-align:right;">
+0.3219
+</td>
+<td style="text-align:right;">
+0.0183
+</td>
+<td style="text-align:right;">
+0.2102
+</td>
+<td style="text-align:right;">
+0.4930
+</td>
+<td style="text-align:right;">
+0.3199
+</td>
+<td style="text-align:right;">
+0.0469
+</td>
+<td style="text-align:right;">
+0.0754
+</td>
+<td style="text-align:right;">
+0.0218
+</td>
+<td style="text-align:right;">
+-1.7204
+</td>
+<td style="text-align:right;">
+1.1194
+</td>
+<td style="text-align:right;">
+1.5333
+</td>
+<td style="text-align:right;">
+1.1730
+</td>
+<td style="text-align:right;">
+0e+00
+</td>
+<td style="text-align:right;">
+0.0145
+</td>
+<td style="text-align:right;">
+-0.3416
+</td>
+<td style="text-align:right;">
+-0.4784
+</td>
+<td style="text-align:right;">
+-0.9467
+</td>
+<td style="text-align:right;">
+-0.3646
+</td>
+<td style="text-align:right;">
+-0.7558
+</td>
+<td style="text-align:right;">
+0.2438
+</td>
+<td style="text-align:right;">
+0.0471
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+02
+</td>
+<td style="text-align:left;">
+02101
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:right;">
+431
+</td>
+<td style="text-align:right;">
+64
+</td>
+<td style="text-align:right;">
+367
+</td>
+<td style="text-align:right;">
+0.0215
+</td>
+<td style="text-align:right;">
+0.9785
+</td>
+<td style="text-align:right;">
+0.0010
+</td>
+<td style="text-align:right;">
+0.4975
+</td>
+<td style="text-align:right;">
+0.2610
+</td>
+<td style="text-align:right;">
+0.2324
+</td>
+<td style="text-align:right;">
+0.2170
+</td>
+<td style="text-align:right;">
+0.0789
+</td>
+<td style="text-align:right;">
+0.1356
+</td>
+<td style="text-align:right;">
+0.4654
+</td>
+<td style="text-align:right;">
+0.2543
+</td>
+<td style="text-align:right;">
+0.0326
+</td>
+<td style="text-align:right;">
+0.0768
+</td>
+<td style="text-align:right;">
+0.0085
+</td>
+<td style="text-align:right;">
+0.1644
+</td>
+<td style="text-align:right;">
+0.4710
+</td>
+<td style="text-align:right;">
+0.3795
+</td>
+<td style="text-align:right;">
+0.0312
+</td>
+<td style="text-align:right;">
+0.0809
+</td>
+<td style="text-align:right;">
+0.0174
+</td>
+<td style="text-align:right;">
+-1.7986
+</td>
+<td style="text-align:right;">
+2.0859
+</td>
+<td style="text-align:right;">
+0.8208
+</td>
+<td style="text-align:right;">
+0.1203
+</td>
+<td style="text-align:right;">
+0e+00
+</td>
+<td style="text-align:right;">
+0.0081
+</td>
+<td style="text-align:right;">
+-0.3511
+</td>
+<td style="text-align:right;">
+-0.5137
+</td>
+<td style="text-align:right;">
+-0.9632
+</td>
+<td style="text-align:right;">
+-0.3875
+</td>
+<td style="text-align:right;">
+-1.0542
+</td>
+<td style="text-align:right;">
+1.1580
+</td>
+<td style="text-align:right;">
+0.2452
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+02
+</td>
+<td style="text-align:left;">
+02101
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+429
+</td>
+<td style="text-align:right;">
+41
+</td>
+<td style="text-align:right;">
+388
+</td>
+<td style="text-align:right;">
+0.0215
+</td>
+<td style="text-align:right;">
+0.9785
+</td>
+<td style="text-align:right;">
+0.0010
+</td>
+<td style="text-align:right;">
+0.4975
+</td>
+<td style="text-align:right;">
+0.2610
+</td>
+<td style="text-align:right;">
+0.2324
+</td>
+<td style="text-align:right;">
+0.2170
+</td>
+<td style="text-align:right;">
+0.0789
+</td>
+<td style="text-align:right;">
+0.1356
+</td>
+<td style="text-align:right;">
+0.4654
+</td>
+<td style="text-align:right;">
+0.2543
+</td>
+<td style="text-align:right;">
+0.0326
+</td>
+<td style="text-align:right;">
+0.0768
+</td>
+<td style="text-align:right;">
+0.0085
+</td>
+<td style="text-align:right;">
+0.1644
+</td>
+<td style="text-align:right;">
+0.4710
+</td>
+<td style="text-align:right;">
+0.3795
+</td>
+<td style="text-align:right;">
+0.0312
+</td>
+<td style="text-align:right;">
+0.0809
+</td>
+<td style="text-align:right;">
+0.0174
+</td>
+<td style="text-align:right;">
+-1.7986
+</td>
+<td style="text-align:right;">
+2.0859
+</td>
+<td style="text-align:right;">
+0.8208
+</td>
+<td style="text-align:right;">
+0.1203
+</td>
+<td style="text-align:right;">
+0e+00
+</td>
+<td style="text-align:right;">
+0.0081
+</td>
+<td style="text-align:right;">
+-0.3511
+</td>
+<td style="text-align:right;">
+-0.5137
+</td>
+<td style="text-align:right;">
+-0.9632
+</td>
+<td style="text-align:right;">
+-0.3875
+</td>
+<td style="text-align:right;">
+-1.0542
+</td>
+<td style="text-align:right;">
+1.1580
+</td>
+<td style="text-align:right;">
+0.2452
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+01
+</td>
+<td style="text-align:left;">
+01101
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+413
+</td>
+<td style="text-align:right;">
+66
+</td>
+<td style="text-align:right;">
+347
+</td>
+<td style="text-align:right;">
+0.0126
+</td>
+<td style="text-align:right;">
+0.9874
+</td>
+<td style="text-align:right;">
+0.0016
+</td>
+<td style="text-align:right;">
+0.5044
+</td>
+<td style="text-align:right;">
+0.2374
+</td>
+<td style="text-align:right;">
+0.2338
+</td>
+<td style="text-align:right;">
+0.2242
+</td>
+<td style="text-align:right;">
+0.0926
+</td>
+<td style="text-align:right;">
+0.1360
+</td>
+<td style="text-align:right;">
+0.4547
+</td>
+<td style="text-align:right;">
+0.2711
+</td>
+<td style="text-align:right;">
+0.0245
+</td>
+<td style="text-align:right;">
+0.1709
+</td>
+<td style="text-align:right;">
+0.0051
+</td>
+<td style="text-align:right;">
+0.2133
+</td>
+<td style="text-align:right;">
+0.5059
+</td>
+<td style="text-align:right;">
+0.3940
+</td>
+<td style="text-align:right;">
+0.0285
+</td>
+<td style="text-align:right;">
+0.0703
+</td>
+<td style="text-align:right;">
+0.0229
+</td>
+<td style="text-align:right;">
+-1.7713
+</td>
+<td style="text-align:right;">
+-0.0492
+</td>
+<td style="text-align:right;">
+2.0871
+</td>
+<td style="text-align:right;">
+1.3892
+</td>
+<td style="text-align:right;">
+0e+00
+</td>
+<td style="text-align:right;">
+0.0057
+</td>
+<td style="text-align:right;">
+-0.3101
+</td>
+<td style="text-align:right;">
+-0.4713
+</td>
+<td style="text-align:right;">
+-0.9633
+</td>
+<td style="text-align:right;">
+-0.3591
+</td>
+<td style="text-align:right;">
+-0.6911
+</td>
+<td style="text-align:right;">
+0.0238
+</td>
+<td style="text-align:right;">
+0.0469
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:left;">
+12101
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+396
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:right;">
+367
+</td>
+<td style="text-align:right;">
+0.0430
+</td>
+<td style="text-align:right;">
+0.9570
+</td>
+<td style="text-align:right;">
+0.0001
+</td>
+<td style="text-align:right;">
+0.5020
+</td>
+<td style="text-align:right;">
+0.2211
+</td>
+<td style="text-align:right;">
+0.2227
+</td>
+<td style="text-align:right;">
+0.2491
+</td>
+<td style="text-align:right;">
+0.1188
+</td>
+<td style="text-align:right;">
+0.1519
+</td>
+<td style="text-align:right;">
+0.4775
+</td>
+<td style="text-align:right;">
+0.2539
+</td>
+<td style="text-align:right;">
+0.0193
+</td>
+<td style="text-align:right;">
+0.2152
+</td>
+<td style="text-align:right;">
+0.0005
+</td>
+<td style="text-align:right;">
+0.2322
+</td>
+<td style="text-align:right;">
+0.8677
+</td>
+<td style="text-align:right;">
+0.3553
+</td>
+<td style="text-align:right;">
+0.0396
+</td>
+<td style="text-align:right;">
+0.0430
+</td>
+<td style="text-align:right;">
+0.0174
+</td>
+<td style="text-align:right;">
+-0.4444
+</td>
+<td style="text-align:right;">
+-0.5563
+</td>
+<td style="text-align:right;">
+-2.1443
+</td>
+<td style="text-align:right;">
+-2.1356
+</td>
+<td style="text-align:right;">
+3e-04
+</td>
+<td style="text-align:right;">
+0.1720
+</td>
+<td style="text-align:right;">
+-0.3549
+</td>
+<td style="text-align:right;">
+-0.5483
+</td>
+<td style="text-align:right;">
+-0.9632
+</td>
+<td style="text-align:right;">
+-0.3873
+</td>
+<td style="text-align:right;">
+-1.1261
+</td>
+<td style="text-align:right;">
+2.0673
+</td>
+<td style="text-align:right;">
+0.7773
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+02
+</td>
+<td style="text-align:left;">
+02101
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:right;">
+387
+</td>
+<td style="text-align:right;">
+78
+</td>
+<td style="text-align:right;">
+309
+</td>
+<td style="text-align:right;">
+0.0215
+</td>
+<td style="text-align:right;">
+0.9785
+</td>
+<td style="text-align:right;">
+0.0010
+</td>
+<td style="text-align:right;">
+0.4975
+</td>
+<td style="text-align:right;">
+0.2610
+</td>
+<td style="text-align:right;">
+0.2324
+</td>
+<td style="text-align:right;">
+0.2170
+</td>
+<td style="text-align:right;">
+0.0789
+</td>
+<td style="text-align:right;">
+0.1356
+</td>
+<td style="text-align:right;">
+0.4654
+</td>
+<td style="text-align:right;">
+0.2543
+</td>
+<td style="text-align:right;">
+0.0326
+</td>
+<td style="text-align:right;">
+0.0768
+</td>
+<td style="text-align:right;">
+0.0085
+</td>
+<td style="text-align:right;">
+0.1644
+</td>
+<td style="text-align:right;">
+0.4710
+</td>
+<td style="text-align:right;">
+0.3795
+</td>
+<td style="text-align:right;">
+0.0312
+</td>
+<td style="text-align:right;">
+0.0809
+</td>
+<td style="text-align:right;">
+0.0174
+</td>
+<td style="text-align:right;">
+-1.7986
+</td>
+<td style="text-align:right;">
+2.0859
+</td>
+<td style="text-align:right;">
+0.8208
+</td>
+<td style="text-align:right;">
+0.1203
+</td>
+<td style="text-align:right;">
+0e+00
+</td>
+<td style="text-align:right;">
+0.0081
+</td>
+<td style="text-align:right;">
+-0.3511
+</td>
+<td style="text-align:right;">
+-0.5137
+</td>
+<td style="text-align:right;">
+-0.9632
+</td>
+<td style="text-align:right;">
+-0.3875
+</td>
+<td style="text-align:right;">
+-1.0542
+</td>
+<td style="text-align:right;">
+1.1580
+</td>
+<td style="text-align:right;">
+0.2452
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="definiendo-el-modelo-multinivel.-2" class="section level3 hasAnchor" number="13.2.2">
+<h3><span class="header-section-number">13.2.2</span> Definiendo el modelo multinivel.<a href="definición-del-modelo.html#definiendo-el-modelo-multinivel.-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para cada dimensión que compone el IPM se ajusta el siguiente modelo mostrado en el script. En este código se incluye el uso de la función <code>future_map</code> que permite procesar en paralelo cada modelo O puede compilar cada por separado.</p>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="definición-del-modelo.html#cb241-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(furrr)</span>
+<span id="cb241-2"><a href="definición-del-modelo.html#cb241-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstanarm)</span>
+<span id="cb241-3"><a href="definición-del-modelo.html#cb241-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plan</span>(multisession, <span class="at">workers =</span> <span class="dv">4</span>)</span>
+<span id="cb241-4"><a href="definición-del-modelo.html#cb241-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb241-5"><a href="definición-del-modelo.html#cb241-5" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">future_map</span>(encuesta_df, <span class="cf">function</span>(xdat){</span>
+<span id="cb241-6"><a href="definición-del-modelo.html#cb241-6" aria-hidden="true" tabindex="-1"></a><span class="fu">stan_glmer</span>(</span>
+<span id="cb241-7"><a href="definición-del-modelo.html#cb241-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cbind</span>(yno, ysi) <span class="sc">~</span> (<span class="dv">1</span> <span class="sc">|</span> dam2) <span class="sc">+</span></span>
+<span id="cb241-8"><a href="definición-del-modelo.html#cb241-8" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">1</span> <span class="sc">|</span> dam) <span class="sc">+</span></span>
+<span id="cb241-9"><a href="definición-del-modelo.html#cb241-9" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">1</span><span class="sc">|</span>edad) <span class="sc">+</span></span>
+<span id="cb241-10"><a href="definición-del-modelo.html#cb241-10" aria-hidden="true" tabindex="-1"></a>    area <span class="sc">+</span></span>
+<span id="cb241-11"><a href="definición-del-modelo.html#cb241-11" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">1</span><span class="sc">|</span>anoest) <span class="sc">+</span></span>
+<span id="cb241-12"><a href="definición-del-modelo.html#cb241-12" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">1</span><span class="sc">|</span>etnia) <span class="sc">+</span></span>
+<span id="cb241-13"><a href="definición-del-modelo.html#cb241-13" aria-hidden="true" tabindex="-1"></a>    sexo <span class="sc">+</span> </span>
+<span id="cb241-14"><a href="definición-del-modelo.html#cb241-14" aria-hidden="true" tabindex="-1"></a>    tasa_desocupacion <span class="sc">+</span></span>
+<span id="cb241-15"><a href="definición-del-modelo.html#cb241-15" aria-hidden="true" tabindex="-1"></a>    luces_nocturnas <span class="sc">+</span></span>
+<span id="cb241-16"><a href="definición-del-modelo.html#cb241-16" aria-hidden="true" tabindex="-1"></a>    modificacion_humana,</span>
+<span id="cb241-17"><a href="definición-del-modelo.html#cb241-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">&quot;logit&quot;</span>),</span>
+<span id="cb241-18"><a href="definición-del-modelo.html#cb241-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> xdat,</span>
+<span id="cb241-19"><a href="definición-del-modelo.html#cb241-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">cores =</span> <span class="dv">7</span>,</span>
+<span id="cb241-20"><a href="definición-del-modelo.html#cb241-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">chains =</span> <span class="dv">4</span>,</span>
+<span id="cb241-21"><a href="definición-del-modelo.html#cb241-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter =</span> <span class="dv">300</span></span>
+<span id="cb241-22"><a href="definición-del-modelo.html#cb241-22" aria-hidden="true" tabindex="-1"></a>)}, </span>
+<span id="cb241-23"><a href="definición-del-modelo.html#cb241-23" aria-hidden="true" tabindex="-1"></a><span class="at">.progress =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb241-24"><a href="definición-del-modelo.html#cb241-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb241-25"><a href="definición-del-modelo.html#cb241-25" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(<span class="at">object =</span> fit, <span class="st">&quot;Recursos/Día3/Sesion4/Data/fits_IPM.rds&quot;</span>)</span></code></pre></div>
+<p>Terminado la compilación de los modelos después de realizar validaciones sobre esto, pasamos hacer las predicciones en el censo.</p>
+</div>
+<div id="proceso-de-estimación-y-predicción-2" class="section level3 hasAnchor" number="13.2.3">
+<h3><span class="header-section-number">13.2.3</span> Proceso de estimación y predicción<a href="definición-del-modelo.html#proceso-de-estimación-y-predicción-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Los modelos fueron compilados de manera separada, por tanto, disponemos de un objeto <code>.rds</code> por cada dimensión del IPM</p>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="definición-del-modelo.html#cb242-1" aria-hidden="true" tabindex="-1"></a>fit_agua <span class="ot">&lt;-</span></span>
+<span id="cb242-2"><a href="definición-del-modelo.html#cb242-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">readRDS</span>(<span class="at">file =</span> <span class="st">&quot;Recursos/Día3/Sesion4/Data/fits_nbi_agua.rds&quot;</span>)</span>
+<span id="cb242-3"><a href="definición-del-modelo.html#cb242-3" aria-hidden="true" tabindex="-1"></a>fit_combustible <span class="ot">&lt;-</span></span>
+<span id="cb242-4"><a href="definición-del-modelo.html#cb242-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">readRDS</span>(<span class="at">file =</span> <span class="st">&quot;Recursos/Día3/Sesion4/Data/fits_nbi_combus.rds&quot;</span>)</span>
+<span id="cb242-5"><a href="definición-del-modelo.html#cb242-5" aria-hidden="true" tabindex="-1"></a>fit_techo <span class="ot">&lt;-</span></span>
+<span id="cb242-6"><a href="definición-del-modelo.html#cb242-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">readRDS</span>(<span class="at">file =</span> <span class="st">&quot;Recursos/Día3/Sesion4/Data/fits_nbi_techo.rds&quot;</span>)</span>
+<span id="cb242-7"><a href="definición-del-modelo.html#cb242-7" aria-hidden="true" tabindex="-1"></a>fit_energia <span class="ot">&lt;-</span></span>
+<span id="cb242-8"><a href="definición-del-modelo.html#cb242-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">readRDS</span>(<span class="at">file =</span> <span class="st">&quot;Recursos/Día3/Sesion4/Data/fits_nbi_elect.rds&quot;</span>)</span>
+<span id="cb242-9"><a href="definición-del-modelo.html#cb242-9" aria-hidden="true" tabindex="-1"></a>fit_hacinamiento <span class="ot">&lt;-</span></span>
+<span id="cb242-10"><a href="definición-del-modelo.html#cb242-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">readRDS</span>(<span class="at">file =</span> <span class="st">&quot;Recursos/Día3/Sesion4/Data/fits_nbi_hacina.rds&quot;</span>)</span>
+<span id="cb242-11"><a href="definición-del-modelo.html#cb242-11" aria-hidden="true" tabindex="-1"></a>fit_paredes <span class="ot">&lt;-</span></span>
+<span id="cb242-12"><a href="definición-del-modelo.html#cb242-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">readRDS</span>(<span class="at">file =</span> <span class="st">&quot;Recursos/Día3/Sesion4/Data/fits_nbi_pared.rds&quot;</span>)</span>
+<span id="cb242-13"><a href="definición-del-modelo.html#cb242-13" aria-hidden="true" tabindex="-1"></a>fit_material <span class="ot">&lt;-</span></span>
+<span id="cb242-14"><a href="definición-del-modelo.html#cb242-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">readRDS</span>(<span class="at">file =</span> <span class="st">&quot;Recursos/Día3/Sesion4/Data/fits_nbi_matviv.rds&quot;</span>)</span>
+<span id="cb242-15"><a href="definición-del-modelo.html#cb242-15" aria-hidden="true" tabindex="-1"></a>fit_saneamiento <span class="ot">&lt;-</span></span>
+<span id="cb242-16"><a href="definición-del-modelo.html#cb242-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">readRDS</span>(<span class="at">file =</span> <span class="st">&quot;Recursos/Día3/Sesion4/Data/fits_nbi_saneamiento.rds&quot;</span>)</span></code></pre></div>
+<p>Ahora, debemos leer la información del censo y crear los <strong>post-estrato </strong></p>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="definición-del-modelo.html#cb243-1" aria-hidden="true" tabindex="-1"></a>censo_ipm <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;Recursos/Día3/Sesion4/Data/censo_ipm.rds&quot;</span>) </span>
+<span id="cb243-2"><a href="definición-del-modelo.html#cb243-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb243-3"><a href="definición-del-modelo.html#cb243-3" aria-hidden="true" tabindex="-1"></a>poststrat_df <span class="ot">&lt;-</span> censo_ipm <span class="sc">%&gt;%</span></span>
+<span id="cb243-4"><a href="definición-del-modelo.html#cb243-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(condact3))  <span class="sc">%&gt;%</span></span>
+<span id="cb243-5"><a href="definición-del-modelo.html#cb243-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by_at</span>(byAgrega) <span class="sc">%&gt;%</span></span>
+<span id="cb243-6"><a href="definición-del-modelo.html#cb243-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">sum</span>(n), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb243-7"><a href="definición-del-modelo.html#cb243-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span>
+<span id="cb243-8"><a href="definición-del-modelo.html#cb243-8" aria-hidden="true" tabindex="-1"></a><span class="fu">tba</span>(<span class="fu">head</span>(poststrat_df))</span></code></pre></div>
+<table class="table table-striped lightable-classic" style="width: auto !important; margin-left: auto; margin-right: auto; font-family: Arial Narrow; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+dam
+</th>
+<th style="text-align:left;">
+dam2
+</th>
+<th style="text-align:left;">
+area
+</th>
+<th style="text-align:left;">
+sexo
+</th>
+<th style="text-align:left;">
+etnia
+</th>
+<th style="text-align:left;">
+anoest
+</th>
+<th style="text-align:left;">
+edad
+</th>
+<th style="text-align:right;">
+n
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:left;">
+13201
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+46766
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:left;">
+13119
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+45879
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:left;">
+13101
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:right;">
+40861
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:left;">
+13201
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+39566
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:left;">
+13201
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:right;">
+38791
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:left;">
+13119
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+36744
+</td>
+</tr>
+</tbody>
+</table>
+<p>Para realizar la predicción en el censo debemos incluir la información auxiliar</p>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="definición-del-modelo.html#cb244-1" aria-hidden="true" tabindex="-1"></a>poststrat_df <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(poststrat_df, statelevel_predictors_df)</span>
+<span id="cb244-2"><a href="definición-del-modelo.html#cb244-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(poststrat_df)</span></code></pre></div>
+<pre><code>## [1] 47243    41</code></pre>
+<p>Para cada uno de los modelos anteriores debe tener las predicciones, para ejemplificar el proceso tomaremos el departamento de la Guajira de Colombia</p>
+<ul>
+<li>Privación de acceso al agua potable.</li>
+</ul>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="definición-del-modelo.html#cb246-1" aria-hidden="true" tabindex="-1"></a>temp <span class="ot">&lt;-</span> poststrat_df </span>
+<span id="cb246-2"><a href="definición-del-modelo.html#cb246-2" aria-hidden="true" tabindex="-1"></a>epred_mat_agua <span class="ot">&lt;-</span> <span class="fu">posterior_epred</span>(</span>
+<span id="cb246-3"><a href="definición-del-modelo.html#cb246-3" aria-hidden="true" tabindex="-1"></a>  fit_agua,</span>
+<span id="cb246-4"><a href="definición-del-modelo.html#cb246-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">newdata =</span> temp,</span>
+<span id="cb246-5"><a href="definición-del-modelo.html#cb246-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;response&quot;</span>,</span>
+<span id="cb246-6"><a href="definición-del-modelo.html#cb246-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">allow.new.levels =</span> <span class="cn">TRUE</span></span>
+<span id="cb246-7"><a href="definición-del-modelo.html#cb246-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<ul>
+<li>Privación de acceso al combustible para cocinar.</li>
+</ul>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="definición-del-modelo.html#cb247-1" aria-hidden="true" tabindex="-1"></a>epred_mat_combustible <span class="ot">&lt;-</span></span>
+<span id="cb247-2"><a href="definición-del-modelo.html#cb247-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">posterior_epred</span>(</span>
+<span id="cb247-3"><a href="definición-del-modelo.html#cb247-3" aria-hidden="true" tabindex="-1"></a>    fit_combustible,</span>
+<span id="cb247-4"><a href="definición-del-modelo.html#cb247-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">newdata =</span> temp,</span>
+<span id="cb247-5"><a href="definición-del-modelo.html#cb247-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">type =</span> <span class="st">&quot;response&quot;</span>,</span>
+<span id="cb247-6"><a href="definición-del-modelo.html#cb247-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">allow.new.levels =</span> <span class="cn">TRUE</span></span>
+<span id="cb247-7"><a href="definición-del-modelo.html#cb247-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<ul>
+<li>Privación en material de los techo.</li>
+</ul>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="definición-del-modelo.html#cb248-1" aria-hidden="true" tabindex="-1"></a>epred_mat_techo <span class="ot">&lt;-</span></span>
+<span id="cb248-2"><a href="definición-del-modelo.html#cb248-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">posterior_epred</span>(</span>
+<span id="cb248-3"><a href="definición-del-modelo.html#cb248-3" aria-hidden="true" tabindex="-1"></a>    fit_techo,</span>
+<span id="cb248-4"><a href="definición-del-modelo.html#cb248-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">newdata =</span> temp,</span>
+<span id="cb248-5"><a href="definición-del-modelo.html#cb248-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">type =</span> <span class="st">&quot;response&quot;</span>,</span>
+<span id="cb248-6"><a href="definición-del-modelo.html#cb248-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">allow.new.levels =</span> <span class="cn">TRUE</span></span>
+<span id="cb248-7"><a href="definición-del-modelo.html#cb248-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<ul>
+<li>Acceso al servicio energía eléctrica.</li>
+</ul>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="definición-del-modelo.html#cb249-1" aria-hidden="true" tabindex="-1"></a>epred_mat_energia <span class="ot">&lt;-</span></span>
+<span id="cb249-2"><a href="definición-del-modelo.html#cb249-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">posterior_epred</span>(</span>
+<span id="cb249-3"><a href="definición-del-modelo.html#cb249-3" aria-hidden="true" tabindex="-1"></a>    fit_energia,</span>
+<span id="cb249-4"><a href="definición-del-modelo.html#cb249-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">newdata =</span> temp,</span>
+<span id="cb249-5"><a href="definición-del-modelo.html#cb249-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">type =</span> <span class="st">&quot;response&quot;</span>,</span>
+<span id="cb249-6"><a href="definición-del-modelo.html#cb249-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">allow.new.levels =</span> <span class="cn">TRUE</span></span>
+<span id="cb249-7"><a href="definición-del-modelo.html#cb249-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<ul>
+<li>Hacinamiento en el hogar.</li>
+</ul>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="definición-del-modelo.html#cb250-1" aria-hidden="true" tabindex="-1"></a>epred_mat_hacinamiento <span class="ot">&lt;-</span></span>
+<span id="cb250-2"><a href="definición-del-modelo.html#cb250-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">posterior_epred</span>(</span>
+<span id="cb250-3"><a href="definición-del-modelo.html#cb250-3" aria-hidden="true" tabindex="-1"></a>    fit_hacinamiento,</span>
+<span id="cb250-4"><a href="definición-del-modelo.html#cb250-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">newdata =</span> temp,</span>
+<span id="cb250-5"><a href="definición-del-modelo.html#cb250-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">type =</span> <span class="st">&quot;response&quot;</span>,</span>
+<span id="cb250-6"><a href="definición-del-modelo.html#cb250-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">allow.new.levels =</span> <span class="cn">TRUE</span></span>
+<span id="cb250-7"><a href="definición-del-modelo.html#cb250-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<ul>
+<li>Privación el material de las paredes.</li>
+</ul>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="definición-del-modelo.html#cb251-1" aria-hidden="true" tabindex="-1"></a>epred_mat_paredes <span class="ot">&lt;-</span></span>
+<span id="cb251-2"><a href="definición-del-modelo.html#cb251-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">posterior_epred</span>(</span>
+<span id="cb251-3"><a href="definición-del-modelo.html#cb251-3" aria-hidden="true" tabindex="-1"></a>    fit_paredes,</span>
+<span id="cb251-4"><a href="definición-del-modelo.html#cb251-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">newdata =</span> temp,</span>
+<span id="cb251-5"><a href="definición-del-modelo.html#cb251-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">type =</span> <span class="st">&quot;response&quot;</span>,</span>
+<span id="cb251-6"><a href="definición-del-modelo.html#cb251-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">allow.new.levels =</span> <span class="cn">TRUE</span></span>
+<span id="cb251-7"><a href="definición-del-modelo.html#cb251-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<ul>
+<li>Privación en material de construcción de la vivienda</li>
+</ul>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="definición-del-modelo.html#cb252-1" aria-hidden="true" tabindex="-1"></a>epred_mat_material <span class="ot">&lt;-</span></span>
+<span id="cb252-2"><a href="definición-del-modelo.html#cb252-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">posterior_epred</span>(</span>
+<span id="cb252-3"><a href="definición-del-modelo.html#cb252-3" aria-hidden="true" tabindex="-1"></a>    fit_material,</span>
+<span id="cb252-4"><a href="definición-del-modelo.html#cb252-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">newdata =</span> temp,</span>
+<span id="cb252-5"><a href="definición-del-modelo.html#cb252-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">type =</span> <span class="st">&quot;response&quot;</span>,</span>
+<span id="cb252-6"><a href="definición-del-modelo.html#cb252-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">allow.new.levels =</span> <span class="cn">TRUE</span></span>
+<span id="cb252-7"><a href="definición-del-modelo.html#cb252-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<ul>
+<li>Privación en saneamiento.</li>
+</ul>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="definición-del-modelo.html#cb253-1" aria-hidden="true" tabindex="-1"></a>epred_mat_saneamiento <span class="ot">&lt;-</span></span>
+<span id="cb253-2"><a href="definición-del-modelo.html#cb253-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">posterior_epred</span>(</span>
+<span id="cb253-3"><a href="definición-del-modelo.html#cb253-3" aria-hidden="true" tabindex="-1"></a>    fit_saneamiento,</span>
+<span id="cb253-4"><a href="definición-del-modelo.html#cb253-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">newdata =</span> temp,</span>
+<span id="cb253-5"><a href="definición-del-modelo.html#cb253-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">type =</span> <span class="st">&quot;response&quot;</span>,</span>
+<span id="cb253-6"><a href="definición-del-modelo.html#cb253-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">allow.new.levels =</span> <span class="cn">TRUE</span></span>
+<span id="cb253-7"><a href="definición-del-modelo.html#cb253-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<p>Los resultados anteriores se deben procesarse en términos de carencia (1) y no carencia (0) para la <span class="math inline">\(k-esima\)</span> dimensión .</p>
+<ul>
+<li>Privación de acceso al agua potable.</li>
+</ul>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="definición-del-modelo.html#cb254-1" aria-hidden="true" tabindex="-1"></a>epred_mat_agua_dummy <span class="ot">&lt;-</span></span>
+<span id="cb254-2"><a href="definición-del-modelo.html#cb254-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="fu">nrow</span>(epred_mat_agua) <span class="sc">*</span> <span class="fu">ncol</span>(epred_mat_agua) , <span class="dv">1</span>,</span>
+<span id="cb254-3"><a href="definición-del-modelo.html#cb254-3" aria-hidden="true" tabindex="-1"></a>         epred_mat_agua)</span>
+<span id="cb254-4"><a href="definición-del-modelo.html#cb254-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb254-5"><a href="definición-del-modelo.html#cb254-5" aria-hidden="true" tabindex="-1"></a>epred_mat_agua_dummy <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb254-6"><a href="definición-del-modelo.html#cb254-6" aria-hidden="true" tabindex="-1"></a>  epred_mat_agua_dummy,</span>
+<span id="cb254-7"><a href="definición-del-modelo.html#cb254-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="fu">nrow</span>(epred_mat_agua),</span>
+<span id="cb254-8"><a href="definición-del-modelo.html#cb254-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="fu">ncol</span>(epred_mat_agua)</span>
+<span id="cb254-9"><a href="definición-del-modelo.html#cb254-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<ul>
+<li>Privación de acceso al combustible para cocinar.</li>
+</ul>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="definición-del-modelo.html#cb255-1" aria-hidden="true" tabindex="-1"></a>epred_mat_combustible_dummy <span class="ot">&lt;-</span></span>
+<span id="cb255-2"><a href="definición-del-modelo.html#cb255-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="fu">nrow</span>(epred_mat_combustible) <span class="sc">*</span> <span class="fu">ncol</span>(epred_mat_combustible) ,</span>
+<span id="cb255-3"><a href="definición-del-modelo.html#cb255-3" aria-hidden="true" tabindex="-1"></a>         <span class="dv">1</span>,</span>
+<span id="cb255-4"><a href="definición-del-modelo.html#cb255-4" aria-hidden="true" tabindex="-1"></a>         epred_mat_combustible)</span>
+<span id="cb255-5"><a href="definición-del-modelo.html#cb255-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb255-6"><a href="definición-del-modelo.html#cb255-6" aria-hidden="true" tabindex="-1"></a>epred_mat_combustible_dummy <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb255-7"><a href="definición-del-modelo.html#cb255-7" aria-hidden="true" tabindex="-1"></a>  epred_mat_combustible_dummy,</span>
+<span id="cb255-8"><a href="definición-del-modelo.html#cb255-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="fu">nrow</span>(epred_mat_combustible),</span>
+<span id="cb255-9"><a href="definición-del-modelo.html#cb255-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="fu">ncol</span>(epred_mat_combustible)</span>
+<span id="cb255-10"><a href="definición-del-modelo.html#cb255-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<ul>
+<li>Acceso al servicio energía eléctrica</li>
+</ul>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="definición-del-modelo.html#cb256-1" aria-hidden="true" tabindex="-1"></a>epred_mat_energia_dummy <span class="ot">&lt;-</span></span>
+<span id="cb256-2"><a href="definición-del-modelo.html#cb256-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="fu">nrow</span>(epred_mat_energia) <span class="sc">*</span> <span class="fu">ncol</span>(epred_mat_energia) ,</span>
+<span id="cb256-3"><a href="definición-del-modelo.html#cb256-3" aria-hidden="true" tabindex="-1"></a>         <span class="dv">1</span>,</span>
+<span id="cb256-4"><a href="definición-del-modelo.html#cb256-4" aria-hidden="true" tabindex="-1"></a>         epred_mat_energia)</span>
+<span id="cb256-5"><a href="definición-del-modelo.html#cb256-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb256-6"><a href="definición-del-modelo.html#cb256-6" aria-hidden="true" tabindex="-1"></a>epred_mat_energia_dummy <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb256-7"><a href="definición-del-modelo.html#cb256-7" aria-hidden="true" tabindex="-1"></a>  epred_mat_energia_dummy,</span>
+<span id="cb256-8"><a href="definición-del-modelo.html#cb256-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="fu">nrow</span>(epred_mat_energia),</span>
+<span id="cb256-9"><a href="definición-del-modelo.html#cb256-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="fu">ncol</span>(epred_mat_energia)</span>
+<span id="cb256-10"><a href="definición-del-modelo.html#cb256-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<ul>
+<li>Hacinamiento en el hogar.</li>
+</ul>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="definición-del-modelo.html#cb257-1" aria-hidden="true" tabindex="-1"></a>epred_mat_hacinamiento_dummy <span class="ot">&lt;-</span></span>
+<span id="cb257-2"><a href="definición-del-modelo.html#cb257-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbinom</span>(</span>
+<span id="cb257-3"><a href="definición-del-modelo.html#cb257-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">nrow</span>(epred_mat_hacinamiento) <span class="sc">*</span> <span class="fu">ncol</span>(epred_mat_hacinamiento) ,</span>
+<span id="cb257-4"><a href="definición-del-modelo.html#cb257-4" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>,</span>
+<span id="cb257-5"><a href="definición-del-modelo.html#cb257-5" aria-hidden="true" tabindex="-1"></a>    epred_mat_hacinamiento</span>
+<span id="cb257-6"><a href="definición-del-modelo.html#cb257-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb257-7"><a href="definición-del-modelo.html#cb257-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb257-8"><a href="definición-del-modelo.html#cb257-8" aria-hidden="true" tabindex="-1"></a>epred_mat_hacinamiento_dummy <span class="ot">&lt;-</span></span>
+<span id="cb257-9"><a href="definición-del-modelo.html#cb257-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">matrix</span>(</span>
+<span id="cb257-10"><a href="definición-del-modelo.html#cb257-10" aria-hidden="true" tabindex="-1"></a>    epred_mat_hacinamiento_dummy,</span>
+<span id="cb257-11"><a href="definición-del-modelo.html#cb257-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">nrow =</span> <span class="fu">nrow</span>(epred_mat_hacinamiento),</span>
+<span id="cb257-12"><a href="definición-del-modelo.html#cb257-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">ncol =</span> <span class="fu">ncol</span>(epred_mat_hacinamiento)</span>
+<span id="cb257-13"><a href="definición-del-modelo.html#cb257-13" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<ul>
+<li>Privación el material de las paredes.</li>
+</ul>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="definición-del-modelo.html#cb258-1" aria-hidden="true" tabindex="-1"></a>epred_mat_paredes_dummy <span class="ot">&lt;-</span></span>
+<span id="cb258-2"><a href="definición-del-modelo.html#cb258-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="fu">nrow</span>(epred_mat_paredes) <span class="sc">*</span> <span class="fu">ncol</span>(epred_mat_paredes) ,</span>
+<span id="cb258-3"><a href="definición-del-modelo.html#cb258-3" aria-hidden="true" tabindex="-1"></a>         <span class="dv">1</span>,</span>
+<span id="cb258-4"><a href="definición-del-modelo.html#cb258-4" aria-hidden="true" tabindex="-1"></a>         epred_mat_paredes)</span>
+<span id="cb258-5"><a href="definición-del-modelo.html#cb258-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb258-6"><a href="definición-del-modelo.html#cb258-6" aria-hidden="true" tabindex="-1"></a>epred_mat_paredes_dummy <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb258-7"><a href="definición-del-modelo.html#cb258-7" aria-hidden="true" tabindex="-1"></a>  epred_mat_paredes_dummy,</span>
+<span id="cb258-8"><a href="definición-del-modelo.html#cb258-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="fu">nrow</span>(epred_mat_paredes),</span>
+<span id="cb258-9"><a href="definición-del-modelo.html#cb258-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="fu">ncol</span>(epred_mat_paredes)</span>
+<span id="cb258-10"><a href="definición-del-modelo.html#cb258-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<ul>
+<li>Privación en material de construcción de la vivienda</li>
+</ul>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="definición-del-modelo.html#cb259-1" aria-hidden="true" tabindex="-1"></a>epred_mat_material_dummy <span class="ot">&lt;-</span></span>
+<span id="cb259-2"><a href="definición-del-modelo.html#cb259-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="fu">nrow</span>(epred_mat_material) <span class="sc">*</span> <span class="fu">ncol</span>(epred_mat_material) ,</span>
+<span id="cb259-3"><a href="definición-del-modelo.html#cb259-3" aria-hidden="true" tabindex="-1"></a>         <span class="dv">1</span>,</span>
+<span id="cb259-4"><a href="definición-del-modelo.html#cb259-4" aria-hidden="true" tabindex="-1"></a>         epred_mat_material)</span>
+<span id="cb259-5"><a href="definición-del-modelo.html#cb259-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb259-6"><a href="definición-del-modelo.html#cb259-6" aria-hidden="true" tabindex="-1"></a>epred_mat_material_dummy <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb259-7"><a href="definición-del-modelo.html#cb259-7" aria-hidden="true" tabindex="-1"></a>  epred_mat_material_dummy,</span>
+<span id="cb259-8"><a href="definición-del-modelo.html#cb259-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="fu">nrow</span>(epred_mat_material),</span>
+<span id="cb259-9"><a href="definición-del-modelo.html#cb259-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="fu">ncol</span>(epred_mat_material)</span>
+<span id="cb259-10"><a href="definición-del-modelo.html#cb259-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<ul>
+<li>Privación en saneamiento.</li>
+</ul>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="definición-del-modelo.html#cb260-1" aria-hidden="true" tabindex="-1"></a>epred_mat_saneamiento_dummy <span class="ot">&lt;-</span></span>
+<span id="cb260-2"><a href="definición-del-modelo.html#cb260-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="fu">nrow</span>(epred_mat_saneamiento) <span class="sc">*</span> <span class="fu">ncol</span>(epred_mat_saneamiento) ,</span>
+<span id="cb260-3"><a href="definición-del-modelo.html#cb260-3" aria-hidden="true" tabindex="-1"></a>         <span class="dv">1</span>,</span>
+<span id="cb260-4"><a href="definición-del-modelo.html#cb260-4" aria-hidden="true" tabindex="-1"></a>         epred_mat_saneamiento)</span>
+<span id="cb260-5"><a href="definición-del-modelo.html#cb260-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb260-6"><a href="definición-del-modelo.html#cb260-6" aria-hidden="true" tabindex="-1"></a>epred_mat_saneamiento_dummy <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb260-7"><a href="definición-del-modelo.html#cb260-7" aria-hidden="true" tabindex="-1"></a>  epred_mat_saneamiento_dummy,</span>
+<span id="cb260-8"><a href="definición-del-modelo.html#cb260-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="fu">nrow</span>(epred_mat_saneamiento),</span>
+<span id="cb260-9"><a href="definición-del-modelo.html#cb260-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="fu">ncol</span>(epred_mat_saneamiento)</span>
+<span id="cb260-10"><a href="definición-del-modelo.html#cb260-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<ul>
+<li>Privación en material de los techo.</li>
+</ul>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="definición-del-modelo.html#cb261-1" aria-hidden="true" tabindex="-1"></a>epred_mat_techo_dummy <span class="ot">&lt;-</span></span>
+<span id="cb261-2"><a href="definición-del-modelo.html#cb261-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="fu">nrow</span>(epred_mat_techo) <span class="sc">*</span> <span class="fu">ncol</span>(epred_mat_techo) ,</span>
+<span id="cb261-3"><a href="definición-del-modelo.html#cb261-3" aria-hidden="true" tabindex="-1"></a>         <span class="dv">1</span>,</span>
+<span id="cb261-4"><a href="definición-del-modelo.html#cb261-4" aria-hidden="true" tabindex="-1"></a>         epred_mat_techo)</span>
+<span id="cb261-5"><a href="definición-del-modelo.html#cb261-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb261-6"><a href="definición-del-modelo.html#cb261-6" aria-hidden="true" tabindex="-1"></a>epred_mat_techo_dummy <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb261-7"><a href="definición-del-modelo.html#cb261-7" aria-hidden="true" tabindex="-1"></a>  epred_mat_techo_dummy,</span>
+<span id="cb261-8"><a href="definición-del-modelo.html#cb261-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="fu">nrow</span>(epred_mat_techo),</span>
+<span id="cb261-9"><a href="definición-del-modelo.html#cb261-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="fu">ncol</span>(epred_mat_techo)</span>
+<span id="cb261-10"><a href="definición-del-modelo.html#cb261-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>Con las variables dummy creadas es posible estimar el IPM</p>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="definición-del-modelo.html#cb262-1" aria-hidden="true" tabindex="-1"></a>epred_mat_ipm <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">/</span><span class="dv">8</span>) <span class="sc">*</span> (</span>
+<span id="cb262-2"><a href="definición-del-modelo.html#cb262-2" aria-hidden="true" tabindex="-1"></a>  epred_mat_material_dummy <span class="sc">+</span></span>
+<span id="cb262-3"><a href="definición-del-modelo.html#cb262-3" aria-hidden="true" tabindex="-1"></a>    epred_mat_hacinamiento_dummy <span class="sc">+</span></span>
+<span id="cb262-4"><a href="definición-del-modelo.html#cb262-4" aria-hidden="true" tabindex="-1"></a>    epred_mat_agua_dummy <span class="sc">+</span></span>
+<span id="cb262-5"><a href="definición-del-modelo.html#cb262-5" aria-hidden="true" tabindex="-1"></a>    epred_mat_saneamiento_dummy <span class="sc">+</span></span>
+<span id="cb262-6"><a href="definición-del-modelo.html#cb262-6" aria-hidden="true" tabindex="-1"></a>    epred_mat_energia_dummy <span class="sc">+</span></span>
+<span id="cb262-7"><a href="definición-del-modelo.html#cb262-7" aria-hidden="true" tabindex="-1"></a>    epred_mat_paredes_dummy <span class="sc">+</span></span>
+<span id="cb262-8"><a href="definición-del-modelo.html#cb262-8" aria-hidden="true" tabindex="-1"></a>    epred_mat_combustible_dummy <span class="sc">+</span> </span>
+<span id="cb262-9"><a href="definición-del-modelo.html#cb262-9" aria-hidden="true" tabindex="-1"></a>    epred_mat_techo_dummy)</span></code></pre></div>
+<p>Ahora, debemos dicotomizar la variable nuevamente.</p>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="definición-del-modelo.html#cb263-1" aria-hidden="true" tabindex="-1"></a>epred_mat_ipm[epred_mat_ipm <span class="sc">&lt;=</span> <span class="fl">0.4</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb263-2"><a href="definición-del-modelo.html#cb263-2" aria-hidden="true" tabindex="-1"></a>epred_mat_ipm[epred_mat_ipm <span class="sc">!=</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span></code></pre></div>
+<p>Finalmente realizamos el calculo del IPM así:</p>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="definición-del-modelo.html#cb264-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">colSums</span>(<span class="fu">t</span>(epred_mat_ipm)<span class="sc">*</span>poststrat_df<span class="sc">$</span>n)<span class="sc">/</span><span class="fu">sum</span>(poststrat_df<span class="sc">$</span>n))</span></code></pre></div>
+<pre><code>## [1] 0.01095818</code></pre>
+<p>También es posible utilizar la función <code>Aux_Agregado</code> para las estimaciones.</p>
+<p>Para obtener el resultado por municipio procedemos así:</p>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="definición-del-modelo.html#cb266-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;Recursos/Día3/Sesion4/0Recursos/funciones_mrp.R&quot;</span>)</span>
+<span id="cb266-2"><a href="definición-del-modelo.html#cb266-2" aria-hidden="true" tabindex="-1"></a>mrp_estimate_dam2 <span class="ot">&lt;-</span></span>
+<span id="cb266-3"><a href="definición-del-modelo.html#cb266-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">Aux_Agregado</span>(<span class="at">poststrat =</span> temp,</span>
+<span id="cb266-4"><a href="definición-del-modelo.html#cb266-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">epredmat =</span> epred_mat_ipm,</span>
+<span id="cb266-5"><a href="definición-del-modelo.html#cb266-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">byMap =</span> <span class="st">&quot;dam2&quot;</span>)</span>
+<span id="cb266-6"><a href="definición-del-modelo.html#cb266-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tba</span>(mrp_estimate_dam2 <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>))</span></code></pre></div>
+<table class="table table-striped lightable-classic" style="width: auto !important; margin-left: auto; margin-right: auto; font-family: Arial Narrow; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+dam2
+</th>
+<th style="text-align:right;">
+mrp_estimate
+</th>
+<th style="text-align:right;">
+mrp_estimate_se
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+01101
+</td>
+<td style="text-align:right;">
+0.0002
+</td>
+<td style="text-align:right;">
+0.0003
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+01107
+</td>
+<td style="text-align:right;">
+0.0016
+</td>
+<td style="text-align:right;">
+0.0022
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+01401
+</td>
+<td style="text-align:right;">
+0.0336
+</td>
+<td style="text-align:right;">
+0.0226
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+01402
+</td>
+<td style="text-align:right;">
+0.0050
+</td>
+<td style="text-align:right;">
+0.0150
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+01403
+</td>
+<td style="text-align:right;">
+0.0404
+</td>
+<td style="text-align:right;">
+0.0574
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+01404
+</td>
+<td style="text-align:right;">
+0.0574
+</td>
+<td style="text-align:right;">
+0.0344
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+01405
+</td>
+<td style="text-align:right;">
+0.0080
+</td>
+<td style="text-align:right;">
+0.0215
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+02101
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+02102
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+<td style="text-align:right;">
+0.0001
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+02103
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+<td style="text-align:right;">
+0.0001
+</td>
+</tr>
+</tbody>
+</table>
+<p>El siguiente paso es realizar el mapa de los resultados</p>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="definición-del-modelo.html#cb267-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sp)</span>
+<span id="cb267-2"><a href="definición-del-modelo.html#cb267-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb267-3"><a href="definición-del-modelo.html#cb267-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
+<span id="cb267-4"><a href="definición-del-modelo.html#cb267-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb267-5"><a href="definición-del-modelo.html#cb267-5" aria-hidden="true" tabindex="-1"></a>ShapeSAE <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">&quot;Recursos/Día3/Sesion4/Shape/CHL_dam2.shp&quot;</span>)  </span></code></pre></div>
+<p>Los resultados nacionales son mostrados en el mapa.</p>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="definición-del-modelo.html#cb268-1" aria-hidden="true" tabindex="-1"></a>brks_ing <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.05</span>,<span class="fl">0.1</span>,<span class="fl">0.15</span>, <span class="fl">0.20</span> ,<span class="fl">0.3</span>, <span class="dv">1</span>)</span>
+<span id="cb268-2"><a href="definición-del-modelo.html#cb268-2" aria-hidden="true" tabindex="-1"></a>maps3 <span class="ot">&lt;-</span> <span class="fu">tm_shape</span>(ShapeSAE <span class="sc">%&gt;%</span></span>
+<span id="cb268-3"><a href="definición-del-modelo.html#cb268-3" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">left_join</span>(mrp_estimate_dam2,  <span class="at">by =</span> <span class="st">&quot;dam2&quot;</span>))</span>
+<span id="cb268-4"><a href="definición-del-modelo.html#cb268-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb268-5"><a href="definición-del-modelo.html#cb268-5" aria-hidden="true" tabindex="-1"></a>Mapa_ing3 <span class="ot">&lt;-</span></span>
+<span id="cb268-6"><a href="definición-del-modelo.html#cb268-6" aria-hidden="true" tabindex="-1"></a>  maps3 <span class="sc">+</span> <span class="fu">tm_polygons</span>(</span>
+<span id="cb268-7"><a href="definición-del-modelo.html#cb268-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;mrp_estimate&quot;</span>,</span>
+<span id="cb268-8"><a href="definición-del-modelo.html#cb268-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> brks_ing,</span>
+<span id="cb268-9"><a href="definición-del-modelo.html#cb268-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;IPM&quot;</span>,</span>
+<span id="cb268-10"><a href="definición-del-modelo.html#cb268-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">palette =</span> <span class="st">&quot;YlOrRd&quot;</span>,</span>
+<span id="cb268-11"><a href="definición-del-modelo.html#cb268-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">colorNA =</span> <span class="st">&quot;white&quot;</span></span>
+<span id="cb268-12"><a href="definición-del-modelo.html#cb268-12" aria-hidden="true" tabindex="-1"></a>  ) </span>
+<span id="cb268-13"><a href="definición-del-modelo.html#cb268-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb268-14"><a href="definición-del-modelo.html#cb268-14" aria-hidden="true" tabindex="-1"></a><span class="fu">tmap_save</span>(</span>
+<span id="cb268-15"><a href="definición-del-modelo.html#cb268-15" aria-hidden="true" tabindex="-1"></a>  Mapa_ing3,</span>
+<span id="cb268-16"><a href="definición-del-modelo.html#cb268-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Recursos/Día3/Sesion4/Data/CHL_IPM.jpeg&quot;</span>,</span>
+<span id="cb268-17"><a href="definición-del-modelo.html#cb268-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">2000</span>,</span>
+<span id="cb268-18"><a href="definición-del-modelo.html#cb268-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="dv">1500</span>,</span>
+<span id="cb268-19"><a href="definición-del-modelo.html#cb268-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">asp =</span> <span class="dv">0</span></span>
+<span id="cb268-20"><a href="definición-del-modelo.html#cb268-20" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb268-21"><a href="definición-del-modelo.html#cb268-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb268-22"><a href="definición-del-modelo.html#cb268-22" aria-hidden="true" tabindex="-1"></a>Mapa_ing3</span></code></pre></div>
+<p><img src="Recursos/D%C3%ADa3/Sesion4/Data/CHL_IPM.jpeg" width="1000" height="400%" style="display: block; margin: auto;" /></p>
+<p>Realizando un acercamiento de algunas regiones.</p>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="definición-del-modelo.html#cb269-1" aria-hidden="true" tabindex="-1"></a>temp_shape <span class="ot">&lt;-</span> ShapeSAE <span class="sc">%&gt;%</span> <span class="fu">filter</span>(dam <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;08&quot;</span>, <span class="st">&quot;09&quot;</span>))</span>
+<span id="cb269-2"><a href="definición-del-modelo.html#cb269-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb269-3"><a href="definición-del-modelo.html#cb269-3" aria-hidden="true" tabindex="-1"></a>maps <span class="ot">&lt;-</span> <span class="fu">tm_shape</span>(temp_shape <span class="sc">%&gt;%</span></span>
+<span id="cb269-4"><a href="definición-del-modelo.html#cb269-4" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">left_join</span>(mrp_estimate_dam2,  <span class="at">by =</span> <span class="st">&quot;dam2&quot;</span>))</span>
+<span id="cb269-5"><a href="definición-del-modelo.html#cb269-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb269-6"><a href="definición-del-modelo.html#cb269-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tmap_options</span>(<span class="at">check.and.fix =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb269-7"><a href="definición-del-modelo.html#cb269-7" aria-hidden="true" tabindex="-1"></a>Mapa_ing <span class="ot">&lt;-</span></span>
+<span id="cb269-8"><a href="definición-del-modelo.html#cb269-8" aria-hidden="true" tabindex="-1"></a>  maps <span class="sc">+</span> <span class="fu">tm_polygons</span>(</span>
+<span id="cb269-9"><a href="definición-del-modelo.html#cb269-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;mrp_estimate&quot;</span>,</span>
+<span id="cb269-10"><a href="definición-del-modelo.html#cb269-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> brks_ing,</span>
+<span id="cb269-11"><a href="definición-del-modelo.html#cb269-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;IPM&quot;</span>,</span>
+<span id="cb269-12"><a href="definición-del-modelo.html#cb269-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">palette =</span> <span class="st">&quot;YlOrRd&quot;</span>,</span>
+<span id="cb269-13"><a href="definición-del-modelo.html#cb269-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">colorNA =</span> <span class="st">&quot;white&quot;</span></span>
+<span id="cb269-14"><a href="definición-del-modelo.html#cb269-14" aria-hidden="true" tabindex="-1"></a>  ) </span>
+<span id="cb269-15"><a href="definición-del-modelo.html#cb269-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb269-16"><a href="definición-del-modelo.html#cb269-16" aria-hidden="true" tabindex="-1"></a><span class="fu">tmap_save</span>(</span>
+<span id="cb269-17"><a href="definición-del-modelo.html#cb269-17" aria-hidden="true" tabindex="-1"></a>  Mapa_ing,</span>
+<span id="cb269-18"><a href="definición-del-modelo.html#cb269-18" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Recursos/Día3/Sesion4/Data/CHL_region.jpeg&quot;</span>,</span>
+<span id="cb269-19"><a href="definición-del-modelo.html#cb269-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">2000</span>,</span>
+<span id="cb269-20"><a href="definición-del-modelo.html#cb269-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="dv">1500</span>,</span>
+<span id="cb269-21"><a href="definición-del-modelo.html#cb269-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">asp =</span> <span class="dv">0</span></span>
+<span id="cb269-22"><a href="definición-del-modelo.html#cb269-22" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb269-23"><a href="definición-del-modelo.html#cb269-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb269-24"><a href="definición-del-modelo.html#cb269-24" aria-hidden="true" tabindex="-1"></a>Mapa_ing</span></code></pre></div>
+<p><img src="Recursos/D%C3%ADa3/Sesion4/Data/CHL_region.jpeg" width="1000" height="400%" style="display: block; margin: auto;" /></p>
+<p>Los resultado para cada componente puede ser mapeado de forma similar.</p>
+<p>Para obtener el resultado por municipio procedemos así:</p>
+<table class="table table-striped lightable-classic" style="width: auto !important; margin-left: auto; margin-right: auto; font-family: Arial Narrow; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Indicador
+</th>
+<th style="text-align:left;">
+dam2
+</th>
+<th style="text-align:right;">
+mrp_estimate
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Material
+</td>
+<td style="text-align:left;">
+01101
+</td>
+<td style="text-align:right;">
+0.0229
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Material
+</td>
+<td style="text-align:left;">
+01107
+</td>
+<td style="text-align:right;">
+0.0890
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Material
+</td>
+<td style="text-align:left;">
+01401
+</td>
+<td style="text-align:right;">
+0.0950
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Material
+</td>
+<td style="text-align:left;">
+01402
+</td>
+<td style="text-align:right;">
+0.0641
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Material
+</td>
+<td style="text-align:left;">
+01403
+</td>
+<td style="text-align:right;">
+0.1535
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Material
+</td>
+<td style="text-align:left;">
+01404
+</td>
+<td style="text-align:right;">
+0.2145
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Material
+</td>
+<td style="text-align:left;">
+01405
+</td>
+<td style="text-align:right;">
+0.1538
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Material
+</td>
+<td style="text-align:left;">
+02101
+</td>
+<td style="text-align:right;">
+0.0090
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Material
+</td>
+<td style="text-align:left;">
+02102
+</td>
+<td style="text-align:right;">
+0.0069
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Material
+</td>
+<td style="text-align:left;">
+02103
+</td>
+<td style="text-align:right;">
+0.0210
+</td>
+</tr>
+</tbody>
+</table>
+<p><img src="Recursos/D%C3%ADa3/Sesion4/Data/CHL_region_ipm.jpeg" width="1500" height="400%" style="display: block; margin: auto;" /></p>
+
+</div>
+</div>
+<!-- </div> -->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="índice-de-privación-multidimensional-ipm.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="día-4---sesión-1--modelo-de-área-para-estadísticas-del-mercado-de-trabajo.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/psirusteam/2021ASDA/11-D3S4_Modelo_unidad_IPM.qmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Desagregación de datos en encuestas de hogares: metodologías bayesianas para modelos de estimación en áreas pequeñas.pdf", "Desagregación de datos en encuestas de hogares: metodologías bayesianas para modelos de estimación en áreas pequeñas.epub", "Desagregación de datos en encuestas de hogares: metodologías bayesianas para modelos de estimación en áreas pequeñas.mobi"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+},
+"tconfig": null
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 3 Día 1 - Sesión 3- Fundamentos de la inferencia Bayesiana en R y STAN | Desagregación de datos en encuestas de hogares: metodologías bayesianas para modelos de estimación en áreas pequeñas</title>
+  <title>Capítulo 13 Día 3 - Sesión 4- Estimación del Índice de Privación Multidimensional (IPM) | Desagregación de datos en encuestas de hogares: metodologías bayesianas para modelos de estimación en áreas pequeñas</title>
   <meta name="description" content="Taller de instalación de capacidades en SAE." />
   <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 3 Día 1 - Sesión 3- Fundamentos de la inferencia Bayesiana en R y STAN | Desagregación de datos en encuestas de hogares: metodologías bayesianas para modelos de estimación en áreas pequeñas" />
+  <meta property="og:title" content="Capítulo 13 Día 3 - Sesión 4- Estimación del Índice de Privación Multidimensional (IPM) | Desagregación de datos en encuestas de hogares: metodologías bayesianas para modelos de estimación en áreas pequeñas" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Taller de instalación de capacidades en SAE." />
   <meta name="github-repo" content="psirusteam/HHS-Handbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 3 Día 1 - Sesión 3- Fundamentos de la inferencia Bayesiana en R y STAN | Desagregación de datos en encuestas de hogares: metodologías bayesianas para modelos de estimación en áreas pequeñas" />
+  <meta name="twitter:title" content="Capítulo 13 Día 3 - Sesión 4- Estimación del Índice de Privación Multidimensional (IPM) | Desagregación de datos en encuestas de hogares: metodologías bayesianas para modelos de estimación en áreas pequeñas" />
   
   <meta name="twitter:description" content="Taller de instalación de capacidades en SAE." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="censos-de-población-y-vivienda.html"/>
-<link rel="next" href="día-1---sesión-4--modelos-sintéticos-simples.html"/>
+<link rel="prev" href="proceso-de-estimación-y-predicción-1.html"/>
+<link rel="next" href="índice-de-privación-multidimensional-ipm.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -329,17 +329,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="día-1---sesión-3--fundamentos-de-la-inferencia-bayesiana-en-r-y-stan" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">Capítulo 3</span> Día 1 - Sesión 3- Fundamentos de la inferencia Bayesiana en R y STAN<a href="día-1---sesión-3--fundamentos-de-la-inferencia-bayesiana-en-r-y-stan.html#día-1---sesión-3--fundamentos-de-la-inferencia-bayesiana-en-r-y-stan" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p><a href="https://github.com/psirusteam/2023CHLsae/blob/main/Recursos/Docs/Slides/slides_SAEbayesiano.pdf">El proyecto Manhattan y la estimación desagregada con encuestas de hogares</a></p>
+<div id="día-3---sesión-4--estimación-del-índice-de-privación-multidimensional-ipm" class="section level1 hasAnchor" number="13">
+<h1><span class="header-section-number">Capítulo 13</span> Día 3 - Sesión 4- Estimación del Índice de Privación Multidimensional (IPM)<a href="día-3---sesión-4--estimación-del-índice-de-privación-multidimensional-ipm.html#día-3---sesión-4--estimación-del-índice-de-privación-multidimensional-ipm" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<ul>
+<li><p>La pobreza es, y ha sido, uno de los temas principales en las agendas nacionales e internacionales de los países durante décadas. Un ejemplo reciente es el primer objetivo de la agenda <strong>2030</strong> para el Desarrollo Sostenible (ODS): <strong>“Poner fin a la pobreza en todas sus formas en todo el mundo”</strong>, así como su indicador 1.2.2 que mide <strong>“la proporción de hombres, mujeres y niños de todas las edades que viven en pobreza en todas sus dimensiones según las definiciones nacionales”</strong></p></li>
+<li><p>Tradicionalmente los organismos nacionales e internacionales exigen la medida de pobreza unidimensional basada en ingresos y/o gastos.</p></li>
+<li><p>La pobreza es un fenómeno complejo que debe ser analizado considerando un conjunto de factores y no solo el monetario.</p></li>
+<li><p>En está ocasión se aborda el problema multidimensional de la pobreza utilizando métodos de áreas pequeñas proporcionando una estimación del índice de privación multidimensional (IPM) en Colombia.</p></li>
+</ul>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="censos-de-población-y-vivienda.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="día-1---sesión-4--modelos-sintéticos-simples.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="proceso-de-estimación-y-predicción-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="índice-de-privación-multidimensional-ipm.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -370,7 +375,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/2021ASDA/02-D1S4_Fundamentos_Bayesiana.qmd",
+"link": "https://github.com/psirusteam/2021ASDA/11-D3S4_Modelo_unidad_IPM.qmd",
 "text": "Edit"
 },
 "history": {

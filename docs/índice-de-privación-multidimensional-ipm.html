@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 3 Día 1 - Sesión 3- Fundamentos de la inferencia Bayesiana en R y STAN | Desagregación de datos en encuestas de hogares: metodologías bayesianas para modelos de estimación en áreas pequeñas</title>
+  <title>13.1 Índice de Privación Multidimensional (IPM) | Desagregación de datos en encuestas de hogares: metodologías bayesianas para modelos de estimación en áreas pequeñas</title>
   <meta name="description" content="Taller de instalación de capacidades en SAE." />
   <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 3 Día 1 - Sesión 3- Fundamentos de la inferencia Bayesiana en R y STAN | Desagregación de datos en encuestas de hogares: metodologías bayesianas para modelos de estimación en áreas pequeñas" />
+  <meta property="og:title" content="13.1 Índice de Privación Multidimensional (IPM) | Desagregación de datos en encuestas de hogares: metodologías bayesianas para modelos de estimación en áreas pequeñas" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Taller de instalación de capacidades en SAE." />
   <meta name="github-repo" content="psirusteam/HHS-Handbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 3 Día 1 - Sesión 3- Fundamentos de la inferencia Bayesiana en R y STAN | Desagregación de datos en encuestas de hogares: metodologías bayesianas para modelos de estimación en áreas pequeñas" />
+  <meta name="twitter:title" content="13.1 Índice de Privación Multidimensional (IPM) | Desagregación de datos en encuestas de hogares: metodologías bayesianas para modelos de estimación en áreas pequeñas" />
   
   <meta name="twitter:description" content="Taller de instalación de capacidades en SAE." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="censos-de-población-y-vivienda.html"/>
-<link rel="next" href="día-1---sesión-4--modelos-sintéticos-simples.html"/>
+<link rel="prev" href="día-3---sesión-4--estimación-del-índice-de-privación-multidimensional-ipm.html"/>
+<link rel="next" href="definición-del-modelo.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -329,17 +329,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="día-1---sesión-3--fundamentos-de-la-inferencia-bayesiana-en-r-y-stan" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">Capítulo 3</span> Día 1 - Sesión 3- Fundamentos de la inferencia Bayesiana en R y STAN<a href="día-1---sesión-3--fundamentos-de-la-inferencia-bayesiana-en-r-y-stan.html#día-1---sesión-3--fundamentos-de-la-inferencia-bayesiana-en-r-y-stan" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p><a href="https://github.com/psirusteam/2023CHLsae/blob/main/Recursos/Docs/Slides/slides_SAEbayesiano.pdf">El proyecto Manhattan y la estimación desagregada con encuestas de hogares</a></p>
+<div id="índice-de-privación-multidimensional-ipm" class="section level2 hasAnchor" number="13.1">
+<h2><span class="header-section-number">13.1</span> Índice de Privación Multidimensional (IPM)<a href="índice-de-privación-multidimensional-ipm.html#índice-de-privación-multidimensional-ipm" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>El IPM propuesto por CEPAL es una herramienta comparable entre los países de la región, para estudiar los fenómenos de la pobreza considerando varios aspectos o dimensiones. <strong>En ningún caso el IPM busca reemplazar los indicadores pobreza unidimensional o multidimensional que hayan definido los países u organismos internacionales</strong></p></li>
+<li><p>El índice requiere la información para cada individuo <span class="math inline">\(i = 1,\cdots,N_d\)</span> en <span class="math inline">\(d = 1, \cdots, D\)</span> dominios, donde <span class="math inline">\(N_d\)</span> denota el tamaño de la población del dominio <span class="math inline">\(d\)</span>. El índice para el dominio <span class="math inline">\(d\)</span> se calcula como:</p>
+<p><span class="math display">\[
+IPM_d = \frac{1}{N_d}\sum_{i=1}^{N_d}I\left(q_{di} &gt; 0.4  \right).
+\]</span></p>
+<p>La función del índicador <span class="math inline">\(I\left( \cdot \right)\)</span> es igual a 1 cuando la condición <span class="math inline">\(q_{di} &gt; 0.4\)</span>.</p></li>
+<li><p><span class="math inline">\(q_{di}\)</span> es una cantidad ponderada de la siguiente forma:</p>
+<p><span class="math display">\[
+q_{di} = \frac{1}{8}\sum_{k=1}^{8}y_{di}^{k}
+\]</span></p>
+<p>Donde:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p><span class="math inline">\(y_{di}^{1}\)</span> = Privación en material de construcción de la vivienda</p></li>
+<li><p><span class="math inline">\(y_{di}^{2}\)</span> = Hacinamiento en el hogar.</p></li>
+<li><p><span class="math inline">\(y_{di}^{3}\)</span> = Privación de acceso al agua potable.</p></li>
+<li><p><span class="math inline">\(y_{di}^{4}\)</span> = Privación en saneamiento.</p></li>
+<li><p><span class="math inline">\(y_{di}^{5}\)</span> = Acceso al servicio energía eléctrica.</p></li>
+<li><p><span class="math inline">\(y_{di}^{6}\)</span> = Privación de acceso al combustible para cocinar.</p></li>
+<li><p><span class="math inline">\(y_{di}^{7}\)</span> = Privación en material de los techo</p></li>
+<li><p><span class="math inline">\(y_{di}^{8}\)</span> = Privación el material de las paredes.</p></li>
+</ol>
+<p>Note que, <span class="math inline">\(y_{di}^{k}\)</span> es igual a <strong>1</strong> si la persona tiene privación en la <span class="math inline">\(k-ésima\)</span> dimesión y <strong>0</strong> en el caso que de no tener la privación.</p></li>
+</ul>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="censos-de-población-y-vivienda.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="día-1---sesión-4--modelos-sintéticos-simples.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="día-3---sesión-4--estimación-del-índice-de-privación-multidimensional-ipm.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="definición-del-modelo.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -370,7 +393,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/2021ASDA/02-D1S4_Fundamentos_Bayesiana.qmd",
+"link": "https://github.com/psirusteam/2021ASDA/11-D3S4_Modelo_unidad_IPM.qmd",
 "text": "Edit"
 },
 "history": {

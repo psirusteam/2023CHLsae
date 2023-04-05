@@ -5,6 +5,7 @@ fig:unnamed-chunk-1
 fig:unnamed-chunk-4
 fig:unnamed-chunk-13
 fig:unnamed-chunk-35
+tab:unnamed-chunk-4
 día-1---sesión-1--no-dejar-a-nadie-atrás---ods-y-la-agenda-2030
 día-1---sesión-2--censo-e-información-satelital
 uso-de-imágenes-satelitales-y-sae
@@ -103,6 +104,12 @@ distribución-posterior.-2
 estimación-de-la-tasa-de-pobreza
 estimación-para-el-dam-05.-2
 estimación-para-la-dam2-05201-2
+día-3---sesión-4--estimación-del-índice-de-privación-multidimensional-ipm
+índice-de-privación-multidimensional-ipm
+definición-del-modelo
+procesamiento-del-modelo-en-r.
+definiendo-el-modelo-multinivel.-2
+proceso-de-estimación-y-predicción-2
 día-4---sesión-1--modelo-de-área-para-estadísticas-del-mercado-de-trabajo
 definición-del-modelo-multinomial
 lectura-de-librerías.
