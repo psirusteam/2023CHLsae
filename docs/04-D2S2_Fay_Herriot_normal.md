@@ -570,7 +570,7 @@ ppc_dens_overlay(y = as.numeric(data_dir$pobreza), y_pred2)
 
 <img src="Recursos/Día2/Sesion2/0Recursos/FH1.png" width="200%" />
 
-Análisis gráfico de la convergencia de las cadenas de $\sigma^2_V$. 
+Análisis gráfico de la convergencia de las cadenas de $\sigma^2_u$. 
 
 
 ```r

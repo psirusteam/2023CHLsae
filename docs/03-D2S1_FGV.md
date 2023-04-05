@@ -1028,7 +1028,7 @@ Predicción de la varianza suavizada
 base_sae <- base_sae %>%  left_join(hat.sigma, by = "dam2")
 ```
 
-El siguiente código utiliza la función `mutate()` del paquete `dplyr` para crear nuevas variables de la base de datos `base_sae` y luego guarda el resultado en un archivo RDS llamado `base_FH_2018.rds.`
+El siguiente código utiliza la función `mutate()` del paquete `dplyr` para crear nuevas variables de la base de datos `base_sae` y luego guarda el resultado en un archivo RDS llamado `base_FH_2017.rds.`
 
 En concreto, el código realiza las siguientes operaciones:
 

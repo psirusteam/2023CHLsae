@@ -122,3 +122,15 @@ estimación-de-los-parámetros.
 estimación-de-la-desviación-estárdar-y-el-coeficiente-de-valiación
 metodología-de-benchmarking
 mapas-del-mercado-de-trabajo.
+día-4---sesión-2--modelo-de-área-para-inseguridad-alimentaria
+modelo-de-rash
+fuentes-de-error-en-la-estimación-del-fies
+modelo-de-área-para-la-estimación-del-fies
+procedimiento-de-estimación-5
+función-generalizada-de-varianza
+modelo-para-la-varianza-1
+estimación-del-modelo-de-área
+resultados-del-modelo-para-los-dominios-observados.-5
+proceso-de-benchmark-2
+validación-de-los-resultados.-2
+mapa-de-fies
