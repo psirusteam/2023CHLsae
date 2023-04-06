@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Stalyn Guerrero" />
 
 
-<meta name="date" content="2023-04-05" />
+<meta name="date" content="2023-04-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -2314,21 +2314,21 @@ accesibilidad_hosp_caminado
 <h3><span class="header-section-number">13.2.3</span> Proceso de estimación y predicción<a href="definición-del-modelo.html#proceso-de-estimación-y-predicción-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Los modelos fueron compilados de manera separada, por tanto, disponemos de un objeto <code>.rds</code> por cada dimensión del IPM</p>
 <div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="definición-del-modelo.html#cb242-1" aria-hidden="true" tabindex="-1"></a>fit_agua <span class="ot">&lt;-</span></span>
-<span id="cb242-2"><a href="definición-del-modelo.html#cb242-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">readRDS</span>(<span class="at">file =</span> <span class="st">&quot;Recursos/Día3/Sesion4/Data/fits_nbi_agua.rds&quot;</span>)</span>
+<span id="cb242-2"><a href="definición-del-modelo.html#cb242-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">readRDS</span>(<span class="at">file =</span> <span class="st">&quot;Recursos/Día3/Sesion4/Data/fits_bayes_nbi_agua.rds&quot;</span>)</span>
 <span id="cb242-3"><a href="definición-del-modelo.html#cb242-3" aria-hidden="true" tabindex="-1"></a>fit_combustible <span class="ot">&lt;-</span></span>
-<span id="cb242-4"><a href="definición-del-modelo.html#cb242-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">readRDS</span>(<span class="at">file =</span> <span class="st">&quot;Recursos/Día3/Sesion4/Data/fits_nbi_combus.rds&quot;</span>)</span>
+<span id="cb242-4"><a href="definición-del-modelo.html#cb242-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">readRDS</span>(<span class="at">file =</span> <span class="st">&quot;Recursos/Día3/Sesion4/Data/fits_bayes_nbi_combus.rds&quot;</span>)</span>
 <span id="cb242-5"><a href="definición-del-modelo.html#cb242-5" aria-hidden="true" tabindex="-1"></a>fit_techo <span class="ot">&lt;-</span></span>
-<span id="cb242-6"><a href="definición-del-modelo.html#cb242-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">readRDS</span>(<span class="at">file =</span> <span class="st">&quot;Recursos/Día3/Sesion4/Data/fits_nbi_techo.rds&quot;</span>)</span>
+<span id="cb242-6"><a href="definición-del-modelo.html#cb242-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">readRDS</span>(<span class="at">file =</span> <span class="st">&quot;Recursos/Día3/Sesion4/Data/fits_bayes_nbi_techo.rds&quot;</span>)</span>
 <span id="cb242-7"><a href="definición-del-modelo.html#cb242-7" aria-hidden="true" tabindex="-1"></a>fit_energia <span class="ot">&lt;-</span></span>
-<span id="cb242-8"><a href="definición-del-modelo.html#cb242-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">readRDS</span>(<span class="at">file =</span> <span class="st">&quot;Recursos/Día3/Sesion4/Data/fits_nbi_elect.rds&quot;</span>)</span>
+<span id="cb242-8"><a href="definición-del-modelo.html#cb242-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">readRDS</span>(<span class="at">file =</span> <span class="st">&quot;Recursos/Día3/Sesion4/Data/fits_bayes_nbi_elect.rds&quot;</span>)</span>
 <span id="cb242-9"><a href="definición-del-modelo.html#cb242-9" aria-hidden="true" tabindex="-1"></a>fit_hacinamiento <span class="ot">&lt;-</span></span>
-<span id="cb242-10"><a href="definición-del-modelo.html#cb242-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">readRDS</span>(<span class="at">file =</span> <span class="st">&quot;Recursos/Día3/Sesion4/Data/fits_nbi_hacina.rds&quot;</span>)</span>
+<span id="cb242-10"><a href="definición-del-modelo.html#cb242-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">readRDS</span>(<span class="at">file =</span> <span class="st">&quot;Recursos/Día3/Sesion4/Data/fits_bayes_nbi_hacina.rds&quot;</span>)</span>
 <span id="cb242-11"><a href="definición-del-modelo.html#cb242-11" aria-hidden="true" tabindex="-1"></a>fit_paredes <span class="ot">&lt;-</span></span>
-<span id="cb242-12"><a href="definición-del-modelo.html#cb242-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">readRDS</span>(<span class="at">file =</span> <span class="st">&quot;Recursos/Día3/Sesion4/Data/fits_nbi_pared.rds&quot;</span>)</span>
+<span id="cb242-12"><a href="definición-del-modelo.html#cb242-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">readRDS</span>(<span class="at">file =</span> <span class="st">&quot;Recursos/Día3/Sesion4/Data/fits_bayes_nbi_pared.rds&quot;</span>)</span>
 <span id="cb242-13"><a href="definición-del-modelo.html#cb242-13" aria-hidden="true" tabindex="-1"></a>fit_material <span class="ot">&lt;-</span></span>
-<span id="cb242-14"><a href="definición-del-modelo.html#cb242-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">readRDS</span>(<span class="at">file =</span> <span class="st">&quot;Recursos/Día3/Sesion4/Data/fits_nbi_matviv.rds&quot;</span>)</span>
+<span id="cb242-14"><a href="definición-del-modelo.html#cb242-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">readRDS</span>(<span class="at">file =</span> <span class="st">&quot;Recursos/Día3/Sesion4/Data/fits_bayes_nbi_matviv.rds&quot;</span>)</span>
 <span id="cb242-15"><a href="definición-del-modelo.html#cb242-15" aria-hidden="true" tabindex="-1"></a>fit_saneamiento <span class="ot">&lt;-</span></span>
-<span id="cb242-16"><a href="definición-del-modelo.html#cb242-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">readRDS</span>(<span class="at">file =</span> <span class="st">&quot;Recursos/Día3/Sesion4/Data/fits_nbi_saneamiento.rds&quot;</span>)</span></code></pre></div>
+<span id="cb242-16"><a href="definición-del-modelo.html#cb242-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">readRDS</span>(<span class="at">file =</span> <span class="st">&quot;Recursos/Día3/Sesion4/Data/fits_bayes_nbi_saneamiento.rds&quot;</span>)</span></code></pre></div>
 <p>Ahora, debemos leer la información del censo y crear los <strong>post-estrato </strong></p>
 <div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="definición-del-modelo.html#cb243-1" aria-hidden="true" tabindex="-1"></a>censo_ipm <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;Recursos/Día3/Sesion4/Data/censo_ipm.rds&quot;</span>) </span>
 <span id="cb243-2"><a href="definición-del-modelo.html#cb243-2" aria-hidden="true" tabindex="-1"></a></span>

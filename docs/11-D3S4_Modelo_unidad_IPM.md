@@ -857,21 +857,21 @@ Los modelos fueron compilados de manera separada, por tanto, disponemos de un ob
 
 ```r
 fit_agua <-
-  readRDS(file = "Recursos/Día3/Sesion4/Data/fits_nbi_agua.rds")
+  readRDS(file = "Recursos/Día3/Sesion4/Data/fits_bayes_nbi_agua.rds")
 fit_combustible <-
-  readRDS(file = "Recursos/Día3/Sesion4/Data/fits_nbi_combus.rds")
+  readRDS(file = "Recursos/Día3/Sesion4/Data/fits_bayes_nbi_combus.rds")
 fit_techo <-
-  readRDS(file = "Recursos/Día3/Sesion4/Data/fits_nbi_techo.rds")
+  readRDS(file = "Recursos/Día3/Sesion4/Data/fits_bayes_nbi_techo.rds")
 fit_energia <-
-  readRDS(file = "Recursos/Día3/Sesion4/Data/fits_nbi_elect.rds")
+  readRDS(file = "Recursos/Día3/Sesion4/Data/fits_bayes_nbi_elect.rds")
 fit_hacinamiento <-
-  readRDS(file = "Recursos/Día3/Sesion4/Data/fits_nbi_hacina.rds")
+  readRDS(file = "Recursos/Día3/Sesion4/Data/fits_bayes_nbi_hacina.rds")
 fit_paredes <-
-  readRDS(file = "Recursos/Día3/Sesion4/Data/fits_nbi_pared.rds")
+  readRDS(file = "Recursos/Día3/Sesion4/Data/fits_bayes_nbi_pared.rds")
 fit_material <-
-  readRDS(file = "Recursos/Día3/Sesion4/Data/fits_nbi_matviv.rds")
+  readRDS(file = "Recursos/Día3/Sesion4/Data/fits_bayes_nbi_matviv.rds")
 fit_saneamiento <-
-  readRDS(file = "Recursos/Día3/Sesion4/Data/fits_nbi_saneamiento.rds")
+  readRDS(file = "Recursos/Día3/Sesion4/Data/fits_bayes_nbi_saneamiento.rds")
 ```
 
 Ahora, debemos leer la información del censo  y crear los **post-estrato **
