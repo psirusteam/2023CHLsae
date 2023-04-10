@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Stalyn Guerrero" />
 
 
-<meta name="date" content="2023-04-06" />
+<meta name="date" content="2023-04-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -159,6 +159,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.5" data-path="instalación-de-rgee.html"><a href="instalación-de-rgee.html#modificación-humana"><i class="fa fa-check"></i><b>2.3.5</b> Modificación humana</a></li>
 <li class="chapter" data-level="2.3.6" data-path="instalación-de-rgee.html"><a href="instalación-de-rgee.html#tiempo-promedio-al-hospital"><i class="fa fa-check"></i><b>2.3.6</b> Tiempo promedio al hospital</a></li>
 <li class="chapter" data-level="2.3.7" data-path="instalación-de-rgee.html"><a href="instalación-de-rgee.html#tiempo-promedio-al-hospital-en-vehiculo-no-motorizado"><i class="fa fa-check"></i><b>2.3.7</b> Tiempo promedio al hospital en vehiculo no motorizado</a></li>
+<li class="chapter" data-level="2.3.8" data-path="instalación-de-rgee.html"><a href="instalación-de-rgee.html#vegetación-ndvi"><i class="fa fa-check"></i><b>2.3.8</b> Vegetación NDVI</a></li>
+<li class="chapter" data-level="2.3.9" data-path="instalación-de-rgee.html"><a href="instalación-de-rgee.html#polución"><i class="fa fa-check"></i><b>2.3.9</b> Polución</a></li>
+<li class="chapter" data-level="2.3.10" data-path="instalación-de-rgee.html"><a href="instalación-de-rgee.html#temperatura-del-aire-a-2-m-sobre-la-superficie-de-la-tierra-el-mar-o-las-aguas-interiores."><i class="fa fa-check"></i><b>2.3.10</b> Temperatura del aire a 2 m sobre la superficie de la tierra, el mar o las aguas interiores.</a></li>
+<li class="chapter" data-level="2.3.11" data-path="instalación-de-rgee.html"><a href="instalación-de-rgee.html#temperatura-del-suelo-en-la-capa-4-100-289-cm-del-sistema-integrado-de-pronóstico-ecmwf."><i class="fa fa-check"></i><b>2.3.11</b> Temperatura del suelo en la capa 4 (100-289 cm) del Sistema Integrado de Pronóstico ECMWF.</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="censos-de-población-y-vivienda.html"><a href="censos-de-población-y-vivienda.html"><i class="fa fa-check"></i><b>2.4</b> Censos de población y vivienda</a>
 <ul>
@@ -393,8 +397,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><strong>Paso 1</strong>: disponer de los shapefile</li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="instalación-de-rgee.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># shape &lt;- read_sf(&quot;Recursos/Día1/Sesion2/Shape/CHL_dam2.shp&quot;)</span></span>
-<span id="cb6-2"><a href="instalación-de-rgee.html#cb6-2" aria-hidden="true" tabindex="-1"></a>shape <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">&quot;Recursos/Día1/Sesion2/Shape/CHL_dam.shp&quot;</span>)</span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="instalación-de-rgee.html#cb6-1" aria-hidden="true" tabindex="-1"></a>shape <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">&quot;Recursos/Día1/Sesion2/Shape/CHL_dam2.shp&quot;</span>)</span>
+<span id="cb6-2"><a href="instalación-de-rgee.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#shape &lt;- read_sf(&quot;Recursos/Día1/Sesion2/Shape/CHL_dam.shp&quot;)</span></span>
 <span id="cb6-3"><a href="instalación-de-rgee.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(shape[<span class="st">&quot;geometry&quot;</span>])</span></code></pre></div>
 <p><img src="Recursos/D%C3%ADa1/Sesion2/0Recursos/CHL_1.png" width="960" /></p>
 <ul>
@@ -570,13 +574,40 @@ luces_nocturnas
 <li><p>Tipo de suelo: <strong>crops-coverfraction</strong> (Porcentaje de cubrimiento cultivos) y <strong>urban-coverfraction</strong> (Porcentaje de cobertura urbana) disponibles en <a href="https://develoGTMs.google.com/earth-engine/datasets/catalog/COGTMNICUS_Landcover_100m_Proba-V-C3_Global#description" class="uri">https://develoGTMs.google.com/earth-engine/datasets/catalog/COGTMNICUS_Landcover_100m_Proba-V-C3_Global#description</a></p></li>
 <li><p>Tiempo de viaje al hospital o clínica más cercana (<strong>accessibility</strong>) y tiempo de viaje al hospital o clínica más cercana utilizando transporte no motorizado (<strong>accessibility_walking_only</strong>) información disponible en <a href="https://develoGTMs.google.com/earth-engine/datasets/catalog/Oxford_MAP_accessibility_to_healthcare_2019" class="uri">https://develoGTMs.google.com/earth-engine/datasets/catalog/Oxford_MAP_accessibility_to_healthcare_2019</a></p></li>
 <li><p>Modificación humana, donde se consideran los asentamiento humano, la agricultura, el transporte, la minería y producción de energía e infraestructura eléctrica. En el siguiente link encuentra la información satelital <a href="https://develoGTMs.google.com/earth-engine/datasets/catalog/CSP_HM_GlobalHumanModification#description" class="uri">https://develoGTMs.google.com/earth-engine/datasets/catalog/CSP_HM_GlobalHumanModification#description</a></p></li>
+<li><p>El conjunto de datos MODIS_061_MOD13A1 proporciona información diaria desde el año 2000 sobre la vegetación global obtenida por satélite. Incluye índices de vegetación, como NDVI y EVI, así como otros parámetros de la vegetación. Los datos son útiles para monitorear la salud de los cultivos, detectar incendios forestales y evaluar la actividad vegetal. (<a href="https://developers.google.com/earth-engine/datasets/catalog/MODIS_061_MOD13A1" class="uri">https://developers.google.com/earth-engine/datasets/catalog/MODIS_061_MOD13A1</a>)</p></li>
+<li><p>El conjunto de datos COPERNICUS_S5P_OFFL_L3_CO ofrece información diaria sobre la concentración de monóxido de carbono en la atmósfera global, utilizando mediciones satelitales. (<a href="https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S5P_OFFL_L3_CO" class="uri">https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S5P_OFFL_L3_CO</a>)</p></li>
+<li><p>El conjunto de datos ECMWF ERA5 LAND HOURLY ofrece información climática global y horaria desde 1981 hasta la actualidad, incluyendo variables como temperatura, humedad, precipitación y presión atmosférica. (<a href="https://developers.google.com/earth-engine/datasets/catalog/ECMWF_ERA5_LAND_HOURLY" class="uri">https://developers.google.com/earth-engine/datasets/catalog/ECMWF_ERA5_LAND_HOURLY</a>)</p></li>
 <li><p><strong>Paso 4</strong> consolidar la información.</p></li>
 </ul>
 <table class="table table-striped lightable-classic" style="margin-left: auto; margin-right: auto; font-family: Arial Narrow; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
-dam
+dam2
+</th>
+<th style="text-align:right;">
+pollution_CO
+</th>
+<th style="text-align:right;">
+vegetation_NDVI
+</th>
+<th style="text-align:right;">
+Elevation
+</th>
+<th style="text-align:right;">
+temperature_ECMWF
+</th>
+<th style="text-align:right;">
+temperature_2metros
+</th>
+<th style="text-align:right;">
+total_precipitation
+</th>
+<th style="text-align:right;">
+precipitation
+</th>
+<th style="text-align:right;">
+population_density
 </th>
 <th style="text-align:right;">
 luces_nocturnas
@@ -601,232 +632,472 @@ accesibilidad_hosp_caminado
 <tbody>
 <tr>
 <td style="text-align:left;">
-05
+10206
 </td>
 <td style="text-align:right;">
-0.2383
+0.0185
 </td>
 <td style="text-align:right;">
-7.5529
+1.2288
 </td>
 <td style="text-align:right;">
-2.1488
+-0.7858
 </td>
 <td style="text-align:right;">
-0.3131
+-0.8500
 </td>
 <td style="text-align:right;">
-101.1488
+-0.4722
 </td>
 <td style="text-align:right;">
-481.0220
+2e-04
+</td>
+<td style="text-align:right;">
+0.1828
+</td>
+<td style="text-align:right;">
+-0.3392
+</td>
+<td style="text-align:right;">
+1.5835
+</td>
+<td style="text-align:right;">
+4.8748
+</td>
+<td style="text-align:right;">
+0.5487
+</td>
+<td style="text-align:right;">
+0.2900
+</td>
+<td style="text-align:right;">
+16.0385
+</td>
+<td style="text-align:right;">
+156.5980
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-12
+11303
 </td>
 <td style="text-align:right;">
-0.0731
+0.0174
 </td>
 <td style="text-align:right;">
-0.0014
+-0.4163
 </td>
 <td style="text-align:right;">
-0.0486
+-0.4489
 </td>
 <td style="text-align:right;">
-0.0419
+-2.0339
 </td>
 <td style="text-align:right;">
-557.4796
+-1.8323
 </td>
 <td style="text-align:right;">
-2410.1264
+5e-04
+</td>
+<td style="text-align:right;">
+0.2140
+</td>
+<td style="text-align:right;">
+-0.3583
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+<td style="text-align:right;">
+0.0001
+</td>
+<td style="text-align:right;">
+0.0054
+</td>
+<td style="text-align:right;">
+0.0019
+</td>
+<td style="text-align:right;">
+645.9318
+</td>
+<td style="text-align:right;">
+2793.6522
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-11
+12401
 </td>
 <td style="text-align:right;">
-0.0348
+0.0173
 </td>
 <td style="text-align:right;">
-0.4897
+-0.8078
 </td>
 <td style="text-align:right;">
-0.0455
+-0.4427
 </td>
 <td style="text-align:right;">
-0.0446
+-2.3846
 </td>
 <td style="text-align:right;">
-472.6701
+-2.2846
 </td>
 <td style="text-align:right;">
-1706.0858
+5e-04
+</td>
+<td style="text-align:right;">
+0.2041
+</td>
+<td style="text-align:right;">
+-0.3581
+</td>
+<td style="text-align:right;">
+0.0283
+</td>
+<td style="text-align:right;">
+0.0001
+</td>
+<td style="text-align:right;">
+0.0163
+</td>
+<td style="text-align:right;">
+0.0246
+</td>
+<td style="text-align:right;">
+949.0350
+</td>
+<td style="text-align:right;">
+3648.0396
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-10
+11201
 </td>
 <td style="text-align:right;">
-0.6748
+0.0175
 </td>
 <td style="text-align:right;">
-6.2825
+0.2222
 </td>
 <td style="text-align:right;">
-0.4273
+-0.3898
 </td>
 <td style="text-align:right;">
-0.1569
+-1.8524
 </td>
 <td style="text-align:right;">
-182.5853
+-1.5951
 </td>
 <td style="text-align:right;">
-530.2074
+4e-04
+</td>
+<td style="text-align:right;">
+0.2279
+</td>
+<td style="text-align:right;">
+-0.3578
+</td>
+<td style="text-align:right;">
+0.0339
+</td>
+<td style="text-align:right;">
+0.3214
+</td>
+<td style="text-align:right;">
+0.0279
+</td>
+<td style="text-align:right;">
+0.0448
+</td>
+<td style="text-align:right;">
+578.2102
+</td>
+<td style="text-align:right;">
+2262.9204
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-15
+04104
 </td>
 <td style="text-align:right;">
-0.4691
+0.0182
 </td>
 <td style="text-align:right;">
-0.3049
+-1.5323
 </td>
 <td style="text-align:right;">
-0.3165
+0.5749
 </td>
 <td style="text-align:right;">
-0.0790
+1.0155
 </td>
 <td style="text-align:right;">
-129.5948
+0.5867
 </td>
 <td style="text-align:right;">
-634.6007
+0e+00
+</td>
+<td style="text-align:right;">
+0.0049
+</td>
+<td style="text-align:right;">
+-0.3576
+</td>
+<td style="text-align:right;">
+0.2235
+</td>
+<td style="text-align:right;">
+0.0252
+</td>
+<td style="text-align:right;">
+0.1720
+</td>
+<td style="text-align:right;">
+0.0503
+</td>
+<td style="text-align:right;">
+125.6955
+</td>
+<td style="text-align:right;">
+566.7355
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-01
+10106
 </td>
 <td style="text-align:right;">
-0.5006
+0.0184
 </td>
 <td style="text-align:right;">
-0.0630
+1.3492
 </td>
 <td style="text-align:right;">
-0.1962
+-0.6919
 </td>
 <td style="text-align:right;">
-0.0576
+-0.6222
 </td>
 <td style="text-align:right;">
-149.3803
+-0.3512
 </td>
 <td style="text-align:right;">
-706.6626
+1e-04
+</td>
+<td style="text-align:right;">
+0.1925
+</td>
+<td style="text-align:right;">
+-0.3521
+</td>
+<td style="text-align:right;">
+0.3966
+</td>
+<td style="text-align:right;">
+19.6214
+</td>
+<td style="text-align:right;">
+0.6373
+</td>
+<td style="text-align:right;">
+0.2463
+</td>
+<td style="text-align:right;">
+23.0948
+</td>
+<td style="text-align:right;">
+188.8576
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-02
+10210
 </td>
 <td style="text-align:right;">
-0.6402
+0.0188
 </td>
 <td style="text-align:right;">
-0.0106
+1.0778
 </td>
 <td style="text-align:right;">
-0.1421
+-0.8551
 </td>
 <td style="text-align:right;">
-0.0655
+-0.6694
 </td>
 <td style="text-align:right;">
-239.0077
+-0.2752
 </td>
 <td style="text-align:right;">
-993.2293
+2e-04
+</td>
+<td style="text-align:right;">
+0.2116
+</td>
+<td style="text-align:right;">
+-0.3319
+</td>
+<td style="text-align:right;">
+0.7925
+</td>
+<td style="text-align:right;">
+3.1501
+</td>
+<td style="text-align:right;">
+1.2079
+</td>
+<td style="text-align:right;">
+0.2739
+</td>
+<td style="text-align:right;">
+25.5057
+</td>
+<td style="text-align:right;">
+335.5846
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-03
+05104
 </td>
 <td style="text-align:right;">
-0.4240
+0.0195
 </td>
 <td style="text-align:right;">
-0.0887
+-0.2344
 </td>
 <td style="text-align:right;">
-0.2277
+-0.5129
 </td>
 <td style="text-align:right;">
-0.0702
+0.4384
 </td>
 <td style="text-align:right;">
-261.4221
+0.4274
 </td>
 <td style="text-align:right;">
-1033.4120
+0e+00
+</td>
+<td style="text-align:right;">
+0.0362
+</td>
+<td style="text-align:right;">
+-0.3331
+</td>
+<td style="text-align:right;">
+0.8754
+</td>
+<td style="text-align:right;">
+8.8853
+</td>
+<td style="text-align:right;">
+0.3956
+</td>
+<td style="text-align:right;">
+0.1541
+</td>
+<td style="text-align:right;">
+2248.7847
+</td>
+<td style="text-align:right;">
+41787.1334
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-04
+05201
 </td>
 <td style="text-align:right;">
-1.2168
+0.0198
 </td>
 <td style="text-align:right;">
-1.2978
+0.2439
 </td>
 <td style="text-align:right;">
-0.4280
+-0.7149
 </td>
 <td style="text-align:right;">
-0.1556
+0.4384
 </td>
 <td style="text-align:right;">
-157.2359
+0.4274
 </td>
 <td style="text-align:right;">
-558.3460
+0e+00
+</td>
+<td style="text-align:right;">
+0.0775
+</td>
+<td style="text-align:right;">
+-0.3397
+</td>
+<td style="text-align:right;">
+1.1711
+</td>
+<td style="text-align:right;">
+1.4880
+</td>
+<td style="text-align:right;">
+9.0650
+</td>
+<td style="text-align:right;">
+0.1849
+</td>
+<td style="text-align:right;">
+12.1542
+</td>
+<td style="text-align:right;">
+108.8363
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-13
+06204
 </td>
 <td style="text-align:right;">
-10.6203
+0.0198
 </td>
 <td style="text-align:right;">
-11.2553
+0.1969
 </td>
 <td style="text-align:right;">
-5.3412
+-0.6051
 </td>
 <td style="text-align:right;">
-0.3404
+0.8792
 </td>
 <td style="text-align:right;">
-108.0762
+0.7226
 </td>
 <td style="text-align:right;">
-288.9854
+0e+00
+</td>
+<td style="text-align:right;">
+0.0391
+</td>
+<td style="text-align:right;">
+-0.3518
+</td>
+<td style="text-align:right;">
+1.1045
+</td>
+<td style="text-align:right;">
+36.8426
+</td>
+<td style="text-align:right;">
+0.5885
+</td>
+<td style="text-align:right;">
+0.3636
+</td>
+<td style="text-align:right;">
+17.3303
+</td>
+<td style="text-align:right;">
+115.3203
 </td>
 </tr>
 </tbody>
@@ -856,6 +1127,22 @@ accesibilidad_hosp_caminado
 <div id="tiempo-promedio-al-hospital-en-vehiculo-no-motorizado" class="section level3 hasAnchor" number="2.3.7">
 <h3><span class="header-section-number">2.3.7</span> Tiempo promedio al hospital en vehiculo no motorizado<a href="instalación-de-rgee.html#tiempo-promedio-al-hospital-en-vehiculo-no-motorizado" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><img src="Recursos/D%C3%ADa1/Sesion2/0Recursos/tiempo_hospital_no_motor.png" width="500px" height="350px" style="display: block; margin: auto;" /><img src="Recursos/D%C3%ADa1/Sesion2/0Recursos/tiempo_hospital_no_motor_CHL.png" width="500px" height="350px" style="display: block; margin: auto;" /></p>
+</div>
+<div id="vegetación-ndvi" class="section level3 hasAnchor" number="2.3.8">
+<h3><span class="header-section-number">2.3.8</span> Vegetación NDVI<a href="instalación-de-rgee.html#vegetación-ndvi" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="Recursos/D%C3%ADa1/Sesion2/0Recursos/NDVI.png" width="500px" height="350px" style="display: block; margin: auto;" /><img src="Recursos/D%C3%ADa1/Sesion2/0Recursos/NDVI_CHL.png" width="500px" height="350px" style="display: block; margin: auto;" /></p>
+</div>
+<div id="polución" class="section level3 hasAnchor" number="2.3.9">
+<h3><span class="header-section-number">2.3.9</span> Polución<a href="instalación-de-rgee.html#polución" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="Recursos/D%C3%ADa1/Sesion2/0Recursos/pollution_CO.png" width="500px" height="350px" style="display: block; margin: auto;" /><img src="Recursos/D%C3%ADa1/Sesion2/0Recursos/pollution_CO_CHL.png" width="500px" height="350px" style="display: block; margin: auto;" /></p>
+</div>
+<div id="temperatura-del-aire-a-2-m-sobre-la-superficie-de-la-tierra-el-mar-o-las-aguas-interiores." class="section level3 hasAnchor" number="2.3.10">
+<h3><span class="header-section-number">2.3.10</span> Temperatura del aire a 2 m sobre la superficie de la tierra, el mar o las aguas interiores.<a href="instalación-de-rgee.html#temperatura-del-aire-a-2-m-sobre-la-superficie-de-la-tierra-el-mar-o-las-aguas-interiores." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="Recursos/D%C3%ADa1/Sesion2/0Recursos/Temperatura_2m.png" width="500px" height="350px" style="display: block; margin: auto;" /><img src="Recursos/D%C3%ADa1/Sesion2/0Recursos/Temperatura_2m_CHL.png" width="500px" height="350px" style="display: block; margin: auto;" /></p>
+</div>
+<div id="temperatura-del-suelo-en-la-capa-4-100-289-cm-del-sistema-integrado-de-pronóstico-ecmwf." class="section level3 hasAnchor" number="2.3.11">
+<h3><span class="header-section-number">2.3.11</span> Temperatura del suelo en la capa 4 (100-289 cm) del Sistema Integrado de Pronóstico ECMWF.<a href="instalación-de-rgee.html#temperatura-del-suelo-en-la-capa-4-100-289-cm-del-sistema-integrado-de-pronóstico-ecmwf." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="Recursos/D%C3%ADa1/Sesion2/0Recursos/Temperatura_level_4%20.png" width="500px" height="350px" style="display: block; margin: auto;" /><img src="Recursos/D%C3%ADa1/Sesion2/0Recursos/temperature_ECMWF_CHL.png" width="500px" height="350px" style="display: block; margin: auto;" /></p>
 </div>
 </div>
             </section>

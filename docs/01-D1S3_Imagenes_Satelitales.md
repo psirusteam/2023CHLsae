@@ -119,8 +119,8 @@ ee$ImageCollection()$filterDate()  # R
 
 
 ```r
-# shape <- read_sf("Recursos/Día1/Sesion2/Shape/CHL_dam2.shp")
-shape <- read_sf("Recursos/Día1/Sesion2/Shape/CHL_dam.shp")
+shape <- read_sf("Recursos/Día1/Sesion2/Shape/CHL_dam2.shp")
+#shape <- read_sf("Recursos/Día1/Sesion2/Shape/CHL_dam.shp")
 plot(shape["geometry"])
 ```
 
@@ -241,13 +241,27 @@ Repetir la rutina para:
 
 - Modificación humana, donde se consideran los asentamiento humano, la agricultura, el transporte, la minería y producción de energía e infraestructura eléctrica. En el siguiente link encuentra la información satelital  <https://develoGTMs.google.com/earth-engine/datasets/catalog/CSP_HM_GlobalHumanModification#description>
 
+- El conjunto de datos MODIS_061_MOD13A1 proporciona información diaria desde el año 2000 sobre la vegetación global obtenida por satélite. Incluye índices de vegetación, como NDVI y EVI, así como otros parámetros de la vegetación. Los datos son útiles para monitorear la salud de los cultivos, detectar incendios forestales y evaluar la actividad vegetal. (<https://developers.google.com/earth-engine/datasets/catalog/MODIS_061_MOD13A1>)
+
+-   El conjunto de datos COPERNICUS_S5P_OFFL_L3_CO ofrece información diaria sobre la concentración de monóxido de carbono en la atmósfera global, utilizando mediciones satelitales. (<https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S5P_OFFL_L3_CO>)
+
+-   El conjunto de datos ECMWF ERA5 LAND HOURLY ofrece información climática global y horaria desde 1981 hasta la actualidad, incluyendo variables como temperatura, humedad, precipitación y presión atmosférica. (<https://developers.google.com/earth-engine/datasets/catalog/ECMWF_ERA5_LAND_HOURLY>)
+
 
 * **Paso 4**  consolidar la información. 
 
 <table class="table table-striped lightable-classic" style="margin-left: auto; margin-right: auto; font-family: Arial Narrow; margin-left: auto; margin-right: auto;">
  <thead>
   <tr>
-   <th style="text-align:left;"> dam </th>
+   <th style="text-align:left;"> dam2 </th>
+   <th style="text-align:right;"> pollution_CO </th>
+   <th style="text-align:right;"> vegetation_NDVI </th>
+   <th style="text-align:right;"> Elevation </th>
+   <th style="text-align:right;"> temperature_ECMWF </th>
+   <th style="text-align:right;"> temperature_2metros </th>
+   <th style="text-align:right;"> total_precipitation </th>
+   <th style="text-align:right;"> precipitation </th>
+   <th style="text-align:right;"> population_density </th>
    <th style="text-align:right;"> luces_nocturnas </th>
    <th style="text-align:right;"> cubrimiento_cultivo </th>
    <th style="text-align:right;"> cubrimiento_urbano </th>
@@ -258,94 +272,174 @@ Repetir la rutina para:
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> 05 </td>
-   <td style="text-align:right;"> 0.2383 </td>
-   <td style="text-align:right;"> 7.5529 </td>
-   <td style="text-align:right;"> 2.1488 </td>
-   <td style="text-align:right;"> 0.3131 </td>
-   <td style="text-align:right;"> 101.1488 </td>
-   <td style="text-align:right;"> 481.0220 </td>
+   <td style="text-align:left;"> 10206 </td>
+   <td style="text-align:right;"> 0.0185 </td>
+   <td style="text-align:right;"> 1.2288 </td>
+   <td style="text-align:right;"> -0.7858 </td>
+   <td style="text-align:right;"> -0.8500 </td>
+   <td style="text-align:right;"> -0.4722 </td>
+   <td style="text-align:right;"> 2e-04 </td>
+   <td style="text-align:right;"> 0.1828 </td>
+   <td style="text-align:right;"> -0.3392 </td>
+   <td style="text-align:right;"> 1.5835 </td>
+   <td style="text-align:right;"> 4.8748 </td>
+   <td style="text-align:right;"> 0.5487 </td>
+   <td style="text-align:right;"> 0.2900 </td>
+   <td style="text-align:right;"> 16.0385 </td>
+   <td style="text-align:right;"> 156.5980 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 12 </td>
-   <td style="text-align:right;"> 0.0731 </td>
-   <td style="text-align:right;"> 0.0014 </td>
-   <td style="text-align:right;"> 0.0486 </td>
-   <td style="text-align:right;"> 0.0419 </td>
-   <td style="text-align:right;"> 557.4796 </td>
-   <td style="text-align:right;"> 2410.1264 </td>
+   <td style="text-align:left;"> 11303 </td>
+   <td style="text-align:right;"> 0.0174 </td>
+   <td style="text-align:right;"> -0.4163 </td>
+   <td style="text-align:right;"> -0.4489 </td>
+   <td style="text-align:right;"> -2.0339 </td>
+   <td style="text-align:right;"> -1.8323 </td>
+   <td style="text-align:right;"> 5e-04 </td>
+   <td style="text-align:right;"> 0.2140 </td>
+   <td style="text-align:right;"> -0.3583 </td>
+   <td style="text-align:right;"> 0.0000 </td>
+   <td style="text-align:right;"> 0.0001 </td>
+   <td style="text-align:right;"> 0.0054 </td>
+   <td style="text-align:right;"> 0.0019 </td>
+   <td style="text-align:right;"> 645.9318 </td>
+   <td style="text-align:right;"> 2793.6522 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 11 </td>
-   <td style="text-align:right;"> 0.0348 </td>
-   <td style="text-align:right;"> 0.4897 </td>
-   <td style="text-align:right;"> 0.0455 </td>
-   <td style="text-align:right;"> 0.0446 </td>
-   <td style="text-align:right;"> 472.6701 </td>
-   <td style="text-align:right;"> 1706.0858 </td>
+   <td style="text-align:left;"> 12401 </td>
+   <td style="text-align:right;"> 0.0173 </td>
+   <td style="text-align:right;"> -0.8078 </td>
+   <td style="text-align:right;"> -0.4427 </td>
+   <td style="text-align:right;"> -2.3846 </td>
+   <td style="text-align:right;"> -2.2846 </td>
+   <td style="text-align:right;"> 5e-04 </td>
+   <td style="text-align:right;"> 0.2041 </td>
+   <td style="text-align:right;"> -0.3581 </td>
+   <td style="text-align:right;"> 0.0283 </td>
+   <td style="text-align:right;"> 0.0001 </td>
+   <td style="text-align:right;"> 0.0163 </td>
+   <td style="text-align:right;"> 0.0246 </td>
+   <td style="text-align:right;"> 949.0350 </td>
+   <td style="text-align:right;"> 3648.0396 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 10 </td>
-   <td style="text-align:right;"> 0.6748 </td>
-   <td style="text-align:right;"> 6.2825 </td>
-   <td style="text-align:right;"> 0.4273 </td>
-   <td style="text-align:right;"> 0.1569 </td>
-   <td style="text-align:right;"> 182.5853 </td>
-   <td style="text-align:right;"> 530.2074 </td>
+   <td style="text-align:left;"> 11201 </td>
+   <td style="text-align:right;"> 0.0175 </td>
+   <td style="text-align:right;"> 0.2222 </td>
+   <td style="text-align:right;"> -0.3898 </td>
+   <td style="text-align:right;"> -1.8524 </td>
+   <td style="text-align:right;"> -1.5951 </td>
+   <td style="text-align:right;"> 4e-04 </td>
+   <td style="text-align:right;"> 0.2279 </td>
+   <td style="text-align:right;"> -0.3578 </td>
+   <td style="text-align:right;"> 0.0339 </td>
+   <td style="text-align:right;"> 0.3214 </td>
+   <td style="text-align:right;"> 0.0279 </td>
+   <td style="text-align:right;"> 0.0448 </td>
+   <td style="text-align:right;"> 578.2102 </td>
+   <td style="text-align:right;"> 2262.9204 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 15 </td>
-   <td style="text-align:right;"> 0.4691 </td>
-   <td style="text-align:right;"> 0.3049 </td>
-   <td style="text-align:right;"> 0.3165 </td>
-   <td style="text-align:right;"> 0.0790 </td>
-   <td style="text-align:right;"> 129.5948 </td>
-   <td style="text-align:right;"> 634.6007 </td>
+   <td style="text-align:left;"> 04104 </td>
+   <td style="text-align:right;"> 0.0182 </td>
+   <td style="text-align:right;"> -1.5323 </td>
+   <td style="text-align:right;"> 0.5749 </td>
+   <td style="text-align:right;"> 1.0155 </td>
+   <td style="text-align:right;"> 0.5867 </td>
+   <td style="text-align:right;"> 0e+00 </td>
+   <td style="text-align:right;"> 0.0049 </td>
+   <td style="text-align:right;"> -0.3576 </td>
+   <td style="text-align:right;"> 0.2235 </td>
+   <td style="text-align:right;"> 0.0252 </td>
+   <td style="text-align:right;"> 0.1720 </td>
+   <td style="text-align:right;"> 0.0503 </td>
+   <td style="text-align:right;"> 125.6955 </td>
+   <td style="text-align:right;"> 566.7355 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 01 </td>
-   <td style="text-align:right;"> 0.5006 </td>
-   <td style="text-align:right;"> 0.0630 </td>
-   <td style="text-align:right;"> 0.1962 </td>
-   <td style="text-align:right;"> 0.0576 </td>
-   <td style="text-align:right;"> 149.3803 </td>
-   <td style="text-align:right;"> 706.6626 </td>
+   <td style="text-align:left;"> 10106 </td>
+   <td style="text-align:right;"> 0.0184 </td>
+   <td style="text-align:right;"> 1.3492 </td>
+   <td style="text-align:right;"> -0.6919 </td>
+   <td style="text-align:right;"> -0.6222 </td>
+   <td style="text-align:right;"> -0.3512 </td>
+   <td style="text-align:right;"> 1e-04 </td>
+   <td style="text-align:right;"> 0.1925 </td>
+   <td style="text-align:right;"> -0.3521 </td>
+   <td style="text-align:right;"> 0.3966 </td>
+   <td style="text-align:right;"> 19.6214 </td>
+   <td style="text-align:right;"> 0.6373 </td>
+   <td style="text-align:right;"> 0.2463 </td>
+   <td style="text-align:right;"> 23.0948 </td>
+   <td style="text-align:right;"> 188.8576 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 02 </td>
-   <td style="text-align:right;"> 0.6402 </td>
-   <td style="text-align:right;"> 0.0106 </td>
-   <td style="text-align:right;"> 0.1421 </td>
-   <td style="text-align:right;"> 0.0655 </td>
-   <td style="text-align:right;"> 239.0077 </td>
-   <td style="text-align:right;"> 993.2293 </td>
+   <td style="text-align:left;"> 10210 </td>
+   <td style="text-align:right;"> 0.0188 </td>
+   <td style="text-align:right;"> 1.0778 </td>
+   <td style="text-align:right;"> -0.8551 </td>
+   <td style="text-align:right;"> -0.6694 </td>
+   <td style="text-align:right;"> -0.2752 </td>
+   <td style="text-align:right;"> 2e-04 </td>
+   <td style="text-align:right;"> 0.2116 </td>
+   <td style="text-align:right;"> -0.3319 </td>
+   <td style="text-align:right;"> 0.7925 </td>
+   <td style="text-align:right;"> 3.1501 </td>
+   <td style="text-align:right;"> 1.2079 </td>
+   <td style="text-align:right;"> 0.2739 </td>
+   <td style="text-align:right;"> 25.5057 </td>
+   <td style="text-align:right;"> 335.5846 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 03 </td>
-   <td style="text-align:right;"> 0.4240 </td>
-   <td style="text-align:right;"> 0.0887 </td>
-   <td style="text-align:right;"> 0.2277 </td>
-   <td style="text-align:right;"> 0.0702 </td>
-   <td style="text-align:right;"> 261.4221 </td>
-   <td style="text-align:right;"> 1033.4120 </td>
+   <td style="text-align:left;"> 05104 </td>
+   <td style="text-align:right;"> 0.0195 </td>
+   <td style="text-align:right;"> -0.2344 </td>
+   <td style="text-align:right;"> -0.5129 </td>
+   <td style="text-align:right;"> 0.4384 </td>
+   <td style="text-align:right;"> 0.4274 </td>
+   <td style="text-align:right;"> 0e+00 </td>
+   <td style="text-align:right;"> 0.0362 </td>
+   <td style="text-align:right;"> -0.3331 </td>
+   <td style="text-align:right;"> 0.8754 </td>
+   <td style="text-align:right;"> 8.8853 </td>
+   <td style="text-align:right;"> 0.3956 </td>
+   <td style="text-align:right;"> 0.1541 </td>
+   <td style="text-align:right;"> 2248.7847 </td>
+   <td style="text-align:right;"> 41787.1334 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 04 </td>
-   <td style="text-align:right;"> 1.2168 </td>
-   <td style="text-align:right;"> 1.2978 </td>
-   <td style="text-align:right;"> 0.4280 </td>
-   <td style="text-align:right;"> 0.1556 </td>
-   <td style="text-align:right;"> 157.2359 </td>
-   <td style="text-align:right;"> 558.3460 </td>
+   <td style="text-align:left;"> 05201 </td>
+   <td style="text-align:right;"> 0.0198 </td>
+   <td style="text-align:right;"> 0.2439 </td>
+   <td style="text-align:right;"> -0.7149 </td>
+   <td style="text-align:right;"> 0.4384 </td>
+   <td style="text-align:right;"> 0.4274 </td>
+   <td style="text-align:right;"> 0e+00 </td>
+   <td style="text-align:right;"> 0.0775 </td>
+   <td style="text-align:right;"> -0.3397 </td>
+   <td style="text-align:right;"> 1.1711 </td>
+   <td style="text-align:right;"> 1.4880 </td>
+   <td style="text-align:right;"> 9.0650 </td>
+   <td style="text-align:right;"> 0.1849 </td>
+   <td style="text-align:right;"> 12.1542 </td>
+   <td style="text-align:right;"> 108.8363 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 13 </td>
-   <td style="text-align:right;"> 10.6203 </td>
-   <td style="text-align:right;"> 11.2553 </td>
-   <td style="text-align:right;"> 5.3412 </td>
-   <td style="text-align:right;"> 0.3404 </td>
-   <td style="text-align:right;"> 108.0762 </td>
-   <td style="text-align:right;"> 288.9854 </td>
+   <td style="text-align:left;"> 06204 </td>
+   <td style="text-align:right;"> 0.0198 </td>
+   <td style="text-align:right;"> 0.1969 </td>
+   <td style="text-align:right;"> -0.6051 </td>
+   <td style="text-align:right;"> 0.8792 </td>
+   <td style="text-align:right;"> 0.7226 </td>
+   <td style="text-align:right;"> 0e+00 </td>
+   <td style="text-align:right;"> 0.0391 </td>
+   <td style="text-align:right;"> -0.3518 </td>
+   <td style="text-align:right;"> 1.1045 </td>
+   <td style="text-align:right;"> 36.8426 </td>
+   <td style="text-align:right;"> 0.5885 </td>
+   <td style="text-align:right;"> 0.3636 </td>
+   <td style="text-align:right;"> 17.3303 </td>
+   <td style="text-align:right;"> 115.3203 </td>
   </tr>
 </tbody>
 </table>
@@ -377,11 +471,27 @@ Los resultados se muestran en los siguientes mapas
 
 <img src="Recursos/Día1/Sesion2/0Recursos/tiempo_hospital.png" width="500px" height="350px" style="display: block; margin: auto;" /><img src="Recursos/Día1/Sesion2/0Recursos/tiempo_hospital_CHL.png" width="500px" height="350px" style="display: block; margin: auto;" />
 
-
-
 ### Tiempo promedio al hospital en vehiculo no motorizado
 
 <img src="Recursos/Día1/Sesion2/0Recursos/tiempo_hospital_no_motor.png" width="500px" height="350px" style="display: block; margin: auto;" /><img src="Recursos/Día1/Sesion2/0Recursos/tiempo_hospital_no_motor_CHL.png" width="500px" height="350px" style="display: block; margin: auto;" />
+
+### Vegetación NDVI 
+
+<img src="Recursos/Día1/Sesion2/0Recursos/NDVI.png" width="500px" height="350px" style="display: block; margin: auto;" /><img src="Recursos/Día1/Sesion2/0Recursos/NDVI_CHL.png" width="500px" height="350px" style="display: block; margin: auto;" />
+
+### Polución 
+
+<img src="Recursos/Día1/Sesion2/0Recursos/pollution_CO.png" width="500px" height="350px" style="display: block; margin: auto;" /><img src="Recursos/Día1/Sesion2/0Recursos/pollution_CO_CHL.png" width="500px" height="350px" style="display: block; margin: auto;" />
+
+### Temperatura del aire a 2 m sobre la superficie de la tierra, el mar o las aguas interiores. 
+
+<img src="Recursos/Día1/Sesion2/0Recursos/Temperatura_2m.png" width="500px" height="350px" style="display: block; margin: auto;" /><img src="Recursos/Día1/Sesion2/0Recursos/Temperatura_2m_CHL.png" width="500px" height="350px" style="display: block; margin: auto;" />
+
+### Temperatura del suelo en la capa 4 (100-289 cm) del Sistema Integrado de Pronóstico ECMWF.
+
+<img src="Recursos/Día1/Sesion2/0Recursos/Temperatura_level_4 .png" width="500px" height="350px" style="display: block; margin: auto;" /><img src="Recursos/Día1/Sesion2/0Recursos/temperature_ECMWF_CHL.png" width="500px" height="350px" style="display: block; margin: auto;" />
+
+
 
 ## Censos de población y vivienda
 

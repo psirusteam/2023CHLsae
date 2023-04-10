@@ -19,6 +19,10 @@ cubrimiento-urbanos
 modificación-humana
 tiempo-promedio-al-hospital
 tiempo-promedio-al-hospital-en-vehiculo-no-motorizado
+vegetación-ndvi
+polución
+temperatura-del-aire-a-2-m-sobre-la-superficie-de-la-tierra-el-mar-o-las-aguas-interiores.
+temperatura-del-suelo-en-la-capa-4-100-289-cm-del-sistema-integrado-de-pronóstico-ecmwf.
 censos-de-población-y-vivienda
 mapas-de-las-variables-con-información-censal.
 día-1---sesión-3--fundamentos-de-la-inferencia-bayesiana-en-r-y-stan
