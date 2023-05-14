@@ -27,7 +27,7 @@ transformed parameters {
 model {
   to_vector(beta) ~ normal(0, 10000);
    u ~ normal(0, sigma_u);
-  sigma2_u ~ cauchy(0, 1000);
+    sigma2_u ~ inv_gamma(0.0001, 0.0001);
   for(ii in 1:N1){
   y_effect[ii] ~ binomial(n_effec[ii], theta[ii]);  // likelihood
 }
