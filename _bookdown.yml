@@ -1,0 +1,49 @@
+book_filename: "Desagregación de datos en encuestas de hogares: metodologías bayesianas para modelos de estimación en áreas pequeñas"
+delete_merged_file: true
+output_dir: "docs"
+new_session: yes
+
+rmd_files: [
+  "index.Rmd",
+  "01-D1S3_Imagenes_Satelitales.qmd",
+  "02-D1S4_Fundamentos_Bayesiana.qmd",
+
+  "03-D2S1_FGV.qmd",
+  "04-D2S2_Fay_Herriot_normal.qmd",
+  #"04-D2S2_Fay_Herriot_normal_con_todas_cov.qmd",
+  "05-D2S3_Fay_Herriot_arcosin.qmd" ,
+  "06-D2S4_Fay_Herriot_beta.qmd",
+  "07-D2S4-Fay_Herriot_binomial.qmd",
+  
+
+  "08-D3S1_Modelo_unidad_ingresos.qmd",
+  "09-D3S2_Modelo_unidad_Estimacion_pobreza_a_partir_ingreso.qmd",
+  "10-D3S3_Modelo_unidad_pobreza.qmd",
+  "11-D3S4_Modelo_unidad_IPM.qmd",
+
+  "12-D4S1_Mercado_del_trabajo.qmd",
+  "13-FIES_FAO.qmd"
+]
+
+language:
+  label:
+    fig: 'Figura '
+    tab: 'Tabla '
+    eq: 'Equación '
+    thm: 'Teorema '
+    lem: 'Lema '
+    cor: 'Corolario '
+    prp: 'Resultado '
+    cnj: 'Conjectura '
+    def: 'Definición '
+    exm: 'Ejemplo '
+    exr: 'Ejercicio '
+    hyp: 'Hipótesis '
+    proof: 'Prueba. '
+    remark: 'Comentario. '
+    solution: 'Solución. '
+  ui:
+    edit: Edit
+    chapter_name: 'Capítulo '
+    appendix_name: 'Apéndice '
+    refs_names: 'Referencias '

@@ -22,6 +22,7 @@ A continuación listamos los software necesario para el desarrollo adecuado del 
 3.  Descargar e instalar **Rstudio** (<https://posit.co/download/rstudio-desktop/>)
 4.  Descargar e instalar **Quarto** (<https://quarto.org/docs/get-started/>)
 5.  Descargar e instalar **Anaconda** (<https://www.anaconda.com/products/individual>)
+6.  Descargar e instalar **Google Cloud** (<https://cloud.google.com/sdk/docs/install?hl=es-419>)
 
 ## Paso 2: Instalar las siguientes librerías en *R.*
 
@@ -60,12 +61,12 @@ install.packages("printr")
 install.packages("remotes")
 install.packages("latex2exp")
 install.packages("gtsummary")
-install.packages("rstan")
+install.packages("rstan", repos=c("https://mc-stan.org/r-packages/", getOption("repos")))
 ```
 
 ## Paso 3: Validar instalación, si `rstan` quedo instalado de forma correcta.
 
-```{r,eval=TRUE}
+```{r,eval=FALSE}
 library(rstan)
 library(posterior)
 library(bayesplot)
@@ -87,3 +88,27 @@ summary(fit2)$summary
 
 ```
 
+## Paso 4: Crear cuenta en Google Earth Engine:  <https://developers.google.com/earth-engine/datasets/>
+
+Después de crear la cuenta, debe realizar las siguientes acciones para validar que todo este correcto: 
+
+  1.    Ingrese al link (<https://developers.google.com/earth-engine/datasets/catalog/WHRC_biomass_tropical>). 
+  
+  2.  Desplácese hasta el final de la pagina e identifique el código que se muestra en la imagen. 
+```{r}
+knitr::include_graphics("Validar cuenta.png")
+```
+
+  3.    De clic en **Open in Code Editor**, esto abrirá una nueva pestaña en el navegador, siga las instrucciones hasta obtener la siguiente imagen. 
+  
+```{r}
+knitr::include_graphics("Validar cuenta2.png")
+```  
+
+  4.   En la pestaña anterior, identifique el botón **Run**, presiona para obtener la imagen. 
+  
+```{r}
+knitr::include_graphics("Validar cuenta3.png")
+```  
+  
+**Nota**: Repetir el proceso hasta obterner el resultado indicado.   
