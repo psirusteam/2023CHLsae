@@ -1,0 +1,612 @@
+
+# Día 3 - Sesión 1- Modelo de unidad para la estimación del ingreso medio
+
+```{r setup, include=FALSE, message=FALSE, error=FALSE, warning=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  cache = TRUE
+)
+library(printr)
+library(kableExtra)
+library(tidyverse)
+tba <- function(dat, cap = NA){
+  kable(dat,
+      format = "html", digits =  4,
+      caption = cap) %>% 
+     kable_styling(bootstrap_options = "striped", full_width = F)%>%
+         kable_classic(full_width = F, html_font = "Arial Narrow")
+}
+```
+
+Uno de los primeros problemas a los que debemos enfrentarnos es la estimación del ingreso medio, la cual en una variable no simétrica que toma valores en los positivos. Sin embargo, empleando los métodos Bayesiano es posible obtener estimaciones de esta sin realizar una transformación 
+
+```{r, echo=FALSE, fig.cap="Distribución del ingreso medio por dam2"}
+library(ggplot2)
+library(dplyr)
+encuesta_agregada <- readRDS("Data/encuesta2017CHL.Rds") %>% 
+  group_by(
+     dam =  haven::as_factor(dam_ee ,levels = "values"),
+    dam2 =  haven::as_factor(comuna,levels = "values"),
+    dam = str_pad(dam, width = 2, pad = "0"),
+    dam2 = str_pad(dam2, width = 5, pad = "0")) %>% 
+  summarise(ingreso = (mean(ingcorte)), .groups = "drop")
+
+ggplot(data = encuesta_agregada, aes(x = ingreso)) +
+  geom_density() + labs(y = "") +
+  theme_bw(base_size = 20) +
+  scale_x_continuous(labels = scales::dollar_format()) +
+  theme(axis.text.y = element_blank(),
+        axis.ticks = element_blank())
+
+```
+
+
+#### Obejtivo {-}
+
+Estimar el ingreso medio de las personas, es decir, 
+$$
+\bar{Y}_d = \frac{\sum_{U_d}y_{di}}{N_d}
+$$
+donde $y_{di}$ es el ingreso de cada personas
+
+Note que, 
+
+$$
+\begin{equation*}
+\bar{Y}_d =  \frac{\sum_{s_d}y_{di} + \sum_{s^c_d}y_{di}}{N_d} 
+\end{equation*}
+$$
+
+Ahora, el estimador de $\bar{Y}$ esta dado por: 
+
+$$
+\hat{\bar{Y}}_d = \frac{\sum_{s_d}y_{di} + \sum_{s^c_d}\hat{y}_{di}}{N_d}
+$$
+
+donde
+
+$$\hat{y}_{di}=E_{\mathscr{M}}\left(y_{di}\mid\boldsymbol{x}_{d},\boldsymbol{\beta}\right)$$,
+
+donde $\mathscr{M}$ hace referencia a la medida de probabilidad inducida por el modelamiento. 
+De esta forma se tiene que, 
+
+$$
+\hat{\bar{Y}}_d = \frac{\sum_{U_{d}}\hat{y}_{di}}{N_d}
+$$
+
+
+## Modelo bayesiano.
+
+Para realizar la predicción del ingreso medio en dam2 no observadas se asume que: 
+
+$$
+\begin{eqnarray*}
+Y_{di} &\sim & N\left(\mu_{di},\sigma_e^{2}\right)\\
+\mu_{di}&=&\boldsymbol{x}_{di}^{T}\boldsymbol{\beta}+u_{d}+e_{di} 
+\end{eqnarray*}
+$$
+
+
+
+
+Donde $Y_{di}$ representa el ingreso medio de la $i-ésima$ persona en el $d-ésimo$ domino, $\boldsymbol{X}$ es la información disponible para la $i-ésima$ persona del $d-ésimo$ domino, $\boldsymbol{\beta}$ es el vector de parámetros $u_d$ es el efecto introducido por el $d-ésimo$ dominio y $e_{di}$ es el error de estimación para la $i-ésima$ personas del $d-ésimo$ dominio.
+
+Note, que $u_{d}\sim N\left(0,\sigma^2_{u}\right)$ y $e_{di}\sim N\left(0,\sigma_{e}^{2}\right)$.
+
+Para este caso se asumen las distribuciones previas
+
+$$
+\begin{eqnarray*}
+\beta_k & \sim   & N(0, 1000)\\
+\sigma^2_y &\sim & IG(0.0001,0.0001)
+\end{eqnarray*}
+$$ las cuales se toman no informativas.
+
+A continuación se muestra el proceso realizado para la obtención de la predicción del ingreso medio en dominios no observados.
+
+## Proceso de estimación en `R`
+
+Para desarrollar la metodología se hace uso de las siguientes librerías.
+
+```{r}
+# Interprete de STAN en R
+library(rstan)
+library(rstanarm)
+# Manejo de bases de datos.
+library(tidyverse)
+# Gráficas de los modelos. 
+library(bayesplot)
+library(patchwork)
+# Organizar la presentación de las tablas
+library(kableExtra)
+library(printr)
+```
+
+Un conjunto de funciones desarrolladas para realizar de forma simplificada los procesos están consignadas en la siguiente rutina.
+
+```{r}
+source("0Recursos/funciones_mrp.R")
+```
+
+Entre las funciones incluidas en el archivo encuentra
+
+-   *plot_interaction*: Esta crea un diagrama de lineas donde se estudia la interacción entre las variables, en el caso de presentar un traslape de las lineas se recomienda incluir el interacción en el modelo.
+
+-   *Plot_Compare* Puesto que es necesario realizar una homologar la información del censo y la encuesta es conveniente llevar a cabo una validación de las variables que han sido homologadas, por tanto, se espera que las proporciones resultantes del censo y la encuesta estén cercanas entre sí.
+
+-   *Aux_Agregado*: Esta es función permite obtener estimaciones a diferentes niveles de agregación, toma mucha relevancia cuando se realiza un proceso repetitivo.
+
+**Las funciones están diseñada específicamente  para este  proceso**
+
+### Encuesta de hogares
+
+Los datos empleados en esta ocasión corresponden a la ultima encuesta de hogares, la cual ha sido estandarizada por *CEPAL* y se encuentra disponible en *BADEHOG*
+
+```{r}
+encuesta <- readRDS("Data/encuesta2017CHL.Rds")
+
+encuesta_mrp <- encuesta %>% 
+  transmute(
+    dam =  haven::as_factor(dam_ee ,levels = "values"),
+    dam2 =  haven::as_factor(comuna,levels = "values"),
+    dam = str_pad(dam, width = 2, pad = "0"),
+    dam2 = str_pad(dam2, width = 5, pad = "0"), 
+    upm = `_upm`,
+    estrato = `_estrato`,
+  ingreso = ingcorte,lp,li,
+    logingreso = log(ingcorte + 1),
+  area = case_when(area_ee == 1 ~ "1", TRUE ~ "0"),
+  sexo = as.character(sexo),
+
+  anoest = case_when(
+    edad < 6 | is.na(anoest)   ~ "98"  , #No aplica
+    anoest == 99 ~ "99", #NS/NR
+    anoest == 0  ~ "1", # Sin educacion
+    anoest %in% c(1:6) ~ "2",       # 1 - 6
+    anoest %in% c(7:12) ~ "3",      # 7 - 12
+    anoest > 12 ~ "4",      # mas de 12
+    TRUE ~ "Error"  ),
+
+  edad = case_when(
+    edad < 15 ~ "1",
+    edad < 30 ~ "2",
+    edad < 45 ~ "3",
+    edad < 65 ~ "4",
+    TRUE ~ "5"),
+
+  etnia = case_when(
+    etnia_ee == 1 ~ "1", # Indigena
+    etnia_ee == 2 ~ "2",
+     TRUE ~ "3"), # Otro
+ fep = `_feh`
+) 
+
+tba(encuesta_mrp %>% head(10)) 
+```
+
+La base de datos de la encuesta tiene la siguientes columnas: 
+
+-   *dam*: Corresponde al código asignado a la división administrativa mayor del país.
+
+-   *dam2*: Corresponde al código asignado a la segunda división administrativa del país.
+
+-   *lp* y *li* lineas de pobreza y pobreza extrema definidas por CEPAL. 
+
+-   *área* división geográfica (Urbano y Rural). 
+
+-   *sexo* Hombre y Mujer. 
+
+-   *etnia* En estas variable se definen tres grupos:  afrodescendientes, indígenas y Otros. 
+
+-   *anoest* Años de escolaridad  
+
+-   *edad* Rangos de edad 
+
+-   *fep* Factor de expansión por persona
+
+
+## Validación de encuesta frente al censo.
+
+```{r, eval=FALSE}
+library(survey)
+library(srvyr)
+library(patchwork)
+censo_dam2 <- readRDS("Data/censo_dam2.rds")
+
+p1_dam <- Plot_Compare(dat_encuesta = encuesta_mrp,
+             dat_censo = censo_dam2,
+             by = "dam")
+p1_anotes <- Plot_Compare(dat_encuesta = encuesta_mrp,
+             dat_censo = censo_dam2,
+             by = "anoest")
+p1_edad <- Plot_Compare(dat_encuesta = encuesta_mrp,
+             dat_censo = censo_dam2,
+             by = "edad")
+p1 <- (p1_dam)/(p1_anotes + p1_edad)
+
+# ggsave(plot = p1,
+#        filename = "0Recursos/Bernoulli/plot_comp.png",
+#        scale = 2)
+
+```
+
+```{r echo=FALSE, out.width = "500px", out.height="250px",fig.align='center'}
+knitr::include_graphics("0Recursos/Bernoulli/plot_comp.png")
+```
+
+Evaluando interacciones en la encuesta 
+
+```{r}
+encuesta_mrp$pobreza <- encuesta_mrp$logingreso
+(plot_interaction(dat_encuesta = encuesta_mrp, by = "sexo",by2 = "area")/
+plot_interaction(dat_encuesta = encuesta_mrp, by = "sexo",by2 = "anoest"))
+```
+
+
+```{r}
+(plot_interaction(dat_encuesta = encuesta_mrp, by = "sexo",by2 = "edad")/
+plot_interaction(dat_encuesta = encuesta_mrp, by = "anoest",by2 = "edad")
+)
+```
+
+
+
+Ahora, inspeccionamos el comportamiento de la variable de interés: 
+
+```{r, fig.cap= "Distribuición del ingreso de las personas encuestadas"}
+
+media <- mean(encuesta_mrp$logingreso)
+Sd <- sd(encuesta_mrp$logingreso)
+
+ggplot(data = encuesta_mrp, aes(x = logingreso)) +
+  geom_density(size =2, color = "blue") + labs(y = "") +
+  stat_function(fun = dnorm, 
+                args = list(mean = media, sd = Sd),
+                size =2) +
+  theme_bw(base_size = 20) +
+  theme(axis.text.y = element_blank(),
+        axis.ticks = element_blank())
+```
+
+
+La información auxiliar disponible ha sido extraída del censo  e imágenes satelitales
+
+```{r}
+statelevel_predictors_df <-
+  readRDS("Data/statelevel_predictors_df_dam2.rds") %>% 
+    mutate_at(.vars = c("luces_nocturnas",
+                      "cubrimiento_cultivo",
+                      "cubrimiento_urbano",
+                      "modificacion_humana",
+                      "accesibilidad_hospitales",
+                      "accesibilidad_hosp_caminado"),
+            function(x) as.numeric(scale(x)))
+tba(statelevel_predictors_df  %>%  head(10))
+```
+
+
+### Niveles de agregación para colapsar la encuesta
+
+Después de realizar una investigación en la literatura especializada y realizar estudios de simulación fue posible evidenciar que las predicciones obtenidas con la muestra sin agregar y la muestra agregada convergen a la media del dominio. Sin embargo, el realizar estas estimaciones con la muestra agregada reduce el tiempo computacional necesario para la convergencia de las cadenas MCMC.  Con esto en mente se se realiza la identificación de las variables por las cuales se agregará la encuesta.
+
+```{r}
+byAgrega <- c("dam2",  "area", 
+              "sexo",   "anoest", "edad",   "etnia" )
+ 
+```
+
+### Creando base con la encuesta agregada
+
+El resultado de agregar la base de dato se muestra a continuación:
+
+```{r}
+encuesta_df_agg <-
+  encuesta_mrp %>%                    # Encuesta  
+  group_by_at(all_of(byAgrega)) %>%   # Agrupar por el listado de variables
+  summarise(n = n(),                  # Número de observaciones
+  # Ingreso medio de las personas con características similares.           
+             logingreso = mean(logingreso), 
+            .groups = "drop") %>%     
+  arrange(desc(n))                    # Ordenar la base.
+```
+
+La tabla obtenida es la siguiente: 
+
+```{r, echo=FALSE}
+tba(encuesta_df_agg %>% head(10))
+```
+El paso a seguir es unificar las tablas creadas. 
+
+```{r}
+encuesta_df_agg <- inner_join(encuesta_df_agg, statelevel_predictors_df)
+```
+
+### Definiendo el modelo multinivel.
+
+Después de haber ordenado la encuesta, podemos pasar a la definición del modelo.
+
+```{r, eval = FALSE}
+options(MC.cores=parallel::detectCores()) # Permite procesar en paralelo. 
+fit <- stan_lmer(
+  logingreso ~                               # Ingreso medio (Y)
+    (1 | dam2) +                          # Efecto aleatorio (ud)
+    edad +                               # Efecto fijo (Variables X)
+    sexo  + 
+    tasa_desocupacion +
+   luces_nocturnas +
+   cubrimiento_cultivo +
+   cubrimiento_urbano +
+   modificacion_humana  ,
+                  weights = n,            # Número de observaciones. 
+                  data = encuesta_df_agg, # Encuesta agregada 
+                  verbose = TRUE,         # Muestre el avance del proceso
+                  chains = 4,             # Número de cadenas.
+                 iter = 1000              # Número de realizaciones de la cadena
+                )
+saveRDS(fit, file = "Data/fit_ingresos.rds")
+```
+
+Después de esperar un tiempo prudente se obtiene el siguiente modelo.
+
+```{r}
+fit <- readRDS("Data/fit_ingresos.rds")
+tba(coef(fit)$dam2 %>% head(10))
+```
+
+Validación del modelo 
+
+
+```{r,eval=FALSE}
+library(posterior)
+library(bayesplot)
+encuesta_mrp2 <- inner_join(encuesta_mrp, statelevel_predictors_df)
+y_pred_B <- posterior_epred(fit, newdata = encuesta_mrp2)
+rowsrandom <- sample(nrow(y_pred_B), 100)
+y_pred2 <- y_pred_B[rowsrandom, ]
+
+ppc_dens_overlay(y = as.numeric(encuesta_mrp2$logingreso),
+                 y_pred2)/
+ppc_dens_overlay(y = exp(as.numeric(encuesta_mrp2$logingreso))-1,
+                 (exp(y_pred2)-1)) + xlim(0, 1500000) 
+
+```
+
+```{r echo=FALSE, out.width = "500px", out.height="250px",fig.align='center'}
+knitr::include_graphics("0Recursos/Ingreso.PNG")
+```
+
+
+```{r, eval=FALSE}
+(mcmc_dens_chains(fit,pars = "sigma") +
+    mcmc_areas(fit,pars = "sigma"))/
+  mcmc_trace(fit,pars = "sigma")
+```
+
+```{r echo=FALSE, out.width = "500px", out.height="250px",fig.align='center'}
+knitr::include_graphics("0Recursos/Ingreso1.PNG")
+```
+
+
+```{r, eval=FALSE}
+var_names <- c(
+  "edad2",
+  "edad3",
+  "edad4",
+  "edad5",
+  "sexo2",
+  "luces_nocturnas",
+  "cubrimiento_urbano",
+  "cubrimiento_cultivo",
+  "modificacion_humana"
+)
+mcmc_areas(fit, pars = var_names)
+```
+
+
+```{r echo=FALSE, out.width = "500px", out.height="250px",fig.align='center'}
+knitr::include_graphics("0Recursos/Ingreso2.PNG")
+```
+
+```{r, eval=FALSE}
+mcmc_trace(fit,pars = var_names)
+```
+
+```{r echo=FALSE, out.width = "500px", out.height="250px",fig.align='center'}
+knitr::include_graphics("0Recursos/Ingreso3.PNG")
+```
+## Proceso de estimación y predicción
+
+Obtener el modelo es solo un paso más, ahora se debe realizar la predicción en el censo, el cual a sido previamente estandarizado y homologado con la encuesta. 
+
+```{r}
+poststrat_df <- readRDS("Data/censo_dam2.rds") %>% 
+     inner_join(statelevel_predictors_df) 
+tba( poststrat_df %>% arrange(desc(n)) %>% head(10))
+```
+Note que la información del censo esta agregada.
+
+### Distribución posterior.
+
+Para obtener una distribución posterior de cada observación se hace uso de la función *posterior_epred* de la siguiente forma.
+
+```{r, eval=FALSE}
+epred_mat <- posterior_epred(fit, newdata = poststrat_df,  type = "response")
+```
+
+Como el interés es realizar comparaciones entre los países de la región se presenta la estimación del ingreso medio en términos de lineas de pobreza. Para esto procedemos así:
+
+-   Obteniendo las lineas de pobreza por cada post-estrato
+
+```{r}
+(lp <- encuesta_mrp %>% distinct(area,lp,li)) %>% 
+  tba()
+```
+
+-   Ingreso en términos de lineas de pobreza.
+
+```{r, eval=FALSE}
+lp <- inner_join(poststrat_df,lp,by = "area") %>% select(lp)
+epred_mat <- (exp(epred_mat)-1)/lp$lp
+```
+
+### Estimación del ingreso medio nacional
+
+```{r, echo=FALSE}
+tablas <- readRDS("0Recursos/tablas.rds")
+```
+
+
+```{r, eval=FALSE}
+n_filtered <- poststrat_df$n
+mrp_estimates <- epred_mat %*% n_filtered / sum(n_filtered)
+
+(temp_ing <- data.frame(
+  mrp_estimate = mean(mrp_estimates),
+  mrp_estimate_se = sd(mrp_estimates)
+) ) %>% tba()
+```
+```{r,echo=FALSE}
+temp_ing <- tablas$temp_ing
+tba(temp_ing)
+```
+
+
+El resultado nos indica que el ingreso medio nacional es `r round(temp_ing$mrp_estimate,2)` lineas de pobreza
+
+### Estimación para el dam == "05".
+
+Es importante siempre conservar el orden de la base, dado que relación entre la predicción y el censo en uno a uno.
+
+```{r, eval=FALSE}
+temp <- poststrat_df %>%  mutate(Posi = 1:n())
+temp <- filter(temp, dam == "05") %>% select(n, Posi)
+n_filtered <- temp$n
+temp_epred_mat <- epred_mat[, temp$Posi]
+
+## Estimando el CME
+mrp_estimates <- temp_epred_mat %*% n_filtered / sum(n_filtered)
+
+(temp_dam05 <- data.frame(
+  mrp_estimate = mean(mrp_estimates),
+  mrp_estimate_se = sd(mrp_estimates)
+) ) %>% tba()
+```
+
+```{r,echo=FALSE}
+temp_dam05 <- tablas$temp_dam05
+tba(temp_dam05)
+```
+
+El resultado nos indica que el ingreso medio en el dam 05 es `r round(temp_dam05$mrp_estimate,2)` lineas de pobreza
+
+### Estimación para la dam2 == "05201"
+
+```{r,eval=FALSE}
+temp <- poststrat_df %>%  mutate(Posi = 1:n())
+temp <-
+  filter(temp, dam2 == "05201") %>% select(n, Posi)
+n_filtered <- temp$n
+temp_epred_mat <- epred_mat[, temp$Posi]
+## Estimando el CME
+mrp_estimates <- temp_epred_mat %*% n_filtered / sum(n_filtered)
+
+(temp_dam2_05201 <- data.frame(
+  mrp_estimate = mean(mrp_estimates),
+  mrp_estimate_se = sd(mrp_estimates)
+) ) %>% tba()
+```
+
+
+```{r,echo=FALSE}
+temp_dam2_05201 <- tablas$temp_dam2_05201
+tba(temp_dam2_05201)
+```
+El resultado nos indica que el ingreso medio en la dam2 05201 es `r round(temp_dam2_05201$mrp_estimate,2)` lineas de pobreza
+
+Después de comprender la forma en que se realiza la estimación de los dominios no observados procedemos el uso de la función *Aux_Agregado* que es desarrollada para este fin.
+
+```{r, eval=FALSE}
+(mrp_estimate_Ingresolp <-
+  Aux_Agregado(poststrat = poststrat_df,
+             epredmat = epred_mat,
+             byMap = NULL)
+) %>% tba()
+```
+
+```{r,echo=FALSE}
+mrp_estimate_Ingresolp <- tablas$mrp_estimate_Ingresolp
+tba(mrp_estimate_Ingresolp)
+```
+
+El resultado nos indica que el ingreso medio nacional es `r round(mrp_estimate_Ingresolp$mrp_estimate)` lineas de pobreza
+
+De forma similar es posible obtener los resultados para las divisiones administrativas. 
+
+```{r, eval=FALSE}
+mrp_estimate_dam <-
+  Aux_Agregado(poststrat = poststrat_df,
+             epredmat = epred_mat,
+             byMap = "dam")
+tba(mrp_estimate_dam %>% head(10) )
+```
+```{r,echo=FALSE}
+mrp_estimate_dam <- tablas$mrp_estimate_dam
+tba(mrp_estimate_dam %>% head(10) )
+```
+
+
+
+```{r, eval=FALSE}
+mrp_estimate_dam2 <-
+  Aux_Agregado(poststrat = poststrat_df,
+             epredmat = epred_mat,
+             byMap = "dam2")
+
+tba(mrp_estimate_dam2 %>% head(10) )
+```
+
+```{r,echo=FALSE}
+mrp_estimate_dam2 <- tablas$mrp_estimate_dam2
+tba(mrp_estimate_dam2 %>% head(10) )
+```
+
+
+
+El mapa resultante es el siguiente
+
+
+```{r, echo=FALSE, fig.cap = "Ingreso medio por dam2", eval=FALSE}
+library(sp)
+library(sf)
+library(tmap)
+
+## Leer Shapefile del país
+ShapeSAE <- read_sf("Shape/CHL_dam2.shp") 
+
+mapa <- tm_shape(ShapeSAE %>%
+                left_join(mrp_estimate_dam2,  by = "dam2"))
+
+brks_lp <- c(0,0.5, 1, 1.5, 2, 4, 5)
+tmap_options(check.and.fix = TRUE)
+Mapa_lp <-
+  mapa + tm_polygons(
+    c( "mrp_estimate"),
+    breaks = brks_lp,
+    title = "Ingreso medio",
+    palette = "-YlOrRd",
+    colorNA = "white"
+  ) + tm_layout(asp = 0)
+
+Mapa_lp
+```
+
+```{r echo=FALSE, out.width = "400%",fig.align='center'}
+knitr::include_graphics("0Recursos/Map_CHL.PNG")
+```
+
+
+```{r echo=FALSE, out.width = "400%",fig.align='center'}
+knitr::include_graphics("0Recursos/Mosaico.png")
+```

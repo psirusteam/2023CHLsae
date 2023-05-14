@@ -1,0 +1,292 @@
+# Día 3 - Sesión 2- Estimación de la pobreza a partir del ingreso
+
+```{r setup, include=FALSE, message=FALSE, error=FALSE, warning=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  cache = TRUE
+)
+library(printr)
+library(kableExtra)
+library(tidyverse)
+tba <- function(dat, cap = NA){
+  kable(dat,
+      format = "html", digits =  4,
+      caption = cap) %>% 
+     kable_styling(bootstrap_options = "striped", full_width = F)%>%
+         kable_classic(full_width = F, html_font = "Arial Narrow")
+}
+```
+
+Sea 
+$$
+y_{ji}=\begin{cases}
+1 & ingreso_{ji}\le lp\\
+0 & e.o.c.
+\end{cases}
+$$ 
+donde $ingreso_{ji}$ representa el ingreso de la $i$-ésima persona en el $j$-ésimo post-estrato y $lp$ es un valor limite, en particular la linea de pobreza. 
+
+Ahora, Suponga que el ingreso de las personas se obtiene mediante el modelo de unidad estimado previamente.  
+
+#### Obejtivo {-}
+
+Estimar la proporción de personas que están por debajo de la linea pobreza, es decir, 
+$$
+P_d = \frac{\sum_{U_d}y_{di}}{N_d}
+$$
+donde $y_{di}$ toma el valor de 1 cuando el ingreso de la persona es menor a la linea de pobreza 0 en caso contrario. 
+
+Note que, 
+
+$$
+\begin{equation*}
+\bar{Y}_d = P_d =  \frac{\sum_{s_d}y_{di} + \sum_{s^c_d}y_{di}}{N_d} 
+\end{equation*}
+$$
+
+Ahora, el estimador de $P$ esta dado por: 
+
+$$
+\hat{P} = \frac{\sum_{s_d}y_{di} + \sum_{s^c_d}\hat{y}_{di}}{N_d}
+$$
+
+donde
+
+$$\hat{y}_{di}=E_{\mathscr{M}}\left(y_{di}\mid\boldsymbol{x}_{d},\boldsymbol{\beta}\right)$$,
+
+donde $\mathscr{M}$ hace referencia a la medida de probabilidad inducida por el modelamiento. 
+De esta forma se tiene que, 
+
+$$
+\hat{P} = \frac{\sum_{U_{d}}\hat{y}_{di}}{N_d}
+$$
+
+
+## Proceso de estimación y predicción
+
+```{r}
+source("0Recursos/funciones_mrp.R")
+fit <- readRDS("Data/fit_ingresos.rds")
+```
+
+
+La información auxiliar disponible ha sido extraída del censo  e imágenes satelitales
+
+```{r}
+statelevel_predictors_df <-
+  readRDS("Data/statelevel_predictors_df_dam2.rds") %>% 
+    mutate_at(.vars = c("luces_nocturnas",
+                      "cubrimiento_cultivo",
+                      "cubrimiento_urbano",
+                      "modificacion_humana",
+                      "accesibilidad_hospitales",
+                      "accesibilidad_hosp_caminado"),
+            function(x) as.numeric(scale(x)))
+tba(statelevel_predictors_df  %>%  head(10))
+```
+
+
+Obtener el modelo es solo un paso más, ahora se debe realizar la predicción en el censo, el cual a sido previamente estandarizado y homologado con la encuesta. 
+
+```{r, eval=TRUE}
+
+poststrat_df <- readRDS("Data/censo_dam2.rds") %>% 
+     inner_join(statelevel_predictors_df) 
+tba( poststrat_df %>% arrange(desc(n)) %>% head(10))
+```
+Note que la información del censo esta agregada.
+
+### Distribución posterior.
+
+Para obtener una distribución posterior de cada observación se hace uso de la función *posterior_epred* de la siguiente forma.
+
+```{r, eval=FALSE}
+epred_mat <- posterior_epred(fit, newdata = poststrat_df, type = "response")
+dim(epred_mat)
+dim(poststrat_df)
+```
+Como el interés es realizar comparaciones entre los países de la región se presenta la estimación del ingreso medio en términos de lineas de pobreza. Para esto procedemos así:
+
+-   Obteniendo las lineas de pobreza por cada post-estrato
+
+```{r}
+
+(
+  lp <-
+    readRDS("Data/encuesta2017CHL.Rds") %>% distinct(area_ee, lp, li) %>%
+    mutate(
+      area = ifelse(
+        haven::as_factor(area_ee, levels = "values") == 1 , "1", "0"),
+      area_ee = NULL
+    )
+) %>%
+  tba()
+```
+
+-   Ingreso en términos de lineas de pobreza.
+
+```{r, eval=FALSE}
+lp <- inner_join(poststrat_df,lp,by = "area") %>% select(lp)
+epred_mat_pobreza_lp <- (exp(epred_mat)-1) <= lp$lp
+# epred_mat_pobreza_li <- (exp(epred_mat)-1) <= lp$li
+```
+
+## Estimación de la pobreza
+
+```{r, echo=FALSE}
+tablas <- readRDS("0Recursos/tablas.rds")
+```
+
+
+```{r, eval=FALSE}
+n_filtered <- poststrat_df$n
+mrp_estimates <- epred_mat_pobreza_lp %*% n_filtered / sum(n_filtered)
+
+(temp_ing <- data.frame(
+  mrp_estimate = mean(mrp_estimates),
+  mrp_estimate_se = sd(mrp_estimates)
+) ) %>% tba()
+```
+
+```{r, echo=FALSE}
+temp_ing <- tablas$temp_ing
+tba(temp_ing)
+```
+
+
+
+El resultado nos indica que el ingreso medio nacional es `r round(temp_ing$mrp_estimate,2)` lineas de pobreza
+
+### Estimación para el dam == "05".
+
+Es importante siempre conservar el orden de la base, dado que relación entre la predicción y el censo en uno a uno.
+
+```{r, eval=FALSE}
+temp <- poststrat_df %>%  mutate(Posi = 1:n())
+temp <- filter(temp, dam == "05") %>% select(n, Posi)
+n_filtered <- temp$n
+temp_epred_mat <- epred_mat_pobreza_lp[, temp$Posi]
+
+## Estimando el CME
+mrp_estimates <- temp_epred_mat %*% n_filtered / sum(n_filtered)
+
+(temp_dam05 <- data.frame(
+  mrp_estimate = mean(mrp_estimates),
+  mrp_estimate_se = sd(mrp_estimates)
+) ) %>% tba()
+```
+
+```{r, echo=FALSE}
+temp_dam05 <- tablas$temp_dam05
+tba(temp_dam05)
+```
+
+El resultado nos indica que el ingreso medio en el dam 05 es `r round(temp_dam05$mrp_estimate,2)` lineas de pobreza
+
+### Estimación para la dam2 == "05201"
+
+```{r, eval=FALSE}
+temp <- poststrat_df %>%  mutate(Posi = 1:n())
+temp <-
+  filter(temp, dam2 == "05201") %>% select(n, Posi)
+n_filtered <- temp$n
+temp_epred_mat <- epred_mat_pobreza_lp[, temp$Posi]
+## Estimando el CME
+mrp_estimates <- temp_epred_mat %*% n_filtered / sum(n_filtered)
+
+(temp_dam2_05201 <- data.frame(
+  mrp_estimate = mean(mrp_estimates),
+  mrp_estimate_se = sd(mrp_estimates)
+) ) %>% tba()
+```
+
+
+```{r, echo=FALSE}
+temp_dam2_05201 <- tablas$temp_dam2_05201
+tba(temp_dam2_05201)
+```
+
+El resultado nos indica que el ingreso medio en la dam2 05201 es `r round(temp_dam2_05201$mrp_estimate,2)` lineas de pobreza
+
+Después de comprender la forma en que se realiza la estimación de los dominios no observados procedemos el uso de la función *Aux_Agregado* que es desarrollada para este fin.
+
+```{r, eval=FALSE}
+(mrp_estimate_Ingresolp <-
+  Aux_Agregado(poststrat = poststrat_df,
+             epredmat = epred_mat_pobreza_lp,
+             byMap = NULL)
+)
+```
+
+```{r, echo=FALSE}
+mrp_estimate_Ingresolp <- tablas$mrp_estimate_Ingresolp
+tba(mrp_estimate_Ingresolp)
+```
+
+
+De forma similar es posible obtener los resultados para las divisiones administrativas. 
+
+```{r, eval=FALSE}
+mrp_estimate_dam <-
+  Aux_Agregado(poststrat = poststrat_df,
+             epredmat = epred_mat_pobreza_lp,
+             byMap = "dam")
+tba(mrp_estimate_dam %>% head(10))
+```
+
+```{r, echo=FALSE}
+mrp_estimate_dam <- tablas$mrp_estimate_dam2
+tba(mrp_estimate_dam %>% head(10) )
+```
+
+
+
+```{r, eval=FALSE}
+mrp_estimate_dam2 <-
+  Aux_Agregado(poststrat = poststrat_df,
+             epredmat = epred_mat_pobreza_lp,
+             byMap = "dam2")
+
+tba(mrp_estimate_dam2 %>% head(10) )
+```
+
+```{r, echo=FALSE}
+mrp_estimate_dam2 <- tablas$mrp_estimate_dam2
+tba(mrp_estimate_dam2 %>% head(10))
+```
+
+
+El mapa resultante es el siguiente
+
+
+```{r, echo=FALSE, fig.cap = "Pobreza por dam2", eval=FALSE}
+library(sp)
+library(sf)
+library(tmap)
+
+## Leer Shapefile del país
+ShapeSAE <- read_sf("Shape/CHL_dam2.shp") 
+
+mapa <- tm_shape(ShapeSAE %>%
+                left_join(mrp_estimate_dam2,  by = "dam2"))
+
+brks_lp <- c(0,0.05, 0.1, 0.2, 0.25, 0.30, 0.4,1)
+tmap_options(check.and.fix = TRUE)
+Mapa_lp <-
+  mapa + tm_polygons(
+    c( "mrp_estimate"),
+    breaks = brks_lp,
+    title = "Pobreza",
+    palette = "YlOrRd",
+    colorNA = "white"
+  ) + tm_layout(asp = 0)
+
+Mapa_lp
+```
+
+```{r echo=FALSE, , out.width = "400%", fig.align='center'}
+knitr::include_graphics("0Recursos/Mapa_COL_Pobreza.PNG")
+```
+

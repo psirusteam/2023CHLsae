@@ -2,6 +2,8 @@ library(tidyr)
 library(purrr)
 library(patchwork)
 library(magrittr)
+library(ggalt)
+library(reshape2)
 ## plot para validar interacciones
 
 plot_interaction <- function(dat_encuesta, by, by2 ){
@@ -163,7 +165,7 @@ Plot_Compare <- function(dat_censo, dat_encuesta, by){
   dat_plot[[by]] <-  dat_plot[["x"]]
   dat_plot[["x"]] <- NULL
 
-  print(dat_plot %>% select(by, Sample, Population))
+  # print(dat_plot %>% select(by, Sample, Population))
   return(gg_plot)
 }
 
