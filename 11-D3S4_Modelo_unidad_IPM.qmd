@@ -1,0 +1,718 @@
+
+# Día 3 - Sesión 4- Estimación del Índice de Privación Multidimensional (IPM)
+
+```{r setup, include=FALSE, message=FALSE, error=FALSE, warning=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  cache = TRUE
+)
+library(printr)
+library(kableExtra)
+library(tidyverse)
+tba <- function(dat, cap = NA){
+  kable(dat,
+      format = "html", digits =  4,
+      caption = cap) %>% 
+     kable_styling(bootstrap_options = "striped", full_width = F)%>%
+         kable_classic(full_width = F, html_font = "Arial Narrow")
+}
+```
+
+
+
+-   La pobreza es, y ha sido, uno de los temas principales en las agendas nacionales e internacionales de los países durante décadas. Un ejemplo reciente es el primer objetivo de la agenda **2030** para el Desarrollo Sostenible (ODS): __“Poner fin a la pobreza en todas sus formas en todo el mundo”__, así como su indicador 1.2.2 que mide __“la proporción de hombres, mujeres y niños de todas las edades que viven en pobreza en todas sus dimensiones según las definiciones nacionales”__
+
+-   Tradicionalmente los organismos nacionales e internacionales exigen la medida de pobreza unidimensional basada en ingresos y/o gastos. 
+
+-   La pobreza es un fenómeno complejo que debe ser analizado considerando un conjunto de factores y no solo el monetario. 
+
+-   En está ocasión se aborda el problema multidimensional de la pobreza utilizando métodos de áreas pequeñas proporcionando una estimación del índice de privación multidimensional (IPM) en Colombia. 
+
+## Índice de Privación Multidimensional (IPM)
+
+-   El IPM propuesto por CEPAL es una herramienta comparable entre los países de la región, para estudiar los fenómenos de la pobreza considerando varios aspectos o dimensiones. **En ningún caso el IPM busca reemplazar los indicadores pobreza unidimensional o multidimensional que hayan definido los países u organismos internacionales**
+
+-   El índice requiere la información para cada individuo $i = 1,\cdots,N_d$ en $d = 1, \cdots, D$ dominios, donde $N_d$ denota el tamaño de la población del dominio $d$. El índice para el dominio $d$ se calcula como:
+
+    $$
+    IPM_d = \frac{1}{N_d}\sum_{i=1}^{N_d}I\left(q_{di} > 0.4  \right).
+    $$
+    
+    La función del índicador  $I\left( \cdot \right)$ es igual a 1 cuando la condición $q_{di} > 0.4$. 
+
+-   $q_{di}$ es una cantidad ponderada de la siguiente forma: 
+
+    $$
+    q_{di} = \frac{1}{8}\sum_{k=1}^{8}y_{di}^{k}
+    $$
+
+    Donde: 
+    a. $y_{di}^{1}$ = Privación en material de construcción de la vivienda
+    
+    b. $y_{di}^{2}$ = Hacinamiento en el hogar. 
+    
+    c. $y_{di}^{3}$ = Privación de acceso al agua potable. 
+    
+    d. $y_{di}^{4}$ = Privación en saneamiento.
+    
+    e. $y_{di}^{5}$ = Acceso al servicio energía eléctrica. 
+    
+    f. $y_{di}^{6}$ = Privación de acceso al combustible para cocinar.
+    
+    g. $y_{di}^{7}$ = Privación en material de los techo 
+    
+    h. $y_{di}^{8}$ = Privación el material de las paredes.  
+
+
+    Note que, $y_{di}^{k}$ es igual a **1** si la persona tiene privación en la $k-ésima$ dimesión y **0** en el caso que de no tener la privación. 
+    
+    
+## Definición del modelo 
+
+En muchas aplicaciones, la variable de interés en áreas pequeñas puede ser binaria, esto es $y_{dj} = 0$ o $1$ que representa la ausencia (o no) de una característica específica. Para este caso, la estimación objetivo en cada dominio $d = 1,\cdots , D$ es la proporción $\theta_d =\frac{1}{N_d}\sum_{i=1}^{N_d}y_{di}$ de la población que tiene esta característica, siendo $\theta_{di}$ la probabilidad de que una determinada unidad $i$ en el dominio $d$ obtenga el valor $1$. Bajo este escenario, el $\theta_{di}$ con una función de enlace logit se define como: 
+
+$$
+logit(\theta_{di}) = \log \left(\frac{\theta_{di}}{1-\theta_{di}}\right) = \boldsymbol{x}_{di}^{T}\boldsymbol{\beta} + u_{d}
+$$
+con $i=1,\cdots,N_d$, $d=1,\cdots,D$, $\boldsymbol{\beta}$  un vector de parámetros de efecto fijo, y $u_d$ el efecto aleatorio especifico del área para el dominio $d$ con $u_d \sim N\left(0,\sigma^2_u \right)$.  $u_d$ son independiente y $y_{di}\mid u_d \sim Bernoulli(\theta_{di})$ con $E(y_{di}\mid u_d)=\theta_{di}$ y $Var(y_{di}\mid u_d)=\sigma_{di}^2=\theta_{di}(1-\theta_{di})$. Además,  $\boldsymbol{x}_{di}^T$ representa el vector $p\times 1$ de valores de $p$ variables auxiliares. Entonces, $\theta_{di}$ se puede escribir como 
+
+$$
+\theta_{di} = \frac{\exp(\boldsymbol{x}_{di}^T\boldsymbol{\beta} + u_{d})}{1+ \exp(\boldsymbol{x}_{di}^T\boldsymbol{\beta} + u_{d})}
+$$
+De está forma podemos definir distribuciones previas 
+
+$$
+\begin{eqnarray*}
+\beta_k & \sim   & N(0, 10000)\\
+\sigma^2_u &\sim & IG(0.0001,0.0001)
+\end{eqnarray*}
+$$
+El modelo se debe estimar para cada una de las dimensiones. 
+  
+#### Obejtivo {-}
+
+
+Estimar la proporción de personas que presentan la $k-$ésima carencia, es decir, 
+
+$$ 
+P_d = \frac{\sum_{U_d}q_{di}}{N_d}
+$$
+
+donde $q_{di}$ toma el valor de 1 cuando la $i-$ésima persona presenta Privación Multidimensional y el valor de 0 en caso contrario. 
+
+Note que, 
+
+$$
+\begin{equation*}
+\bar{Y}_d = P_d =  \frac{\sum_{s_d}q_{di} + \sum_{s^c_d}q_{di}}{N_d} 
+\end{equation*}
+$$
+
+Ahora, el estimador de $P$ esta dado por: 
+
+$$
+\hat{P}_d = \frac{\sum_{s_d}q_{di} + \sum_{s^c_d}\hat{q}_{di}}{N_d}
+$$
+
+donde
+
+$$
+\hat{q}_{di} = \frac{1}{8}\sum_{k=1}^{8}\hat{y}_{di}^{k}
+$$
+
+$$\hat{y}_{di}^{k}=E_{\mathscr{M}}\left(y_{di}^{k}\mid\boldsymbol{x}_{d},\boldsymbol{\beta}\right)$$,
+
+con $\mathscr{M}$  la medida de probabilidad inducida por el modelamiento. 
+De esta forma se tiene que, 
+
+$$
+\hat{P}_d = \frac{\sum_{U_{d}}\hat{q}_{di}}{N_d}
+$$
+
+
+  
+### Procesamiento del modelo en `R`. 
+El proceso inicia con el cargue de las librerías. 
+
+```{r}
+library(patchwork)
+library(lme4)
+library(tidyverse)
+library(rstan)
+library(rstanarm)
+library(magrittr)
+```
+
+Los datos de la encuesta y el censo han sido preparados previamente, la información sobre la cual realizaremos la predicción corresponde a Colombia en el 2019 
+
+```{r}
+encuesta_ipm <- readRDS("Recursos/Día3/Sesion4/Data/encuesta2017_nbi.Rds") 
+statelevel_predictors_df <-
+  readRDS("Recursos/Día3/Sesion4/Data/statelevel_predictors_df_dam2.rds") %>% 
+   mutate_at(.vars = c("luces_nocturnas",
+                      "cubrimiento_cultivo",
+                      "cubrimiento_urbano",
+                      "modificacion_humana",
+                      "accesibilidad_hospitales",
+                      "accesibilidad_hosp_caminado"),
+            function(x) as.numeric(scale(x)))
+
+byAgrega <- c("dam", "dam2", "area", "sexo", "etnia", 
+              "anoest", "edad" )
+```
+
+
+
+```{r}
+names_ipm <- grep(pattern = "nbi", names(encuesta_ipm),value = TRUE)
+
+encuesta_df <- map(setNames(names_ipm,names_ipm),
+    function(y){
+  encuesta_ipm$temp <- encuesta_ipm[[y]]
+  encuesta_ipm %>% 
+  group_by_at(all_of(byAgrega)) %>%
+  summarise(n = n(),
+            yno = sum(temp),
+            ysi = n - yno, .groups = "drop") %>% 
+    inner_join(statelevel_predictors_df)
+})
+
+  
+```
+
+#### Privación en material de construcción de la vivienda {-} 
+
+```{r, echo=FALSE}
+tba(encuesta_df[[names_ipm[1]]] %>% arrange(desc(n)) %>% head(), 
+    cap = names_ipm[1])
+```
+
+#### Hacinamiento {-}
+
+```{r, echo=FALSE}
+tba(encuesta_df[[names_ipm[2]]] %>% arrange(desc(n)) %>% head())
+
+```
+
+### Definiendo el modelo multinivel.
+
+Para cada dimensión que compone el IPM se ajusta el siguiente modelo mostrado en el script. En este código se incluye el uso de la función `future_map` que permite procesar en paralelo cada modelo O puede compilar cada por separado.   
+
+```{r, eval = FALSE}
+library(furrr)
+library(rstanarm)
+plan(multisession, workers = 4)
+
+fit <- future_map(encuesta_df, function(xdat){
+stan_glmer(
+  cbind(yno, ysi) ~ (1 | dam2) +
+    (1 | dam) +
+    (1|edad) +
+    area +
+    (1|anoest) +
+    (1|etnia) +
+    sexo + 
+    tasa_desocupacion +
+    luces_nocturnas +
+    modificacion_humana,
+  family = binomial(link = "logit"),
+  data = xdat,
+  cores = 7,
+  chains = 4,
+  iter = 300
+)}, 
+.progress = TRUE)
+
+saveRDS(object = fit, "Recursos/Día3/Sesion4/Data/fits_IPM.rds")
+
+```
+
+Terminado la compilación de los modelos después de realizar validaciones sobre esto, pasamos hacer las predicciones en el censo. 
+
+### Proceso de estimación y predicción
+
+Los modelos fueron compilados de manera separada, por tanto, disponemos de un objeto `.rds` por cada dimensión del IPM 
+
+```{r, eval=FALSE}
+fit_agua <-
+  readRDS(file = "Recursos/Día3/Sesion4/Data/fits_bayes_nbi_agua.rds")
+fit_combustible <-
+  readRDS(file = "Recursos/Día3/Sesion4/Data/fits_bayes_nbi_combus.rds")
+fit_techo <-
+  readRDS(file = "Recursos/Día3/Sesion4/Data/fits_bayes_nbi_techo.rds")
+fit_energia <-
+  readRDS(file = "Recursos/Día3/Sesion4/Data/fits_bayes_nbi_elect.rds")
+fit_hacinamiento <-
+  readRDS(file = "Recursos/Día3/Sesion4/Data/fits_bayes_nbi_hacina.rds")
+fit_paredes <-
+  readRDS(file = "Recursos/Día3/Sesion4/Data/fits_bayes_nbi_pared.rds")
+fit_material <-
+  readRDS(file = "Recursos/Día3/Sesion4/Data/fits_bayes_nbi_matviv.rds")
+fit_saneamiento <-
+  readRDS(file = "Recursos/Día3/Sesion4/Data/fits_bayes_nbi_saneamiento.rds")
+```
+
+Ahora, debemos leer la información del censo  y crear los **post-estrato **
+```{r}
+censo_ipm <- readRDS("Recursos/Día3/Sesion4/Data/censo_ipm.rds") 
+
+poststrat_df <- censo_ipm %>%
+  filter(!is.na(condact3))  %>%
+  group_by_at(byAgrega) %>%
+  summarise(n = sum(n), .groups = "drop") %>% 
+  arrange(desc(n))
+tba(head(poststrat_df))
+```
+
+Para realizar la predicción en el censo debemos incluir la información auxiliar 
+
+```{r}
+poststrat_df <- inner_join(poststrat_df, statelevel_predictors_df)
+dim(poststrat_df)
+
+```
+
+
+Para cada uno de los modelos anteriores debe tener las predicciones, para ejemplificar el proceso tomaremos el departamento de la Guajira de Colombia 
+
+-   Privación de acceso al agua potable. 
+
+```{r, eval=FALSE}
+temp <- poststrat_df 
+epred_mat_agua <- posterior_epred(
+  fit_agua,
+  newdata = temp,
+  type = "response",
+  allow.new.levels = TRUE
+)
+```
+
+-   Privación de acceso al combustible para cocinar.
+
+```{r, eval =FALSE}
+epred_mat_combustible <-
+  posterior_epred(
+    fit_combustible,
+    newdata = temp,
+    type = "response",
+    allow.new.levels = TRUE
+  )
+```
+
+-   Privación en material de los techo.
+
+```{r, echo=TRUE, eval=FALSE}
+epred_mat_techo <-
+  posterior_epred(
+    fit_techo,
+    newdata = temp,
+    type = "response",
+    allow.new.levels = TRUE
+  )
+```
+
+-   Acceso al servicio energía eléctrica.
+
+```{r, echo=TRUE, eval=FALSE}
+epred_mat_energia <-
+  posterior_epred(
+    fit_energia,
+    newdata = temp,
+    type = "response",
+    allow.new.levels = TRUE
+  )
+```
+
+-    Hacinamiento en el hogar.
+
+```{r, echo=TRUE, eval=FALSE}
+epred_mat_hacinamiento <-
+  posterior_epred(
+    fit_hacinamiento,
+    newdata = temp,
+    type = "response",
+    allow.new.levels = TRUE
+  )
+```
+
+-   Privación el material de las paredes.
+
+```{r, echo=TRUE, eval=FALSE}
+epred_mat_paredes <-
+  posterior_epred(
+    fit_paredes,
+    newdata = temp,
+    type = "response",
+    allow.new.levels = TRUE
+  )
+```
+
+-   Privación en material de construcción de la vivienda
+
+```{r, echo=TRUE, eval =FALSE}
+epred_mat_material <-
+  posterior_epred(
+    fit_material,
+    newdata = temp,
+    type = "response",
+    allow.new.levels = TRUE
+  )
+```
+
+-   Privación en saneamiento.
+
+```{r, echo=TRUE, eval = FALSE}
+epred_mat_saneamiento <-
+  posterior_epred(
+    fit_saneamiento,
+    newdata = temp,
+    type = "response",
+    allow.new.levels = TRUE
+  )
+
+```
+
+```{r, echo=FALSE, eval=FALSE}
+saveRDS(epred_mat_agua, "Recursos/Día3/Sesion4/Data/epred_mat_agua.rds")
+saveRDS(epred_mat_combustible, "Recursos/Día3/Sesion4/Data/epred_mat_combustible.rds")
+saveRDS(epred_mat_techo, "Recursos/Día3/Sesion4/Data/epred_mat_techo.rds")
+saveRDS(epred_mat_energia, "Recursos/Día3/Sesion4/Data/epred_mat_energia.rds")
+saveRDS(epred_mat_hacinamiento, "Recursos/Día3/Sesion4/Data/epred_mat_hacinamiento.rds")
+saveRDS(epred_mat_paredes, "Recursos/Día3/Sesion4/Data/epred_mat_paredes.rds")
+saveRDS(epred_mat_material, "Recursos/Día3/Sesion4/Data/epred_mat_material.rds")
+saveRDS(epred_mat_saneamiento, "Recursos/Día3/Sesion4/Data/epred_mat_saneamiento.rds")
+```
+
+Los resultados anteriores se deben procesarse en términos de carencia (1) y  no carencia (0) para la $k-esima$ dimensión . 
+
+-    Privación de acceso al agua potable. 
+
+
+```{r,eval=FALSE}
+epred_mat_agua_dummy <-
+  rbinom(n = nrow(epred_mat_agua) * ncol(epred_mat_agua) , 1,
+         epred_mat_agua)
+
+epred_mat_agua_dummy <- matrix(
+  epred_mat_agua_dummy,
+  nrow = nrow(epred_mat_agua),
+  ncol = ncol(epred_mat_agua)
+)
+```
+
+-   Privación de acceso al combustible para cocinar.
+
+
+```{r,eval=FALSE}
+epred_mat_combustible_dummy <-
+  rbinom(n = nrow(epred_mat_combustible) * ncol(epred_mat_combustible) ,
+         1,
+         epred_mat_combustible)
+
+epred_mat_combustible_dummy <- matrix(
+  epred_mat_combustible_dummy,
+  nrow = nrow(epred_mat_combustible),
+  ncol = ncol(epred_mat_combustible)
+)
+```
+
+-    Acceso al servicio energía eléctrica 
+
+
+```{r,eval=FALSE}
+epred_mat_energia_dummy <-
+  rbinom(n = nrow(epred_mat_energia) * ncol(epred_mat_energia) ,
+         1,
+         epred_mat_energia)
+
+epred_mat_energia_dummy <- matrix(
+  epred_mat_energia_dummy,
+  nrow = nrow(epred_mat_energia),
+  ncol = ncol(epred_mat_energia)
+)
+```
+
+-   Hacinamiento en el hogar.
+
+
+```{r,echo = TRUE,eval=FALSE}
+epred_mat_hacinamiento_dummy <-
+  rbinom(
+    n = nrow(epred_mat_hacinamiento) * ncol(epred_mat_hacinamiento) ,
+    1,
+    epred_mat_hacinamiento
+  )
+
+epred_mat_hacinamiento_dummy <-
+  matrix(
+    epred_mat_hacinamiento_dummy,
+    nrow = nrow(epred_mat_hacinamiento),
+    ncol = ncol(epred_mat_hacinamiento)
+  )
+```
+
+-   Privación el material de las paredes.
+
+
+```{r,echo = TRUE,eval=FALSE}
+epred_mat_paredes_dummy <-
+  rbinom(n = nrow(epred_mat_paredes) * ncol(epred_mat_paredes) ,
+         1,
+         epred_mat_paredes)
+
+epred_mat_paredes_dummy <- matrix(
+  epred_mat_paredes_dummy,
+  nrow = nrow(epred_mat_paredes),
+  ncol = ncol(epred_mat_paredes)
+)
+```
+
+-   Privación en material de construcción de la vivienda 
+
+
+```{r, echo = TRUE,eval=FALSE}
+epred_mat_material_dummy <-
+  rbinom(n = nrow(epred_mat_material) * ncol(epred_mat_material) ,
+         1,
+         epred_mat_material)
+
+epred_mat_material_dummy <- matrix(
+  epred_mat_material_dummy,
+  nrow = nrow(epred_mat_material),
+  ncol = ncol(epred_mat_material)
+)
+```
+
+-   Privación en saneamiento. 
+
+
+```{r, echo = TRUE, eval=FALSE}
+epred_mat_saneamiento_dummy <-
+  rbinom(n = nrow(epred_mat_saneamiento) * ncol(epred_mat_saneamiento) ,
+         1,
+         epred_mat_saneamiento)
+
+epred_mat_saneamiento_dummy <- matrix(
+  epred_mat_saneamiento_dummy,
+  nrow = nrow(epred_mat_saneamiento),
+  ncol = ncol(epred_mat_saneamiento)
+)
+```
+
+-   Privación en material de los techo. 
+
+
+```{r, echo = TRUE, eval=FALSE}
+epred_mat_techo_dummy <-
+  rbinom(n = nrow(epred_mat_techo) * ncol(epred_mat_techo) ,
+         1,
+         epred_mat_techo)
+
+epred_mat_techo_dummy <- matrix(
+  epred_mat_techo_dummy,
+  nrow = nrow(epred_mat_techo),
+  ncol = ncol(epred_mat_techo)
+)
+
+```
+
+
+```{r, echo=FALSE, eval=FALSE}
+saveRDS(epred_mat_agua_dummy, "Recursos/Día3/Sesion4/Data/epred_mat_agua_dummy.rds")
+saveRDS(epred_mat_combustible_dummy, "Recursos/Día3/Sesion4/Data/epred_mat_combustible_dummy.rds")
+saveRDS(epred_mat_techo_dummy, "Recursos/Día3/Sesion4/Data/epred_mat_techo_dummy.rds")
+saveRDS(epred_mat_energia_dummy, "Recursos/Día3/Sesion4/Data/epred_mat_energia_dummy.rds")
+saveRDS(epred_mat_hacinamiento_dummy, "Recursos/Día3/Sesion4/Data/epred_mat_hacinamiento_dummy.rds")
+saveRDS(epred_mat_paredes_dummy, "Recursos/Día3/Sesion4/Data/epred_mat_paredes_dummy.rds")
+saveRDS(epred_mat_material_dummy, "Recursos/Día3/Sesion4/Data/epred_mat_material_dummy.rds")
+saveRDS(epred_mat_saneamiento_dummy, "Recursos/Día3/Sesion4/Data/epred_mat_saneamiento_dummy.rds")
+```
+
+
+Con las variables dummy creadas es posible estimar el IPM 
+
+```{r, eval=FALSE}
+epred_mat_ipm <- (1/8) * (
+  epred_mat_material_dummy +
+    epred_mat_hacinamiento_dummy +
+    epred_mat_agua_dummy +
+    epred_mat_saneamiento_dummy +
+    epred_mat_energia_dummy +
+    epred_mat_paredes_dummy +
+    epred_mat_combustible_dummy + 
+    epred_mat_techo_dummy)
+```
+
+Ahora, debemos dicotomizar la variable nuevamente. 
+
+```{r, eval=FALSE}
+epred_mat_ipm[epred_mat_ipm <= 0.4] <- 0
+epred_mat_ipm[epred_mat_ipm != 0] <- 1
+```
+
+```{r, echo=FALSE}
+epred_mat_ipm <- readRDS("Recursos/Día3/Sesion4/Data/epred_mat_ipm_dummy.rds")
+```
+
+
+Finalmente realizamos el calculo del IPM así: 
+```{r}
+mean(colSums(t(epred_mat_ipm)*poststrat_df$n)/sum(poststrat_df$n))
+```
+También es posible utilizar la función `Aux_Agregado` para las estimaciones. 
+
+Para obtener el resultado por municipio procedemos así: 
+```{r, eval=FALSE}
+source("Recursos/Día3/Sesion4/0Recursos/funciones_mrp.R")
+mrp_estimate_dam2 <-
+   Aux_Agregado(poststrat = temp,
+                epredmat = epred_mat_ipm,
+                byMap = "dam2")
+tba(mrp_estimate_dam2 %>% head(10))
+```
+
+```{r, echo=FALSE}
+mrp_estimate_dam2 <- readRDS("Recursos/Día3/Sesion4/Data/mrp_estimate_dam2.rds")
+tba(mrp_estimate_dam2 %>% head(10))
+```
+
+
+El siguiente paso es realizar el mapa de los resultados 
+
+```{r, echo=TRUE, eval=FALSE}
+library(sp)
+library(sf)
+library(tmap)
+
+ShapeSAE <- read_sf("Recursos/Día3/Sesion4/Shape/CHL_dam2.shp")  
+```
+
+Los resultados nacionales son mostrados en el mapa. 
+
+```{r, echo=TRUE, eval=FALSE}
+brks_ing <- c(0,0.05,0.1,0.15, 0.20 ,0.3, 1)
+maps3 <- tm_shape(ShapeSAE %>%
+                    left_join(mrp_estimate_dam2,  by = "dam2"))
+
+Mapa_ing3 <-
+  maps3 + tm_polygons(
+    "mrp_estimate",
+    breaks = brks_ing,
+    title = "IPM",
+    palette = "YlOrRd",
+    colorNA = "white"
+  ) 
+
+tmap_save(
+  Mapa_ing3,
+  "Recursos/Día3/Sesion4/Data/CHL_IPM.jpeg",
+  width = 2000,
+  height = 1500,
+  asp = 0
+)
+
+Mapa_ing3
+```
+
+
+```{r echo=FALSE,out.height="400%",fig.align='center'}
+knitr::include_graphics("Recursos/Día3/Sesion4/Data/CHL_IPM.jpeg")
+```
+
+Realizando un acercamiento de algunas regiones. 
+
+```{r,eval=FALSE}
+temp_shape <- ShapeSAE %>% filter(dam %in% c("08", "09"))
+
+maps <- tm_shape(temp_shape %>%
+                           left_join(mrp_estimate_dam2,  by = "dam2"))
+
+tmap_options(check.and.fix = TRUE)
+Mapa_ing <-
+  maps + tm_polygons(
+    "mrp_estimate",
+    breaks = brks_ing,
+    title = "IPM",
+    palette = "YlOrRd",
+    colorNA = "white"
+  ) 
+
+tmap_save(
+  Mapa_ing,
+  "Recursos/Día3/Sesion4/Data/CHL_region.jpeg",
+  width = 2000,
+  height = 1500,
+  asp = 0
+)
+
+Mapa_ing
+
+
+```
+
+
+```{r echo=FALSE, out.height="400%",fig.align='center'}
+knitr::include_graphics("Recursos/Día3/Sesion4/Data/CHL_region.jpeg")
+```
+
+Los resultado para cada componente puede ser mapeado de forma similar. 
+
+Para obtener el resultado por municipio procedemos así: 
+```{r, echo=FALSE, eval = FALSE}
+temp_epred_mat <- list(
+  Material = epred_mat_material_dummy,
+  Hacinamienot =    epred_mat_hacinamiento_dummy ,
+  Agua =  epred_mat_agua_dummy, 
+  Saneamiento =  epred_mat_saneamiento_dummy, 
+  Energia = epred_mat_energia_dummy ,
+  Paredes = epred_mat_paredes_dummy,
+  Combustible = epred_mat_combustible_dummy , 
+  Techo =  epred_mat_techo_dummy)
+  
+
+temp_estimate_dam2 <- map_df(temp_epred_mat,
+   function(dummy){ Aux_Agregado(poststrat = temp,
+                epredmat = dummy,
+                byMap = "dam2") %>%
+       select(-mrp_estimate_se)},.id = "Indicador")
+tba(temp_estimate_dam2 %>% head(10))
+```
+
+
+```{r, echo=FALSE}
+temp_estimate_dam2 <- readRDS("Recursos/Día3/Sesion4/Data/temp_estimate_dam2.rds")
+tba(temp_estimate_dam2 %>% head(10))
+```
+
+```{r, echo=FALSE, eval = FALSE}
+maps2 <- tm_shape(temp_shape %>%
+                           left_join(temp_estimate_dam2,  by = "dam2"))
+
+Mapa_ing2 <-
+  maps2 + tm_polygons(
+    "mrp_estimate",
+    breaks = brks_ing,
+    title = "",
+    palette = "YlOrRd",
+    colorNA = "white"
+  ) +
+  tm_facets(by = "Indicador", ncol = 4)
+
+tmap_save(
+  Mapa_ing2,
+  "Recursos/Día3/Sesion4/Data/CHL_region_ipm.jpeg",
+  width = 3000,
+  height = 2000,
+  asp = 0
+)
+
+Mapa_ing2
+
+```
+
+
+```{r echo=FALSE, out.height="400%",fig.align='center'}
+knitr::include_graphics("Recursos/Día3/Sesion4/Data/CHL_region_ipm.jpeg")
+```
