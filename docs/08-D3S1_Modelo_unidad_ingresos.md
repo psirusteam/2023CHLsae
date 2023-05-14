@@ -123,7 +123,9 @@ encuesta_mrp <- encuesta %>%
     dam =  haven::as_factor(dam_ee ,levels = "values"),
     dam2 =  haven::as_factor(comuna,levels = "values"),
     dam = str_pad(dam, width = 2, pad = "0"),
-    dam2 = str_pad(dam2, width = 5, pad = "0"),  
+    dam2 = str_pad(dam2, width = 5, pad = "0"), 
+    upm = `_upm`,
+    estrato = `_estrato`,
   ingreso = ingcorte,lp,li,
     logingreso = log(ingcorte + 1),
   area = case_when(area_ee == 1 ~ "1", TRUE ~ "0"),
@@ -160,6 +162,8 @@ tba(encuesta_mrp %>% head(10))
   <tr>
    <th style="text-align:left;"> dam </th>
    <th style="text-align:left;"> dam2 </th>
+   <th style="text-align:right;"> upm </th>
+   <th style="text-align:right;"> estrato </th>
    <th style="text-align:right;"> ingreso </th>
    <th style="text-align:right;"> lp </th>
    <th style="text-align:right;"> li </th>
@@ -176,6 +180,8 @@ tba(encuesta_mrp %>% head(10))
   <tr>
    <td style="text-align:left;"> 01 </td>
    <td style="text-align:left;"> 01101 </td>
+   <td style="text-align:right;"> 1100100001 </td>
+   <td style="text-align:right;"> 11001 </td>
    <td style="text-align:right;"> 250000.0 </td>
    <td style="text-align:right;"> 113958 </td>
    <td style="text-align:right;"> 51309 </td>
@@ -190,6 +196,8 @@ tba(encuesta_mrp %>% head(10))
   <tr>
    <td style="text-align:left;"> 01 </td>
    <td style="text-align:left;"> 01101 </td>
+   <td style="text-align:right;"> 1100100001 </td>
+   <td style="text-align:right;"> 11001 </td>
    <td style="text-align:right;"> 211091.0 </td>
    <td style="text-align:right;"> 113958 </td>
    <td style="text-align:right;"> 51309 </td>
@@ -204,6 +212,8 @@ tba(encuesta_mrp %>% head(10))
   <tr>
    <td style="text-align:left;"> 01 </td>
    <td style="text-align:left;"> 01101 </td>
+   <td style="text-align:right;"> 1100100001 </td>
+   <td style="text-align:right;"> 11001 </td>
    <td style="text-align:right;"> 296750.0 </td>
    <td style="text-align:right;"> 113958 </td>
    <td style="text-align:right;"> 51309 </td>
@@ -218,6 +228,8 @@ tba(encuesta_mrp %>% head(10))
   <tr>
    <td style="text-align:left;"> 01 </td>
    <td style="text-align:left;"> 01101 </td>
+   <td style="text-align:right;"> 1100100001 </td>
+   <td style="text-align:right;"> 11001 </td>
    <td style="text-align:right;"> 296750.0 </td>
    <td style="text-align:right;"> 113958 </td>
    <td style="text-align:right;"> 51309 </td>
@@ -232,6 +244,8 @@ tba(encuesta_mrp %>% head(10))
   <tr>
    <td style="text-align:left;"> 01 </td>
    <td style="text-align:left;"> 01101 </td>
+   <td style="text-align:right;"> 1100100001 </td>
+   <td style="text-align:right;"> 11001 </td>
    <td style="text-align:right;"> 113889.0 </td>
    <td style="text-align:right;"> 113958 </td>
    <td style="text-align:right;"> 51309 </td>
@@ -246,6 +260,8 @@ tba(encuesta_mrp %>% head(10))
   <tr>
    <td style="text-align:left;"> 01 </td>
    <td style="text-align:left;"> 01101 </td>
+   <td style="text-align:right;"> 1100100001 </td>
+   <td style="text-align:right;"> 11001 </td>
    <td style="text-align:right;"> 113889.0 </td>
    <td style="text-align:right;"> 113958 </td>
    <td style="text-align:right;"> 51309 </td>
@@ -260,6 +276,8 @@ tba(encuesta_mrp %>% head(10))
   <tr>
    <td style="text-align:left;"> 01 </td>
    <td style="text-align:left;"> 01101 </td>
+   <td style="text-align:right;"> 1100100001 </td>
+   <td style="text-align:right;"> 11001 </td>
    <td style="text-align:right;"> 113889.0 </td>
    <td style="text-align:right;"> 113958 </td>
    <td style="text-align:right;"> 51309 </td>
@@ -274,6 +292,8 @@ tba(encuesta_mrp %>% head(10))
   <tr>
    <td style="text-align:left;"> 01 </td>
    <td style="text-align:left;"> 01101 </td>
+   <td style="text-align:right;"> 1100100001 </td>
+   <td style="text-align:right;"> 11001 </td>
    <td style="text-align:right;"> 231666.5 </td>
    <td style="text-align:right;"> 113958 </td>
    <td style="text-align:right;"> 51309 </td>
@@ -288,6 +308,8 @@ tba(encuesta_mrp %>% head(10))
   <tr>
    <td style="text-align:left;"> 01 </td>
    <td style="text-align:left;"> 01101 </td>
+   <td style="text-align:right;"> 1100100001 </td>
+   <td style="text-align:right;"> 11001 </td>
    <td style="text-align:right;"> 231666.5 </td>
    <td style="text-align:right;"> 113958 </td>
    <td style="text-align:right;"> 51309 </td>
@@ -302,6 +324,8 @@ tba(encuesta_mrp %>% head(10))
   <tr>
    <td style="text-align:left;"> 01 </td>
    <td style="text-align:left;"> 01101 </td>
+   <td style="text-align:right;"> 1100100001 </td>
+   <td style="text-align:right;"> 11001 </td>
    <td style="text-align:right;"> 418750.0 </td>
    <td style="text-align:right;"> 113958 </td>
    <td style="text-align:right;"> 51309 </td>
@@ -330,11 +354,61 @@ La base de datos de la encuesta tiene la siguientes columnas:
 
 -   *etnia* En estas variable se definen tres grupos:  afrodescendientes, indígenas y Otros. 
 
--   Años de escolaridad (*anoest*) 
+-   *anoest* Años de escolaridad  
 
--   Rangos de edad (*edad*) 
+-   *edad* Rangos de edad 
 
--   Factor de expansión por persona (*fep*)
+-   *fep* Factor de expansión por persona
+
+
+## Validación de encuesta frente al censo.
+
+
+```r
+library(survey)
+library(srvyr)
+library(patchwork)
+censo_dam2 <- readRDS("Recursos/Día3/Sesion1/Data/censo_dam2.rds")
+
+p1_dam <- Plot_Compare(dat_encuesta = encuesta_mrp,
+             dat_censo = censo_dam2,
+             by = "dam")
+p1_anotes <- Plot_Compare(dat_encuesta = encuesta_mrp,
+             dat_censo = censo_dam2,
+             by = "anoest")
+p1_edad <- Plot_Compare(dat_encuesta = encuesta_mrp,
+             dat_censo = censo_dam2,
+             by = "edad")
+p1 <- (p1_dam)/(p1_anotes + p1_edad)
+
+# ggsave(plot = p1,
+#        filename = "Recursos/Día3/Sesion1/0Recursos/Bernoulli/plot_comp.png",
+#        scale = 2)
+```
+
+<img src="Recursos/Día3/Sesion1/0Recursos/Bernoulli/plot_comp.png" width="500px" height="250px" style="display: block; margin: auto;" />
+
+Evaluando interacciones en la encuesta 
+
+
+```r
+encuesta_mrp$pobreza <- encuesta_mrp$logingreso
+(plot_interaction(dat_encuesta = encuesta_mrp, by = "sexo",by2 = "area")/
+plot_interaction(dat_encuesta = encuesta_mrp, by = "sexo",by2 = "anoest"))
+```
+
+<img src="08-D3S1_Modelo_unidad_ingresos_files/figure-html/unnamed-chunk-7-1.svg" width="672" />
+
+
+
+```r
+(plot_interaction(dat_encuesta = encuesta_mrp, by = "sexo",by2 = "edad")/
+plot_interaction(dat_encuesta = encuesta_mrp, by = "anoest",by2 = "edad")
+)
+```
+
+<img src="08-D3S1_Modelo_unidad_ingresos_files/figure-html/unnamed-chunk-8-1.svg" width="672" />
+
 
 
 Ahora, inspeccionamos el comportamiento de la variable de interés: 
@@ -355,8 +429,8 @@ ggplot(data = encuesta_mrp, aes(x = logingreso)) +
 ```
 
 <div class="figure">
-<img src="08-D3S1_Modelo_unidad_ingresos_files/figure-html/unnamed-chunk-5-1.svg" alt="Distribuición del ingreso de las personas encuestadas" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-5)Distribuición del ingreso de las personas encuestadas</p>
+<img src="08-D3S1_Modelo_unidad_ingresos_files/figure-html/unnamed-chunk-9-1.svg" alt="Distribuición del ingreso de las personas encuestadas" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-9)Distribuición del ingreso de las personas encuestadas</p>
 </div>
 
 
@@ -2012,3 +2086,6 @@ El mapa resultante es el siguiente
 
 
 <img src="Recursos/Día3/Sesion1/0Recursos/Map_CHL.PNG" width="400%" style="display: block; margin: auto;" />
+
+
+<img src="Recursos/Día3/Sesion1/0Recursos/Mosaico.png" width="400%" style="display: block; margin: auto;" />

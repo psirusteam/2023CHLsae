@@ -370,7 +370,7 @@
 <line x1='301.00' y1='112.33' x2='478.90' y2='69.01' style='stroke-width: 0.75; stroke: #7F7F7F; stroke-dasharray: 1.00,3.00;' />
 </g>
 <g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzNjAuMDA=)'>
-<text x='389.95' y='43.62' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='64.68px' lengthAdjust='spacingAndGlyphs'>Normal Q-Q</text>
+<text x='389.95' y='43.62' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='78.71px' lengthAdjust='spacingAndGlyphs'>Q-Q Residuals</text>
 </g>
 <g clip-path='url(#cpMjUyLjAwfDUwNC4wMHwwLjAwfDE4MC4wMA==)'>
 <text x='469.32' y='57.91' text-anchor='end' style='font-size: 7.47px; font-family: "Arial";' textLength='12.46px' lengthAdjust='spacingAndGlyphs'>120</text>

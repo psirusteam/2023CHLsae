@@ -83,9 +83,9 @@ encuesta <- readRDS("Recursos/Día2/Sesion1/Data/encuesta2017CHL.Rds") %>%
 
 -   *dam2*: Corresponde al código asignado a la segunda división administrativa del país.
 
--   *lp* linea de pobreza definida por CEPAL. 
+-   *lp* Linea de pobreza definida por CEPAL. 
 
--   Factor de expansión por persona (*wkx*)
+-   *wkx* Factor de expansión por persona
 
 
 <table class="table table-striped lightable-classic" style="width: auto !important; margin-left: auto; margin-right: auto; font-family: Arial Narrow; width: auto !important; margin-left: auto; margin-right: auto;">
@@ -257,10 +257,8 @@ base_sae <- directodam2 %>%
     nd = n,                    # Número de observaciones por dominios
     n_effec = n.eff,           # n efectivo. 
     pobreza = p,               # Estimación de la variable
-    pobreza_T = asin(sqrt(pobreza)), # Transformación arcoseno 
     vardir = ee ^ 2,                 # Estimación de la varianza directa 
     cv = CV,                       
-    var_zd = 1 / (4 * n_effec),      # Varianza para la tranformación arcsin
     deff_dam2 = deff                # Deff por dominio
   )
 
@@ -275,10 +273,8 @@ tba(head(base_sae))
    <th style="text-align:right;"> nd </th>
    <th style="text-align:right;"> n_effec </th>
    <th style="text-align:right;"> pobreza </th>
-   <th style="text-align:right;"> pobreza_T </th>
    <th style="text-align:right;"> vardir </th>
    <th style="text-align:right;"> cv </th>
-   <th style="text-align:right;"> var_zd </th>
    <th style="text-align:right;"> deff_dam2 </th>
   </tr>
  </thead>
@@ -288,10 +284,8 @@ tba(head(base_sae))
    <td style="text-align:right;"> 6447 </td>
    <td style="text-align:right;"> 1540.5327 </td>
    <td style="text-align:right;"> 0.0764 </td>
-   <td style="text-align:right;"> 0.2801 </td>
    <td style="text-align:right;"> 1e-04 </td>
    <td style="text-align:right;"> 13.7671 </td>
-   <td style="text-align:right;"> 0.0002 </td>
    <td style="text-align:right;"> 4.1849 </td>
   </tr>
   <tr>
@@ -299,10 +293,8 @@ tba(head(base_sae))
    <td style="text-align:right;"> 3015 </td>
    <td style="text-align:right;"> 874.1965 </td>
    <td style="text-align:right;"> 0.1624 </td>
-   <td style="text-align:right;"> 0.4148 </td>
    <td style="text-align:right;"> 4e-04 </td>
    <td style="text-align:right;"> 11.7319 </td>
-   <td style="text-align:right;"> 0.0003 </td>
    <td style="text-align:right;"> 3.4489 </td>
   </tr>
   <tr>
@@ -310,10 +302,8 @@ tba(head(base_sae))
    <td style="text-align:right;"> 5473 </td>
    <td style="text-align:right;"> 729.6790 </td>
    <td style="text-align:right;"> 0.0905 </td>
-   <td style="text-align:right;"> 0.3055 </td>
    <td style="text-align:right;"> 1e-04 </td>
    <td style="text-align:right;"> 13.0383 </td>
-   <td style="text-align:right;"> 0.0003 </td>
    <td style="text-align:right;"> 7.5006 </td>
   </tr>
   <tr>
@@ -321,10 +311,8 @@ tba(head(base_sae))
    <td style="text-align:right;"> 1759 </td>
    <td style="text-align:right;"> 129.0530 </td>
    <td style="text-align:right;"> 0.0772 </td>
-   <td style="text-align:right;"> 0.2816 </td>
    <td style="text-align:right;"> 5e-04 </td>
    <td style="text-align:right;"> 28.2624 </td>
-   <td style="text-align:right;"> 0.0019 </td>
    <td style="text-align:right;"> 13.6301 </td>
   </tr>
   <tr>
@@ -332,10 +320,8 @@ tba(head(base_sae))
    <td style="text-align:right;"> 3757 </td>
    <td style="text-align:right;"> 717.2133 </td>
    <td style="text-align:right;"> 0.1011 </td>
-   <td style="text-align:right;"> 0.3236 </td>
    <td style="text-align:right;"> 3e-04 </td>
    <td style="text-align:right;"> 16.0821 </td>
-   <td style="text-align:right;"> 0.0003 </td>
    <td style="text-align:right;"> 5.2383 </td>
   </tr>
   <tr>
@@ -343,10 +329,8 @@ tba(head(base_sae))
    <td style="text-align:right;"> 1221 </td>
    <td style="text-align:right;"> 1165.6410 </td>
    <td style="text-align:right;"> 0.1106 </td>
-   <td style="text-align:right;"> 0.3390 </td>
    <td style="text-align:right;"> 1e-04 </td>
    <td style="text-align:right;"> 10.4785 </td>
-   <td style="text-align:right;"> 0.0002 </td>
    <td style="text-align:right;"> 1.0475 </td>
   </tr>
 </tbody>
@@ -421,7 +405,8 @@ El código ajusta un modelo de regresión lineal múltiple (utilizando la funci�
 
 ```r
 library(gtsummary)
-FGV1 <- lm(ln_sigma2 ~ pobreza + I(nd^2) + I(sqrt(pobreza)),
+FGV1 <- lm(ln_sigma2 ~ 1+  I(nd^2) + I(sqrt(pobreza)) +
+             I(log(nd^pobreza)),
      data = baseFGV)
 
 tbl_regression(FGV1) %>% 
@@ -429,14 +414,26 @@ tbl_regression(FGV1) %>%
 ```
 
 ```{=html}
-<div id="arfkrgcihp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>html {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+<div id="daobdskdev" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#daobdskdev table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-#arfkrgcihp .gt_table {
+#daobdskdev thead, #daobdskdev tbody, #daobdskdev tfoot, #daobdskdev tr, #daobdskdev td, #daobdskdev th {
+  border-style: none;
+}
+
+#daobdskdev p {
+  margin: 0;
+  padding: 0;
+}
+
+#daobdskdev .gt_table {
   display: table;
   border-collapse: collapse;
+  line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
@@ -459,24 +456,12 @@ tbl_regression(FGV1) %>%
   border-left-color: #D3D3D3;
 }
 
-#arfkrgcihp .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#arfkrgcihp .gt_caption {
+#daobdskdev .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#arfkrgcihp .gt_title {
+#daobdskdev .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -488,25 +473,37 @@ tbl_regression(FGV1) %>%
   border-bottom-width: 0;
 }
 
-#arfkrgcihp .gt_subtitle {
+#daobdskdev .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
-  padding-top: 0;
-  padding-bottom: 6px;
+  padding-top: 3px;
+  padding-bottom: 5px;
   padding-left: 5px;
   padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
 
-#arfkrgcihp .gt_bottom_border {
+#daobdskdev .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#daobdskdev .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#arfkrgcihp .gt_col_headings {
+#daobdskdev .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -521,7 +518,7 @@ tbl_regression(FGV1) %>%
   border-right-color: #D3D3D3;
 }
 
-#arfkrgcihp .gt_col_heading {
+#daobdskdev .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -541,7 +538,7 @@ tbl_regression(FGV1) %>%
   overflow-x: hidden;
 }
 
-#arfkrgcihp .gt_column_spanner_outer {
+#daobdskdev .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -553,15 +550,15 @@ tbl_regression(FGV1) %>%
   padding-right: 4px;
 }
 
-#arfkrgcihp .gt_column_spanner_outer:first-child {
+#daobdskdev .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#arfkrgcihp .gt_column_spanner_outer:last-child {
+#daobdskdev .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#arfkrgcihp .gt_column_spanner {
+#daobdskdev .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -573,7 +570,11 @@ tbl_regression(FGV1) %>%
   width: 100%;
 }
 
-#arfkrgcihp .gt_group_heading {
+#daobdskdev .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#daobdskdev .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -599,7 +600,7 @@ tbl_regression(FGV1) %>%
   text-align: left;
 }
 
-#arfkrgcihp .gt_empty_group_heading {
+#daobdskdev .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -614,15 +615,15 @@ tbl_regression(FGV1) %>%
   vertical-align: middle;
 }
 
-#arfkrgcihp .gt_from_md > :first-child {
+#daobdskdev .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#arfkrgcihp .gt_from_md > :last-child {
+#daobdskdev .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#arfkrgcihp .gt_row {
+#daobdskdev .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -641,7 +642,7 @@ tbl_regression(FGV1) %>%
   overflow-x: hidden;
 }
 
-#arfkrgcihp .gt_stub {
+#daobdskdev .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -654,7 +655,7 @@ tbl_regression(FGV1) %>%
   padding-right: 5px;
 }
 
-#arfkrgcihp .gt_stub_row_group {
+#daobdskdev .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -668,11 +669,15 @@ tbl_regression(FGV1) %>%
   vertical-align: top;
 }
 
-#arfkrgcihp .gt_row_group_first td {
+#daobdskdev .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#arfkrgcihp .gt_summary_row {
+#daobdskdev .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#daobdskdev .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -682,16 +687,16 @@ tbl_regression(FGV1) %>%
   padding-right: 5px;
 }
 
-#arfkrgcihp .gt_first_summary_row {
+#daobdskdev .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#arfkrgcihp .gt_first_summary_row.thick {
+#daobdskdev .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#arfkrgcihp .gt_last_summary_row {
+#daobdskdev .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -701,7 +706,7 @@ tbl_regression(FGV1) %>%
   border-bottom-color: #D3D3D3;
 }
 
-#arfkrgcihp .gt_grand_summary_row {
+#daobdskdev .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -711,7 +716,7 @@ tbl_regression(FGV1) %>%
   padding-right: 5px;
 }
 
-#arfkrgcihp .gt_first_grand_summary_row {
+#daobdskdev .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -721,11 +726,21 @@ tbl_regression(FGV1) %>%
   border-top-color: #D3D3D3;
 }
 
-#arfkrgcihp .gt_striped {
+#daobdskdev .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#daobdskdev .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#arfkrgcihp .gt_table_body {
+#daobdskdev .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -734,7 +749,7 @@ tbl_regression(FGV1) %>%
   border-bottom-color: #D3D3D3;
 }
 
-#arfkrgcihp .gt_footnotes {
+#daobdskdev .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -748,30 +763,8 @@ tbl_regression(FGV1) %>%
   border-right-color: #D3D3D3;
 }
 
-#arfkrgcihp .gt_footnote {
+#daobdskdev .gt_footnote {
   margin: 0px;
-  font-size: 90%;
-  padding-left: 4px;
-  padding-right: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#arfkrgcihp .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#arfkrgcihp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -779,103 +772,124 @@ tbl_regression(FGV1) %>%
   padding-right: 5px;
 }
 
-#arfkrgcihp .gt_left {
+#daobdskdev .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#daobdskdev .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#daobdskdev .gt_left {
   text-align: left;
 }
 
-#arfkrgcihp .gt_center {
+#daobdskdev .gt_center {
   text-align: center;
 }
 
-#arfkrgcihp .gt_right {
+#daobdskdev .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#arfkrgcihp .gt_font_normal {
+#daobdskdev .gt_font_normal {
   font-weight: normal;
 }
 
-#arfkrgcihp .gt_font_bold {
+#daobdskdev .gt_font_bold {
   font-weight: bold;
 }
 
-#arfkrgcihp .gt_font_italic {
+#daobdskdev .gt_font_italic {
   font-style: italic;
 }
 
-#arfkrgcihp .gt_super {
+#daobdskdev .gt_super {
   font-size: 65%;
 }
 
-#arfkrgcihp .gt_footnote_marks {
-  font-style: italic;
-  font-weight: normal;
+#daobdskdev .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
+  position: initial;
 }
 
-#arfkrgcihp .gt_asterisk {
+#daobdskdev .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#arfkrgcihp .gt_indent_1 {
+#daobdskdev .gt_indent_1 {
   text-indent: 5px;
 }
 
-#arfkrgcihp .gt_indent_2 {
+#daobdskdev .gt_indent_2 {
   text-indent: 10px;
 }
 
-#arfkrgcihp .gt_indent_3 {
+#daobdskdev .gt_indent_3 {
   text-indent: 15px;
 }
 
-#arfkrgcihp .gt_indent_4 {
+#daobdskdev .gt_indent_4 {
   text-indent: 20px;
 }
 
-#arfkrgcihp .gt_indent_5 {
+#daobdskdev .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
-<table class="gt_table">
-  
-  <thead class="gt_col_headings">
-    <tr>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    
+    <tr class="gt_col_headings">
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="&lt;strong&gt;Characteristic&lt;/strong&gt;"><strong>Characteristic</strong></th>
       <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="&lt;strong&gt;Beta&lt;/strong&gt;"><strong>Beta</strong></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="&lt;strong&gt;95% CI&lt;/strong&gt;&lt;sup class=&quot;gt_footnote_marks&quot;&gt;1&lt;/sup&gt;"><strong>95% CI</strong><sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="&lt;strong&gt;95% CI&lt;/strong&gt;&lt;span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/span&gt;"><strong>95% CI</strong><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
       <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="&lt;strong&gt;p-value&lt;/strong&gt;"><strong>p-value</strong></th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
-    <tr><td headers="label" class="gt_row gt_left">pobreza</td>
-<td headers="estimate" class="gt_row gt_center">-23</td>
-<td headers="ci" class="gt_row gt_center">-36, -11</td>
-<td headers="p.value" class="gt_row gt_center"><0.001</td></tr>
     <tr><td headers="label" class="gt_row gt_left">I(nd^2)</td>
 <td headers="estimate" class="gt_row gt_center">0.00</td>
 <td headers="ci" class="gt_row gt_center">0.00, 0.00</td>
-<td headers="p.value" class="gt_row gt_center"><0.001</td></tr>
+<td headers="p.value" class="gt_row gt_center">0.017</td></tr>
     <tr><td headers="label" class="gt_row gt_left">I(sqrt(pobreza))</td>
-<td headers="estimate" class="gt_row gt_center">23</td>
-<td headers="ci" class="gt_row gt_center">16, 31</td>
+<td headers="estimate" class="gt_row gt_center">26</td>
+<td headers="ci" class="gt_row gt_center">20, 33</td>
+<td headers="p.value" class="gt_row gt_center"><0.001</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">I(log(nd^pobreza))</td>
+<td headers="estimate" class="gt_row gt_center">-4.2</td>
+<td headers="ci" class="gt_row gt_center">-5.8, -2.6</td>
 <td headers="p.value" class="gt_row gt_center"><0.001</td></tr>
     <tr><td headers="label" class="gt_row gt_left" style="border-top-width: 2px; border-top-style: solid; border-top-color: #D3D3D3;">R²</td>
-<td headers="estimate" class="gt_row gt_center" style="border-top-width: 2px; border-top-style: solid; border-top-color: #D3D3D3;">0.612</td>
+<td headers="estimate" class="gt_row gt_center" style="border-top-width: 2px; border-top-style: solid; border-top-color: #D3D3D3;">0.659</td>
 <td headers="ci" class="gt_row gt_center" style="border-top-width: 2px; border-top-style: solid; border-top-color: #D3D3D3;"></td>
 <td headers="p.value" class="gt_row gt_center" style="border-top-width: 2px; border-top-style: solid; border-top-color: #D3D3D3;"></td></tr>
     <tr><td headers="label" class="gt_row gt_left">Adjusted R²</td>
-<td headers="estimate" class="gt_row gt_center">0.600</td>
+<td headers="estimate" class="gt_row gt_center">0.648</td>
 <td headers="ci" class="gt_row gt_center"></td>
 <td headers="p.value" class="gt_row gt_center"></td></tr>
   </tbody>
   
   <tfoot class="gt_footnotes">
     <tr>
-      <td class="gt_footnote" colspan="4"><sup class="gt_footnote_marks">1</sup> CI = Confidence Interval</td>
+      <td class="gt_footnote" colspan="4"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> CI = Confidence Interval</td>
     </tr>
   </tfoot>
 </table>
@@ -890,7 +904,7 @@ delta.hat = sum(baseFGV$vardir) /
   sum(exp(fitted.values(FGV1)))
 ```
 
-De donde se obtiene que $\Delta = 1.3509652$. Final es posible obtener la varianza suavizada  ejecutando el siguiente comando.  
+De donde se obtiene que $\Delta = 1.27249$. Final es posible obtener la varianza suavizada  ejecutando el siguiente comando.  
 
 
 ```r
@@ -920,7 +934,7 @@ tba(head(baseFGV, 10))
    <td style="text-align:right;"> 6447 </td>
    <td style="text-align:right;"> 0.0001 </td>
    <td style="text-align:right;"> -9.1085 </td>
-   <td style="text-align:right;"> 0.0001 </td>
+   <td style="text-align:right;"> 1e-04 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 01107 </td>
@@ -928,7 +942,7 @@ tba(head(baseFGV, 10))
    <td style="text-align:right;"> 3015 </td>
    <td style="text-align:right;"> 0.0004 </td>
    <td style="text-align:right;"> -7.9210 </td>
-   <td style="text-align:right;"> 0.0009 </td>
+   <td style="text-align:right;"> 5e-04 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 02101 </td>
@@ -936,7 +950,7 @@ tba(head(baseFGV, 10))
    <td style="text-align:right;"> 5473 </td>
    <td style="text-align:right;"> 0.0001 </td>
    <td style="text-align:right;"> -8.8804 </td>
-   <td style="text-align:right;"> 0.0002 </td>
+   <td style="text-align:right;"> 2e-04 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 02201 </td>
@@ -944,7 +958,7 @@ tba(head(baseFGV, 10))
    <td style="text-align:right;"> 1759 </td>
    <td style="text-align:right;"> 0.0005 </td>
    <td style="text-align:right;"> -7.6500 </td>
-   <td style="text-align:right;"> 0.0005 </td>
+   <td style="text-align:right;"> 4e-04 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 03101 </td>
@@ -952,7 +966,7 @@ tba(head(baseFGV, 10))
    <td style="text-align:right;"> 3757 </td>
    <td style="text-align:right;"> 0.0003 </td>
    <td style="text-align:right;"> -8.2383 </td>
-   <td style="text-align:right;"> 0.0004 </td>
+   <td style="text-align:right;"> 3e-04 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 03301 </td>
@@ -960,7 +974,7 @@ tba(head(baseFGV, 10))
    <td style="text-align:right;"> 1221 </td>
    <td style="text-align:right;"> 0.0001 </td>
    <td style="text-align:right;"> -8.9152 </td>
-   <td style="text-align:right;"> 0.0008 </td>
+   <td style="text-align:right;"> 7e-04 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 04101 </td>
@@ -968,7 +982,7 @@ tba(head(baseFGV, 10))
    <td style="text-align:right;"> 2719 </td>
    <td style="text-align:right;"> 0.0002 </td>
    <td style="text-align:right;"> -8.4038 </td>
-   <td style="text-align:right;"> 0.0011 </td>
+   <td style="text-align:right;"> 5e-04 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 04102 </td>
@@ -976,7 +990,7 @@ tba(head(baseFGV, 10))
    <td style="text-align:right;"> 2498 </td>
    <td style="text-align:right;"> 0.0005 </td>
    <td style="text-align:right;"> -7.6308 </td>
-   <td style="text-align:right;"> 0.0012 </td>
+   <td style="text-align:right;"> 5e-04 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 04203 </td>
@@ -984,7 +998,7 @@ tba(head(baseFGV, 10))
    <td style="text-align:right;"> 482 </td>
    <td style="text-align:right;"> 0.0011 </td>
    <td style="text-align:right;"> -6.8172 </td>
-   <td style="text-align:right;"> 0.0008 </td>
+   <td style="text-align:right;"> 1e-03 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 04301 </td>
@@ -992,7 +1006,7 @@ tba(head(baseFGV, 10))
    <td style="text-align:right;"> 1323 </td>
    <td style="text-align:right;"> 0.0005 </td>
    <td style="text-align:right;"> -7.6734 </td>
-   <td style="text-align:right;"> 0.0006 </td>
+   <td style="text-align:right;"> 6e-04 </td>
   </tr>
 </tbody>
 </table>
@@ -1027,6 +1041,22 @@ Predicción de la varianza suavizada
 ```r
 base_sae <- base_sae %>%  left_join(hat.sigma, by = "dam2")
 ```
+
+Ahora, realizamos un gráfico de linea para ver la volatilidad es la estimaciones de las varianzas. 
+
+```{.r .fold-hide}
+ggplot(base_sae %>%
+         arrange(nd), aes(x = 1:nrow(base_sae))) +
+  geom_line(aes(y = vardir, color = "VarDirEst")) +
+  geom_line(aes(y = hat_var, color = "FGV")) +
+  labs(y = "Varianzas", x = "Tamaño muestral", color = " ") +
+  scale_x_continuous(breaks = seq(1, nrow(base_sae), by = 10),
+                     labels = base_sae$nd[order(base_sae$nd)][seq(1, nrow(base_sae), by = 10)]) +
+  scale_color_manual(values = c("FGV" = "Blue", "VarDirEst" = "Red"))
+```
+
+<img src="03-D2S1_FGV_files/figure-html/unnamed-chunk-15-1.svg" width="672" />
+
 
 El siguiente código utiliza la función `mutate()` del paquete `dplyr` para crear nuevas variables de la base de datos `base_sae` y luego guarda el resultado en un archivo RDS llamado `base_FH_2017.rds.`
 

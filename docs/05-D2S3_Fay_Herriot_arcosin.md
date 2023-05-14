@@ -90,8 +90,8 @@ tba(base_FH[,1:8] %>% head(10))
    <td style="text-align:left;"> 01101 </td>
    <td style="text-align:right;"> 0.0764 </td>
    <td style="text-align:right;"> 0.2801 </td>
-   <td style="text-align:right;"> 2143.5413 </td>
-   <td style="text-align:right;"> 0.0001 </td>
+   <td style="text-align:right;"> 1579.7310 </td>
+   <td style="text-align:right;"> 0.0002 </td>
    <td style="text-align:right;"> 0.0126 </td>
    <td style="text-align:right;"> 0.9874 </td>
    <td style="text-align:right;"> 0.0016 </td>
@@ -100,8 +100,8 @@ tba(base_FH[,1:8] %>% head(10))
    <td style="text-align:left;"> 01107 </td>
    <td style="text-align:right;"> 0.1624 </td>
    <td style="text-align:right;"> 0.4148 </td>
-   <td style="text-align:right;"> 340.4564 </td>
-   <td style="text-align:right;"> 0.0007 </td>
+   <td style="text-align:right;"> 698.9342 </td>
+   <td style="text-align:right;"> 0.0004 </td>
    <td style="text-align:right;"> 0.0230 </td>
    <td style="text-align:right;"> 0.9770 </td>
    <td style="text-align:right;"> 0.0011 </td>
@@ -110,7 +110,7 @@ tba(base_FH[,1:8] %>% head(10))
    <td style="text-align:left;"> 02101 </td>
    <td style="text-align:right;"> 0.0905 </td>
    <td style="text-align:right;"> 0.3055 </td>
-   <td style="text-align:right;"> 585.8595 </td>
+   <td style="text-align:right;"> 597.6173 </td>
    <td style="text-align:right;"> 0.0004 </td>
    <td style="text-align:right;"> 0.0215 </td>
    <td style="text-align:right;"> 0.9785 </td>
@@ -120,8 +120,8 @@ tba(base_FH[,1:8] %>% head(10))
    <td style="text-align:left;"> 02201 </td>
    <td style="text-align:right;"> 0.0772 </td>
    <td style="text-align:right;"> 0.2816 </td>
-   <td style="text-align:right;"> 128.7029 </td>
-   <td style="text-align:right;"> 0.0019 </td>
+   <td style="text-align:right;"> 153.6090 </td>
+   <td style="text-align:right;"> 0.0016 </td>
    <td style="text-align:right;"> 0.0437 </td>
    <td style="text-align:right;"> 0.9563 </td>
    <td style="text-align:right;"> 0.0004 </td>
@@ -130,8 +130,8 @@ tba(base_FH[,1:8] %>% head(10))
    <td style="text-align:left;"> 03101 </td>
    <td style="text-align:right;"> 0.1011 </td>
    <td style="text-align:right;"> 0.3236 </td>
-   <td style="text-align:right;"> 451.0658 </td>
-   <td style="text-align:right;"> 0.0006 </td>
+   <td style="text-align:right;"> 617.7543 </td>
+   <td style="text-align:right;"> 0.0004 </td>
    <td style="text-align:right;"> 0.0193 </td>
    <td style="text-align:right;"> 0.9807 </td>
    <td style="text-align:right;"> 0.0006 </td>
@@ -140,8 +140,8 @@ tba(base_FH[,1:8] %>% head(10))
    <td style="text-align:left;"> 03301 </td>
    <td style="text-align:right;"> 0.1106 </td>
    <td style="text-align:right;"> 0.3390 </td>
-   <td style="text-align:right;"> 184.2783 </td>
-   <td style="text-align:right;"> 0.0014 </td>
+   <td style="text-align:right;"> 213.9843 </td>
+   <td style="text-align:right;"> 0.0012 </td>
    <td style="text-align:right;"> 0.1136 </td>
    <td style="text-align:right;"> 0.8864 </td>
    <td style="text-align:right;"> 0.0004 </td>
@@ -150,8 +150,8 @@ tba(base_FH[,1:8] %>% head(10))
    <td style="text-align:left;"> 04101 </td>
    <td style="text-align:right;"> 0.1710 </td>
    <td style="text-align:right;"> 0.4263 </td>
-   <td style="text-align:right;"> 144.7157 </td>
-   <td style="text-align:right;"> 0.0017 </td>
+   <td style="text-align:right;"> 304.0418 </td>
+   <td style="text-align:right;"> 0.0008 </td>
    <td style="text-align:right;"> 0.0923 </td>
    <td style="text-align:right;"> 0.9077 </td>
    <td style="text-align:right;"> 0.0004 </td>
@@ -160,8 +160,8 @@ tba(base_FH[,1:8] %>% head(10))
    <td style="text-align:left;"> 04102 </td>
    <td style="text-align:right;"> 0.1930 </td>
    <td style="text-align:right;"> 0.4548 </td>
-   <td style="text-align:right;"> 108.3256 </td>
-   <td style="text-align:right;"> 0.0023 </td>
+   <td style="text-align:right;"> 251.5640 </td>
+   <td style="text-align:right;"> 0.0010 </td>
    <td style="text-align:right;"> 0.0579 </td>
    <td style="text-align:right;"> 0.9421 </td>
    <td style="text-align:right;"> 0.0003 </td>
@@ -170,8 +170,8 @@ tba(base_FH[,1:8] %>% head(10))
    <td style="text-align:left;"> 04203 </td>
    <td style="text-align:right;"> 0.1004 </td>
    <td style="text-align:right;"> 0.3223 </td>
-   <td style="text-align:right;"> 215.8664 </td>
-   <td style="text-align:right;"> 0.0012 </td>
+   <td style="text-align:right;"> 170.9489 </td>
+   <td style="text-align:right;"> 0.0015 </td>
    <td style="text-align:right;"> 0.2005 </td>
    <td style="text-align:right;"> 0.7995 </td>
    <td style="text-align:right;"> 0.0003 </td>
@@ -180,8 +180,8 @@ tba(base_FH[,1:8] %>% head(10))
    <td style="text-align:left;"> 04301 </td>
    <td style="text-align:right;"> 0.0902 </td>
    <td style="text-align:right;"> 0.3051 </td>
-   <td style="text-align:right;"> 112.8311 </td>
-   <td style="text-align:right;"> 0.0022 </td>
+   <td style="text-align:right;"> 129.4378 </td>
+   <td style="text-align:right;"> 0.0019 </td>
    <td style="text-align:right;"> 0.2133 </td>
    <td style="text-align:right;"> 0.7867 </td>
    <td style="text-align:right;"> 0.0001 </td>
@@ -386,6 +386,7 @@ sample_data <- list(
 library(rstan)
 fit_FH_arcoseno <- "Recursos/Día2/Sesion3/Data/modelosStan/15FH_arcsin_normal.stan"
 options(mc.cores = parallel::detectCores())
+rstan::rstan_options(auto_write = TRUE) # speed up running time 
 model_FH_arcoseno <- stan(
   file = fit_FH_arcoseno,  
   data = sample_data,   

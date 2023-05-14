@@ -1262,7 +1262,7 @@ mean(colSums(t(epred_mat_ipm)*poststrat_df$n)/sum(poststrat_df$n))
 ```
 
 ```
-## [1] 0.01095818
+## [1] 0.00246047
 ```
 También es posible utilizar la función `Aux_Agregado` para las estimaciones. 
 
@@ -1289,47 +1289,47 @@ tba(mrp_estimate_dam2 %>% head(10))
   <tr>
    <td style="text-align:left;"> 01101 </td>
    <td style="text-align:right;"> 0.0002 </td>
-   <td style="text-align:right;"> 0.0003 </td>
+   <td style="text-align:right;"> 0.0008 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 01107 </td>
    <td style="text-align:right;"> 0.0016 </td>
-   <td style="text-align:right;"> 0.0022 </td>
+   <td style="text-align:right;"> 0.0025 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 01401 </td>
-   <td style="text-align:right;"> 0.0336 </td>
-   <td style="text-align:right;"> 0.0226 </td>
+   <td style="text-align:right;"> 0.0362 </td>
+   <td style="text-align:right;"> 0.0232 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 01402 </td>
-   <td style="text-align:right;"> 0.0050 </td>
-   <td style="text-align:right;"> 0.0150 </td>
+   <td style="text-align:right;"> 0.0060 </td>
+   <td style="text-align:right;"> 0.0154 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 01403 </td>
-   <td style="text-align:right;"> 0.0404 </td>
-   <td style="text-align:right;"> 0.0574 </td>
+   <td style="text-align:right;"> 0.0420 </td>
+   <td style="text-align:right;"> 0.0545 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 01404 </td>
-   <td style="text-align:right;"> 0.0574 </td>
-   <td style="text-align:right;"> 0.0344 </td>
+   <td style="text-align:right;"> 0.0582 </td>
+   <td style="text-align:right;"> 0.0315 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 01405 </td>
-   <td style="text-align:right;"> 0.0080 </td>
-   <td style="text-align:right;"> 0.0215 </td>
+   <td style="text-align:right;"> 0.0079 </td>
+   <td style="text-align:right;"> 0.0178 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 02101 </td>
    <td style="text-align:right;"> 0.0000 </td>
-   <td style="text-align:right;"> 0.0000 </td>
+   <td style="text-align:right;"> 0.0002 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 02102 </td>
    <td style="text-align:right;"> 0.0000 </td>
-   <td style="text-align:right;"> 0.0001 </td>
+   <td style="text-align:right;"> 0.0002 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 02103 </td>
@@ -1380,7 +1380,7 @@ Mapa_ing3
 ```
 
 
-<img src="Recursos/Día3/Sesion4/Data/CHL_IPM.jpeg" width="1000" height="400%" style="display: block; margin: auto;" />
+<img src="Recursos/Día3/Sesion4/Data/CHL_IPM.jpeg" height="400%" style="display: block; margin: auto;" />
 
 Realizando un acercamiento de algunas regiones. 
 
@@ -1413,7 +1413,7 @@ Mapa_ing
 ```
 
 
-<img src="Recursos/Día3/Sesion4/Data/CHL_region.jpeg" width="1000" height="400%" style="display: block; margin: auto;" />
+<img src="Recursos/Día3/Sesion4/Data/CHL_region.jpeg" height="400%" style="display: block; margin: auto;" />
 
 Los resultado para cada componente puede ser mapeado de forma similar. 
 
@@ -1433,52 +1433,52 @@ Para obtener el resultado por municipio procedemos así:
   <tr>
    <td style="text-align:left;"> Material </td>
    <td style="text-align:left;"> 01101 </td>
-   <td style="text-align:right;"> 0.0229 </td>
+   <td style="text-align:right;"> 0.0298 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Material </td>
    <td style="text-align:left;"> 01107 </td>
-   <td style="text-align:right;"> 0.0890 </td>
+   <td style="text-align:right;"> 0.0907 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Material </td>
    <td style="text-align:left;"> 01401 </td>
-   <td style="text-align:right;"> 0.0950 </td>
+   <td style="text-align:right;"> 0.0948 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Material </td>
    <td style="text-align:left;"> 01402 </td>
-   <td style="text-align:right;"> 0.0641 </td>
+   <td style="text-align:right;"> 0.0627 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Material </td>
    <td style="text-align:left;"> 01403 </td>
-   <td style="text-align:right;"> 0.1535 </td>
+   <td style="text-align:right;"> 0.1387 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Material </td>
    <td style="text-align:left;"> 01404 </td>
-   <td style="text-align:right;"> 0.2145 </td>
+   <td style="text-align:right;"> 0.2155 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Material </td>
    <td style="text-align:left;"> 01405 </td>
-   <td style="text-align:right;"> 0.1538 </td>
+   <td style="text-align:right;"> 0.1541 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Material </td>
    <td style="text-align:left;"> 02101 </td>
-   <td style="text-align:right;"> 0.0090 </td>
+   <td style="text-align:right;"> 0.0106 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Material </td>
    <td style="text-align:left;"> 02102 </td>
-   <td style="text-align:right;"> 0.0069 </td>
+   <td style="text-align:right;"> 0.0078 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Material </td>
    <td style="text-align:left;"> 02103 </td>
-   <td style="text-align:right;"> 0.0210 </td>
+   <td style="text-align:right;"> 0.0191 </td>
   </tr>
 </tbody>
 </table>
@@ -1486,4 +1486,4 @@ Para obtener el resultado por municipio procedemos así:
 
 
 
-<img src="Recursos/Día3/Sesion4/Data/CHL_region_ipm.jpeg" width="1500" height="400%" style="display: block; margin: auto;" />
+<img src="Recursos/Día3/Sesion4/Data/CHL_region_ipm.jpeg" height="400%" style="display: block; margin: auto;" />

@@ -136,23 +136,27 @@ El tamaño de la muestra es de 26434 Indígena
 ```r
 datay <- encuesta %>% filter(etnia_ee == 1) %>% 
   transmute(y = ifelse(ingcorte < lp, 1,0))
-addmargins(table(datay$y))
+addmargins(table(datay$y)) %>% tba()
 ```
 
-
-
-<table>
+<table class="table table-striped lightable-classic" style="width: auto !important; margin-left: auto; margin-right: auto; font-family: Arial Narrow; width: auto !important; margin-left: auto; margin-right: auto;">
  <thead>
   <tr>
-   <th style="text-align:right;"> 0 </th>
-   <th style="text-align:right;"> 1 </th>
-   <th style="text-align:right;"> Sum </th>
+   <th style="text-align:left;"> Var1 </th>
+   <th style="text-align:right;"> Freq </th>
   </tr>
  </thead>
 <tbody>
   <tr>
+   <td style="text-align:left;"> 0 </td>
    <td style="text-align:right;"> 22448 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1 </td>
    <td style="text-align:right;"> 3986 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sum </td>
    <td style="text-align:right;"> 26434 </td>
   </tr>
 </tbody>
@@ -238,6 +242,7 @@ Bernoulli <- "Recursos/Día1/Sesion4/Data/modelosStan/1Bernoulli.stan"
 
 ```r
 options(mc.cores = parallel::detectCores())
+rstan::rstan_options(auto_write = TRUE) # speed up running time 
 model_Bernoulli <- stan(
   file = Bernoulli,  # Stan program
   data = sample_data,    # named list of data
@@ -282,14 +287,14 @@ tabla_Ber1 %>% tba()
    <td style="text-align:left;"> theta </td>
    <td style="text-align:right;"> 0.1508 </td>
    <td style="text-align:right;"> 1e-04 </td>
-   <td style="text-align:right;"> 0.0024 </td>
-   <td style="text-align:right;"> 0.146 </td>
-   <td style="text-align:right;"> 0.1492 </td>
-   <td style="text-align:right;"> 0.1507 </td>
-   <td style="text-align:right;"> 0.1523 </td>
-   <td style="text-align:right;"> 0.1554 </td>
-   <td style="text-align:right;"> 717.7288 </td>
-   <td style="text-align:right;"> 1.0035 </td>
+   <td style="text-align:right;"> 0.0022 </td>
+   <td style="text-align:right;"> 0.1466 </td>
+   <td style="text-align:right;"> 0.1493 </td>
+   <td style="text-align:right;"> 0.1508 </td>
+   <td style="text-align:right;"> 0.1522 </td>
+   <td style="text-align:right;"> 0.1552 </td>
+   <td style="text-align:right;"> 716.553 </td>
+   <td style="text-align:right;"> 1.0039 </td>
   </tr>
 </tbody>
 </table>
@@ -310,6 +315,7 @@ p1 <- ggplot(data = temp, aes(x = theta))+
   theme_bw(base_size = 20) + 
   labs(x = latex2exp::TeX("\\theta"),
        y = latex2exp::TeX("f(\\theta)"))
+# ggsave(plot = p1, filename = "Recursos/Día1/Sesion4/0Recursos/Bernoulli/Bernoulli2.png", scale = 2)
 p1 
 ```
 
@@ -325,9 +331,13 @@ Para validar las cadenas
 library(bayesplot)
 library(patchwork)
 posterior_theta <- as.array(model_Bernoulli, pars = "theta")
-(mcmc_dens_chains(posterior_theta) +
+p1 <- (mcmc_dens_chains(posterior_theta) +
     mcmc_areas(posterior_theta) ) / 
-  mcmc_trace(posterior_theta)
+traceplot(model_Bernoulli,pars = "theta", inc_warmup = TRUE) 
+
+# ggsave(plot = p1, 
+#        filename = "Recursos/Día1/Sesion4/0Recursos/Bernoulli/Bernoulli3.png", scale = 2)
+p1  
 ```
 
 
@@ -343,7 +353,10 @@ y_pred_B <- as.array(model_Bernoulli, pars = "ypred") %>%
 
 rowsrandom <- sample(nrow(y_pred_B), 100)
 y_pred2 <- y_pred_B[rowsrandom, 1:n]
-ppc_dens_overlay(y = datay$y, y_pred2)
+p1 <- ppc_dens_overlay(y = datay$y, y_pred2)
+# ggsave(plot = p1,
+#        filename = "Recursos/Día1/Sesion4/0Recursos/Bernoulli/Bernoulli4.png", scale = 2)
+p1 
 ```
 
 <img src="Recursos/Día1/Sesion4/0Recursos/Bernoulli/Bernoulli4.png" width="200%" style="display: block; margin: auto;" />
@@ -577,6 +590,7 @@ Para ejecutar `STAN` en R tenemos la librería *rstan*
 
 ```r
 options(mc.cores = parallel::detectCores())
+rstan::rstan_options(auto_write = TRUE) # speed up running time 
 model_Binomial2 <- stan(
   file = Binomial2,  # Stan program
   data = sample_data,    # named list of data
@@ -617,81 +631,81 @@ tabla_Bin1 %>% tba()
 <tbody>
   <tr>
    <td style="text-align:left;"> theta[1] </td>
-   <td style="text-align:right;"> 0.1010 </td>
+   <td style="text-align:right;"> 0.1009 </td>
    <td style="text-align:right;"> 0e+00 </td>
-   <td style="text-align:right;"> 0.0030 </td>
-   <td style="text-align:right;"> 0.0954 </td>
-   <td style="text-align:right;"> 0.0990 </td>
-   <td style="text-align:right;"> 0.1010 </td>
-   <td style="text-align:right;"> 0.1030 </td>
-   <td style="text-align:right;"> 0.1069 </td>
-   <td style="text-align:right;"> 5824.110 </td>
-   <td style="text-align:right;"> 0.9983 </td>
+   <td style="text-align:right;"> 0.0031 </td>
+   <td style="text-align:right;"> 0.0949 </td>
+   <td style="text-align:right;"> 0.0989 </td>
+   <td style="text-align:right;"> 0.1009 </td>
+   <td style="text-align:right;"> 0.1029 </td>
+   <td style="text-align:right;"> 0.1072 </td>
+   <td style="text-align:right;"> 4681.139 </td>
+   <td style="text-align:right;"> 0.9987 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> theta[2] </td>
    <td style="text-align:right;"> 0.0819 </td>
    <td style="text-align:right;"> 0e+00 </td>
    <td style="text-align:right;"> 0.0029 </td>
-   <td style="text-align:right;"> 0.0763 </td>
+   <td style="text-align:right;"> 0.0764 </td>
    <td style="text-align:right;"> 0.0800 </td>
-   <td style="text-align:right;"> 0.0819 </td>
-   <td style="text-align:right;"> 0.0839 </td>
-   <td style="text-align:right;"> 0.0876 </td>
-   <td style="text-align:right;"> 4572.696 </td>
-   <td style="text-align:right;"> 0.9986 </td>
+   <td style="text-align:right;"> 0.0818 </td>
+   <td style="text-align:right;"> 0.0838 </td>
+   <td style="text-align:right;"> 0.0878 </td>
+   <td style="text-align:right;"> 5441.234 </td>
+   <td style="text-align:right;"> 0.9983 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> theta[3] </td>
-   <td style="text-align:right;"> 0.1132 </td>
-   <td style="text-align:right;"> 1e-04 </td>
-   <td style="text-align:right;"> 0.0037 </td>
-   <td style="text-align:right;"> 0.1059 </td>
-   <td style="text-align:right;"> 0.1108 </td>
    <td style="text-align:right;"> 0.1131 </td>
-   <td style="text-align:right;"> 0.1156 </td>
-   <td style="text-align:right;"> 0.1206 </td>
-   <td style="text-align:right;"> 4096.779 </td>
+   <td style="text-align:right;"> 0e+00 </td>
+   <td style="text-align:right;"> 0.0038 </td>
+   <td style="text-align:right;"> 0.1059 </td>
+   <td style="text-align:right;"> 0.1105 </td>
+   <td style="text-align:right;"> 0.1130 </td>
+   <td style="text-align:right;"> 0.1157 </td>
+   <td style="text-align:right;"> 0.1212 </td>
+   <td style="text-align:right;"> 5921.113 </td>
    <td style="text-align:right;"> 0.9983 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> theta[4] </td>
-   <td style="text-align:right;"> 0.1643 </td>
-   <td style="text-align:right;"> 1e-04 </td>
-   <td style="text-align:right;"> 0.0037 </td>
-   <td style="text-align:right;"> 0.1573 </td>
-   <td style="text-align:right;"> 0.1616 </td>
-   <td style="text-align:right;"> 0.1643 </td>
-   <td style="text-align:right;"> 0.1668 </td>
+   <td style="text-align:right;"> 0.1641 </td>
+   <td style="text-align:right;"> 0e+00 </td>
+   <td style="text-align:right;"> 0.0036 </td>
+   <td style="text-align:right;"> 0.1572 </td>
+   <td style="text-align:right;"> 0.1615 </td>
+   <td style="text-align:right;"> 0.1641 </td>
+   <td style="text-align:right;"> 0.1666 </td>
    <td style="text-align:right;"> 0.1714 </td>
-   <td style="text-align:right;"> 4569.480 </td>
-   <td style="text-align:right;"> 0.9986 </td>
+   <td style="text-align:right;"> 5313.573 </td>
+   <td style="text-align:right;"> 0.9989 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> theta[5] </td>
    <td style="text-align:right;"> 0.0915 </td>
    <td style="text-align:right;"> 0e+00 </td>
-   <td style="text-align:right;"> 0.0021 </td>
-   <td style="text-align:right;"> 0.0874 </td>
-   <td style="text-align:right;"> 0.0900 </td>
-   <td style="text-align:right;"> 0.0915 </td>
-   <td style="text-align:right;"> 0.0928 </td>
+   <td style="text-align:right;"> 0.0022 </td>
+   <td style="text-align:right;"> 0.0873 </td>
+   <td style="text-align:right;"> 0.0901 </td>
+   <td style="text-align:right;"> 0.0914 </td>
+   <td style="text-align:right;"> 0.0929 </td>
    <td style="text-align:right;"> 0.0958 </td>
-   <td style="text-align:right;"> 4942.271 </td>
-   <td style="text-align:right;"> 0.9988 </td>
+   <td style="text-align:right;"> 5352.055 </td>
+   <td style="text-align:right;"> 0.9983 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> theta[6] </td>
-   <td style="text-align:right;"> 0.1093 </td>
+   <td style="text-align:right;"> 0.1094 </td>
    <td style="text-align:right;"> 0e+00 </td>
-   <td style="text-align:right;"> 0.0023 </td>
-   <td style="text-align:right;"> 0.1047 </td>
-   <td style="text-align:right;"> 0.1078 </td>
+   <td style="text-align:right;"> 0.0025 </td>
+   <td style="text-align:right;"> 0.1046 </td>
+   <td style="text-align:right;"> 0.1077 </td>
    <td style="text-align:right;"> 0.1093 </td>
-   <td style="text-align:right;"> 0.1109 </td>
-   <td style="text-align:right;"> 0.1141 </td>
-   <td style="text-align:right;"> 5090.266 </td>
-   <td style="text-align:right;"> 0.9985 </td>
+   <td style="text-align:right;"> 0.1110 </td>
+   <td style="text-align:right;"> 0.1144 </td>
+   <td style="text-align:right;"> 4510.355 </td>
+   <td style="text-align:right;"> 0.9993 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> theta[7] </td>
@@ -699,76 +713,76 @@ tabla_Bin1 %>% tba()
    <td style="text-align:right;"> 0e+00 </td>
    <td style="text-align:right;"> 0.0028 </td>
    <td style="text-align:right;"> 0.1302 </td>
-   <td style="text-align:right;"> 0.1338 </td>
-   <td style="text-align:right;"> 0.1358 </td>
-   <td style="text-align:right;"> 0.1376 </td>
-   <td style="text-align:right;"> 0.1413 </td>
-   <td style="text-align:right;"> 6321.156 </td>
-   <td style="text-align:right;"> 0.9985 </td>
+   <td style="text-align:right;"> 0.1337 </td>
+   <td style="text-align:right;"> 0.1356 </td>
+   <td style="text-align:right;"> 0.1377 </td>
+   <td style="text-align:right;"> 0.1411 </td>
+   <td style="text-align:right;"> 6121.042 </td>
+   <td style="text-align:right;"> 0.9992 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> theta[8] </td>
    <td style="text-align:right;"> 0.1435 </td>
    <td style="text-align:right;"> 0e+00 </td>
    <td style="text-align:right;"> 0.0024 </td>
-   <td style="text-align:right;"> 0.1387 </td>
-   <td style="text-align:right;"> 0.1419 </td>
-   <td style="text-align:right;"> 0.1435 </td>
+   <td style="text-align:right;"> 0.1388 </td>
+   <td style="text-align:right;"> 0.1418 </td>
+   <td style="text-align:right;"> 0.1436 </td>
    <td style="text-align:right;"> 0.1452 </td>
-   <td style="text-align:right;"> 0.1485 </td>
-   <td style="text-align:right;"> 5777.110 </td>
-   <td style="text-align:right;"> 0.9982 </td>
+   <td style="text-align:right;"> 0.1483 </td>
+   <td style="text-align:right;"> 6092.897 </td>
+   <td style="text-align:right;"> 0.9988 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> theta[9] </td>
    <td style="text-align:right;"> 0.1779 </td>
    <td style="text-align:right;"> 0e+00 </td>
-   <td style="text-align:right;"> 0.0029 </td>
+   <td style="text-align:right;"> 0.0030 </td>
    <td style="text-align:right;"> 0.1722 </td>
-   <td style="text-align:right;"> 0.1760 </td>
+   <td style="text-align:right;"> 0.1758 </td>
    <td style="text-align:right;"> 0.1779 </td>
-   <td style="text-align:right;"> 0.1798 </td>
-   <td style="text-align:right;"> 0.1838 </td>
-   <td style="text-align:right;"> 5066.155 </td>
-   <td style="text-align:right;"> 0.9984 </td>
+   <td style="text-align:right;"> 0.1800 </td>
+   <td style="text-align:right;"> 0.1840 </td>
+   <td style="text-align:right;"> 6518.933 </td>
+   <td style="text-align:right;"> 0.9988 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> theta[10] </td>
    <td style="text-align:right;"> 0.1247 </td>
    <td style="text-align:right;"> 0e+00 </td>
-   <td style="text-align:right;"> 0.0029 </td>
-   <td style="text-align:right;"> 0.1193 </td>
-   <td style="text-align:right;"> 0.1228 </td>
+   <td style="text-align:right;"> 0.0028 </td>
+   <td style="text-align:right;"> 0.1191 </td>
+   <td style="text-align:right;"> 0.1229 </td>
    <td style="text-align:right;"> 0.1247 </td>
-   <td style="text-align:right;"> 0.1267 </td>
-   <td style="text-align:right;"> 0.1305 </td>
-   <td style="text-align:right;"> 4838.865 </td>
-   <td style="text-align:right;"> 0.9985 </td>
+   <td style="text-align:right;"> 0.1265 </td>
+   <td style="text-align:right;"> 0.1304 </td>
+   <td style="text-align:right;"> 6120.245 </td>
+   <td style="text-align:right;"> 0.9992 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> theta[11] </td>
-   <td style="text-align:right;"> 0.0500 </td>
+   <td style="text-align:right;"> 0.0499 </td>
    <td style="text-align:right;"> 0e+00 </td>
-   <td style="text-align:right;"> 0.0030 </td>
+   <td style="text-align:right;"> 0.0031 </td>
    <td style="text-align:right;"> 0.0442 </td>
    <td style="text-align:right;"> 0.0478 </td>
-   <td style="text-align:right;"> 0.0499 </td>
-   <td style="text-align:right;"> 0.0522 </td>
-   <td style="text-align:right;"> 0.0560 </td>
-   <td style="text-align:right;"> 4610.448 </td>
-   <td style="text-align:right;"> 0.9991 </td>
+   <td style="text-align:right;"> 0.0498 </td>
+   <td style="text-align:right;"> 0.0519 </td>
+   <td style="text-align:right;"> 0.0561 </td>
+   <td style="text-align:right;"> 5876.615 </td>
+   <td style="text-align:right;"> 0.9984 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> theta[12] </td>
    <td style="text-align:right;"> 0.0377 </td>
    <td style="text-align:right;"> 0e+00 </td>
-   <td style="text-align:right;"> 0.0023 </td>
+   <td style="text-align:right;"> 0.0022 </td>
    <td style="text-align:right;"> 0.0333 </td>
    <td style="text-align:right;"> 0.0361 </td>
    <td style="text-align:right;"> 0.0376 </td>
-   <td style="text-align:right;"> 0.0392 </td>
-   <td style="text-align:right;"> 0.0425 </td>
-   <td style="text-align:right;"> 4921.219 </td>
+   <td style="text-align:right;"> 0.0391 </td>
+   <td style="text-align:right;"> 0.0421 </td>
+   <td style="text-align:right;"> 3952.893 </td>
    <td style="text-align:right;"> 0.9986 </td>
   </tr>
   <tr>
@@ -780,48 +794,48 @@ tabla_Bin1 %>% tba()
    <td style="text-align:right;"> 0.0772 </td>
    <td style="text-align:right;"> 0.0781 </td>
    <td style="text-align:right;"> 0.0790 </td>
-   <td style="text-align:right;"> 0.0806 </td>
-   <td style="text-align:right;"> 4815.239 </td>
-   <td style="text-align:right;"> 0.9984 </td>
+   <td style="text-align:right;"> 0.0807 </td>
+   <td style="text-align:right;"> 5087.305 </td>
+   <td style="text-align:right;"> 0.9991 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> theta[14] </td>
    <td style="text-align:right;"> 0.1124 </td>
-   <td style="text-align:right;"> 0e+00 </td>
-   <td style="text-align:right;"> 0.0031 </td>
-   <td style="text-align:right;"> 0.1063 </td>
-   <td style="text-align:right;"> 0.1103 </td>
+   <td style="text-align:right;"> 1e-04 </td>
+   <td style="text-align:right;"> 0.0033 </td>
+   <td style="text-align:right;"> 0.1059 </td>
+   <td style="text-align:right;"> 0.1101 </td>
    <td style="text-align:right;"> 0.1124 </td>
    <td style="text-align:right;"> 0.1146 </td>
-   <td style="text-align:right;"> 0.1185 </td>
-   <td style="text-align:right;"> 4437.218 </td>
-   <td style="text-align:right;"> 0.9992 </td>
+   <td style="text-align:right;"> 0.1187 </td>
+   <td style="text-align:right;"> 4325.590 </td>
+   <td style="text-align:right;"> 0.9991 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> theta[15] </td>
-   <td style="text-align:right;"> 0.1054 </td>
-   <td style="text-align:right;"> 1e-04 </td>
-   <td style="text-align:right;"> 0.0036 </td>
-   <td style="text-align:right;"> 0.0987 </td>
-   <td style="text-align:right;"> 0.1029 </td>
+   <td style="text-align:right;"> 0.1055 </td>
+   <td style="text-align:right;"> 0e+00 </td>
+   <td style="text-align:right;"> 0.0034 </td>
+   <td style="text-align:right;"> 0.0991 </td>
+   <td style="text-align:right;"> 0.1031 </td>
    <td style="text-align:right;"> 0.1054 </td>
    <td style="text-align:right;"> 0.1078 </td>
-   <td style="text-align:right;"> 0.1125 </td>
-   <td style="text-align:right;"> 4547.911 </td>
-   <td style="text-align:right;"> 0.9988 </td>
+   <td style="text-align:right;"> 0.1121 </td>
+   <td style="text-align:right;"> 5474.135 </td>
+   <td style="text-align:right;"> 0.9983 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> theta[16] </td>
-   <td style="text-align:right;"> 0.1542 </td>
-   <td style="text-align:right;"> 1e-04 </td>
-   <td style="text-align:right;"> 0.0039 </td>
-   <td style="text-align:right;"> 0.1466 </td>
-   <td style="text-align:right;"> 0.1516 </td>
    <td style="text-align:right;"> 0.1541 </td>
-   <td style="text-align:right;"> 0.1567 </td>
-   <td style="text-align:right;"> 0.1619 </td>
-   <td style="text-align:right;"> 5316.024 </td>
-   <td style="text-align:right;"> 0.9994 </td>
+   <td style="text-align:right;"> 1e-04 </td>
+   <td style="text-align:right;"> 0.0038 </td>
+   <td style="text-align:right;"> 0.1464 </td>
+   <td style="text-align:right;"> 0.1516 </td>
+   <td style="text-align:right;"> 0.1540 </td>
+   <td style="text-align:right;"> 0.1565 </td>
+   <td style="text-align:right;"> 0.1617 </td>
+   <td style="text-align:right;"> 4927.834 </td>
+   <td style="text-align:right;"> 0.9987 </td>
   </tr>
 </tbody>
 </table>
@@ -831,14 +845,22 @@ Para validar las cadenas
 
 
 ```r
-mcmc_areas(as.array(model_Binomial2, pars = "theta"))
+p1 <- mcmc_areas(as.array(model_Binomial2, pars = "theta"))
+# ggsave(plot = p1,
+#        filename = "Recursos/Día1/Sesion4/0Recursos/Binomial/Binomial1.png", scale = 2)
+p1
 ```
 
 <img src="Recursos/Día1/Sesion4/0Recursos/Binomial/Binomial1.png" width="200%" />
 
 
 ```r
-mcmc_trace(as.array(model_Binomial2, pars = "theta"))
+p1 <- mcmc_trace(as.array(model_Binomial2, pars = "theta"))
+# traceplot(model_Binomial2, pars = "theta",inc_warmup = TRUE)
+# ggsave(plot = p1,
+#        filename = "Recursos/Día1/Sesion4/0Recursos/Bernoulli/Bernoulli2.png",
+#        scale = 2)
+p1
 ```
 
 
@@ -857,7 +879,11 @@ g1 <- ggplot(data = dataS, aes(x = Sd))+
   labs(y = "")+
   theme_bw(20) 
 g2 <- ppc_dens_overlay(y = dataS$Sd, y_pred2) 
-g1/g2
+p1 <- g1/g2
+# ggsave(plot = p1,
+#        filename = "Recursos/Día1/Sesion4/0Recursos/Bernoulli/Binomial3.png",
+#        scale = 2)
+p1
 ```
 
 
@@ -954,7 +980,11 @@ g1 <- ggplot(dataNormal,aes(x = logIngreso))+
 g2 <- ggplot(dataNormal, aes(sample = logIngreso)) +
      stat_qq() + stat_qq_line() +
   theme_bw(base_size = 20) 
-g1|g2
+p1 <- g1|g2
+# ggsave(plot = p1,
+#        filename = "Recursos/Día1/Sesion4/0Recursos/Normal/Normal1.png",
+#        scale = 2)
+p1
 ```
 
 
@@ -1005,6 +1035,7 @@ Para ejecutar `STAN` en R tenemos la librería *rstan*
 
 ```r
 options(mc.cores = parallel::detectCores())
+rstan::rstan_options(auto_write = TRUE) # speed up running time 
 model_NormalMedia <- stan(
   file = NormalMedia,  
   data = sample_data,   
@@ -1045,16 +1076,16 @@ tabla_Nor1 %>% tba()
 <tbody>
   <tr>
    <td style="text-align:left;"> theta </td>
-   <td style="text-align:right;"> 12.4565 </td>
-   <td style="text-align:right;"> 2e-04 </td>
-   <td style="text-align:right;"> 0.007 </td>
-   <td style="text-align:right;"> 12.4426 </td>
-   <td style="text-align:right;"> 12.4518 </td>
-   <td style="text-align:right;"> 12.4564 </td>
-   <td style="text-align:right;"> 12.4612 </td>
-   <td style="text-align:right;"> 12.4699 </td>
-   <td style="text-align:right;"> 864.3918 </td>
-   <td style="text-align:right;"> 1.0043 </td>
+   <td style="text-align:right;"> 12.456 </td>
+   <td style="text-align:right;"> 3e-04 </td>
+   <td style="text-align:right;"> 0.0071 </td>
+   <td style="text-align:right;"> 12.4415 </td>
+   <td style="text-align:right;"> 12.4515 </td>
+   <td style="text-align:right;"> 12.456 </td>
+   <td style="text-align:right;"> 12.4608 </td>
+   <td style="text-align:right;"> 12.4704 </td>
+   <td style="text-align:right;"> 773.9375 </td>
+   <td style="text-align:right;"> 1.0024 </td>
   </tr>
 </tbody>
 </table>
@@ -1063,9 +1094,14 @@ tabla_Nor1 %>% tba()
 
 ```r
 posterior_theta <- as.array(model_NormalMedia, pars = "theta")
-(mcmc_dens_chains(posterior_theta) +
+p1 <- (mcmc_dens_chains(posterior_theta) +
     mcmc_areas(posterior_theta) ) / 
   mcmc_trace(posterior_theta)
+# ggsave(plot = p1,
+#        filename ="Recursos/Día1/Sesion4/0Recursos/Normal/Normal2.png",
+#        scale = 2)
+
+p1
 ```
 
 <img src="Recursos/Día1/Sesion4/0Recursos/Normal/Normal2.png" width="200%" />
@@ -1223,6 +1259,8 @@ Para ejecutar `STAN` en R tenemos la librería *rstan*
 
 ```r
 options(mc.cores = parallel::detectCores())
+rstan::rstan_options(auto_write = TRUE) # speed up running time 
+
 model_NormalMedia <- stan(
   file = NormalMeanVar,  
   data = sample_data,   
@@ -1268,40 +1306,40 @@ tabla_Nor2 %>% tba()
    <td style="text-align:left;"> theta </td>
    <td style="text-align:right;"> 12.4558 </td>
    <td style="text-align:right;"> 2e-04 </td>
-   <td style="text-align:right;"> 0.0072 </td>
-   <td style="text-align:right;"> 12.4422 </td>
-   <td style="text-align:right;"> 12.4509 </td>
-   <td style="text-align:right;"> 12.4556 </td>
-   <td style="text-align:right;"> 12.4608 </td>
-   <td style="text-align:right;"> 12.4700 </td>
-   <td style="text-align:right;"> 1615.399 </td>
-   <td style="text-align:right;"> 0.9991 </td>
+   <td style="text-align:right;"> 0.0074 </td>
+   <td style="text-align:right;"> 12.4417 </td>
+   <td style="text-align:right;"> 12.4507 </td>
+   <td style="text-align:right;"> 12.4558 </td>
+   <td style="text-align:right;"> 12.4607 </td>
+   <td style="text-align:right;"> 12.4708 </td>
+   <td style="text-align:right;"> 1634.562 </td>
+   <td style="text-align:right;"> 1.0003 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> sigma2 </td>
-   <td style="text-align:right;"> 0.5066 </td>
+   <td style="text-align:right;"> 0.5069 </td>
    <td style="text-align:right;"> 2e-04 </td>
-   <td style="text-align:right;"> 0.0068 </td>
-   <td style="text-align:right;"> 0.4938 </td>
-   <td style="text-align:right;"> 0.5017 </td>
-   <td style="text-align:right;"> 0.5065 </td>
-   <td style="text-align:right;"> 0.5112 </td>
-   <td style="text-align:right;"> 0.5204 </td>
-   <td style="text-align:right;"> 1907.921 </td>
-   <td style="text-align:right;"> 0.9999 </td>
+   <td style="text-align:right;"> 0.0070 </td>
+   <td style="text-align:right;"> 0.4932 </td>
+   <td style="text-align:right;"> 0.5021 </td>
+   <td style="text-align:right;"> 0.5068 </td>
+   <td style="text-align:right;"> 0.5117 </td>
+   <td style="text-align:right;"> 0.5209 </td>
+   <td style="text-align:right;"> 1828.967 </td>
+   <td style="text-align:right;"> 0.9995 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> sigma </td>
-   <td style="text-align:right;"> 0.7118 </td>
+   <td style="text-align:right;"> 0.7119 </td>
    <td style="text-align:right;"> 1e-04 </td>
-   <td style="text-align:right;"> 0.0047 </td>
-   <td style="text-align:right;"> 0.7027 </td>
-   <td style="text-align:right;"> 0.7083 </td>
-   <td style="text-align:right;"> 0.7117 </td>
-   <td style="text-align:right;"> 0.7150 </td>
-   <td style="text-align:right;"> 0.7214 </td>
-   <td style="text-align:right;"> 1906.898 </td>
-   <td style="text-align:right;"> 0.9999 </td>
+   <td style="text-align:right;"> 0.0049 </td>
+   <td style="text-align:right;"> 0.7023 </td>
+   <td style="text-align:right;"> 0.7086 </td>
+   <td style="text-align:right;"> 0.7119 </td>
+   <td style="text-align:right;"> 0.7153 </td>
+   <td style="text-align:right;"> 0.7218 </td>
+   <td style="text-align:right;"> 1831.561 </td>
+   <td style="text-align:right;"> 0.9995 </td>
   </tr>
 </tbody>
 </table>
@@ -1310,9 +1348,13 @@ tabla_Nor2 %>% tba()
 
 ```r
 posterior_theta <- as.array(model_NormalMedia, pars = "theta")
-(mcmc_dens_chains(posterior_theta) +
+p1 <- (mcmc_dens_chains(posterior_theta) +
     mcmc_areas(posterior_theta) ) / 
   mcmc_trace(posterior_theta)
+# ggsave(plot = p1,
+#        filename = "Recursos/Día1/Sesion4/0Recursos/Normal/Normal4.png",
+#        scale = 2)
+p1 
 ```
 
 <img src="Recursos/Día1/Sesion4/0Recursos/Normal/Normal4.png" width="200%" />
@@ -1321,9 +1363,13 @@ posterior_theta <- as.array(model_NormalMedia, pars = "theta")
 
 ```r
 posterior_sigma2 <- as.array(model_NormalMedia, pars = "sigma2")
-(mcmc_dens_chains(posterior_sigma2) +
+p1 <- (mcmc_dens_chains(posterior_sigma2) +
     mcmc_areas(posterior_sigma2) ) / 
   mcmc_trace(posterior_sigma2)
+# ggsave(plot = p1,
+#        filename = "Recursos/Día1/Sesion4/0Recursos/Normal/Normal5.png",
+#        scale = 2)
+p1
 ```
 
 <img src="Recursos/Día1/Sesion4/0Recursos/Normal/Normal5.png" width="200%" />
@@ -1332,9 +1378,13 @@ posterior_sigma2 <- as.array(model_NormalMedia, pars = "sigma2")
 
 ```r
 posterior_sigma <- as.array(model_NormalMedia, pars = "sigma")
-(mcmc_dens_chains(posterior_sigma) +
+p1 <- (mcmc_dens_chains(posterior_sigma) +
     mcmc_areas(posterior_sigma) ) / 
   mcmc_trace(posterior_sigma)
+# ggsave(plot = p1,
+#        filename = "Recursos/Día1/Sesion4/0Recursos/Normal/Normal6.png",
+#        scale = 2)
+p1
 ```
 
 <img src="Recursos/Día1/Sesion4/0Recursos/Normal/Normal6.png" width="200%" />
@@ -1470,6 +1520,7 @@ Para ejecutar `STAN` en R tenemos la librería *rstan*
 
 ```r
 options(mc.cores = parallel::detectCores())
+rstan::rstan_options(auto_write = TRUE) # speed up running time 
 model_Multinom <- stan(
   file = Multinom,  
   data = sample_data,   
@@ -1510,55 +1561,55 @@ tabla_Mul1 %>% tba()
 <tbody>
   <tr>
    <td style="text-align:left;"> delta </td>
-   <td style="text-align:right;"> 0.0857 </td>
+   <td style="text-align:right;"> 0.0858 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0.0009 </td>
-   <td style="text-align:right;"> 0.0840 </td>
-   <td style="text-align:right;"> 0.0851 </td>
+   <td style="text-align:right;"> 0.0841 </td>
+   <td style="text-align:right;"> 0.0852 </td>
    <td style="text-align:right;"> 0.0858 </td>
    <td style="text-align:right;"> 0.0864 </td>
-   <td style="text-align:right;"> 0.0875 </td>
-   <td style="text-align:right;"> 1201.662 </td>
-   <td style="text-align:right;"> 1.0032 </td>
+   <td style="text-align:right;"> 0.0876 </td>
+   <td style="text-align:right;"> 1158.205 </td>
+   <td style="text-align:right;"> 1.0020 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> theta[1] </td>
    <td style="text-align:right;"> 0.5291 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0.0012 </td>
-   <td style="text-align:right;"> 0.5267 </td>
+   <td style="text-align:right;"> 0.5268 </td>
    <td style="text-align:right;"> 0.5283 </td>
-   <td style="text-align:right;"> 0.5292 </td>
-   <td style="text-align:right;"> 0.5300 </td>
-   <td style="text-align:right;"> 0.5314 </td>
-   <td style="text-align:right;"> 2032.595 </td>
-   <td style="text-align:right;"> 1.0001 </td>
+   <td style="text-align:right;"> 0.5291 </td>
+   <td style="text-align:right;"> 0.5299 </td>
+   <td style="text-align:right;"> 0.5315 </td>
+   <td style="text-align:right;"> 1834.800 </td>
+   <td style="text-align:right;"> 0.9987 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> theta[2] </td>
-   <td style="text-align:right;"> 0.0496 </td>
+   <td style="text-align:right;"> 0.0497 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0.0005 </td>
-   <td style="text-align:right;"> 0.0486 </td>
+   <td style="text-align:right;"> 0.0487 </td>
    <td style="text-align:right;"> 0.0493 </td>
-   <td style="text-align:right;"> 0.0496 </td>
+   <td style="text-align:right;"> 0.0497 </td>
    <td style="text-align:right;"> 0.0500 </td>
-   <td style="text-align:right;"> 0.0506 </td>
-   <td style="text-align:right;"> 1133.188 </td>
-   <td style="text-align:right;"> 1.0038 </td>
+   <td style="text-align:right;"> 0.0507 </td>
+   <td style="text-align:right;"> 1090.703 </td>
+   <td style="text-align:right;"> 1.0026 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> theta[3] </td>
    <td style="text-align:right;"> 0.4212 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0.0012 </td>
-   <td style="text-align:right;"> 0.4190 </td>
-   <td style="text-align:right;"> 0.4205 </td>
+   <td style="text-align:right;"> 0.4188 </td>
+   <td style="text-align:right;"> 0.4204 </td>
    <td style="text-align:right;"> 0.4212 </td>
-   <td style="text-align:right;"> 0.4220 </td>
+   <td style="text-align:right;"> 0.4221 </td>
    <td style="text-align:right;"> 0.4236 </td>
-   <td style="text-align:right;"> 1874.742 </td>
-   <td style="text-align:right;"> 1.0011 </td>
+   <td style="text-align:right;"> 1695.183 </td>
+   <td style="text-align:right;"> 0.9999 </td>
   </tr>
 </tbody>
 </table>

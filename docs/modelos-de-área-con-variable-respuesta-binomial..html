@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>9.1 Modelos de área con variable respuesta Binomial. | Desagregación de datos en encuestas de hogares: metodologías bayesianas para modelos de estimación en áreas pequeñas</title>
+  <title>8.2 Modelos de área con variable respuesta Binomial. | Desagregación de datos en encuestas de hogares: metodologías bayesianas para modelos de estimación en áreas pequeñas</title>
   <meta name="description" content="Taller de instalación de capacidades en SAE." />
-  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="9.1 Modelos de área con variable respuesta Binomial. | Desagregación de datos en encuestas de hogares: metodologías bayesianas para modelos de estimación en áreas pequeñas" />
+  <meta property="og:title" content="8.2 Modelos de área con variable respuesta Binomial. | Desagregación de datos en encuestas de hogares: metodologías bayesianas para modelos de estimación en áreas pequeñas" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Taller de instalación de capacidades en SAE." />
   <meta name="github-repo" content="psirusteam/HHS-Handbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="9.1 Modelos de área con variable respuesta Binomial. | Desagregación de datos en encuestas de hogares: metodologías bayesianas para modelos de estimación en áreas pequeñas" />
+  <meta name="twitter:title" content="8.2 Modelos de área con variable respuesta Binomial. | Desagregación de datos en encuestas de hogares: metodologías bayesianas para modelos de estimación en áreas pequeñas" />
   
   <meta name="twitter:description" content="Taller de instalación de capacidades en SAE." />
   
@@ -23,15 +23,15 @@
 <meta name="author" content="Andrés Gutiérrez, Stalyn Guerrero" />
 
 
-<meta name="date" content="2023-04-10" />
+<meta name="date" content="2023-05-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="día-2---sesión-4--modelos-de-área---estimación-de-la-pobreza-en-familia-beta-y-binomial.html"/>
-<link rel="next" href="modelos-de-área-con-variable-respuesta-beta..html"/>
+<link rel="prev" href="modelos-de-área-con-variable-respuesta-beta..html"/>
+<link rel="next" href="día-3---sesión-1--modelo-de-unidad-para-la-estimación-del-ingreso-medio.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -121,6 +121,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -204,128 +208,119 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.4" data-path="validación-de-los-resultados..html"><a href="validación-de-los-resultados..html"><i class="fa fa-check"></i><b>6.4</b> Validación de los resultados.</a></li>
 <li class="chapter" data-level="6.5" data-path="mapa-de-pobreza.html"><a href="mapa-de-pobreza.html"><i class="fa fa-check"></i><b>6.5</b> Mapa de pobreza</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="día-2---sesión-2--modelo-de-fay-herriot---estimación-de-la-pobreza-usando-todas-la-covariables-censo-y-satelitales.html"><a href="día-2---sesión-2--modelo-de-fay-herriot---estimación-de-la-pobreza-usando-todas-la-covariables-censo-y-satelitales.html"><i class="fa fa-check"></i><b>7</b> Día 2 - Sesión 2- Modelo de Fay Herriot - Estimación de la pobreza (<em>usando todas la covariables censo y satelitales</em>)</a>
+<li class="chapter" data-level="7" data-path="día-2---sesión-3--modelos-de-área---estimación-de-la-pobreza-y-la-transformación-arcoseno..html"><a href="día-2---sesión-3--modelos-de-área---estimación-de-la-pobreza-y-la-transformación-arcoseno..html"><i class="fa fa-check"></i><b>7</b> Día 2 - Sesión 3- Modelos de área - Estimación de la pobreza y la transformación ArcoSeno.</a>
 <ul>
-<li class="chapter" data-level="" data-path="día-2---sesión-2--modelo-de-fay-herriot---estimación-de-la-pobreza-usando-todas-la-covariables-censo-y-satelitales.html"><a href="día-2---sesión-2--modelo-de-fay-herriot---estimación-de-la-pobreza-usando-todas-la-covariables-censo-y-satelitales.html#modelo-de-área-para-la-estimación-de-la-pobreza-1"><i class="fa fa-check"></i>Modelo de área para la estimación de la pobreza</a></li>
 <li class="chapter" data-level="7.1" data-path="procedimiento-de-estimación-1.html"><a href="procedimiento-de-estimación-1.html"><i class="fa fa-check"></i><b>7.1</b> Procedimiento de estimación</a></li>
 <li class="chapter" data-level="7.2" data-path="preparando-los-insumos-para-stan-1.html"><a href="preparando-los-insumos-para-stan-1.html"><i class="fa fa-check"></i><b>7.2</b> Preparando los insumos para <code>STAN</code></a>
 <ul>
 <li class="chapter" data-level="7.2.1" data-path="preparando-los-insumos-para-stan-1.html"><a href="preparando-los-insumos-para-stan-1.html#resultados-del-modelo-para-los-dominios-observados.-1"><i class="fa fa-check"></i><b>7.2.1</b> Resultados del modelo para los dominios observados.</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="proceso-de-benchmark-1.html"><a href="proceso-de-benchmark-1.html"><i class="fa fa-check"></i><b>7.3</b> Proceso de Benchmark</a></li>
-<li class="chapter" data-level="7.4" data-path="validación-de-los-resultados.-1.html"><a href="validación-de-los-resultados.-1.html"><i class="fa fa-check"></i><b>7.4</b> Validación de los resultados.</a></li>
-<li class="chapter" data-level="7.5" data-path="mapa-de-pobreza-1.html"><a href="mapa-de-pobreza-1.html"><i class="fa fa-check"></i><b>7.5</b> Mapa de pobreza</a></li>
+<li class="chapter" data-level="7.3" data-path="mapa-de-pobreza-1.html"><a href="mapa-de-pobreza-1.html"><i class="fa fa-check"></i><b>7.3</b> Mapa de pobreza</a></li>
+<li class="chapter" data-level="7.4" data-path="mapa-del-coeficiente-de-variación..html"><a href="mapa-del-coeficiente-de-variación..html"><i class="fa fa-check"></i><b>7.4</b> Mapa del coeficiente de variación.</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="día-2---sesión-3--modelos-de-área---estimación-de-la-pobreza-y-la-transformación-arcoseno..html"><a href="día-2---sesión-3--modelos-de-área---estimación-de-la-pobreza-y-la-transformación-arcoseno..html"><i class="fa fa-check"></i><b>8</b> Día 2 - Sesión 3- Modelos de área - Estimación de la pobreza y la transformación ArcoSeno.</a>
+<li class="chapter" data-level="8" data-path="día-2---sesión-4--modelos-de-área---estimación-de-la-pobreza-en-familia-beta-y-binomial.html"><a href="día-2---sesión-4--modelos-de-área---estimación-de-la-pobreza-en-familia-beta-y-binomial.html"><i class="fa fa-check"></i><b>8</b> Día 2 - Sesión 4- Modelos de área - Estimación de la pobreza en familia beta y binomial</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="procedimiento-de-estimación-2.html"><a href="procedimiento-de-estimación-2.html"><i class="fa fa-check"></i><b>8.1</b> Procedimiento de estimación</a></li>
-<li class="chapter" data-level="8.2" data-path="preparando-los-insumos-para-stan-2.html"><a href="preparando-los-insumos-para-stan-2.html"><i class="fa fa-check"></i><b>8.2</b> Preparando los insumos para <code>STAN</code></a>
+<li class="chapter" data-level="8.1" data-path="modelos-de-área-con-variable-respuesta-beta..html"><a href="modelos-de-área-con-variable-respuesta-beta..html"><i class="fa fa-check"></i><b>8.1</b> Modelos de área con variable respuesta Beta.</a>
 <ul>
-<li class="chapter" data-level="8.2.1" data-path="preparando-los-insumos-para-stan-2.html"><a href="preparando-los-insumos-para-stan-2.html#resultados-del-modelo-para-los-dominios-observados.-2"><i class="fa fa-check"></i><b>8.2.1</b> Resultados del modelo para los dominios observados.</a></li>
+<li class="chapter" data-level="8.1.1" data-path="modelos-de-área-con-variable-respuesta-beta..html"><a href="modelos-de-área-con-variable-respuesta-beta..html#procedimiento-de-estimación-2"><i class="fa fa-check"></i><b>8.1.1</b> Procedimiento de estimación</a></li>
+<li class="chapter" data-level="8.1.2" data-path="modelos-de-área-con-variable-respuesta-beta..html"><a href="modelos-de-área-con-variable-respuesta-beta..html#preparando-los-insumos-para-stan-2"><i class="fa fa-check"></i><b>8.1.2</b> Preparando los insumos para <code>STAN</code></a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="mapa-de-pobreza-2.html"><a href="mapa-de-pobreza-2.html"><i class="fa fa-check"></i><b>8.3</b> Mapa de pobreza</a></li>
-<li class="chapter" data-level="8.4" data-path="mapa-del-coeficiente-de-variación..html"><a href="mapa-del-coeficiente-de-variación..html"><i class="fa fa-check"></i><b>8.4</b> Mapa del coeficiente de variación.</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="día-2---sesión-4--modelos-de-área---estimación-de-la-pobreza-en-familia-beta-y-binomial.html"><a href="día-2---sesión-4--modelos-de-área---estimación-de-la-pobreza-en-familia-beta-y-binomial.html"><i class="fa fa-check"></i><b>9</b> Día 2 - Sesión 4- Modelos de área - Estimación de la pobreza en familia beta y binomial</a>
+<li class="chapter" data-level="8.2" data-path="modelos-de-área-con-variable-respuesta-binomial..html"><a href="modelos-de-área-con-variable-respuesta-binomial..html"><i class="fa fa-check"></i><b>8.2</b> Modelos de área con variable respuesta Binomial.</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="modelos-de-área-con-variable-respuesta-binomial..html"><a href="modelos-de-área-con-variable-respuesta-binomial..html"><i class="fa fa-check"></i><b>9.1</b> Modelos de área con variable respuesta Binomial.</a>
-<ul>
-<li class="chapter" data-level="9.1.1" data-path="modelos-de-área-con-variable-respuesta-binomial..html"><a href="modelos-de-área-con-variable-respuesta-binomial..html#procedimiento-de-estimación-3"><i class="fa fa-check"></i><b>9.1.1</b> Procedimiento de estimación</a></li>
-<li class="chapter" data-level="9.1.2" data-path="modelos-de-área-con-variable-respuesta-binomial..html"><a href="modelos-de-área-con-variable-respuesta-binomial..html#preparando-los-insumos-para-stan-3"><i class="fa fa-check"></i><b>9.1.2</b> Preparando los insumos para <code>STAN</code></a></li>
-</ul></li>
-<li class="chapter" data-level="9.2" data-path="modelos-de-área-con-variable-respuesta-beta..html"><a href="modelos-de-área-con-variable-respuesta-beta..html"><i class="fa fa-check"></i><b>9.2</b> Modelos de área con variable respuesta Beta.</a>
-<ul>
-<li class="chapter" data-level="9.2.1" data-path="modelos-de-área-con-variable-respuesta-beta..html"><a href="modelos-de-área-con-variable-respuesta-beta..html#procedimiento-de-estimación-4"><i class="fa fa-check"></i><b>9.2.1</b> Procedimiento de estimación</a></li>
-<li class="chapter" data-level="9.2.2" data-path="modelos-de-área-con-variable-respuesta-beta..html"><a href="modelos-de-área-con-variable-respuesta-beta..html#preparando-los-insumos-para-stan-4"><i class="fa fa-check"></i><b>9.2.2</b> Preparando los insumos para <code>STAN</code></a></li>
+<li class="chapter" data-level="8.2.1" data-path="modelos-de-área-con-variable-respuesta-binomial..html"><a href="modelos-de-área-con-variable-respuesta-binomial..html#procedimiento-de-estimación-3"><i class="fa fa-check"></i><b>8.2.1</b> Procedimiento de estimación</a></li>
+<li class="chapter" data-level="8.2.2" data-path="modelos-de-área-con-variable-respuesta-binomial..html"><a href="modelos-de-área-con-variable-respuesta-binomial..html#preparando-los-insumos-para-stan-3"><i class="fa fa-check"></i><b>8.2.2</b> Preparando los insumos para <code>STAN</code></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="día-3---sesión-1--modelo-de-unidad-para-la-estimación-del-ingreso-medio.html"><a href="día-3---sesión-1--modelo-de-unidad-para-la-estimación-del-ingreso-medio.html"><i class="fa fa-check"></i><b>10</b> Día 3 - Sesión 1- Modelo de unidad para la estimación del ingreso medio</a>
+<li class="chapter" data-level="9" data-path="día-3---sesión-1--modelo-de-unidad-para-la-estimación-del-ingreso-medio.html"><a href="día-3---sesión-1--modelo-de-unidad-para-la-estimación-del-ingreso-medio.html"><i class="fa fa-check"></i><b>9</b> Día 3 - Sesión 1- Modelo de unidad para la estimación del ingreso medio</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="modelo-bayesiano..html"><a href="modelo-bayesiano..html"><i class="fa fa-check"></i><b>10.1</b> Modelo bayesiano.</a></li>
-<li class="chapter" data-level="10.2" data-path="proceso-de-estimación-en-r.html"><a href="proceso-de-estimación-en-r.html"><i class="fa fa-check"></i><b>10.2</b> Proceso de estimación en <code>R</code></a>
+<li class="chapter" data-level="9.1" data-path="modelo-bayesiano..html"><a href="modelo-bayesiano..html"><i class="fa fa-check"></i><b>9.1</b> Modelo bayesiano.</a></li>
+<li class="chapter" data-level="9.2" data-path="proceso-de-estimación-en-r.html"><a href="proceso-de-estimación-en-r.html"><i class="fa fa-check"></i><b>9.2</b> Proceso de estimación en <code>R</code></a>
 <ul>
-<li class="chapter" data-level="10.2.1" data-path="proceso-de-estimación-en-r.html"><a href="proceso-de-estimación-en-r.html#encuesta-de-hogares"><i class="fa fa-check"></i><b>10.2.1</b> Encuesta de hogares</a></li>
-<li class="chapter" data-level="10.2.2" data-path="proceso-de-estimación-en-r.html"><a href="proceso-de-estimación-en-r.html#niveles-de-agregación-para-colapsar-la-encuesta"><i class="fa fa-check"></i><b>10.2.2</b> Niveles de agregación para colapsar la encuesta</a></li>
-<li class="chapter" data-level="10.2.3" data-path="proceso-de-estimación-en-r.html"><a href="proceso-de-estimación-en-r.html#creando-base-con-la-encuesta-agregada"><i class="fa fa-check"></i><b>10.2.3</b> Creando base con la encuesta agregada</a></li>
-<li class="chapter" data-level="10.2.4" data-path="proceso-de-estimación-en-r.html"><a href="proceso-de-estimación-en-r.html#definiendo-el-modelo-multinivel."><i class="fa fa-check"></i><b>10.2.4</b> Definiendo el modelo multinivel.</a></li>
-<li class="chapter" data-level="10.2.5" data-path="proceso-de-estimación-en-r.html"><a href="proceso-de-estimación-en-r.html#distribución-posterior."><i class="fa fa-check"></i><b>10.2.5</b> Distribución posterior.</a></li>
-<li class="chapter" data-level="10.2.6" data-path="proceso-de-estimación-en-r.html"><a href="proceso-de-estimación-en-r.html#estimación-del-ingreso-medio-nacional"><i class="fa fa-check"></i><b>10.2.6</b> Estimación del ingreso medio nacional</a></li>
-<li class="chapter" data-level="10.2.7" data-path="proceso-de-estimación-en-r.html"><a href="proceso-de-estimación-en-r.html#estimación-para-el-dam-05."><i class="fa fa-check"></i><b>10.2.7</b> Estimación para el dam == “05”.</a></li>
-<li class="chapter" data-level="10.2.8" data-path="proceso-de-estimación-en-r.html"><a href="proceso-de-estimación-en-r.html#estimación-para-la-dam2-05201"><i class="fa fa-check"></i><b>10.2.8</b> Estimación para la dam2 == “05201”</a></li>
+<li class="chapter" data-level="9.2.1" data-path="proceso-de-estimación-en-r.html"><a href="proceso-de-estimación-en-r.html#encuesta-de-hogares"><i class="fa fa-check"></i><b>9.2.1</b> Encuesta de hogares</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="validación-de-encuesta-frente-al-censo..html"><a href="validación-de-encuesta-frente-al-censo..html"><i class="fa fa-check"></i><b>9.3</b> Validación de encuesta frente al censo.</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="validación-de-encuesta-frente-al-censo..html"><a href="validación-de-encuesta-frente-al-censo..html#niveles-de-agregación-para-colapsar-la-encuesta"><i class="fa fa-check"></i><b>9.3.1</b> Niveles de agregación para colapsar la encuesta</a></li>
+<li class="chapter" data-level="9.3.2" data-path="validación-de-encuesta-frente-al-censo..html"><a href="validación-de-encuesta-frente-al-censo..html#creando-base-con-la-encuesta-agregada"><i class="fa fa-check"></i><b>9.3.2</b> Creando base con la encuesta agregada</a></li>
+<li class="chapter" data-level="9.3.3" data-path="validación-de-encuesta-frente-al-censo..html"><a href="validación-de-encuesta-frente-al-censo..html#definiendo-el-modelo-multinivel."><i class="fa fa-check"></i><b>9.3.3</b> Definiendo el modelo multinivel.</a></li>
+<li class="chapter" data-level="9.3.4" data-path="validación-de-encuesta-frente-al-censo..html"><a href="validación-de-encuesta-frente-al-censo..html#distribución-posterior."><i class="fa fa-check"></i><b>9.3.4</b> Distribución posterior.</a></li>
+<li class="chapter" data-level="9.3.5" data-path="validación-de-encuesta-frente-al-censo..html"><a href="validación-de-encuesta-frente-al-censo..html#estimación-del-ingreso-medio-nacional"><i class="fa fa-check"></i><b>9.3.5</b> Estimación del ingreso medio nacional</a></li>
+<li class="chapter" data-level="9.3.6" data-path="validación-de-encuesta-frente-al-censo..html"><a href="validación-de-encuesta-frente-al-censo..html#estimación-para-el-dam-05."><i class="fa fa-check"></i><b>9.3.6</b> Estimación para el dam == “05”.</a></li>
+<li class="chapter" data-level="9.3.7" data-path="validación-de-encuesta-frente-al-censo..html"><a href="validación-de-encuesta-frente-al-censo..html#estimación-para-la-dam2-05201"><i class="fa fa-check"></i><b>9.3.7</b> Estimación para la dam2 == “05201”</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="día-3---sesión-2--estimación-de-la-pobreza-a-partir-del-ingreso.html"><a href="día-3---sesión-2--estimación-de-la-pobreza-a-partir-del-ingreso.html"><i class="fa fa-check"></i><b>11</b> Día 3 - Sesión 2- Estimación de la pobreza a partir del ingreso</a>
+<li class="chapter" data-level="10" data-path="día-3---sesión-2--estimación-de-la-pobreza-a-partir-del-ingreso.html"><a href="día-3---sesión-2--estimación-de-la-pobreza-a-partir-del-ingreso.html"><i class="fa fa-check"></i><b>10</b> Día 3 - Sesión 2- Estimación de la pobreza a partir del ingreso</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="proceso-de-estimación-y-predicción.html"><a href="proceso-de-estimación-y-predicción.html"><i class="fa fa-check"></i><b>11.1</b> Proceso de estimación y predicción</a>
+<li class="chapter" data-level="10.1" data-path="proceso-de-estimación-y-predicción.html"><a href="proceso-de-estimación-y-predicción.html"><i class="fa fa-check"></i><b>10.1</b> Proceso de estimación y predicción</a>
 <ul>
-<li class="chapter" data-level="11.1.1" data-path="proceso-de-estimación-y-predicción.html"><a href="proceso-de-estimación-y-predicción.html#distribución-posterior.-1"><i class="fa fa-check"></i><b>11.1.1</b> Distribución posterior.</a></li>
+<li class="chapter" data-level="10.1.1" data-path="proceso-de-estimación-y-predicción.html"><a href="proceso-de-estimación-y-predicción.html#distribución-posterior.-1"><i class="fa fa-check"></i><b>10.1.1</b> Distribución posterior.</a></li>
 </ul></li>
-<li class="chapter" data-level="11.2" data-path="estimación-de-la-pobreza.html"><a href="estimación-de-la-pobreza.html"><i class="fa fa-check"></i><b>11.2</b> Estimación de la pobreza</a>
+<li class="chapter" data-level="10.2" data-path="estimación-de-la-pobreza.html"><a href="estimación-de-la-pobreza.html"><i class="fa fa-check"></i><b>10.2</b> Estimación de la pobreza</a>
 <ul>
-<li class="chapter" data-level="11.2.1" data-path="estimación-de-la-pobreza.html"><a href="estimación-de-la-pobreza.html#estimación-para-el-dam-05.-1"><i class="fa fa-check"></i><b>11.2.1</b> Estimación para el dam == “05”.</a></li>
-<li class="chapter" data-level="11.2.2" data-path="estimación-de-la-pobreza.html"><a href="estimación-de-la-pobreza.html#estimación-para-la-dam2-05201-1"><i class="fa fa-check"></i><b>11.2.2</b> Estimación para la dam2 == “05201”</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="día-3---sesión-3--modelo-de-unidad-para-la-estimación-de-la-pobreza.html"><a href="día-3---sesión-3--modelo-de-unidad-para-la-estimación-de-la-pobreza.html"><i class="fa fa-check"></i><b>12</b> Día 3 - Sesión 3- Modelo de unidad para la estimación de la pobreza</a>
-<ul>
-<li class="chapter" data-level="12.1" data-path="modelo-de-regresión-logistica..html"><a href="modelo-de-regresión-logistica..html"><i class="fa fa-check"></i><b>12.1</b> Modelo de regresión logistica.</a></li>
-<li class="chapter" data-level="12.2" data-path="proceso-de-estimación-en-r-1.html"><a href="proceso-de-estimación-en-r-1.html"><i class="fa fa-check"></i><b>12.2</b> Proceso de estimación en <code>R</code></a>
-<ul>
-<li class="chapter" data-level="12.2.1" data-path="proceso-de-estimación-en-r-1.html"><a href="proceso-de-estimación-en-r-1.html#encuesta-de-hogares-1"><i class="fa fa-check"></i><b>12.2.1</b> Encuesta de hogares</a></li>
-<li class="chapter" data-level="12.2.2" data-path="proceso-de-estimación-en-r-1.html"><a href="proceso-de-estimación-en-r-1.html#niveles-de-agregación-para-colapsar-la-encuesta-1"><i class="fa fa-check"></i><b>12.2.2</b> Niveles de agregación para colapsar la encuesta</a></li>
-<li class="chapter" data-level="12.2.3" data-path="proceso-de-estimación-en-r-1.html"><a href="proceso-de-estimación-en-r-1.html#creando-base-con-la-encuesta-agregada-1"><i class="fa fa-check"></i><b>12.2.3</b> Creando base con la encuesta agregada</a></li>
-<li class="chapter" data-level="12.2.4" data-path="proceso-de-estimación-en-r-1.html"><a href="proceso-de-estimación-en-r-1.html#definiendo-el-modelo-multinivel.-1"><i class="fa fa-check"></i><b>12.2.4</b> Definiendo el modelo multinivel.</a></li>
-</ul></li>
-<li class="chapter" data-level="12.3" data-path="proceso-de-estimación-y-predicción-1.html"><a href="proceso-de-estimación-y-predicción-1.html"><i class="fa fa-check"></i><b>12.3</b> Proceso de estimación y predicción</a>
-<ul>
-<li class="chapter" data-level="12.3.1" data-path="proceso-de-estimación-y-predicción-1.html"><a href="proceso-de-estimación-y-predicción-1.html#distribución-posterior.-2"><i class="fa fa-check"></i><b>12.3.1</b> Distribución posterior.</a></li>
-<li class="chapter" data-level="12.3.2" data-path="proceso-de-estimación-y-predicción-1.html"><a href="proceso-de-estimación-y-predicción-1.html#estimación-de-la-tasa-de-pobreza"><i class="fa fa-check"></i><b>12.3.2</b> Estimación de la tasa de pobreza</a></li>
-<li class="chapter" data-level="12.3.3" data-path="proceso-de-estimación-y-predicción-1.html"><a href="proceso-de-estimación-y-predicción-1.html#estimación-para-el-dam-05.-2"><i class="fa fa-check"></i><b>12.3.3</b> Estimación para el dam == “05”.</a></li>
-<li class="chapter" data-level="12.3.4" data-path="proceso-de-estimación-y-predicción-1.html"><a href="proceso-de-estimación-y-predicción-1.html#estimación-para-la-dam2-05201-2"><i class="fa fa-check"></i><b>12.3.4</b> Estimación para la dam2 == “05201”</a></li>
+<li class="chapter" data-level="10.2.1" data-path="estimación-de-la-pobreza.html"><a href="estimación-de-la-pobreza.html#estimación-para-el-dam-05.-1"><i class="fa fa-check"></i><b>10.2.1</b> Estimación para el dam == “05”.</a></li>
+<li class="chapter" data-level="10.2.2" data-path="estimación-de-la-pobreza.html"><a href="estimación-de-la-pobreza.html#estimación-para-la-dam2-05201-1"><i class="fa fa-check"></i><b>10.2.2</b> Estimación para la dam2 == “05201”</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="día-3---sesión-4--estimación-del-índice-de-privación-multidimensional-ipm.html"><a href="día-3---sesión-4--estimación-del-índice-de-privación-multidimensional-ipm.html"><i class="fa fa-check"></i><b>13</b> Día 3 - Sesión 4- Estimación del Índice de Privación Multidimensional (IPM)</a>
+<li class="chapter" data-level="11" data-path="día-3---sesión-3--modelo-de-unidad-para-la-estimación-de-la-pobreza.html"><a href="día-3---sesión-3--modelo-de-unidad-para-la-estimación-de-la-pobreza.html"><i class="fa fa-check"></i><b>11</b> Día 3 - Sesión 3- Modelo de unidad para la estimación de la pobreza</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="índice-de-privación-multidimensional-ipm.html"><a href="índice-de-privación-multidimensional-ipm.html"><i class="fa fa-check"></i><b>13.1</b> Índice de Privación Multidimensional (IPM)</a></li>
-<li class="chapter" data-level="13.2" data-path="definición-del-modelo.html"><a href="definición-del-modelo.html"><i class="fa fa-check"></i><b>13.2</b> Definición del modelo</a>
+<li class="chapter" data-level="11.1" data-path="modelo-de-regresión-logistica..html"><a href="modelo-de-regresión-logistica..html"><i class="fa fa-check"></i><b>11.1</b> Modelo de regresión logistica.</a></li>
+<li class="chapter" data-level="11.2" data-path="proceso-de-estimación-en-r-1.html"><a href="proceso-de-estimación-en-r-1.html"><i class="fa fa-check"></i><b>11.2</b> Proceso de estimación en <code>R</code></a>
 <ul>
-<li class="chapter" data-level="13.2.1" data-path="definición-del-modelo.html"><a href="definición-del-modelo.html#procesamiento-del-modelo-en-r."><i class="fa fa-check"></i><b>13.2.1</b> Procesamiento del modelo en <code>R</code>.</a></li>
-<li class="chapter" data-level="13.2.2" data-path="definición-del-modelo.html"><a href="definición-del-modelo.html#definiendo-el-modelo-multinivel.-2"><i class="fa fa-check"></i><b>13.2.2</b> Definiendo el modelo multinivel.</a></li>
-<li class="chapter" data-level="13.2.3" data-path="definición-del-modelo.html"><a href="definición-del-modelo.html#proceso-de-estimación-y-predicción-2"><i class="fa fa-check"></i><b>13.2.3</b> Proceso de estimación y predicción</a></li>
+<li class="chapter" data-level="11.2.1" data-path="proceso-de-estimación-en-r-1.html"><a href="proceso-de-estimación-en-r-1.html#encuesta-de-hogares-1"><i class="fa fa-check"></i><b>11.2.1</b> Encuesta de hogares</a></li>
+<li class="chapter" data-level="11.2.2" data-path="proceso-de-estimación-en-r-1.html"><a href="proceso-de-estimación-en-r-1.html#niveles-de-agregación-para-colapsar-la-encuesta-1"><i class="fa fa-check"></i><b>11.2.2</b> Niveles de agregación para colapsar la encuesta</a></li>
+<li class="chapter" data-level="11.2.3" data-path="proceso-de-estimación-en-r-1.html"><a href="proceso-de-estimación-en-r-1.html#creando-base-con-la-encuesta-agregada-1"><i class="fa fa-check"></i><b>11.2.3</b> Creando base con la encuesta agregada</a></li>
+<li class="chapter" data-level="11.2.4" data-path="proceso-de-estimación-en-r-1.html"><a href="proceso-de-estimación-en-r-1.html#definiendo-el-modelo-multinivel.-1"><i class="fa fa-check"></i><b>11.2.4</b> Definiendo el modelo multinivel.</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="proceso-de-estimación-y-predicción-1.html"><a href="proceso-de-estimación-y-predicción-1.html"><i class="fa fa-check"></i><b>11.3</b> Proceso de estimación y predicción</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="proceso-de-estimación-y-predicción-1.html"><a href="proceso-de-estimación-y-predicción-1.html#distribución-posterior.-2"><i class="fa fa-check"></i><b>11.3.1</b> Distribución posterior.</a></li>
+<li class="chapter" data-level="11.3.2" data-path="proceso-de-estimación-y-predicción-1.html"><a href="proceso-de-estimación-y-predicción-1.html#estimación-de-la-tasa-de-pobreza"><i class="fa fa-check"></i><b>11.3.2</b> Estimación de la tasa de pobreza</a></li>
+<li class="chapter" data-level="11.3.3" data-path="proceso-de-estimación-y-predicción-1.html"><a href="proceso-de-estimación-y-predicción-1.html#estimación-para-el-dam-05.-2"><i class="fa fa-check"></i><b>11.3.3</b> Estimación para el dam == “05”.</a></li>
+<li class="chapter" data-level="11.3.4" data-path="proceso-de-estimación-y-predicción-1.html"><a href="proceso-de-estimación-y-predicción-1.html#estimación-para-la-dam2-05201-2"><i class="fa fa-check"></i><b>11.3.4</b> Estimación para la dam2 == “05201”</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="día-4---sesión-1--modelo-de-área-para-estadísticas-del-mercado-de-trabajo.html"><a href="día-4---sesión-1--modelo-de-área-para-estadísticas-del-mercado-de-trabajo.html"><i class="fa fa-check"></i><b>14</b> Día 4 - Sesión 1- Modelo de área para estadísticas del mercado de trabajo</a>
+<li class="chapter" data-level="12" data-path="día-3---sesión-4--estimación-del-índice-de-privación-multidimensional-ipm.html"><a href="día-3---sesión-4--estimación-del-índice-de-privación-multidimensional-ipm.html"><i class="fa fa-check"></i><b>12</b> Día 3 - Sesión 4- Estimación del Índice de Privación Multidimensional (IPM)</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="definición-del-modelo-multinomial.html"><a href="definición-del-modelo-multinomial.html"><i class="fa fa-check"></i><b>14.1</b> Definición del modelo multinomial</a></li>
-<li class="chapter" data-level="14.2" data-path="lectura-de-librerías..html"><a href="lectura-de-librerías..html"><i class="fa fa-check"></i><b>14.2</b> Lectura de librerías.</a></li>
-<li class="chapter" data-level="14.3" data-path="lectura-de-la-encuesta-y-estimaciones-directas.html"><a href="lectura-de-la-encuesta-y-estimaciones-directas.html"><i class="fa fa-check"></i><b>14.3</b> Lectura de la encuesta y estimaciones directas</a></li>
-<li class="chapter" data-level="14.4" data-path="selección-de-dominios.html"><a href="selección-de-dominios.html"><i class="fa fa-check"></i><b>14.4</b> Selección de dominios</a></li>
-<li class="chapter" data-level="14.5" data-path="modelo-programando-en-stan.html"><a href="modelo-programando-en-stan.html"><i class="fa fa-check"></i><b>14.5</b> Modelo programando en <code>STAN</code></a></li>
-<li class="chapter" data-level="14.6" data-path="preparando-insumos-para-stan.html"><a href="preparando-insumos-para-stan.html"><i class="fa fa-check"></i><b>14.6</b> Preparando insumos para <code>STAN</code></a></li>
-<li class="chapter" data-level="14.7" data-path="validación-del-modelo.html"><a href="validación-del-modelo.html"><i class="fa fa-check"></i><b>14.7</b> Validación del modelo</a></li>
-<li class="chapter" data-level="14.8" data-path="estimación-de-los-parámetros..html"><a href="estimación-de-los-parámetros..html"><i class="fa fa-check"></i><b>14.8</b> Estimación de los parámetros.</a></li>
-<li class="chapter" data-level="14.9" data-path="estimación-de-la-desviación-estárdar-y-el-coeficiente-de-valiación.html"><a href="estimación-de-la-desviación-estárdar-y-el-coeficiente-de-valiación.html"><i class="fa fa-check"></i><b>14.9</b> Estimación de la desviación estárdar y el coeficiente de valiación</a></li>
-<li class="chapter" data-level="14.10" data-path="metodología-de-benchmarking.html"><a href="metodología-de-benchmarking.html"><i class="fa fa-check"></i><b>14.10</b> Metodología de Benchmarking</a></li>
-<li class="chapter" data-level="14.11" data-path="mapas-del-mercado-de-trabajo..html"><a href="mapas-del-mercado-de-trabajo..html"><i class="fa fa-check"></i><b>14.11</b> Mapas del mercado de trabajo.</a>
+<li class="chapter" data-level="12.1" data-path="índice-de-privación-multidimensional-ipm.html"><a href="índice-de-privación-multidimensional-ipm.html"><i class="fa fa-check"></i><b>12.1</b> Índice de Privación Multidimensional (IPM)</a></li>
+<li class="chapter" data-level="12.2" data-path="definición-del-modelo.html"><a href="definición-del-modelo.html"><i class="fa fa-check"></i><b>12.2</b> Definición del modelo</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="definición-del-modelo.html"><a href="definición-del-modelo.html#procesamiento-del-modelo-en-r."><i class="fa fa-check"></i><b>12.2.1</b> Procesamiento del modelo en <code>R</code>.</a></li>
+<li class="chapter" data-level="12.2.2" data-path="definición-del-modelo.html"><a href="definición-del-modelo.html#definiendo-el-modelo-multinivel.-2"><i class="fa fa-check"></i><b>12.2.2</b> Definiendo el modelo multinivel.</a></li>
+<li class="chapter" data-level="12.2.3" data-path="definición-del-modelo.html"><a href="definición-del-modelo.html#proceso-de-estimación-y-predicción-2"><i class="fa fa-check"></i><b>12.2.3</b> Proceso de estimación y predicción</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="día-4---sesión-1--modelo-de-área-para-estadísticas-del-mercado-de-trabajo.html"><a href="día-4---sesión-1--modelo-de-área-para-estadísticas-del-mercado-de-trabajo.html"><i class="fa fa-check"></i><b>13</b> Día 4 - Sesión 1- Modelo de área para estadísticas del mercado de trabajo</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="definición-del-modelo-multinomial.html"><a href="definición-del-modelo-multinomial.html"><i class="fa fa-check"></i><b>13.1</b> Definición del modelo multinomial</a></li>
+<li class="chapter" data-level="13.2" data-path="lectura-de-librerías..html"><a href="lectura-de-librerías..html"><i class="fa fa-check"></i><b>13.2</b> Lectura de librerías.</a></li>
+<li class="chapter" data-level="13.3" data-path="lectura-de-la-encuesta-y-estimaciones-directas.html"><a href="lectura-de-la-encuesta-y-estimaciones-directas.html"><i class="fa fa-check"></i><b>13.3</b> Lectura de la encuesta y estimaciones directas</a></li>
+<li class="chapter" data-level="13.4" data-path="selección-de-dominios.html"><a href="selección-de-dominios.html"><i class="fa fa-check"></i><b>13.4</b> Selección de dominios</a></li>
+<li class="chapter" data-level="13.5" data-path="modelo-programando-en-stan.html"><a href="modelo-programando-en-stan.html"><i class="fa fa-check"></i><b>13.5</b> Modelo programando en <code>STAN</code></a></li>
+<li class="chapter" data-level="13.6" data-path="preparando-insumos-para-stan.html"><a href="preparando-insumos-para-stan.html"><i class="fa fa-check"></i><b>13.6</b> Preparando insumos para <code>STAN</code></a></li>
+<li class="chapter" data-level="13.7" data-path="validación-del-modelo.html"><a href="validación-del-modelo.html"><i class="fa fa-check"></i><b>13.7</b> Validación del modelo</a></li>
+<li class="chapter" data-level="13.8" data-path="estimación-de-los-parámetros..html"><a href="estimación-de-los-parámetros..html"><i class="fa fa-check"></i><b>13.8</b> Estimación de los parámetros.</a></li>
+<li class="chapter" data-level="13.9" data-path="estimación-de-la-desviación-estárdar-y-el-coeficiente-de-valiación.html"><a href="estimación-de-la-desviación-estárdar-y-el-coeficiente-de-valiación.html"><i class="fa fa-check"></i><b>13.9</b> Estimación de la desviación estárdar y el coeficiente de valiación</a></li>
+<li class="chapter" data-level="13.10" data-path="metodología-de-benchmarking.html"><a href="metodología-de-benchmarking.html"><i class="fa fa-check"></i><b>13.10</b> Metodología de Benchmarking</a></li>
+<li class="chapter" data-level="13.11" data-path="mapas-del-mercado-de-trabajo..html"><a href="mapas-del-mercado-de-trabajo..html"><i class="fa fa-check"></i><b>13.11</b> Mapas del mercado de trabajo.</a>
 <ul>
 <li class="chapter" data-level="" data-path="mapas-del-mercado-de-trabajo..html"><a href="mapas-del-mercado-de-trabajo..html#ocupado-1"><i class="fa fa-check"></i>Ocupado</a></li>
 <li class="chapter" data-level="" data-path="mapas-del-mercado-de-trabajo..html"><a href="mapas-del-mercado-de-trabajo..html#desocupado-1"><i class="fa fa-check"></i>Desocupado</a></li>
 <li class="chapter" data-level="" data-path="mapas-del-mercado-de-trabajo..html"><a href="mapas-del-mercado-de-trabajo..html#inactivo-1"><i class="fa fa-check"></i>Inactivo</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="día-4---sesión-2--modelo-de-área-para-inseguridad-alimentaria.html"><a href="día-4---sesión-2--modelo-de-área-para-inseguridad-alimentaria.html"><i class="fa fa-check"></i><b>15</b> Día 4 - Sesión 2- Modelo de área para inseguridad alimentaria</a>
+<li class="chapter" data-level="14" data-path="día-4---sesión-2--modelo-de-área-para-inseguridad-alimentaria.html"><a href="día-4---sesión-2--modelo-de-área-para-inseguridad-alimentaria.html"><i class="fa fa-check"></i><b>14</b> Día 4 - Sesión 2- Modelo de área para inseguridad alimentaria</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="modelo-de-rash.html"><a href="modelo-de-rash.html"><i class="fa fa-check"></i><b>15.1</b> Modelo de Rash</a></li>
-<li class="chapter" data-level="15.2" data-path="fuentes-de-error-en-la-estimación-del-fies.html"><a href="fuentes-de-error-en-la-estimación-del-fies.html"><i class="fa fa-check"></i><b>15.2</b> Fuentes de error en la estimación del FIES</a></li>
-<li class="chapter" data-level="15.3" data-path="modelo-de-área-para-la-estimación-del-fies.html"><a href="modelo-de-área-para-la-estimación-del-fies.html"><i class="fa fa-check"></i><b>15.3</b> Modelo de área para la estimación del FIES</a></li>
-<li class="chapter" data-level="15.4" data-path="procedimiento-de-estimación-5.html"><a href="procedimiento-de-estimación-5.html"><i class="fa fa-check"></i><b>15.4</b> Procedimiento de estimación</a>
+<li class="chapter" data-level="14.1" data-path="modelo-de-rash.html"><a href="modelo-de-rash.html"><i class="fa fa-check"></i><b>14.1</b> Modelo de Rash</a></li>
+<li class="chapter" data-level="14.2" data-path="fuentes-de-error-en-la-estimación-del-fies.html"><a href="fuentes-de-error-en-la-estimación-del-fies.html"><i class="fa fa-check"></i><b>14.2</b> Fuentes de error en la estimación del FIES</a></li>
+<li class="chapter" data-level="14.3" data-path="modelo-de-área-para-la-estimación-del-fies.html"><a href="modelo-de-área-para-la-estimación-del-fies.html"><i class="fa fa-check"></i><b>14.3</b> Modelo de área para la estimación del FIES</a></li>
+<li class="chapter" data-level="14.4" data-path="procedimiento-de-estimación-4.html"><a href="procedimiento-de-estimación-4.html"><i class="fa fa-check"></i><b>14.4</b> Procedimiento de estimación</a>
 <ul>
-<li class="chapter" data-level="15.4.1" data-path="procedimiento-de-estimación-5.html"><a href="procedimiento-de-estimación-5.html#función-generalizada-de-varianza"><i class="fa fa-check"></i><b>15.4.1</b> Función Generalizada de Varianza</a></li>
-<li class="chapter" data-level="15.4.2" data-path="procedimiento-de-estimación-5.html"><a href="procedimiento-de-estimación-5.html#resultados-del-modelo-para-los-dominios-observados.-5"><i class="fa fa-check"></i><b>15.4.2</b> Resultados del modelo para los dominios observados.</a></li>
+<li class="chapter" data-level="14.4.1" data-path="procedimiento-de-estimación-4.html"><a href="procedimiento-de-estimación-4.html#función-generalizada-de-varianza"><i class="fa fa-check"></i><b>14.4.1</b> Función Generalizada de Varianza</a></li>
+<li class="chapter" data-level="14.4.2" data-path="procedimiento-de-estimación-4.html"><a href="procedimiento-de-estimación-4.html#resultados-del-modelo-para-los-dominios-observados.-4"><i class="fa fa-check"></i><b>14.4.2</b> Resultados del modelo para los dominios observados.</a></li>
 </ul></li>
-<li class="chapter" data-level="15.5" data-path="proceso-de-benchmark-2.html"><a href="proceso-de-benchmark-2.html"><i class="fa fa-check"></i><b>15.5</b> Proceso de Benchmark</a></li>
-<li class="chapter" data-level="15.6" data-path="validación-de-los-resultados.-2.html"><a href="validación-de-los-resultados.-2.html"><i class="fa fa-check"></i><b>15.6</b> Validación de los resultados.</a></li>
-<li class="chapter" data-level="15.7" data-path="mapa-de-fies.html"><a href="mapa-de-fies.html"><i class="fa fa-check"></i><b>15.7</b> Mapa de FIES</a></li>
+<li class="chapter" data-level="14.5" data-path="proceso-de-benchmark-1.html"><a href="proceso-de-benchmark-1.html"><i class="fa fa-check"></i><b>14.5</b> Proceso de Benchmark</a></li>
+<li class="chapter" data-level="14.6" data-path="validación-de-los-resultados.-1.html"><a href="validación-de-los-resultados.-1.html"><i class="fa fa-check"></i><b>14.6</b> Validación de los resultados.</a></li>
+<li class="chapter" data-level="14.7" data-path="mapa-de-fies.html"><a href="mapa-de-fies.html"><i class="fa fa-check"></i><b>14.7</b> Mapa de FIES</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a Taller de instalación de capacidades en SAE </a></li>
@@ -347,8 +342,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="modelos-de-área-con-variable-respuesta-binomial." class="section level2 hasAnchor" number="9.1">
-<h2><span class="header-section-number">9.1</span> Modelos de área con variable respuesta Binomial.<a href="modelos-de-área-con-variable-respuesta-binomial..html#modelos-de-área-con-variable-respuesta-binomial." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="modelos-de-área-con-variable-respuesta-binomial." class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Modelos de área con variable respuesta Binomial.<a href="modelos-de-área-con-variable-respuesta-binomial..html#modelos-de-área-con-variable-respuesta-binomial." class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>El modelo lineal de Fay-Herriot puede ser reemplazado por un modelo mixto lineal generalizado (GLMM). Esto se puede hacer cuando los datos observados <span class="math inline">\(Y_d\)</span> son inherentemente discretos, como cuando son recuentos (no ponderados) de personas u hogares muestreados con ciertas características. Uno de estos modelos supone una distribución binomial para <span class="math inline">\(Y_d\)</span> con probabilidad de éxito <span class="math inline">\(\theta_d\)</span>, y una logística modelo de regresión para <span class="math inline">\(\theta_d\)</span> con errores normales en la escala logit. El modelo resultante es</p>
 <p><span class="math display">\[
 \begin{eqnarray*}
@@ -381,26 +376,26 @@ donde <span class="math inline">\(\check{\theta}_{d}\)</span> es una preliminar 
 \sigma_{u}^{2}  \sim    IG\left(0.0001,0.0001\right)
 \end{eqnarray*}
 \]</span></p>
-<div id="procedimiento-de-estimación-3" class="section level3 hasAnchor" number="9.1.1">
-<h3><span class="header-section-number">9.1.1</span> Procedimiento de estimación<a href="modelos-de-área-con-variable-respuesta-binomial..html#procedimiento-de-estimación-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="procedimiento-de-estimación-3" class="section level3 hasAnchor" number="8.2.1">
+<h3><span class="header-section-number">8.2.1</span> Procedimiento de estimación<a href="modelos-de-área-con-variable-respuesta-binomial..html#procedimiento-de-estimación-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Lectura de la base de datos que resultó en el paso anterior y selección de las columnas de interés</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb148-2"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb148-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
-<span id="cb148-3"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb148-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb148-4"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb148-4" aria-hidden="true" tabindex="-1"></a>base_FH <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;Recursos/Día2/Sesion4/Data/base_FH_2017.rds&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb148-5"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb148-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(dam2, pobreza, n_eff_FGV)</span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb138-2"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb138-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb138-3"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb138-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-4"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb138-4" aria-hidden="true" tabindex="-1"></a>base_FH <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;Recursos/Día2/Sesion4/Data/base_FH_2017.rds&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb138-5"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb138-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(dam2, pobreza, n_eff_FGV)</span></code></pre></div>
 <p>Lectura de las covariables, las cuales son obtenidas previamente. Dado la diferencia entre las escalas de las variables es necesario hacer un ajuste a estas.</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb149-1" aria-hidden="true" tabindex="-1"></a>statelevel_predictors_df <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;Recursos/Día2/Sesion4/Data/statelevel_predictors_df_dam2.rds&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb149-2"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb149-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate_at</span>(<span class="at">.vars =</span> <span class="fu">c</span>(<span class="st">&quot;luces_nocturnas&quot;</span>,</span>
-<span id="cb149-3"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb149-3" aria-hidden="true" tabindex="-1"></a>                      <span class="st">&quot;cubrimiento_cultivo&quot;</span>,</span>
-<span id="cb149-4"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb149-4" aria-hidden="true" tabindex="-1"></a>                      <span class="st">&quot;cubrimiento_urbano&quot;</span>,</span>
-<span id="cb149-5"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb149-5" aria-hidden="true" tabindex="-1"></a>                      <span class="st">&quot;modificacion_humana&quot;</span>,</span>
-<span id="cb149-6"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb149-6" aria-hidden="true" tabindex="-1"></a>                      <span class="st">&quot;accesibilidad_hospitales&quot;</span>,</span>
-<span id="cb149-7"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb149-7" aria-hidden="true" tabindex="-1"></a>                      <span class="st">&quot;accesibilidad_hosp_caminado&quot;</span>),</span>
-<span id="cb149-8"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb149-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">function</span>(x) <span class="fu">as.numeric</span>(<span class="fu">scale</span>(x)))</span></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb139-1" aria-hidden="true" tabindex="-1"></a>statelevel_predictors_df <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;Recursos/Día2/Sesion4/Data/statelevel_predictors_df_dam2.rds&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb139-2"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb139-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate_at</span>(<span class="at">.vars =</span> <span class="fu">c</span>(<span class="st">&quot;luces_nocturnas&quot;</span>,</span>
+<span id="cb139-3"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb139-3" aria-hidden="true" tabindex="-1"></a>                      <span class="st">&quot;cubrimiento_cultivo&quot;</span>,</span>
+<span id="cb139-4"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb139-4" aria-hidden="true" tabindex="-1"></a>                      <span class="st">&quot;cubrimiento_urbano&quot;</span>,</span>
+<span id="cb139-5"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb139-5" aria-hidden="true" tabindex="-1"></a>                      <span class="st">&quot;modificacion_humana&quot;</span>,</span>
+<span id="cb139-6"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb139-6" aria-hidden="true" tabindex="-1"></a>                      <span class="st">&quot;accesibilidad_hospitales&quot;</span>,</span>
+<span id="cb139-7"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb139-7" aria-hidden="true" tabindex="-1"></a>                      <span class="st">&quot;accesibilidad_hosp_caminado&quot;</span>),</span>
+<span id="cb139-8"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb139-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">function</span>(x) <span class="fu">as.numeric</span>(<span class="fu">scale</span>(x)))</span></code></pre></div>
 <p>Uniendo las dos bases de datos.</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb150-1" aria-hidden="true" tabindex="-1"></a>base_FH <span class="ot">&lt;-</span> <span class="fu">full_join</span>(base_FH,statelevel_predictors_df, <span class="at">by =</span> <span class="st">&quot;dam2&quot;</span> )</span>
-<span id="cb150-2"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb150-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tba</span>(base_FH[,<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>] <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb140-1" aria-hidden="true" tabindex="-1"></a>base_FH <span class="ot">&lt;-</span> <span class="fu">full_join</span>(base_FH,statelevel_predictors_df, <span class="at">by =</span> <span class="st">&quot;dam2&quot;</span> )</span>
+<span id="cb140-2"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb140-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tba</span>(base_FH[,<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>] <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>))</span></code></pre></div>
 <table class="table table-striped lightable-classic" style="width: auto !important; margin-left: auto; margin-right: auto; font-family: Arial Narrow; width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -439,7 +434,7 @@ edad2
 0.0764
 </td>
 <td style="text-align:right;">
-2143.5413
+1579.7310
 </td>
 <td style="text-align:right;">
 0.0126
@@ -465,7 +460,7 @@ edad2
 0.1624
 </td>
 <td style="text-align:right;">
-340.4564
+698.9342
 </td>
 <td style="text-align:right;">
 0.0230
@@ -491,7 +486,7 @@ edad2
 0.0905
 </td>
 <td style="text-align:right;">
-585.8595
+597.6173
 </td>
 <td style="text-align:right;">
 0.0215
@@ -517,7 +512,7 @@ edad2
 0.0772
 </td>
 <td style="text-align:right;">
-128.7029
+153.6090
 </td>
 <td style="text-align:right;">
 0.0437
@@ -543,7 +538,7 @@ edad2
 0.1011
 </td>
 <td style="text-align:right;">
-451.0658
+617.7543
 </td>
 <td style="text-align:right;">
 0.0193
@@ -569,7 +564,7 @@ edad2
 0.1106
 </td>
 <td style="text-align:right;">
-184.2783
+213.9843
 </td>
 <td style="text-align:right;">
 0.1136
@@ -595,7 +590,7 @@ edad2
 0.1710
 </td>
 <td style="text-align:right;">
-144.7157
+304.0418
 </td>
 <td style="text-align:right;">
 0.0923
@@ -621,7 +616,7 @@ edad2
 0.1930
 </td>
 <td style="text-align:right;">
-108.3256
+251.5640
 </td>
 <td style="text-align:right;">
 0.0579
@@ -647,7 +642,7 @@ edad2
 0.1004
 </td>
 <td style="text-align:right;">
-215.8664
+170.9489
 </td>
 <td style="text-align:right;">
 0.2005
@@ -673,7 +668,7 @@ edad2
 0.0902
 </td>
 <td style="text-align:right;">
-112.8311
+129.4378
 </td>
 <td style="text-align:right;">
 0.2133
@@ -694,39 +689,39 @@ edad2
 </tbody>
 </table>
 <p>Seleccionando las covariables para el modelo.</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb151-1" aria-hidden="true" tabindex="-1"></a>names_cov <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb151-2"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb151-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;sexo2&quot;</span> ,</span>
-<span id="cb151-3"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb151-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;anoest2&quot;</span> ,</span>
-<span id="cb151-4"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb151-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;anoest3&quot;</span>,</span>
-<span id="cb151-5"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb151-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;anoest4&quot;</span>,</span>
-<span id="cb151-6"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb151-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;edad2&quot;</span> ,</span>
-<span id="cb151-7"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb151-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;edad3&quot;</span> ,</span>
-<span id="cb151-8"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb151-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;edad4&quot;</span> ,</span>
-<span id="cb151-9"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb151-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;edad5&quot;</span> ,</span>
-<span id="cb151-10"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb151-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;etnia1&quot;</span>,</span>
-<span id="cb151-11"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb151-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;etnia2&quot;</span> ,</span>
-<span id="cb151-12"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb151-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;tasa_desocupacion&quot;</span> ,</span>
-<span id="cb151-13"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb151-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;luces_nocturnas&quot;</span> ,</span>
-<span id="cb151-14"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb151-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;cubrimiento_cultivo&quot;</span> ,</span>
-<span id="cb151-15"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb151-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;alfabeta&quot;</span>,</span>
-<span id="cb151-16"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb151-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;pollution_CO&quot;</span>,</span>
-<span id="cb151-17"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb151-17" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;vegetation_NDVI&quot;</span>,</span>
-<span id="cb151-18"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb151-18" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Elevation&quot;</span>,</span>
-<span id="cb151-19"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb151-19" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;precipitation&quot;</span>,</span>
-<span id="cb151-20"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb151-20" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;population_density&quot;</span></span>
-<span id="cb151-21"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb151-21" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb141-1" aria-hidden="true" tabindex="-1"></a>names_cov <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb141-2"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb141-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;sexo2&quot;</span> ,</span>
+<span id="cb141-3"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb141-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;anoest2&quot;</span> ,</span>
+<span id="cb141-4"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb141-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;anoest3&quot;</span>,</span>
+<span id="cb141-5"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb141-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;anoest4&quot;</span>,</span>
+<span id="cb141-6"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb141-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;edad2&quot;</span> ,</span>
+<span id="cb141-7"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb141-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;edad3&quot;</span> ,</span>
+<span id="cb141-8"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb141-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;edad4&quot;</span> ,</span>
+<span id="cb141-9"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb141-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;edad5&quot;</span> ,</span>
+<span id="cb141-10"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb141-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;etnia1&quot;</span>,</span>
+<span id="cb141-11"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb141-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;etnia2&quot;</span> ,</span>
+<span id="cb141-12"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb141-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;tasa_desocupacion&quot;</span> ,</span>
+<span id="cb141-13"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb141-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;luces_nocturnas&quot;</span> ,</span>
+<span id="cb141-14"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb141-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;cubrimiento_cultivo&quot;</span> ,</span>
+<span id="cb141-15"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb141-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;alfabeta&quot;</span>,</span>
+<span id="cb141-16"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb141-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;pollution_CO&quot;</span>,</span>
+<span id="cb141-17"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb141-17" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;vegetation_NDVI&quot;</span>,</span>
+<span id="cb141-18"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb141-18" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Elevation&quot;</span>,</span>
+<span id="cb141-19"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb141-19" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;precipitation&quot;</span>,</span>
+<span id="cb141-20"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb141-20" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;population_density&quot;</span></span>
+<span id="cb141-21"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb141-21" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 </div>
-<div id="preparando-los-insumos-para-stan-3" class="section level3 hasAnchor" number="9.1.2">
-<h3><span class="header-section-number">9.1.2</span> Preparando los insumos para <code>STAN</code><a href="modelos-de-área-con-variable-respuesta-binomial..html#preparando-los-insumos-para-stan-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="preparando-los-insumos-para-stan-3" class="section level3 hasAnchor" number="8.2.2">
+<h3><span class="header-section-number">8.2.2</span> Preparando los insumos para <code>STAN</code><a href="modelos-de-área-con-variable-respuesta-binomial..html#preparando-los-insumos-para-stan-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li>Dividir la base de datos en dominios observados y no observados</li>
 </ol>
 <p>Dominios observados.</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb152-1" aria-hidden="true" tabindex="-1"></a>data_dir <span class="ot">&lt;-</span> base_FH <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(pobreza))</span></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb142-1" aria-hidden="true" tabindex="-1"></a>data_dir <span class="ot">&lt;-</span> base_FH <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(pobreza))</span></code></pre></div>
 <p>Dominios NO observados.</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb153-1" aria-hidden="true" tabindex="-1"></a>data_syn <span class="ot">&lt;-</span></span>
-<span id="cb153-2"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb153-2" aria-hidden="true" tabindex="-1"></a>  base_FH <span class="sc">%&gt;%</span> <span class="fu">anti_join</span>(data_dir <span class="sc">%&gt;%</span> <span class="fu">select</span>(dam2))</span>
-<span id="cb153-3"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb153-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tba</span>(data_syn[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb143-1" aria-hidden="true" tabindex="-1"></a>data_syn <span class="ot">&lt;-</span></span>
+<span id="cb143-2"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb143-2" aria-hidden="true" tabindex="-1"></a>  base_FH <span class="sc">%&gt;%</span> <span class="fu">anti_join</span>(data_dir <span class="sc">%&gt;%</span> <span class="fu">select</span>(dam2))</span>
+<span id="cb143-3"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb143-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tba</span>(data_syn[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>])</span></code></pre></div>
 <table class="table table-striped lightable-classic" style="width: auto !important; margin-left: auto; margin-right: auto; font-family: Arial Narrow; width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1022,137 +1017,139 @@ NA
 <ol start="2" style="list-style-type: decimal">
 <li>Definir matriz de efectos fijos.</li>
 </ol>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Dominios observados</span></span>
-<span id="cb154-2"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb154-2" aria-hidden="true" tabindex="-1"></a>Xdat <span class="ot">&lt;-</span> data_dir[,names_cov]</span>
-<span id="cb154-3"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb154-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-4"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb154-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Dominios no observados</span></span>
-<span id="cb154-5"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb154-5" aria-hidden="true" tabindex="-1"></a>Xs <span class="ot">&lt;-</span> data_syn[,names_cov]</span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Dominios observados</span></span>
+<span id="cb144-2"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb144-2" aria-hidden="true" tabindex="-1"></a>Xdat <span class="ot">&lt;-</span> data_dir[,names_cov]</span>
+<span id="cb144-3"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb144-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb144-4"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb144-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Dominios no observados</span></span>
+<span id="cb144-5"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb144-5" aria-hidden="true" tabindex="-1"></a>Xs <span class="ot">&lt;-</span> data_syn[,names_cov]</span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>Obteniendo el tamaño de muestra efectivo <span class="math inline">\(\tilde{n}_d\)</span>, y el número de muestra efectivo de éxitos <span class="math inline">\(\tilde{Y_d}\)</span></li>
 </ol>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb155-1" aria-hidden="true" tabindex="-1"></a>n_effec <span class="ot">=</span> <span class="fu">round</span>(data_dir<span class="sc">$</span>n_eff_FGV)</span>
-<span id="cb155-2"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb155-2" aria-hidden="true" tabindex="-1"></a>y_effect  <span class="ot">=</span> <span class="fu">round</span>((data_dir<span class="sc">$</span>pobreza)<span class="sc">*</span>n_effec)</span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb145-1" aria-hidden="true" tabindex="-1"></a>n_effec <span class="ot">=</span> <span class="fu">round</span>(data_dir<span class="sc">$</span>n_eff_FGV)</span>
+<span id="cb145-2"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb145-2" aria-hidden="true" tabindex="-1"></a>y_effect  <span class="ot">=</span> <span class="fu">round</span>((data_dir<span class="sc">$</span>pobreza)<span class="sc">*</span>n_effec)</span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
 <li>Creando lista de parámetros para <code>STAN</code></li>
 </ol>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb156-1" aria-hidden="true" tabindex="-1"></a>sample_data <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb156-2"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb156-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">N1 =</span> <span class="fu">nrow</span>(Xdat),   <span class="co"># Observados.</span></span>
-<span id="cb156-3"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb156-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">N2 =</span> <span class="fu">nrow</span>(Xs),   <span class="co"># NO Observados.</span></span>
-<span id="cb156-4"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb156-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">p  =</span> <span class="fu">ncol</span>(Xdat),       <span class="co"># Número de regresores.</span></span>
-<span id="cb156-5"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb156-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">X  =</span> <span class="fu">as.matrix</span>(Xdat),  <span class="co"># Covariables Observados.</span></span>
-<span id="cb156-6"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb156-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Xs =</span> <span class="fu">as.matrix</span>(Xs),    <span class="co"># Covariables NO Observados</span></span>
-<span id="cb156-7"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb156-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_effec =</span> n_effec,</span>
-<span id="cb156-8"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb156-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">y_effect  =</span> y_effect          <span class="co"># Estimación directa. </span></span>
-<span id="cb156-9"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb156-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb146-1" aria-hidden="true" tabindex="-1"></a>sample_data <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb146-2"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb146-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">N1 =</span> <span class="fu">nrow</span>(Xdat),   <span class="co"># Observados.</span></span>
+<span id="cb146-3"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb146-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">N2 =</span> <span class="fu">nrow</span>(Xs),   <span class="co"># NO Observados.</span></span>
+<span id="cb146-4"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb146-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">p  =</span> <span class="fu">ncol</span>(Xdat),       <span class="co"># Número de regresores.</span></span>
+<span id="cb146-5"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb146-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">X  =</span> <span class="fu">as.matrix</span>(Xdat),  <span class="co"># Covariables Observados.</span></span>
+<span id="cb146-6"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb146-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Xs =</span> <span class="fu">as.matrix</span>(Xs),    <span class="co"># Covariables NO Observados</span></span>
+<span id="cb146-7"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb146-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_effec =</span> n_effec,</span>
+<span id="cb146-8"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb146-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">y_effect  =</span> y_effect          <span class="co"># Estimación directa. </span></span>
+<span id="cb146-9"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb146-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <ol start="5" style="list-style-type: decimal">
 <li>Compilando el modelo en <code>STAN</code></li>
 </ol>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstan)</span>
-<span id="cb157-2"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb157-2" aria-hidden="true" tabindex="-1"></a>fit_FH_binomial <span class="ot">&lt;-</span> <span class="st">&quot;Recursos/Día2/Sesion4/Data/modelosStan/14FH_binomial.stan&quot;</span></span>
-<span id="cb157-3"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb157-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">mc.cores =</span> parallel<span class="sc">::</span><span class="fu">detectCores</span>())</span>
-<span id="cb157-4"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb157-4" aria-hidden="true" tabindex="-1"></a>model_FH_Binomial <span class="ot">&lt;-</span> <span class="fu">stan</span>(</span>
-<span id="cb157-5"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb157-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> fit_FH_binomial,  </span>
-<span id="cb157-6"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb157-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> sample_data,   </span>
-<span id="cb157-7"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb157-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb157-8"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb157-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">warmup =</span> <span class="dv">500</span>,         </span>
-<span id="cb157-9"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb157-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter =</span> <span class="dv">1000</span>,            </span>
-<span id="cb157-10"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb157-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">cores =</span> <span class="dv">4</span>              </span>
-<span id="cb157-11"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb157-11" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb157-12"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb157-12" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(model_FH_Binomial, <span class="at">file =</span> <span class="st">&quot;Recursos/Día2/Sesion4/Data/model_FH_Binomial.rds&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstan)</span>
+<span id="cb147-2"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb147-2" aria-hidden="true" tabindex="-1"></a>fit_FH_binomial <span class="ot">&lt;-</span> <span class="st">&quot;Recursos/Día2/Sesion4/Data/modelosStan/14FH_binomial.stan&quot;</span></span>
+<span id="cb147-3"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb147-3" aria-hidden="true" tabindex="-1"></a>rstan<span class="sc">::</span><span class="fu">rstan_options</span>(<span class="at">auto_write =</span> <span class="cn">TRUE</span>) <span class="co"># speed up running time </span></span>
+<span id="cb147-4"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb147-4" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">mc.cores =</span> parallel<span class="sc">::</span><span class="fu">detectCores</span>())</span>
+<span id="cb147-5"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb147-5" aria-hidden="true" tabindex="-1"></a>model_FH_Binomial <span class="ot">&lt;-</span> <span class="fu">stan</span>(</span>
+<span id="cb147-6"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb147-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> fit_FH_binomial,  </span>
+<span id="cb147-7"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb147-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> sample_data,   </span>
+<span id="cb147-8"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb147-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb147-9"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb147-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">warmup =</span> <span class="dv">500</span>,         </span>
+<span id="cb147-10"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb147-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter =</span> <span class="dv">1000</span>,            </span>
+<span id="cb147-11"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb147-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">cores =</span> <span class="dv">4</span>              </span>
+<span id="cb147-12"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb147-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb147-13"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb147-13" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(model_FH_Binomial, <span class="at">file =</span> <span class="st">&quot;Recursos/Día2/Sesion4/Data/model_FH_Binomial.rds&quot;</span>)</span></code></pre></div>
 <p>Leer el modelo</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb158-1" aria-hidden="true" tabindex="-1"></a>model_FH_Binomial <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;Recursos/Día2/Sesion4/Data/model_FH_Binomial.rds&quot;</span>)</span></code></pre></div>
-<div id="resultados-del-modelo-para-los-dominios-observados.-3" class="section level4 hasAnchor" number="9.1.2.1">
-<h4><span class="header-section-number">9.1.2.1</span> Resultados del modelo para los dominios observados.<a href="modelos-de-área-con-variable-respuesta-binomial..html#resultados-del-modelo-para-los-dominios-observados.-3" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb148-1" aria-hidden="true" tabindex="-1"></a>model_FH_Binomial <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;Recursos/Día2/Sesion4/Data/model_FH_Binomial.rds&quot;</span>)</span></code></pre></div>
+<div id="resultados-del-modelo-para-los-dominios-observados.-3" class="section level4 hasAnchor" number="8.2.2.1">
+<h4><span class="header-section-number">8.2.2.1</span> Resultados del modelo para los dominios observados.<a href="modelos-de-área-con-variable-respuesta-binomial..html#resultados-del-modelo-para-los-dominios-observados.-3" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>En este código, se cargan las librerías <code>bayesplot</code>, <code>posterior</code> y <code>patchwork</code>, que se utilizan para realizar gráficos y visualizaciones de los resultados del modelo.</p>
 <p>A continuación, se utiliza la función <code>as.array()</code> y <code>as_draws_matrix()</code> para extraer las muestras de la distribución posterior del parámetro <code>theta</code> del modelo, y se seleccionan aleatoriamente 100 filas de estas muestras utilizando la función <code>sample()</code>, lo que resulta en la matriz <code>y_pred2.</code></p>
 <p>Finalmente, se utiliza la función <code>ppc_dens_overlay()</code> de <code>bayesplot</code> para graficar una comparación entre la distribución empírica de la variable observada pobreza en los datos (<code>data_dir$pobreza</code>) y las distribuciones predictivas posteriores simuladas para la misma variable (<code>y_pred2</code>). La función <code>ppc_dens_overlay()</code> produce un gráfico de densidad para ambas distribuciones, lo que permite visualizar cómo se comparan.</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bayesplot)</span>
-<span id="cb159-2"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb159-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb159-3"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb159-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(posterior)</span>
-<span id="cb159-4"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb159-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-5"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb159-5" aria-hidden="true" tabindex="-1"></a>y_pred_B <span class="ot">&lt;-</span> <span class="fu">as.array</span>(model_FH_Binomial, <span class="at">pars =</span> <span class="st">&quot;theta&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb159-6"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb159-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_draws_matrix</span>()</span>
-<span id="cb159-7"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb159-7" aria-hidden="true" tabindex="-1"></a>rowsrandom <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">nrow</span>(y_pred_B), <span class="dv">100</span>)</span>
-<span id="cb159-8"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb159-8" aria-hidden="true" tabindex="-1"></a>y_pred2 <span class="ot">&lt;-</span> y_pred_B[rowsrandom, ]</span>
-<span id="cb159-9"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb159-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ppc_dens_overlay</span>(<span class="at">y =</span> <span class="fu">as.numeric</span>(data_dir<span class="sc">$</span>pobreza), y_pred2)</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bayesplot)</span>
+<span id="cb149-2"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb149-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb149-3"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb149-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(posterior)</span>
+<span id="cb149-4"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb149-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-5"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb149-5" aria-hidden="true" tabindex="-1"></a>y_pred_B <span class="ot">&lt;-</span> <span class="fu">as.array</span>(model_FH_Binomial, <span class="at">pars =</span> <span class="st">&quot;theta&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb149-6"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb149-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_draws_matrix</span>()</span>
+<span id="cb149-7"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb149-7" aria-hidden="true" tabindex="-1"></a>rowsrandom <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">nrow</span>(y_pred_B), <span class="dv">100</span>)</span>
+<span id="cb149-8"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb149-8" aria-hidden="true" tabindex="-1"></a>y_pred2 <span class="ot">&lt;-</span> y_pred_B[rowsrandom, ]</span>
+<span id="cb149-9"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb149-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ppc_dens_overlay</span>(<span class="at">y =</span> <span class="fu">as.numeric</span>(data_dir<span class="sc">$</span>pobreza), y_pred2)</span></code></pre></div>
 <p><img src="Recursos/D%C3%ADa2/Sesion4/0Recursos/Binomial1.PNG" width="200%" /></p>
 <p>Análisis gráfico de la convergencia de las cadenas de <span class="math inline">\(\sigma_u\)</span>.</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb160-1" aria-hidden="true" tabindex="-1"></a>posterior_sigma_u <span class="ot">&lt;-</span> <span class="fu">as.array</span>(model_FH_Binomial, <span class="at">pars =</span> <span class="st">&quot;sigma_u&quot;</span>)</span>
-<span id="cb160-2"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb160-2" aria-hidden="true" tabindex="-1"></a>(<span class="fu">mcmc_dens_chains</span>(posterior_sigma_u) <span class="sc">+</span></span>
-<span id="cb160-3"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb160-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mcmc_areas</span>(posterior_sigma_u) ) <span class="sc">/</span> </span>
-<span id="cb160-4"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb160-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mcmc_trace</span>(posterior_sigma_u)</span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb150-1" aria-hidden="true" tabindex="-1"></a>posterior_sigma_u <span class="ot">&lt;-</span> <span class="fu">as.array</span>(model_FH_Binomial, <span class="at">pars =</span> <span class="st">&quot;sigma_u&quot;</span>)</span>
+<span id="cb150-2"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb150-2" aria-hidden="true" tabindex="-1"></a>(<span class="fu">mcmc_dens_chains</span>(posterior_sigma_u) <span class="sc">+</span></span>
+<span id="cb150-3"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb150-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mcmc_areas</span>(posterior_sigma_u) ) <span class="sc">/</span> </span>
+<span id="cb150-4"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb150-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mcmc_trace</span>(posterior_sigma_u)</span></code></pre></div>
 <p><img src="Recursos/D%C3%ADa2/Sesion4/0Recursos/Binomial2.PNG" width="200%" /></p>
 <p>Estimación del FH de la pobreza en los dominios observados.</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb161-1" aria-hidden="true" tabindex="-1"></a>theta_FH <span class="ot">&lt;-</span> <span class="fu">summary</span>(model_FH_Binomial,<span class="at">pars =</span>  <span class="st">&quot;theta&quot;</span>)<span class="sc">$</span>summary <span class="sc">%&gt;%</span></span>
-<span id="cb161-2"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb161-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>()</span>
-<span id="cb161-3"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb161-3" aria-hidden="true" tabindex="-1"></a>data_dir <span class="sc">%&lt;&gt;%</span> <span class="fu">mutate</span>(<span class="at">pred_binomial =</span> theta_FH<span class="sc">$</span>mean, </span>
-<span id="cb161-4"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb161-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">pred_binomial_EE =</span> theta_FH<span class="sc">$</span>sd,</span>
-<span id="cb161-5"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb161-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Cv_pred =</span> pred_binomial_EE<span class="sc">/</span>pred_binomial)</span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb151-1" aria-hidden="true" tabindex="-1"></a>theta_FH <span class="ot">&lt;-</span> <span class="fu">summary</span>(model_FH_Binomial,<span class="at">pars =</span>  <span class="st">&quot;theta&quot;</span>)<span class="sc">$</span>summary <span class="sc">%&gt;%</span></span>
+<span id="cb151-2"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb151-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>()</span>
+<span id="cb151-3"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb151-3" aria-hidden="true" tabindex="-1"></a>data_dir <span class="sc">%&lt;&gt;%</span> <span class="fu">mutate</span>(<span class="at">pred_binomial =</span> theta_FH<span class="sc">$</span>mean, </span>
+<span id="cb151-4"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb151-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">pred_binomial_EE =</span> theta_FH<span class="sc">$</span>sd,</span>
+<span id="cb151-5"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb151-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Cv_pred =</span> pred_binomial_EE<span class="sc">/</span>pred_binomial)</span></code></pre></div>
 <p>Estimación del FH de la pobreza en los dominios NO observados.</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb162-1" aria-hidden="true" tabindex="-1"></a>theta_FH_pred <span class="ot">&lt;-</span> <span class="fu">summary</span>(model_FH_Binomial,<span class="at">pars =</span>  <span class="st">&quot;thetaLP&quot;</span>)<span class="sc">$</span>summary <span class="sc">%&gt;%</span></span>
-<span id="cb162-2"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb162-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>()</span>
-<span id="cb162-3"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb162-3" aria-hidden="true" tabindex="-1"></a>data_syn <span class="ot">&lt;-</span> data_syn <span class="sc">%&gt;%</span> </span>
-<span id="cb162-4"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb162-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pred_binomial =</span> theta_FH_pred<span class="sc">$</span>mean,</span>
-<span id="cb162-5"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb162-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">pred_binomial_EE =</span> theta_FH_pred<span class="sc">$</span>sd,</span>
-<span id="cb162-6"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb162-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">Cv_pred =</span> pred_binomial_EE<span class="sc">/</span>pred_binomial)</span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb152-1" aria-hidden="true" tabindex="-1"></a>theta_FH_pred <span class="ot">&lt;-</span> <span class="fu">summary</span>(model_FH_Binomial,<span class="at">pars =</span>  <span class="st">&quot;thetaLP&quot;</span>)<span class="sc">$</span>summary <span class="sc">%&gt;%</span></span>
+<span id="cb152-2"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb152-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>()</span>
+<span id="cb152-3"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb152-3" aria-hidden="true" tabindex="-1"></a>data_syn <span class="ot">&lt;-</span> data_syn <span class="sc">%&gt;%</span> </span>
+<span id="cb152-4"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb152-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pred_binomial =</span> theta_FH_pred<span class="sc">$</span>mean,</span>
+<span id="cb152-5"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb152-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">pred_binomial_EE =</span> theta_FH_pred<span class="sc">$</span>sd,</span>
+<span id="cb152-6"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb152-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">Cv_pred =</span> pred_binomial_EE<span class="sc">/</span>pred_binomial)</span></code></pre></div>
 </div>
-<div id="mapa-de-pobreza-3" class="section level4 hasAnchor" number="9.1.2.2">
-<h4><span class="header-section-number">9.1.2.2</span> Mapa de pobreza<a href="modelos-de-área-con-variable-respuesta-binomial..html#mapa-de-pobreza-3" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="mapa-de-pobreza-3" class="section level4 hasAnchor" number="8.2.2.2">
+<h4><span class="header-section-number">8.2.2.2</span> Mapa de pobreza<a href="modelos-de-área-con-variable-respuesta-binomial..html#mapa-de-pobreza-3" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>El mapa muestra el nivel de pobreza en diferentes áreas de Colombia, basado en dos variables, <code>pobreza</code> y <code>pred_binomial</code>.</p>
 <p>Primero, se cargan los paquetes necesarios <code>sp</code>, <code>sf</code> y <code>tmap.</code> Luego, se lee la información de los datos en R y se combinan utilizando la función <code>rbind()</code>.</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sp)</span>
-<span id="cb163-2"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb163-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb163-3"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb163-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
-<span id="cb163-4"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb163-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb163-5"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb163-5" aria-hidden="true" tabindex="-1"></a>data_map <span class="ot">&lt;-</span> <span class="fu">rbind</span>(data_dir, data_syn) <span class="sc">%&gt;%</span> </span>
-<span id="cb163-6"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb163-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(dam2, pobreza, pred_binomial, pred_binomial_EE,Cv_pred ) </span>
-<span id="cb163-7"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb163-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb163-8"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb163-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb163-9"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb163-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Leer Shapefile del país</span></span>
-<span id="cb163-10"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb163-10" aria-hidden="true" tabindex="-1"></a>ShapeSAE <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">&quot;Recursos/Día2/Sesion4/Shape/CHL_dam2.shp&quot;</span>) </span>
-<span id="cb163-11"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb163-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb163-12"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb163-12" aria-hidden="true" tabindex="-1"></a>mapa <span class="ot">&lt;-</span> <span class="fu">tm_shape</span>(ShapeSAE <span class="sc">%&gt;%</span></span>
-<span id="cb163-13"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb163-13" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">left_join</span>(data_map,  <span class="at">by =</span> <span class="st">&quot;dam2&quot;</span>))</span>
-<span id="cb163-14"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb163-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb163-15"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb163-15" aria-hidden="true" tabindex="-1"></a>brks_lp <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.025</span>,<span class="fl">0.05</span>, <span class="fl">0.1</span>, <span class="fl">0.15</span>, <span class="fl">0.2</span>,<span class="fl">0.4</span>, <span class="dv">1</span>)</span>
-<span id="cb163-16"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb163-16" aria-hidden="true" tabindex="-1"></a><span class="fu">tmap_options</span>(<span class="at">check.and.fix =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb163-17"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb163-17" aria-hidden="true" tabindex="-1"></a>Mapa_lp <span class="ot">&lt;-</span></span>
-<span id="cb163-18"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb163-18" aria-hidden="true" tabindex="-1"></a>  mapa <span class="sc">+</span> <span class="fu">tm_polygons</span>(</span>
-<span id="cb163-19"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb163-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">&quot;pobreza&quot;</span>, <span class="st">&quot;pred_binomial&quot;</span>),</span>
-<span id="cb163-20"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb163-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> brks_lp,</span>
-<span id="cb163-21"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb163-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Mapa de pobreza&quot;</span>,</span>
-<span id="cb163-22"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb163-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">palette =</span> <span class="st">&quot;YlOrRd&quot;</span>,</span>
-<span id="cb163-23"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb163-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">colorNA =</span> <span class="st">&quot;white&quot;</span></span>
-<span id="cb163-24"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb163-24" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> <span class="fu">tm_layout</span>(<span class="at">asp =</span> <span class="fl">1.5</span>)</span>
-<span id="cb163-25"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb163-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb163-26"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb163-26" aria-hidden="true" tabindex="-1"></a>Mapa_lp</span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sp)</span>
+<span id="cb153-2"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb153-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb153-3"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb153-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
+<span id="cb153-4"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb153-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-5"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb153-5" aria-hidden="true" tabindex="-1"></a>data_map <span class="ot">&lt;-</span> <span class="fu">rbind</span>(data_dir, data_syn) <span class="sc">%&gt;%</span> </span>
+<span id="cb153-6"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb153-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(dam2, pobreza, pred_binomial, pred_binomial_EE,Cv_pred ) </span>
+<span id="cb153-7"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb153-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-8"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb153-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-9"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb153-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Leer Shapefile del país</span></span>
+<span id="cb153-10"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb153-10" aria-hidden="true" tabindex="-1"></a>ShapeSAE <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">&quot;Recursos/Día2/Sesion4/Shape/CHL_dam2.shp&quot;</span>) </span>
+<span id="cb153-11"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb153-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-12"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb153-12" aria-hidden="true" tabindex="-1"></a>mapa <span class="ot">&lt;-</span> <span class="fu">tm_shape</span>(ShapeSAE <span class="sc">%&gt;%</span></span>
+<span id="cb153-13"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb153-13" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">left_join</span>(data_map,  <span class="at">by =</span> <span class="st">&quot;dam2&quot;</span>))</span>
+<span id="cb153-14"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb153-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-15"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb153-15" aria-hidden="true" tabindex="-1"></a>brks_lp <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.025</span>,<span class="fl">0.05</span>, <span class="fl">0.1</span>, <span class="fl">0.15</span>, <span class="fl">0.2</span>,<span class="fl">0.4</span>, <span class="dv">1</span>)</span>
+<span id="cb153-16"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb153-16" aria-hidden="true" tabindex="-1"></a><span class="fu">tmap_options</span>(<span class="at">check.and.fix =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb153-17"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb153-17" aria-hidden="true" tabindex="-1"></a>Mapa_lp <span class="ot">&lt;-</span></span>
+<span id="cb153-18"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb153-18" aria-hidden="true" tabindex="-1"></a>  mapa <span class="sc">+</span> <span class="fu">tm_polygons</span>(</span>
+<span id="cb153-19"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb153-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">&quot;pobreza&quot;</span>, <span class="st">&quot;pred_binomial&quot;</span>),</span>
+<span id="cb153-20"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb153-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> brks_lp,</span>
+<span id="cb153-21"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb153-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Mapa de pobreza&quot;</span>,</span>
+<span id="cb153-22"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb153-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">palette =</span> <span class="st">&quot;YlOrRd&quot;</span>,</span>
+<span id="cb153-23"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb153-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">colorNA =</span> <span class="st">&quot;white&quot;</span></span>
+<span id="cb153-24"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb153-24" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> <span class="fu">tm_layout</span>(<span class="at">asp =</span> <span class="fl">1.5</span>)</span>
+<span id="cb153-25"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb153-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-26"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb153-26" aria-hidden="true" tabindex="-1"></a>Mapa_lp</span></code></pre></div>
 <p><img src="Recursos/D%C3%ADa2/Sesion4/0Recursos/Binomial.PNG" width="400%" style="display: block; margin: auto;" /></p>
 </div>
-<div id="mapa-del-coeficiente-de-variación.-1" class="section level4 hasAnchor" number="9.1.2.3">
-<h4><span class="header-section-number">9.1.2.3</span> Mapa del coeficiente de variación.<a href="modelos-de-área-con-variable-respuesta-binomial..html#mapa-del-coeficiente-de-variación.-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="mapa-del-coeficiente-de-variación.-2" class="section level4 hasAnchor" number="8.2.2.3">
+<h4><span class="header-section-number">8.2.2.3</span> Mapa del coeficiente de variación.<a href="modelos-de-área-con-variable-respuesta-binomial..html#mapa-del-coeficiente-de-variación.-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Ahora, se crea un segundo mapa temático (tmap) llamado Mapa_cv. Utiliza la misma estructura del primer mapa (mapa) creado anteriormente y agrega una capa utilizando la función tm_polygons(). El mapa representa la variable Cv_pred, utilizando una paleta de colores llamada “YlOrRd” y establece el título del mapa con el parámetro title. La función tm_layout() establece algunos parámetros de diseño del mapa, como la relación de aspecto (asp). Finalmente, el mapa Mapa_cv se muestra en la consola de R.</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb164-1" aria-hidden="true" tabindex="-1"></a>Mapa_cv <span class="ot">&lt;-</span></span>
-<span id="cb164-2"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb164-2" aria-hidden="true" tabindex="-1"></a>  mapa <span class="sc">+</span> <span class="fu">tm_polygons</span>(</span>
-<span id="cb164-3"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb164-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">&quot;Cv_pred&quot;</span>),</span>
-<span id="cb164-4"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb164-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">title =</span> <span class="st">&quot;Mapa de pobreza(cv)&quot;</span>,</span>
-<span id="cb164-5"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb164-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">palette =</span> <span class="st">&quot;YlOrRd&quot;</span>,</span>
-<span id="cb164-6"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb164-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">colorNA =</span> <span class="st">&quot;white&quot;</span></span>
-<span id="cb164-7"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb164-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> <span class="fu">tm_layout</span>(<span class="at">asp =</span> <span class="fl">2.5</span>)</span>
-<span id="cb164-8"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb164-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb164-9"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb164-9" aria-hidden="true" tabindex="-1"></a>Mapa_cv</span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb154-1" aria-hidden="true" tabindex="-1"></a>Mapa_cv <span class="ot">&lt;-</span></span>
+<span id="cb154-2"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb154-2" aria-hidden="true" tabindex="-1"></a>  mapa <span class="sc">+</span> <span class="fu">tm_polygons</span>(</span>
+<span id="cb154-3"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb154-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">&quot;Cv_pred&quot;</span>),</span>
+<span id="cb154-4"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb154-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">title =</span> <span class="st">&quot;Mapa de pobreza(cv)&quot;</span>,</span>
+<span id="cb154-5"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb154-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">palette =</span> <span class="st">&quot;YlOrRd&quot;</span>,</span>
+<span id="cb154-6"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb154-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">colorNA =</span> <span class="st">&quot;white&quot;</span></span>
+<span id="cb154-7"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb154-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> <span class="fu">tm_layout</span>(<span class="at">asp =</span> <span class="fl">2.5</span>)</span>
+<span id="cb154-8"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb154-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-9"><a href="modelos-de-área-con-variable-respuesta-binomial..html#cb154-9" aria-hidden="true" tabindex="-1"></a>Mapa_cv</span></code></pre></div>
 <p><strong>NOTA:</strong> Dado que la estimación del modelo y el error de estimación son pequeño, entonces, el coeficiente de variación no es una buena medida de la calidad de la estimación.</p>
 <p><img src="Recursos/D%C3%ADa2/Sesion4/0Recursos/Binomial_cv.PNG" width="400%" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>
 </div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="día-2---sesión-4--modelos-de-área---estimación-de-la-pobreza-en-familia-beta-y-binomial.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="modelos-de-área-con-variable-respuesta-beta..html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="modelos-de-área-con-variable-respuesta-beta..html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="día-3---sesión-1--modelo-de-unidad-para-la-estimación-del-ingreso-medio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -1183,7 +1180,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/2021ASDA/06-D2S4-Fay_Herriot_binomial.qmd",
+"link": "https://github.com/psirusteam/2021ASDA/07-D2S4-Fay_Herriot_binomial.qmd",
 "text": "Edit"
 },
 "history": {

@@ -157,7 +157,7 @@ tba(base_FH[1:10,1:8])
    <td style="text-align:right;"> 6447 </td>
    <td style="text-align:right;"> 0.0764 </td>
    <td style="text-align:right;"> 0.0001 </td>
-   <td style="text-align:right;"> 0.0001 </td>
+   <td style="text-align:right;"> 1e-04 </td>
    <td style="text-align:right;"> 0.0126 </td>
    <td style="text-align:right;"> 0.9874 </td>
    <td style="text-align:right;"> 0.0016 </td>
@@ -167,7 +167,7 @@ tba(base_FH[1:10,1:8])
    <td style="text-align:right;"> 3015 </td>
    <td style="text-align:right;"> 0.1624 </td>
    <td style="text-align:right;"> 0.0004 </td>
-   <td style="text-align:right;"> 0.0009 </td>
+   <td style="text-align:right;"> 5e-04 </td>
    <td style="text-align:right;"> 0.0230 </td>
    <td style="text-align:right;"> 0.9770 </td>
    <td style="text-align:right;"> 0.0011 </td>
@@ -177,7 +177,7 @@ tba(base_FH[1:10,1:8])
    <td style="text-align:right;"> 5473 </td>
    <td style="text-align:right;"> 0.0905 </td>
    <td style="text-align:right;"> 0.0001 </td>
-   <td style="text-align:right;"> 0.0002 </td>
+   <td style="text-align:right;"> 2e-04 </td>
    <td style="text-align:right;"> 0.0215 </td>
    <td style="text-align:right;"> 0.9785 </td>
    <td style="text-align:right;"> 0.0010 </td>
@@ -187,7 +187,7 @@ tba(base_FH[1:10,1:8])
    <td style="text-align:right;"> 1759 </td>
    <td style="text-align:right;"> 0.0772 </td>
    <td style="text-align:right;"> 0.0005 </td>
-   <td style="text-align:right;"> 0.0005 </td>
+   <td style="text-align:right;"> 4e-04 </td>
    <td style="text-align:right;"> 0.0437 </td>
    <td style="text-align:right;"> 0.9563 </td>
    <td style="text-align:right;"> 0.0004 </td>
@@ -197,7 +197,7 @@ tba(base_FH[1:10,1:8])
    <td style="text-align:right;"> 3757 </td>
    <td style="text-align:right;"> 0.1011 </td>
    <td style="text-align:right;"> 0.0003 </td>
-   <td style="text-align:right;"> 0.0004 </td>
+   <td style="text-align:right;"> 3e-04 </td>
    <td style="text-align:right;"> 0.0193 </td>
    <td style="text-align:right;"> 0.9807 </td>
    <td style="text-align:right;"> 0.0006 </td>
@@ -207,7 +207,7 @@ tba(base_FH[1:10,1:8])
    <td style="text-align:right;"> 1221 </td>
    <td style="text-align:right;"> 0.1106 </td>
    <td style="text-align:right;"> 0.0001 </td>
-   <td style="text-align:right;"> 0.0008 </td>
+   <td style="text-align:right;"> 7e-04 </td>
    <td style="text-align:right;"> 0.1136 </td>
    <td style="text-align:right;"> 0.8864 </td>
    <td style="text-align:right;"> 0.0004 </td>
@@ -217,7 +217,7 @@ tba(base_FH[1:10,1:8])
    <td style="text-align:right;"> 2719 </td>
    <td style="text-align:right;"> 0.1710 </td>
    <td style="text-align:right;"> 0.0002 </td>
-   <td style="text-align:right;"> 0.0011 </td>
+   <td style="text-align:right;"> 5e-04 </td>
    <td style="text-align:right;"> 0.0923 </td>
    <td style="text-align:right;"> 0.9077 </td>
    <td style="text-align:right;"> 0.0004 </td>
@@ -227,7 +227,7 @@ tba(base_FH[1:10,1:8])
    <td style="text-align:right;"> 2498 </td>
    <td style="text-align:right;"> 0.1930 </td>
    <td style="text-align:right;"> 0.0005 </td>
-   <td style="text-align:right;"> 0.0012 </td>
+   <td style="text-align:right;"> 5e-04 </td>
    <td style="text-align:right;"> 0.0579 </td>
    <td style="text-align:right;"> 0.9421 </td>
    <td style="text-align:right;"> 0.0003 </td>
@@ -237,7 +237,7 @@ tba(base_FH[1:10,1:8])
    <td style="text-align:right;"> 482 </td>
    <td style="text-align:right;"> 0.1004 </td>
    <td style="text-align:right;"> 0.0011 </td>
-   <td style="text-align:right;"> 0.0008 </td>
+   <td style="text-align:right;"> 1e-03 </td>
    <td style="text-align:right;"> 0.2005 </td>
    <td style="text-align:right;"> 0.7995 </td>
    <td style="text-align:right;"> 0.0003 </td>
@@ -247,7 +247,7 @@ tba(base_FH[1:10,1:8])
    <td style="text-align:right;"> 1323 </td>
    <td style="text-align:right;"> 0.0902 </td>
    <td style="text-align:right;"> 0.0005 </td>
-   <td style="text-align:right;"> 0.0006 </td>
+   <td style="text-align:right;"> 6e-04 </td>
    <td style="text-align:right;"> 0.2133 </td>
    <td style="text-align:right;"> 0.7867 </td>
    <td style="text-align:right;"> 0.0001 </td>
@@ -529,6 +529,7 @@ El resultado del ajuste del modelo es almacenado en `model_FH_normal`, que conti
 library(rstan)
 fit_FH_normal <- "Recursos/Día2/Sesion2/Data/modelosStan/17FH_normal.stan"
 options(mc.cores = parallel::detectCores())
+rstan::rstan_options(auto_write = TRUE) # speed up running time 
 model_FH_normal <- stan(
   file = fit_FH_normal,  
   data = sample_data,   

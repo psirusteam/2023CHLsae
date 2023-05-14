@@ -25,7 +25,7 @@ Algunas de las principales fuentes de imágenes satelitales son:
 
   * https://search.earthdata.nasa.gov/search
 
-  * https://scihub.coGTMnicus.eu/
+  * https://scihub.copernicus.eu/
 
   * https://aws.amazon.com/public-data-sets/landsat/
 
@@ -43,7 +43,7 @@ Crear una cuenta en [link](https://earthengine.google.com/), una vez que se ingr
 
 * Una vez se busque el conjunto de datos se puede abrir un editor de código brindado por google en  Javascript. 
 
-*  Copiar y pegar la sintaxis que brinda el buscador de conjunto de datos para visualizar la imagen raster y disponer de sentencias que GTMmitan la obtención  del conjunto de datos de interés posteriormente en R
+*  Copiar y pegar la sintaxis que brinda el buscador de conjunto de datos para visualizar la imagen raster y disponer de sentencias que permitan la obtención  del conjunto de datos de interés posteriormente en R
 
 <img src="Recursos/Día1/Sesion2/0Recursos/query.png" width="500px" height="250px" style="display: block; margin: auto;" />
 
@@ -234,12 +234,12 @@ tba(shape_luces, cap = "Promedio de luces nocturnasa")
 
 Repetir la rutina para: 
 
--   Tipo de suelo: **crops-coverfraction** (Porcentaje de cubrimiento cultivos) y **urban-coverfraction** (Porcentaje de cobertura urbana) disponibles en <https://develoGTMs.google.com/earth-engine/datasets/catalog/COGTMNICUS_Landcover_100m_Proba-V-C3_Global#description> 
+-   Tipo de suelo: **crops-coverfraction** (Porcentaje de cubrimiento cultivos) y **urban-coverfraction** (Porcentaje de cobertura urbana) disponibles en <https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_Landcover_100m_Proba-V-C3_Global#description> 
 
 
-- Tiempo de viaje al hospital o clínica más cercana (**accessibility**) y tiempo de viaje al hospital o clínica más cercana utilizando transporte no motorizado (**accessibility_walking_only**) información disponible en <https://develoGTMs.google.com/earth-engine/datasets/catalog/Oxford_MAP_accessibility_to_healthcare_2019> 
+- Tiempo de viaje al hospital o clínica más cercana (**accessibility**) y tiempo de viaje al hospital o clínica más cercana utilizando transporte no motorizado (**accessibility_walking_only**) información disponible en <https://developers.google.com/earth-engine/datasets/catalog/Oxford_MAP_accessibility_to_healthcare_2019> 
 
-- Modificación humana, donde se consideran los asentamiento humano, la agricultura, el transporte, la minería y producción de energía e infraestructura eléctrica. En el siguiente link encuentra la información satelital  <https://develoGTMs.google.com/earth-engine/datasets/catalog/CSP_HM_GlobalHumanModification#description>
+- Modificación humana, donde se consideran los asentamiento humano, la agricultura, el transporte, la minería y producción de energía e infraestructura eléctrica. En el siguiente link encuentra la información satelital  <https://developers.google.com/earth-engine/datasets/catalog/CSP_HM_GlobalHumanModification#description>
 
 - El conjunto de datos MODIS_061_MOD13A1 proporciona información diaria desde el año 2000 sobre la vegetación global obtenida por satélite. Incluye índices de vegetación, como NDVI y EVI, así como otros parámetros de la vegetación. Los datos son útiles para monitorear la salud de los cultivos, detectar incendios forestales y evaluar la actividad vegetal. (<https://developers.google.com/earth-engine/datasets/catalog/MODIS_061_MOD13A1>)
 
@@ -502,7 +502,7 @@ Es necesario definir las variables del país con los que se desea trabajar. De a
 
 ```r
 library(redatam)
-chile <- redatam.open("CHL/2017/1.Ingreso/Data/cpv2017chl-cde.dicx")
+chile <- redatam.open("Data/cpv2017chl-cde.dicx")
 
 CONTEOS <- redatam.query(
   CHL,
